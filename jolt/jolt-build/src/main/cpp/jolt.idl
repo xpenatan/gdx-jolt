@@ -223,10 +223,10 @@ interface ArrayVec3 {
 //    "SoftBodySharedSettings_ELRAType_EuclideanDistance",
 //    "SoftBodySharedSettings_ELRAType_GeodesicDistance"
 //};
-//
-//interface Vec3MemRef {
-//};
-//
+
+interface Vec3MemRef {
+};
+
 //interface QuatMemRef {
 //};
 //
