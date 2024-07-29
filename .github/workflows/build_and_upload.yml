@@ -1,0 +1,314 @@
+name: Build and Upload
+
+on:
+  workflow_call:
+    inputs:
+      isRelease:
+        required: true
+        type: boolean
+      shouldUpload:
+        required: true
+        type: boolean
+
+env:
+  RELEASE: ${{ inputs.isRelease }}
+
+jobs:
+  build_windows:
+    name: Build Windows
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - name: Set up MinGW
+        run: |
+          sudo apt install -y --force-yes mingw-w64 lib32z1
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Download sources
+        run: ./gradlew download_all_sources
+
+      - name: Build project
+        run: ./gradlew :jolt:jolt-build:build_project_windows64
+
+      - name: Upload natives
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+  build_linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - name: Set up MinGW
+        run: |
+          sudo apt install -y --force-yes mingw-w64 lib32z1
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Download sources
+        run: ./gradlew download_all_sources
+
+      - name: Build project
+        run: ./gradlew :jolt:jolt-build:build_project_linux64
+
+      - name: Upload natives
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+  build_mac:
+    name: Build Mac
+    runs-on: macos-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Download sources
+        run: ./gradlew download_all_sources
+
+      - name: Build project
+        run: ./gradlew :jolt:jolt-build:build_project_mac64 :jolt:jolt-build:build_project_macArm
+
+      - name: Upload natives
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+  build_teavm:
+    name: Build TeaVM
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - name: Set up MinGW
+        run: |
+          sudo apt install -y --force-yes mingw-w64 lib32z1
+
+      - name: Install emscripten
+        uses: mymindstorm/setup-emsdk@v14
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Download sources
+        run: ./gradlew download_all_sources
+
+      - name: Build project
+        run: ./gradlew :jolt:jolt-build:build_project_teavm
+
+      - name: Upload natives
+        uses: actions/upload-artifact@v4
+        with:
+          name: teavm-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+  build_android:
+    name: Build Android
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - name: Set up MinGW
+        run: |
+          sudo apt install -y --force-yes mingw-w64 lib32z1
+
+      - name: Install NDK
+        id: setup-ndk
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r25c
+          add-to-path: false
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Download sources
+        run: ./gradlew download_all_sources
+
+      - name: Build project
+        run: ./gradlew :jolt:jolt-build:build_project_android
+        env:
+          NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+
+      - name: Upload natives
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+  upload_natives:
+    name: Upload Natives
+    needs: [build_windows, build_linux, build_mac, build_android, build_teavm]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get version
+        uses: madhead/read-java-properties@latest
+        id: version
+        with:
+          file: "./gradle.properties"
+          property: version
+          default: 0.0.1
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          distribution: "zulu"
+          java-version: 11
+
+      - name: Set up MinGW
+        run: |
+          sudo apt install -y --force-yes mingw-w64 lib32z1
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Download windows natives
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+      - name: Download linux natives
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+      - name: Download mac natives
+        uses: actions/download-artifact@v4
+        with:
+          name: mac-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+      - name: Download android natives
+        uses: actions/download-artifact@v4
+        with:
+          name: android-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+      - name: Download teavm natives
+        uses: actions/download-artifact@v4
+        with:
+          name: teavm-natives
+          path: ./jolt/jolt-build/build/c++/libs/
+
+      - name: Generate Jolt classes
+        run: ./gradlew :jolt:jolt-build:build_project
+
+#      - name: Upload to repository
+#        uses: nick-fields/retry@v3
+#        if: ${{ inputs.shouldUpload }}
+#        with:
+#          max_attempts: 3
+#          timeout_minutes: 10
+#          retry_on: error
+#          command: ./gradlew publish
+#        env:
+#          USER: ${{ secrets.USER }}
+#          PASSWORD: ${{ secrets.PASSWORD }}
+#          SIGNING_KEY: ${{ secrets.PGP_SECRET }}
+#          SIGNING_PASSWORD: ${{ secrets.PGP_PASSPHRASE }}
+#
+#      - name: Create Git tag
+#        uses: actions/github-script@v7
+#        if: ${{ inputs.isRelease }}
+#        with:
+#          script: |
+#            const versionOutputs = ${{ toJSON(steps.version.outputs) }};
+#
+#            var version = versionOutputs.value;
+#
+#            console.log("Version: " + version);
+#
+#            var ref = "refs/tags/" + version
+#            github.rest.git.createRef({
+#              owner: context.repo.owner,
+#              repo: context.repo.repo,
+#              ref: ref,
+#              sha: context.sha
+#            });

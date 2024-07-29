@@ -1,0 +1,3567 @@
+//interface JPHString {
+//    void JPHString(DOMString str, long length);
+//    [Const] DOMString c_str(); // TODO: This is not a nice way to get a string from an interface
+//    unsigned long size();
+//};
+//
+interface ArrayVec3 {
+    boolean empty();
+    long size();
+    [Ref] Vec3 at(long inIndex);
+    void push_back([Const, Ref] Vec3 inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+    Vec3MemRef data();
+};
+
+//interface ArrayQuat {
+//    boolean empty();
+//    long size();
+//    [Ref] Quat at(long inIndex);
+//    void push_back([Const, Ref] Quat inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//    QuatMemRef data();
+//};
+//
+//interface ArrayMat44 {
+//    boolean empty();
+//    long size();
+//    [Ref] Mat44 at(long inIndex);
+//    void push_back([Const, Ref] Mat44 inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//    Mat44MemRef data();
+//};
+//
+//enum EBodyType {
+//    "EBodyType_RigidBody",
+//    "EBodyType_SoftBody"
+//};
+//
+//enum EMotionType {
+//    "EMotionType_Static",
+//    "EMotionType_Kinematic",
+//    "EMotionType_Dynamic"
+//};
+//
+//enum EMotionQuality {
+//    "EMotionQuality_Discrete",
+//    "EMotionQuality_LinearCast"
+//};
+//
+//enum EActivation {
+//    "EActivation_Activate",
+//    "EActivation_DontActivate"
+//};
+//
+//enum EShapeType {
+//    "EShapeType_Convex",
+//    "EShapeType_Compound",
+//    "EShapeType_Decorated",
+//    "EShapeType_Mesh",
+//    "EShapeType_HeightField"
+//};
+//
+//enum EShapeSubType {
+//    "EShapeSubType_Sphere",
+//    "EShapeSubType_Box",
+//    "EShapeSubType_Capsule",
+//    "EShapeSubType_TaperedCapsule",
+//    "EShapeSubType_Cylinder",
+//    "EShapeSubType_ConvexHull",
+//    "EShapeSubType_StaticCompound",
+//    "EShapeSubType_MutableCompound",
+//    "EShapeSubType_RotatedTranslated",
+//    "EShapeSubType_Scaled",
+//    "EShapeSubType_OffsetCenterOfMass",
+//    "EShapeSubType_Mesh",
+//    "EShapeSubType_HeightField"
+//};
+//
+//enum EConstraintSpace {
+//    "EConstraintSpace_LocalToBodyCOM",
+//    "EConstraintSpace_WorldSpace"
+//};
+//
+//enum ESpringMode {
+//    "ESpringMode_FrequencyAndDamping",
+//    "ESpringMode_StiffnessAndDamping",
+//};
+//
+//enum EOverrideMassProperties {
+//    "EOverrideMassProperties_CalculateMassAndInertia",
+//    "EOverrideMassProperties_CalculateInertia",
+//    "EOverrideMassProperties_MassAndInertiaProvided"
+//};
+//
+//enum EAllowedDOFs {
+//    "EAllowedDOFs_TranslationX",
+//    "EAllowedDOFs_TranslationY",
+//    "EAllowedDOFs_TranslationZ",
+//    "EAllowedDOFs_RotationX",
+//    "EAllowedDOFs_RotationY",
+//    "EAllowedDOFs_RotationZ",
+//    "EAllowedDOFs_Plane2D",
+//    "EAllowedDOFs_All"
+//};
+//
+//enum EStateRecorderState {
+//    "EStateRecorderState_None",
+//    "EStateRecorderState_Global",
+//    "EStateRecorderState_Bodies",
+//    "EStateRecorderState_Contacts",
+//    "EStateRecorderState_Constraints",
+//    "EStateRecorderState_All"
+//};
+//
+//enum EBackFaceMode {
+//    "EBackFaceMode_IgnoreBackFaces",
+//    "EBackFaceMode_CollideWithBackFaces"
+//};
+//
+//enum EGroundState {
+//    "EGroundState_OnGround",
+//    "EGroundState_OnSteepGround",
+//    "EGroundState_NotSupported",
+//    "EGroundState_InAir"
+//};
+//
+//enum ValidateResult {
+//    "ValidateResult_AcceptAllContactsForThisBodyPair",
+//    "ValidateResult_AcceptContact",
+//    "ValidateResult_RejectContact",
+//    "ValidateResult_RejectAllContactsForThisBodyPair"
+//};
+//
+//enum SoftBodyValidateResult {
+//    "SoftBodyValidateResult_AcceptContact",
+//    "SoftBodyValidateResult_RejectContact",
+//};
+//
+//enum EActiveEdgeMode {
+//    "EActiveEdgeMode_CollideOnlyWithActive",
+//    "EActiveEdgeMode_CollideWithAll"
+//};
+//
+//enum ECollectFacesMode {
+//    "ECollectFacesMode_CollectFaces",
+//    "ECollectFacesMode_NoFaces"
+//};
+//
+//enum SixDOFConstraintSettings_EAxis {
+//    "SixDOFConstraintSettings_EAxis_TranslationX",
+//    "SixDOFConstraintSettings_EAxis_TranslationY",
+//    "SixDOFConstraintSettings_EAxis_TranslationZ",
+//    "SixDOFConstraintSettings_EAxis_RotationX",
+//    "SixDOFConstraintSettings_EAxis_RotationY",
+//    "SixDOFConstraintSettings_EAxis_RotationZ"
+//};
+//
+//enum EConstraintType {
+//    "EConstraintType_Constraint",
+//    "EConstraintType_TwoBodyConstraint",
+//};
+//
+//enum EConstraintSubType {
+//    "EConstraintSubType_Fixed",
+//    "EConstraintSubType_Point",
+//    "EConstraintSubType_Hinge",
+//    "EConstraintSubType_Slider",
+//    "EConstraintSubType_Distance",
+//    "EConstraintSubType_Cone",
+//    "EConstraintSubType_SwingTwist",
+//    "EConstraintSubType_SixDOF",
+//    "EConstraintSubType_Path",
+//    "EConstraintSubType_Vehicle",
+//    "EConstraintSubType_RackAndPinion",
+//    "EConstraintSubType_Gear",
+//    "EConstraintSubType_Pulley",
+//};
+//
+//enum EMotorState {
+//    "EMotorState_Off",
+//    "EMotorState_Velocity",
+//    "EMotorState_Position"
+//};
+//
+//enum ETransmissionMode {
+//    "ETransmissionMode_Auto",
+//    "ETransmissionMode_Manual",
+//};
+//
+//enum ETireFrictionDirection {
+//    "ETireFrictionDirection_Longitudinal",
+//    "ETireFrictionDirection_Lateral",
+//};
+//
+//enum ESwingType {
+//    "ESwingType_Cone",
+//    "ESwingType_Pyramid",
+//};
+//
+//enum EPathRotationConstraintType {
+//    "EPathRotationConstraintType_Free",
+//    "EPathRotationConstraintType_ConstrainAroundTangent",
+//    "EPathRotationConstraintType_ConstrainAroundNormal",
+//    "EPathRotationConstraintType_ConstrainAroundBinormal",
+//    "EPathRotationConstraintType_ConstrainToPath",
+//    "EPathRotationConstraintType_FullyConstrained"
+//};
+//
+//enum SoftBodySharedSettings_EBendType {
+//    "SoftBodySharedSettings_EBendType_None",
+//    "SoftBodySharedSettings_EBendType_Distance",
+//    "SoftBodySharedSettings_EBendType_Dihedral"
+//};
+//
+//enum SoftBodySharedSettings_ELRAType {
+//    "SoftBodySharedSettings_ELRAType_None",
+//    "SoftBodySharedSettings_ELRAType_EuclideanDistance",
+//    "SoftBodySharedSettings_ELRAType_GeodesicDistance"
+//};
+//
+//interface Vec3MemRef {
+//};
+//
+//interface QuatMemRef {
+//};
+//
+//interface Mat44MemRef {
+//};
+//
+//interface FloatMemRef {
+//};
+//
+//interface Uint8MemRef {
+//};
+//
+//interface UintMemRef {
+//};
+//
+//interface Vec3 {
+//    void Vec3();
+//    void Vec3([Const, Ref] Float3 inV);
+//    void Vec3(float inX, float inY, float inZ);
+//    [Value] static Vec3 sZero();
+//    [Value] static Vec3 sAxisX();
+//    [Value] static Vec3 sAxisY();
+//    [Value] static Vec3 sAxisZ();
+//    [Value] static Vec3 sReplicate(float inValue);
+//    [Value] static Vec3 sMin([Const, Ref] Vec3 inLHS, [Const, Ref] Vec3 inRHS);
+//    [Value] static Vec3 sMax([Const, Ref] Vec3 inLHS, [Const, Ref] Vec3 inRHS);
+//    [Value] static Vec3 sClamp([Const, Ref] Vec3 inValue, [Const, Ref] Vec3 inMin, [Const, Ref] Vec3 inMax);
+//    [Value] static Vec3 sUnitSpherical(float inTheta, float inPhi);
+//    [Operator="[]"] float GetComponent(unsigned long inCoordinate);
+//    [Operator="=="] boolean Equals([Const, Ref] Vec3 inV);
+//    [Operator="!="] boolean NotEquals([Const, Ref] Vec3 inV);
+//    float LengthSq();
+//    float Length();
+//    [Value] Vec3 Normalized();
+//    [Value] Vec3 NormalizedOr([Const, Ref] Vec3 inZeroValue);
+//    [Value] Vec3 GetNormalizedPerpendicular();
+//    float GetX();
+//    float GetY();
+//    float GetZ();
+//    void SetX(float inX);
+//    void SetY(float inY);
+//    void SetZ(float inZ);
+//    void Set(float inX, float inY, float inZ);
+//    void SetComponent(unsigned long inCoordinate, float inValue);
+//    boolean IsNearZero(optional float inMaxDistSq);
+//    boolean IsClose([Const, Ref] Vec3 inV, optional float inMaxDistSq);
+//    boolean IsNormalized(optional float inTolerance);
+//    long GetLowestComponentIndex();
+//    long GetHighestComponentIndex();
+//    [Const, Value] Vec3 Abs();
+//    [Const, Value] Vec3 Reciprocal();
+//    [Const, Value] Vec3 Cross([Const, Ref] Vec3 inRHS);
+//    float Dot([Const, Ref] Vec3 inRHS);
+//    [Operator="+=", Ref] Vec3 Add([Const, Ref] Vec3 inV);
+//    [Operator="-=", Ref] Vec3 Sub([Const, Ref] Vec3 inV);
+//    [Operator="*=", Ref] Vec3 Mul(float inV);
+//    [Operator="/=", Ref] Vec3 Div(float inV);
+//    float ReduceMin();
+//    float ReduceMax();
+//    [Const, Value] Vec3 Sqrt();
+//    [Const, Value] Vec3 GetSign();
+//};
+//
+//interface RVec3 {
+//    void RVec3();
+//    void RVec3(double inX, double inY, double inZ);
+//    [Value] static RVec3 sZero();
+//    [Value] static RVec3 sAxisX();
+//    [Value] static RVec3 sAxisY();
+//    [Value] static RVec3 sAxisZ();
+//    [Value] static RVec3 sReplicate(double inValue);
+//    [Value] static RVec3 sMin([Const, Ref] RVec3 inLHS, [Const, Ref] RVec3 inRHS);
+//    [Value] static RVec3 sMax([Const, Ref] RVec3 inLHS, [Const, Ref] RVec3 inRHS);
+//    [Value] static RVec3 sClamp([Const, Ref] RVec3 inValue, [Const, Ref] RVec3 inMin, [Const, Ref] RVec3 inMax);
+//    [Operator="[]"] double GetComponent(unsigned long inCoordinate);
+//    [Operator="=="] boolean Equals([Const, Ref] RVec3 inV);
+//    [Operator="!="] boolean NotEquals([Const, Ref] RVec3 inV);
+//    double LengthSq();
+//    double Length();
+//    [Value] RVec3 Normalized();
+//    double GetX();
+//    double GetY();
+//    double GetZ();
+//    void SetX(double inX);
+//    void SetY(double inY);
+//    void SetZ(double inZ);
+//    void Set(double inX, double inY, double inZ);
+//    void SetComponent(unsigned long inCoordinate, double inValue);
+//    boolean IsNearZero(optional double inMaxDistSq);
+//    boolean IsClose([Const, Ref] RVec3 inV, optional double inMaxDistSq);
+//    boolean IsNormalized(optional double inTolerance);
+//    [Const, Value] RVec3 Abs();
+//    [Const, Value] RVec3 Reciprocal();
+//    [Const, Value] RVec3 Cross([Const, Ref] RVec3 inRHS);
+//    double Dot([Const, Ref] RVec3 inRHS);
+//    [Operator="+=", Ref] RVec3 Add([Const, Ref] Vec3 inV);
+//    [Operator="-=", Ref] RVec3 Sub([Const, Ref] Vec3 inV);
+//    [Operator="*=", Ref] RVec3 Mul(double inV);
+//    [Operator="/=", Ref] RVec3 Div(double inV);
+//    [Const, Value] RVec3 Sqrt();
+//    [Const, Value] RVec3 GetSign();
+//};
+//
+//interface Vec4 {
+//    void Vec4();
+//    void Vec4([Const, Ref] Vec4 inV);
+//    void Vec4([Ref] Vec3 inV, float inW);
+//    void Vec4(float inX, float inY, float inZ, float inW);
+//    float GetX();
+//    float GetY();
+//    float GetZ();
+//    float GetW();
+//    void SetX(float inX);
+//    void SetY(float inY);
+//    void SetZ(float inZ);
+//    void SetW(float inW);
+//    void Set(float inX, float inY, float inZ, float inW);
+//    [Operator="[]"] float GetComponent(unsigned long inCoordinate);
+//};
+//
+//interface Vector2 {
+//    void Vector2();
+//    void SetZero();
+//    void IsZero();
+//    void IsClose([Const, Ref] Vector2 inV, optional float inMaxDistSq);
+//    void IsNormalized(optional float inTolerance);
+//    [Const, Value] Vector2 Normalized();
+//    [Operator="[]"] float GetComponent(unsigned long inCoordinate);
+//    [Operator="+=", Ref] Vector2 Add([Const, Ref] Vector2 inV);
+//    [Operator="-=", Ref] Vector2 Sub([Const, Ref] Vector2 inV);
+//    [Operator="*=", Ref] Vector2 Mul(float inV);
+//    [Operator="/=", Ref] Vector2 Div(float inV);
+//    float Dot([Const, Ref] Vector2 inRHS);
+//};
+//
+//interface Quat {
+//    void Quat();
+//    void Quat(float inX, float inY, float inZ, float inW);
+//    [Value] static Quat sZero();
+//    [Value] static Quat sIdentity();
+//    [Value] static Quat sRotation([Const, Ref] Vec3 inRotation, float inAngle);
+//    [Value] static Quat sFromTo([Const, Ref] Vec3 inFrom, [Const, Ref] Vec3 inTo);
+//    [Operator="=="] boolean Equals([Const, Ref] Quat inQ);
+//    [Operator="!="] boolean NotEquals([Const, Ref] Quat inQ);
+//    boolean IsClose([Const, Ref] Quat inQ, optional float inMaxDistSq);
+//    boolean IsNormalized(optional float inTolerance);
+//    float Length();
+//    float LengthSq();
+//    [Value] Quat Normalized();
+//    [Value] static Quat sEulerAngles([Const, Ref] Vec3 inInput);
+//    [Const, Value] Vec3 GetEulerAngles();
+//    float GetX();
+//    float GetY();
+//    float GetZ();
+//    float GetW();
+//    [Const, Value] Vec3 GetXYZ();
+//    void SetX(float inX);
+//    void SetY(float inY);
+//    void SetZ(float inZ);
+//    void SetW(float inW);
+//    void Set(float inX, float inY, float inZ, float inW);
+//    [Const, Value] Vec3 InverseRotate([Const, Ref] Vec3 inV);
+//    [Const, Value] Vec3 RotateAxisX();
+//    [Const, Value] Vec3 RotateAxisY();
+//    [Const, Value] Vec3 RotateAxisZ();
+//    float Dot([Const, Ref] Quat inQ);
+//    [Const, Value] Quat Conjugated();
+//    [Const, Value] Quat Inversed();
+//    [Const, Value] Quat EnsureWPositive();
+//    [Const, Value] Quat GetPerpendicular();
+//    float GetRotationAngle([Const, Ref] Vec3 inAxis);
+//    [Const, Value] Quat GetTwist([Const, Ref] Vec3 inAxis);
+//    void GetSwingTwist([Ref] Quat outSwing, [Ref] Quat outTwist);
+//    [Const, Value] Quat LERP([Const, Ref] Quat inDestination, float inFraction);
+//    [Const, Value] Quat SLERP([Const, Ref] Quat inDestination, float inFraction);
+//};
+//
+//interface Float3 {
+//    void Float3(float inX, float inY, float inZ);
+//    [Operator="=="] boolean Equals([Const, Ref] Float3 inV);
+//    [Operator="!="] boolean NotEquals([Const, Ref] Float3 inV);
+//
+//    attribute float x;
+//    attribute float y;
+//    attribute float z;
+//};
+//
+//interface Mat44 {
+//    void Mat44();
+//    [Value] static Mat44 sZero();
+//    [Value] static Mat44 sIdentity();
+//    [Value] static Mat44 sRotationX(float inX);
+//    [Value] static Mat44 sRotationY(float inY);
+//    [Value] static Mat44 sRotationZ(float inZ);
+//    [Value] static Mat44 sRotation([Const, Ref] Quat inQ);
+//    [Value] static Mat44 sTranslation([Const, Ref] Vec3 inTranslation);
+//    [Value] static Mat44 sRotationTranslation([Const, Ref] Quat inRotation, [Const, Ref] Vec3 inTranslation);
+//    [Value] static Mat44 sInverseRotationTranslation([Const, Ref] Quat inRotation, [Const, Ref] Vec3 inTranslation);
+//    [Value] static Mat44 sScale(float inScale);
+//    [Value] static Mat44 sPerspective(float inFovY, float inAspect, float inNear, float inFar);
+//    [Value] Vec3 GetAxisX();
+//    [Value] Vec3 GetAxisY();
+//    [Value] Vec3 GetAxisZ();
+//    [Value] Mat44 GetRotation();
+//    [Value] Quat GetQuaternion();
+//    [Value] Vec3 GetTranslation();
+//    boolean IsClose([Const, Ref] Mat44 inM, optional float inMaxDistSq);
+//    [Value] Vec3 Multiply3x3([Const, Ref] Vec3 inV);
+//    [Value] Vec3 Multiply3x3Transposed([Const, Ref] Vec3 inV);
+//    [Value] Mat44 Transposed();
+//    [Value] Mat44 Transposed3x3();
+//    [Value] Mat44 Inversed();
+//    [Value] Mat44 InversedRotationTranslation();
+//    float GetDeterminant3x3();
+//    [Value] Mat44 Inversed3x3();
+//    [Value] Mat44 GetDirectionPreservingMatrix();
+//    [Value] Mat44 PreTranslated([Const, Ref] Vec3 inTranslation);
+//    [Value] Mat44 PostTranslated([Const, Ref] Vec3 inTranslation);
+//    [Value] Mat44 PreScaled([Const, Ref] Vec3 inScale);
+//    [Value] Mat44 PostScaled([Const, Ref] Vec3 inScale);
+//    void SetColumn3(long inCol, [Const, Ref] Vec3 inV);
+//    void SetAxisX([Const, Ref] Vec3 inV);
+//    void SetAxisY([Const, Ref] Vec3 inV);
+//    void SetAxisZ([Const, Ref] Vec3 inV);
+//    void SetTranslation([Const, Ref] Vec3 inV);
+//    void SetColumn4(long inCol, [Const, Ref] Vec4 inV);
+//    [Value] Vec4 GetColumn4(long inCol);
+//};
+//
+//interface RMat44 {
+//    void RMat44();
+//    [Value] static RMat44 sZero();
+//    [Value] static RMat44 sIdentity();
+//    [Value] static RMat44 sRotation([Const, Ref] Quat inQ);
+//    [Value] static RMat44 sTranslation([Const, Ref] RVec3 inTranslation);
+//    [Value] static RMat44 sRotationTranslation([Const, Ref] Quat inRotation, [Const, Ref] RVec3 inTranslation);
+//    [Value] static RMat44 sInverseRotationTranslation([Const, Ref] Quat inRotation, [Const, Ref] RVec3 inTranslation);
+//    [Value] Vec3 GetAxisX();
+//    [Value] Vec3 GetAxisY();
+//    [Value] Vec3 GetAxisZ();
+//    [Value] Mat44 GetRotation();
+//    [Value] Quat GetQuaternion();
+//    [Value] RVec3 GetTranslation();
+//    boolean IsClose([Const, Ref] RMat44 inM, optional double inMaxDistSq);
+//    [Value] Vec3 Multiply3x3([Const, Ref] Vec3 inV);
+//    [Value] Vec3 Multiply3x3Transposed([Const, Ref] Vec3 inV);
+//    [Value] Mat44 Transposed3x3();
+//    [Value] RMat44 Inversed();
+//    [Value] RMat44 InversedRotationTranslation();
+//    [Value] RMat44 PreTranslated([Const, Ref] Vec3 inTranslation);
+//    [Value] RMat44 PostTranslated([Const, Ref] Vec3 inTranslation);
+//    [Value] RMat44 PreScaled([Const, Ref] Vec3 inScale);
+//    [Value] RMat44 PostScaled([Const, Ref] Vec3 inScale);
+//    void SetColumn3(long inCol, [Const, Ref] Vec3 inV);
+//    void SetAxisX([Const, Ref] Vec3 inV);
+//    void SetAxisY([Const, Ref] Vec3 inV);
+//    void SetAxisZ([Const, Ref] Vec3 inV);
+//    void SetTranslation([Const, Ref] RVec3 inV);
+//    void SetColumn4(long inCol, [Const, Ref] Vec4 inV);
+//    [Value] Vec4 GetColumn4(long inCol);
+//};
+//
+//interface AABox {
+//    void AABox();
+//    void AABox([Const, Ref] Vec3 inMin, [Const, Ref] Vec3 inMax);
+//    [Value] static AABox sBiggest();
+//
+//    [Value] attribute Vec3 mMin;
+//    [Value] attribute Vec3 mMax;
+//    boolean Overlaps([Const, Ref] AABox inOther);
+//};
+//
+//interface OrientedBox {
+//    void OrientedBox();
+//    void OrientedBox([Const, Ref] Mat44 inOrientation, [Const, Ref] Vec3 inHalfExtents);
+//
+//    [Value] attribute Mat44 mOrientation;
+//    [Value] attribute Vec3 mHalfExtents;
+//};
+//
+//interface RayCast {
+//    void RayCast();
+//    void RayCast([Const, Ref] Vec3 inOrigin, [Const, Ref] Vec3 inDirection);
+//    [Const, Value] RayCast Transformed([Const, Ref] Mat44 inTransform);
+//    [Const, Value] RayCast Translated([Const, Ref] Vec3 inTranslation);
+//    [Const, Value] Vec3 GetPointOnRay(float inFraction);
+//
+//    [Value] attribute Vec3 mOrigin;
+//    [Value] attribute Vec3 mDirection;
+//};
+//
+//interface RRayCast {
+//    void RRayCast();
+//    void RRayCast([Const, Ref] RVec3 inOrigin, [Const, Ref] Vec3 inDirection);
+//    [Const, Value] RRayCast Transformed([Const, Ref] RMat44 inTransform);
+//    [Const, Value] RRayCast Translated([Const, Ref] RVec3 inTranslation);
+//    [Const, Value] RVec3 GetPointOnRay(float inFraction);
+//
+//    [Value] attribute RVec3 mOrigin;
+//    [Value] attribute Vec3 mDirection;
+//};
+//
+//interface BroadPhaseCastResult {
+//    void BroadPhaseCastResult();
+//    void Reset();
+//
+//    [Value] attribute BodyID mBodyID;
+//    attribute float mFraction;
+//};
+//
+//interface RayCastResult {
+//    void RayCastResult();
+//
+//    [Value] attribute SubShapeID mSubShapeID2;
+//};
+//
+//RayCastResult implements BroadPhaseCastResult;
+//
+//interface AABoxCast {
+//    void AABoxCast();
+//
+//    [Value] attribute AABox mBox;
+//    [Value] attribute Vec3 mDirection;
+//};
+//
+//interface ShapeCast {
+//    void ShapeCast([Const] Shape inShape, [Const, Ref] Vec3 inScale, [Const, Ref] Mat44 inCenterOfMassStart, [Const, Ref] Vec3 inDirection);
+//
+//    [Const] readonly attribute Shape mShape;
+//    [Const, Value] readonly attribute Vec3 mScale;
+//    [Const, Value] readonly attribute Mat44 mCenterOfMassStart;
+//    [Const, Value] readonly attribute Vec3 mDirection;
+//    [Const, Value] Vec3 GetPointOnRay(float inFraction);
+//};
+//
+//interface RShapeCast {
+//    void RShapeCast([Const] Shape inShape, [Const, Ref] Vec3 inScale, [Const, Ref] RMat44 inCenterOfMassStart, [Const, Ref] Vec3 inDirection);
+//
+//    [Const] readonly attribute Shape mShape;
+//    [Const, Value] readonly attribute Vec3 mScale;
+//    [Const, Value] readonly attribute RMat44 mCenterOfMassStart;
+//    [Const, Value] readonly attribute Vec3 mDirection;
+//    [Const, Value] RVec3 GetPointOnRay(float inFraction);
+//};
+//
+//interface Plane {
+//    void Plane([Const, Ref] Vec3 inNormal, float inConstant);
+//    [Value] Vec3 GetNormal();
+//    void SetNormal([Const, Ref] Vec3 inNormal);
+//    float GetConstant();
+//    void SetConstant(float inConstant);
+//    [Const, Value] Plane sFromPointAndNormal([Const, Ref] Vec3 inPoint, [Const, Ref] Vec3 inNormal);
+//    [Const, Value] Plane sFromPointsCCW([Const, Ref] Vec3 inPoint1, [Const, Ref] Vec3 inPoint2, [Const, Ref] Vec3 inPoint3);
+//    [Const, Value] Plane Offset(float inDistance);
+//    [Const, Value] Plane GetTransformed([Const, Ref] Mat44 inTransform);
+//    float SignedDistance([Const, Ref] Vec3 inPoint);
+//};
+//
+//interface TransformedShape {
+//    void TransformedShape();
+//    void CastRay([Const, Ref] RRayCast inRay, [Ref] RayCastResult ioHit);
+//    void CastRay([Const, Ref] RRayCast inRay, [Const, Ref] RayCastSettings inRayCastSettings, [Ref] CastRayCollector ioCollector, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CollidePoint([Const, Ref] RVec3 inPoint, [Ref] CollidePointCollector ioCollector, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CollideShape([Const] Shape inShape, [Const, Ref] Vec3 inShapeScale, [Const, Ref] RMat44 inCenterOfMassTransform, [Const, Ref] CollideShapeSettings inCollideShapeSettings, [Const, Ref] RVec3 inBaseOffset, [Ref] CollideShapeCollector ioCollector, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CastShape([Const, Ref] RShapeCast inShapeCast, [Const, Ref] ShapeCastSettings inShapeCastSettings, [Const, Ref] RVec3 inBaseOffset, [Ref] CastShapeCollector ioCollector, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CollectTransformedShapes([Const, Ref] AABox inBox, [Ref] TransformedShapeCollector ioCollector, [Const, Ref] ShapeFilter inShapeFilter);
+//    [Value] Vec3 GetShapeScale();
+//    void SetShapeScale([Const, Ref] Vec3 inScale);
+//    [Value] RMat44 GetCenterOfMassTransform();
+//    [Value] RMat44 GetInverseCenterOfMassTransform();
+//    void SetWorldTransform([Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, [Const, Ref] Vec3 inScale);
+//    void SetWorldTransform([Const, Ref] RMat44 inTransform);
+//    [Value] RMat44 GetWorldTransform();
+//    [Value] AABox GetWorldSpaceBounds();
+//    [Value] Vec3 GetWorldSpaceSurfaceNormal([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] RVec3 inPosition);
+//    [Const] PhysicsMaterial GetMaterial([Const, Ref] SubShapeID inSubShapeID);
+//
+//    [Value] attribute RVec3 mShapePositionCOM;
+//    [Value] attribute Quat mShapeRotation;
+//    [Const] attribute Shape mShape;
+//    [Value] attribute Float3 mShapeScale;
+//    [Value] attribute BodyID mBodyID;
+//};
+//
+//interface PhysicsMaterial {
+//    void PhysicsMaterial();
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//};
+//
+//interface PhysicsMaterialList {
+//    void PhysicsMaterialList();
+//    boolean empty();
+//    long size();
+//    [Const] PhysicsMaterial at(long inIndex);
+//    void push_back([Const] PhysicsMaterial inMaterial);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface Triangle {
+//    void Triangle();
+//    void Triangle([Const, Ref] Vec3 inV1, [Const, Ref] Vec3 inV2, [Const, Ref] Vec3 inV3);
+//
+//    [Value] attribute Float3[] mV;
+//    attribute unsigned long mMaterialIndex;
+//};
+//
+//interface TriangleList {
+//    void TriangleList();
+//    boolean empty();
+//    long size();
+//    [Ref] Triangle at(long inIndex);
+//    void push_back([Const, Ref] Triangle inTriangle);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface VertexList {
+//    void VertexList();
+//    boolean empty();
+//    long size();
+//    [Ref] Float3 at(long inIndex);
+//    void push_back([Const, Ref] Float3 inVertex);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface IndexedTriangle {
+//    void IndexedTriangle();
+//    void IndexedTriangle(unsigned long inI1, unsigned long inI2, unsigned long inI3, unsigned long inMaterialIndex);
+//
+//    attribute unsigned long[] mIdx;
+//    attribute unsigned long mMaterialIndex;
+//};
+//
+//interface IndexedTriangleList {
+//    void IndexedTriangleList();
+//    boolean empty();
+//    long size();
+//    [Ref] IndexedTriangle at(long inIndex);
+//    void push_back([Const, Ref] IndexedTriangle inTriangle);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//[Prefix="Shape::"]
+//interface ShapeResult {
+//    boolean IsValid();
+//    boolean HasError();
+//    [Const, Ref] JPHString GetError();
+//    Shape Get();
+//    void Clear();
+//};
+//
+//// Shape
+//interface ShapeSettings {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//    [Value] ShapeResult Create();
+//    void ClearCachedResult();
+//
+//    attribute unsigned long long mUserData;
+//};
+//
+//interface Shape {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//    EShapeType GetType();
+//    EShapeSubType GetSubType();
+//    boolean MustBeStatic();
+//    [Value] AABox GetLocalBounds();
+//    [Value] AABox GetWorldSpaceBounds([Const, Ref] Mat44 inCenterOfMassTransform, [Const, Ref] Vec3 inScale);
+//    [Value] Vec3 GetCenterOfMass();
+//    unsigned long long GetUserData();
+//    void SetUserData(unsigned long long inUserData);
+//    unsigned long GetSubShapeIDBitsRecursive();
+//    float GetInnerRadius();
+//    [Value] MassProperties GetMassProperties();
+//    [Const] PhysicsMaterial GetMaterial([Const, Ref] SubShapeID inSubShapeID);
+//    [Value] Vec3 GetSurfaceNormal([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] Vec3 inLocalSurfacePosition);
+//    unsigned long long GetSubShapeUserData([Const, Ref] SubShapeID inSubShapeID);
+//    [Value] TransformedShape GetSubShapeTransformedShape([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] Vec3 inPositionCOM, [Const, Ref] Quat inRotation, [Const, Ref] Vec3 inScale, [Ref] SubShapeID outRemainder);
+//    float GetVolume();
+//    boolean IsValidScale([Const, Ref] Vec3 inScale);
+//    [Value] Vec3 MakeScaleValid([Const, Ref] Vec3 inScale);
+//    [Value] ShapeResult ScaleShape([Const, Ref] Vec3 inScale);
+//};
+//
+//interface ShapeGetTriangles {
+//    void ShapeGetTriangles(Shape inShape, [Const, Ref] AABox inBox, [Const, Ref] Vec3 inPositionCOM, [Const, Ref] Quat inRotation, [Const, Ref] Vec3 inScale);
+//    long GetNumTriangles();
+//    long GetVerticesSize();
+//    [Const] any GetVerticesData();
+//    [Const] PhysicsMaterial GetMaterial(long inTriangle);
+//};
+//
+//// Convex shape
+//interface ConvexShapeSettings {
+//    [Const] attribute PhysicsMaterial mMaterial;
+//    attribute float mDensity;
+//};
+//
+//ConvexShapeSettings implements ShapeSettings;
+//
+//interface ConvexShape {
+//    float GetDensity();
+//    void SetDensity(float inDensity);
+//};
+//
+//ConvexShape implements Shape;
+//
+//// Sphere
+//interface SphereShapeSettings {
+//    void SphereShapeSettings(float inRadius, [Const] optional PhysicsMaterial inMaterial);
+//
+//    attribute float mRadius;
+//};
+//
+//SphereShapeSettings implements ConvexShapeSettings;
+//
+//interface SphereShape {
+//    void SphereShape(float inRadius, [Const] optional PhysicsMaterial inMaterial);
+//    float GetRadius();
+//};
+//
+//SphereShape implements ConvexShape;
+//
+//// Box
+//interface BoxShapeSettings {
+//    void BoxShapeSettings([Ref] Vec3 inHalfExtent, optional float inConvexRadius, [Const] optional PhysicsMaterial inMaterial);
+//
+//    [Value] attribute Vec3 mHalfExtent;
+//    attribute float mConvexRadius;
+//};
+//
+//BoxShapeSettings implements ConvexShapeSettings;
+//
+//interface BoxShape {
+//    void BoxShape([Ref] Vec3 inHalfExtent, optional float inConvexRadius, [Const] optional PhysicsMaterial inMaterial);
+//    [Value] Vec3 GetHalfExtent();
+//};
+//
+//BoxShape implements ConvexShape;
+//
+//// Cylinder
+//interface CylinderShapeSettings {
+//    void CylinderShapeSettings(float inHalfHeight, float inRadius, optional float inConvexRadius, [Const] optional PhysicsMaterial inMaterial);
+//
+//    attribute float mHalfHeight;
+//    attribute float mRadius;
+//    attribute float mConvexRadius;
+//};
+//
+//CylinderShapeSettings implements ConvexShapeSettings;
+//
+//interface CylinderShape {
+//    void CylinderShape(float inHalfHeight, float inRadius, float inConvexRadius, [Const] optional PhysicsMaterial inMaterial);
+//    float GetRadius();
+//    float GetHalfHeight();
+//};
+//
+//CylinderShape implements ConvexShape;
+//
+//// Capsule
+//interface CapsuleShapeSettings {
+//    void CapsuleShapeSettings(float inHalfHeight, float inRadius, [Const] optional PhysicsMaterial inMaterial);
+//
+//    attribute float mRadius;
+//    attribute float mHalfHeightOfCylinder;
+//};
+//
+//CapsuleShapeSettings implements ConvexShapeSettings;
+//
+//interface CapsuleShape {
+//    void CapsuleShape(float inHalfHeight, float inRadius, [Const] optional PhysicsMaterial inMaterial);
+//    float GetRadius();
+//    float GetHalfHeightOfCylinder();
+//};
+//
+//CapsuleShape implements ConvexShape;
+//
+//// Tapered capsule
+//interface TaperedCapsuleShapeSettings {
+//    void TaperedCapsuleShapeSettings(float inHalfHeightOfTaperedCylinder, float inTopRadius, float inBottomRadius, [Const] optional PhysicsMaterial inMaterial);
+//
+//    attribute float mHalfHeightOfTaperedCylinder;
+//    attribute float mTopRadius;
+//    attribute float mBottomRadius;
+//};
+//
+//TaperedCapsuleShapeSettings implements ConvexShapeSettings;
+//
+//interface TaperedCapsuleShape {
+//};
+//
+//TaperedCapsuleShape implements ConvexShape;
+//
+//// Convex hull
+//interface ConvexHullShapeSettings {
+//    void ConvexHullShapeSettings();
+//
+//    [Value] attribute ArrayVec3 mPoints;
+//    attribute float mMaxConvexRadius;
+//    attribute float mMaxErrorConvexRadius;
+//    attribute float mHullTolerance;
+//};
+//
+//ConvexHullShapeSettings implements ConvexShapeSettings;
+//
+//interface ConvexHullShape {
+//};
+//
+//ConvexHullShape implements ConvexShape;
+//
+//// Compound shape
+//interface CompoundShapeSettings {
+//    void AddShape([Const, Ref] Vec3 inPosition, [Const, Ref] Quat inRotation, [Const] ShapeSettings inShape, unsigned long inUserData);
+//};
+//
+//CompoundShapeSettings implements ShapeSettings;
+//
+//interface CompoundShapeSubShape {
+//    [Value] Vec3 GetPositionCOM();
+//    [Value] Quat GetRotation();
+//
+//    [Const] attribute Shape mShape;
+//    attribute unsigned long mUserData;
+//};
+//
+//interface CompoundShape {
+//    long GetNumSubShapes();
+//    [Const, Ref] CompoundShapeSubShape GetSubShape(long inIdx);
+//};
+//
+//CompoundShape implements Shape;
+//
+//// Static compound
+//interface StaticCompoundShapeSettings {
+//    void StaticCompoundShapeSettings();
+//};
+//
+//StaticCompoundShapeSettings implements CompoundShapeSettings;
+//
+//interface StaticCompoundShape {
+//};
+//
+//StaticCompoundShape implements CompoundShape;
+//
+//// Mutable compound
+//interface MutableCompoundShapeSettings {
+//    void MutableCompoundShapeSettings();
+//};
+//
+//MutableCompoundShapeSettings implements CompoundShapeSettings;
+//
+//interface MutableCompoundShape {
+//    unsigned long AddShape([Const, Ref] Vec3 inPosition, [Const, Ref] Quat inRotation, Shape inShape, unsigned long inUserData);
+//    void RemoveShape(unsigned long inIndex);
+//    void ModifyShape(unsigned long inIndex, [Const, Ref] Vec3 inPosition, [Const, Ref] Quat inRotation);
+//    void ModifyShape(unsigned long inIndex, [Const, Ref] Vec3 inPosition, [Const, Ref] Quat inRotation, Shape inShape);
+//    void ModifyShapes(unsigned long inStartIndex, unsigned long inNumber, Vec3MemRef inPositions, QuatMemRef inRotations);
+//    void AdjustCenterOfMass();
+//};
+//
+//MutableCompoundShape implements CompoundShape;
+//
+//// Decorated shape
+//interface DecoratedShapeSettings {
+//};
+//
+//DecoratedShapeSettings implements ShapeSettings;
+//
+//interface DecoratedShape {
+//    [Const] Shape GetInnerShape();
+//};
+//
+//DecoratedShape implements Shape;
+//
+//// Scaled shape
+//interface ScaledShapeSettings {
+//    void ScaledShapeSettings(ShapeSettings inShape, [Ref, Const] Vec3 inScale);
+//
+//    [Value] attribute Vec3 mScale;
+//};
+//
+//ScaledShapeSettings implements DecoratedShapeSettings;
+//
+//interface ScaledShape {
+//    void ScaledShape(Shape inShape, [Ref, Const] Vec3 inScale);
+//    [Value] Vec3 GetScale();
+//};
+//
+//ScaledShape implements DecoratedShape;
+//
+//// Offset COM
+//interface OffsetCenterOfMassShapeSettings {
+//    void OffsetCenterOfMassShapeSettings([Ref, Const] Vec3 inOffset, ShapeSettings inShape);
+//
+//    [Value] attribute Vec3 mOffset;
+//};
+//
+//OffsetCenterOfMassShapeSettings implements DecoratedShapeSettings;
+//
+//interface OffsetCenterOfMassShape {
+//    void OffsetCenterOfMassShape([Const] Shape inShape, [Const, Ref] Vec3 inOffset);
+//};
+//
+//OffsetCenterOfMassShape implements DecoratedShape;
+//
+//// Rotated translated
+//interface RotatedTranslatedShapeSettings {
+//    void RotatedTranslatedShapeSettings([Ref, Const] Vec3 inPosition, [Ref, Const] Quat inRotation, ShapeSettings inShape);
+//
+//    [Value] attribute Vec3 mPosition;
+//    [Value] attribute Quat mRotation;
+//};
+//
+//RotatedTranslatedShapeSettings implements DecoratedShapeSettings;
+//
+//interface RotatedTranslatedShape {
+//    [Value] Quat GetRotation();
+//    [Value] Vec3 GetPosition();
+//};
+//
+//RotatedTranslatedShape implements DecoratedShape;
+//
+//// Mesh shape
+//interface MeshShapeSettings {
+//    void MeshShapeSettings();
+//    void MeshShapeSettings([Ref, Const] TriangleList inTriangleList, [Ref, Const] optional PhysicsMaterialList inMaterialList);
+//    void MeshShapeSettings([Ref, Const] VertexList inVertices, [Ref, Const] IndexedTriangleList inTriangles, [Ref, Const] PhysicsMaterialList inMaterialList);
+//    void Sanitize();
+//
+//    [Value] attribute VertexList mTriangleVertices;
+//    [Value] attribute IndexedTriangleList mIndexedTriangles;
+//    [Value] attribute PhysicsMaterialList mMaterials;
+//    attribute unsigned long mMaxTrianglesPerLeaf;
+//    attribute float mActiveEdgeCosThresholdAngle;
+//};
+//
+//MeshShapeSettings implements ShapeSettings;
+//
+//interface MeshShape {
+//};
+//
+//MeshShape implements Shape;
+//
+//interface HeightFieldShapeConstantValues {
+//    [Const] static readonly attribute float	cNoCollisionValue;
+//};
+//
+//interface HeightFieldShapeSettings {
+//    void HeightFieldShapeSettings();
+//
+//    [Value] attribute Vec3 mOffset;
+//    [Value] attribute Vec3 mScale;
+//    attribute long mSampleCount;
+//    attribute float mMinHeightValue;
+//    attribute float mMaxHeightValue;
+//    attribute unsigned long mMaterialsCapacity;
+//    attribute long mBlockSize;
+//    attribute long mBitsPerSample;
+//    [Value] attribute ArrayFloat mHeightSamples;
+//    [Value] attribute ArrayUint8 mMaterialIndices;
+//    [Value] attribute PhysicsMaterialList mMaterials;
+//    attribute float mActiveEdgeCosThresholdAngle;
+//};
+//
+//HeightFieldShapeSettings implements ShapeSettings;
+//
+//interface HeightFieldShape {
+//    long GetSampleCount();
+//    long GetBlockSize();
+//    [Value] Vec3 GetPosition(long inX, long inY);
+//    boolean IsNoCollision(long inX, long inY);
+//    float GetMinHeightValue();
+//    float GetMaxHeightValue();
+//    void GetHeights(long inX, long inY, long inSizeX, long inSizeY, FloatMemRef outHeights, long inHeightsStride);
+//    void SetHeights(long inX, long inY, long inSizeX, long inSizeY, FloatMemRef inHeights, long inHeightsStride, [Ref] TempAllocator inAllocator, optional float inActiveEdgeCosThresholdAngle);
+//    void GetMaterials(long inX, long inY, long inSizeX, long inSizeY, Uint8MemRef outMaterials, long inMaterialsStride);
+//    boolean SetMaterials(long inX, long inY, long inSizeX, long inSizeY, Uint8MemRef inMaterials, long inMaterialsStride, PhysicsMaterialList inMaterialList, [Ref] TempAllocator inAllocator);
+//};
+//
+//HeightFieldShape implements Shape;
+//
+//// Constraint
+//interface ConstraintSettings {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//
+//    attribute boolean mEnabled;
+//    attribute long mNumVelocityStepsOverride;
+//    attribute long mNumPositionStepsOverride;
+//};
+//
+//interface Constraint {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//    EConstraintType GetType();
+//    EConstraintSubType GetSubType();
+//    unsigned long GetConstraintPriority();
+//    void SetConstraintPriority(unsigned long inPriority);
+//    void SetNumVelocityStepsOverride(long inN);
+//    long GetNumVelocityStepsOverride();
+//    void SetNumPositionStepsOverride(long inN);
+//    long GetNumPositionStepsOverride();
+//    void SetEnabled(boolean inEnabled);
+//    boolean GetEnabled();
+//    boolean IsActive();
+//    unsigned long long GetUserData();
+//    void SetUserData(unsigned long long inUserData);
+//    void ResetWarmStart();
+//};
+//
+//// Two body constraint
+//interface TwoBodyConstraintSettings {
+//    Constraint Create([Ref] Body inBody1, [Ref] Body inBody2);
+//};
+//
+//TwoBodyConstraintSettings implements ConstraintSettings;
+//
+//interface TwoBodyConstraint {
+//    Body GetBody1();
+//    Body GetBody2();
+//    [Value] Mat44 GetConstraintToBody1Matrix();
+//    [Value] Mat44 GetConstraintToBody2Matrix();
+//};
+//
+//TwoBodyConstraint implements Constraint;
+//
+//// Fixed constraint
+//interface FixedConstraintSettings {
+//    void FixedConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    attribute boolean mAutoDetectPoint;
+//    [Value] attribute RVec3 mPoint1;
+//    [Value] attribute Vec3 mAxisX1;
+//    [Value] attribute Vec3 mAxisY1;
+//    [Value] attribute RVec3 mPoint2;
+//    [Value] attribute Vec3 mAxisX2;
+//    [Value] attribute Vec3 mAxisY2;
+//};
+//
+//FixedConstraintSettings implements TwoBodyConstraintSettings;
+//
+//// Spring settings
+//interface SpringSettings {
+//    void SpringSettings();
+//    boolean HasStiffness();
+//
+//    attribute ESpringMode mMode;
+//    attribute float mFrequency;
+//    attribute float mStiffness;
+//    attribute float mDamping;
+//};
+//
+//// Motor settings
+//interface MotorSettings {
+//    void MotorSettings();
+//
+//    [Value] attribute SpringSettings mSpringSettings;
+//    attribute float mMinForceLimit;
+//    attribute float mMaxForceLimit;
+//    attribute float mMinTorqueLimit;
+//    attribute float mMaxTorqueLimit;
+//};
+//
+//// Distance constraint
+//interface DistanceConstraintSettings {
+//    void DistanceConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mPoint1;
+//    [Value] attribute RVec3 mPoint2;
+//    attribute float mMinDistance;
+//    attribute float mMaxDistance;
+//    [Value] attribute SpringSettings mLimitsSpringSettings;
+//};
+//
+//DistanceConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface DistanceConstraint {
+//    void SetDistance(float inMinDistance, float inMaxDistance);
+//    float GetMinDistance();
+//    float GetMaxDistance();
+//    [Ref] SpringSettings GetLimitsSpringSettings();
+//    void SetLimitsSpringSettings([Const, Ref] SpringSettings inSettings);
+//    float GetTotalLambdaPosition();
+//};
+//
+//DistanceConstraint implements TwoBodyConstraint;
+//
+//// Point constraint
+//interface PointConstraintSettings {
+//    void PointConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mPoint1;
+//    [Value] attribute RVec3 mPoint2;
+//};
+//
+//PointConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface PointConstraint {
+//    [Value] Vec3 GetLocalSpacePoint1();
+//    [Value] Vec3 GetLocalSpacePoint2();
+//    [Value] Vec3 GetTotalLambdaPosition();
+//};
+//
+//PointConstraint implements TwoBodyConstraint;
+//
+//// Hinge constraint
+//interface HingeConstraintSettings {
+//    void HingeConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mPoint1;
+//    [Value] attribute Vec3 mHingeAxis1;
+//    [Value] attribute Vec3 mNormalAxis1;
+//    [Value] attribute RVec3 mPoint2;
+//    [Value] attribute Vec3 mHingeAxis2;
+//    [Value] attribute Vec3 mNormalAxis2;
+//    attribute float mLimitsMin;
+//    attribute float mLimitsMax;
+//    [Value] attribute SpringSettings mLimitsSpringSettings;
+//    attribute float mMaxFrictionTorque;
+//    [Value] attribute MotorSettings mMotorSettings;
+//};
+//
+//HingeConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface HingeConstraint {
+//    float GetCurrentAngle();
+//    void SetMaxFrictionTorque(float inFrictionTorque);
+//    float GetMaxFrictionTorque();
+//    [Ref] MotorSettings GetMotorSettings();
+//    void SetMotorState(EMotorState inState);
+//    EMotorState GetMotorState();
+//    void SetTargetAngularVelocity(float inAngularVelocity);
+//    float GetTargetAngularVelocity();
+//    void SetTargetAngle(float inAngle);
+//    float GetTargetAngle();
+//    void SetLimits(float inLimitsMin, float inLimitsMax);
+//    float GetLimitsMin();
+//    float GetLimitsMax();
+//    boolean HasLimits();
+//    [Ref] SpringSettings GetLimitsSpringSettings();
+//    void SetLimitsSpringSettings([Const, Ref] SpringSettings inLimitsSpringSettings);
+//    [Value] Vec3 GetTotalLambdaPosition();
+//    [Value] Vector2 GetTotalLambdaRotation();
+//    float GetTotalLambdaRotationLimits();
+//    float GetTotalLambdaMotor();
+//};
+//
+//HingeConstraint implements TwoBodyConstraint;
+//
+//// Cone constraint
+//interface ConeConstraintSettings {
+//    void ConeConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mPoint1;
+//    [Value] attribute Vec3 mTwistAxis1;
+//    [Value] attribute RVec3 mPoint2;
+//    [Value] attribute Vec3 mTwistAxis2;
+//    attribute float mHalfConeAngle;
+//};
+//
+//ConeConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface ConeConstraint {
+//    void SetHalfConeAngle(float inHalfConeAngle);
+//    float GetCosHalfConeAngle();
+//    [Value] Vec3 GetTotalLambdaPosition();
+//    float GetTotalLambdaRotation();
+//};
+//
+//ConeConstraint implements TwoBodyConstraint;
+//
+//// Slider constraint
+//interface SliderConstraintSettings {
+//    void SliderConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    attribute boolean mAutoDetectPoint;
+//    [Value] attribute RVec3 mPoint1;
+//    [Value] attribute Vec3 mSliderAxis1;
+//    [Value] attribute Vec3 mNormalAxis1;
+//    [Value] attribute RVec3 mPoint2;
+//    [Value] attribute Vec3 mSliderAxis2;
+//    [Value] attribute Vec3 mNormalAxis2;
+//    attribute float mLimitsMin;
+//    attribute float mLimitsMax;
+//    [Value] attribute SpringSettings mLimitsSpringSettings;
+//    attribute float mMaxFrictionForce;
+//    [Value] attribute MotorSettings mMotorSettings;
+//};
+//
+//SliderConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface SliderConstraint {
+//    float GetCurrentPosition();
+//    void SetMaxFrictionForce(float inFrictionForce);
+//    float GetMaxFrictionForce();
+//    [Ref] MotorSettings GetMotorSettings();
+//    void SetMotorState(EMotorState inState);
+//    EMotorState GetMotorState();
+//    void SetTargetVelocity(float inVelocity);
+//    float GetTargetVelocity();
+//    void SetTargetPosition(float inPosition);
+//    float GetTargetPosition();
+//    void SetLimits(float inLimitsMin, float inLimitsMax);
+//    float GetLimitsMin();
+//    float GetLimitsMax();
+//    boolean HasLimits();
+//    [Ref] SpringSettings GetLimitsSpringSettings();
+//    void SetLimitsSpringSettings([Const, Ref] SpringSettings inLimitsSpringSettings);
+//    [Value] Vector2 GetTotalLambdaPosition();
+//    float GetTotalLambdaPositionLimits();
+//    [Value] Vec3 GetTotalLambdaRotation();
+//    float GetTotalLambdaMotor();
+//};
+//
+//SliderConstraint implements TwoBodyConstraint;
+//
+//// Swing twist constraint
+//interface SwingTwistConstraintSettings {
+//    void SwingTwistConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mPosition1;
+//    [Value] attribute Vec3 mTwistAxis1;
+//    [Value] attribute Vec3 mPlaneAxis1;
+//    [Value] attribute RVec3 mPosition2;
+//    [Value] attribute Vec3 mTwistAxis2;
+//    [Value] attribute Vec3 mPlaneAxis2;
+//    attribute ESwingType mSwingType;
+//    attribute float mNormalHalfConeAngle;
+//    attribute float mPlaneHalfConeAngle;
+//    attribute float mTwistMinAngle;
+//    attribute float mTwistMaxAngle;
+//    attribute float mMaxFrictionTorque;
+//    [Value] attribute MotorSettings mSwingMotorSettings;
+//    [Value] attribute MotorSettings mTwistMotorSettings;
+//};
+//
+//SwingTwistConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface SwingTwistConstraint {
+//    [Value] Vec3 GetLocalSpacePosition1();
+//    [Value] Vec3 GetLocalSpacePosition2();
+//    [Value] Quat GetConstraintToBody1();
+//    [Value] Quat GetConstraintToBody2();
+//    float GetNormalHalfConeAngle();
+//    void SetNormalHalfConeAngle(float inAngle);
+//    float GetPlaneHalfConeAngle();
+//    void SetPlaneHalfConeAngle(float inAngle);
+//    float GetTwistMinAngle();
+//    void SetTwistMinAngle(float inAngle);
+//    float GetTwistMaxAngle();
+//    void SetTwistMaxAngle(float inAngle);
+//    [Ref] MotorSettings GetSwingMotorSettings();
+//    [Ref] MotorSettings GetTwistMotorSettings();
+//    void SetMaxFrictionTorque(float inFrictionTorque);
+//    float GetMaxFrictionTorque();
+//    void SetSwingMotorState(EMotorState inState);
+//    EMotorState GetSwingMotorState();
+//    void SetTwistMotorState(EMotorState inState);
+//    EMotorState GetTwistMotorState();
+//    void SetTargetAngularVelocityCS([Const, Ref] Vec3 inAngularVelocity);
+//    [Value] Vec3 GetTargetAngularVelocityCS();
+//    void SetTargetOrientationCS([Const, Ref] Quat inOrientation);
+//    [Value] Quat GetTargetOrientationCS();
+//    void SetTargetOrientationBS([Const, Ref] Quat inOrientation);
+//    [Value] Quat GetRotationInConstraintSpace();
+//    [Value] Vec3 GetTotalLambdaPosition();
+//    float GetTotalLambdaTwist();
+//    float GetTotalLambdaSwingY();
+//    float GetTotalLambdaSwingZ();
+//    [Value] Vec3 GetTotalLambdaMotor();
+//};
+//
+//SwingTwistConstraint implements TwoBodyConstraint;
+//
+//// Six DOF constraint
+//interface SixDOFConstraintSettings {
+//    void SixDOFConstraintSettings();
+//    void MakeFreeAxis(SixDOFConstraintSettings_EAxis inAxis);
+//    boolean IsFreeAxis(SixDOFConstraintSettings_EAxis inAxis);
+//    void MakeFixedAxis(SixDOFConstraintSettings_EAxis inAxis);
+//    boolean IsFixedAxis(SixDOFConstraintSettings_EAxis inAxis);
+//    void SetLimitedAxis(SixDOFConstraintSettings_EAxis inAxis, float inMin, float inMax);
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mPosition1;
+//    [Value] attribute Vec3 mAxisX1;
+//    [Value] attribute Vec3 mAxisY1;
+//    [Value] attribute RVec3 mPosition2;
+//    [Value] attribute Vec3 mAxisX2;
+//    [Value] attribute Vec3 mAxisY2;
+//    attribute float[] mMaxFriction;
+//    attribute ESwingType mSwingType;
+//    attribute float[] mLimitMin;
+//    attribute float[] mLimitMax;
+//    [Value] attribute SpringSettings[] mLimitsSpringSettings;
+//    [Value] attribute MotorSettings[] mMotorSettings;
+//};
+//
+//SixDOFConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface SixDOFConstraint {
+//    void SetTranslationLimits([Const, Ref] Vec3 inLimitMin, [Const, Ref] Vec3 inLimitMax);
+//    void SetRotationLimits([Const, Ref] Vec3 inLimitMin, [Const, Ref] Vec3 inLimitMax);
+//    float GetLimitsMin(SixDOFConstraintSettings_EAxis inAxis);
+//    float GetLimitsMax(SixDOFConstraintSettings_EAxis inAxis);
+//    [Const, Value] Vec3 GetTranslationLimitsMin();
+//    [Const, Value] Vec3 GetTranslationLimitsMax();
+//    [Const, Value] Vec3 GetRotationLimitsMin();
+//    [Const, Value] Vec3 GetRotationLimitsMax();
+//    boolean IsFixedAxis(SixDOFConstraintSettings_EAxis inAxis);
+//    boolean IsFreeAxis(SixDOFConstraintSettings_EAxis inAxis);
+//    [Const, Ref] SpringSettings GetLimitsSpringSettings(SixDOFConstraintSettings_EAxis inAxis);
+//    void SetLimitsSpringSettings(SixDOFConstraintSettings_EAxis inAxis, [Const, Ref] SpringSettings inLimitsSpringSettings);
+//    void SetMaxFriction(SixDOFConstraintSettings_EAxis inAxis, float inFriction);
+//    float GetMaxFriction(SixDOFConstraintSettings_EAxis inAxis);
+//    [Value] Quat GetRotationInConstraintSpace();
+//    [Ref] MotorSettings GetMotorSettings(SixDOFConstraintSettings_EAxis inAxis);
+//    void SetMotorState(SixDOFConstraintSettings_EAxis inAxis, EMotorState inState);
+//    EMotorState GetMotorState(SixDOFConstraintSettings_EAxis inAxis);
+//    [Value] Vec3 GetTargetVelocityCS();
+//    void SetTargetVelocityCS([Const, Ref] Vec3 inVelocity);
+//    void SetTargetAngularVelocityCS([Const, Ref] Vec3 inAngularVelocity);
+//    [Value] Vec3 GetTargetAngularVelocityCS();
+//    [Value] Vec3 GetTargetPositionCS();
+//    void SetTargetPositionCS([Const, Ref] Vec3 inPosition);
+//    void SetTargetOrientationCS([Const, Ref] Quat inOrientation);
+//    [Value] Quat GetTargetOrientationCS();
+//    void SetTargetOrientationBS([Const, Ref] Quat inOrientation);
+//    [Value] Vec3 GetTotalLambdaPosition();
+//    [Value] Vec3 GetTotalLambdaRotation();
+//    [Value] Vec3 GetTotalLambdaMotorTranslation();
+//    [Value] Vec3 GetTotalLambdaMotorRotation();
+//};
+//
+//SixDOFConstraint implements TwoBodyConstraint;
+//
+//interface PathConstraintSettings {
+//    void PathConstraintSettings();
+//
+//    [Const] attribute PathConstraintPath mPath;
+//    [Value] attribute Vec3 mPathPosition;
+//    [Value] attribute Quat mPathRotation;
+//    attribute float mPathFraction;
+//    attribute float mMaxFrictionForce;
+//    attribute EPathRotationConstraintType mRotationConstraintType;
+//    [Value] attribute MotorSettings mPositionMotorSettings;
+//};
+//
+//PathConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface PathConstraintPath {
+//    boolean IsLooping();
+//    void SetIsLooping(boolean inIsLooping);
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//};
+//
+//interface PathConstraintPathEm {
+//};
+//
+//PathConstraintPathEm implements PathConstraintPath;
+//
+//[JSImplementation="PathConstraintPathEm"]
+//interface PathConstraintPathJS {
+//    [Const] void PathConstraintPathJS();
+//    [Const] float GetPathMaxFraction();
+//    [Const] float GetClosestPoint([Const] Vec3 inPosition, float inFractionHint);
+//    [Const] void GetPointOnPath(float inFraction, Vec3 outPathPosition, Vec3 outPathTangent, Vec3 outPathNormal, Vec3 outPathBinormal);
+//};
+//
+//interface PathConstraint {
+//    void SetPath([Const] PathConstraintPath inPath, float inPathFraction);
+//    [Const] PathConstraintPath GetPath();
+//    float GetPathFraction();
+//    void SetMaxFrictionForce(float inFrictionForce);
+//    float GetMaxFrictionForce();
+//    [Ref] MotorSettings GetPositionMotorSettings();
+//    void SetPositionMotorState(EMotorState inState);
+//    EMotorState GetPositionMotorState();
+//    void SetTargetVelocity(float inVelocity);
+//    float GetTargetVelocity();
+//    void SetTargetPathFraction(float inFraction);
+//    float GetTargetPathFraction();
+//};
+//
+//PathConstraint implements TwoBodyConstraint;
+//
+//interface PulleyConstraintSettings {
+//    void PulleyConstraintSettings();
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute RVec3 mBodyPoint1;
+//    [Value] attribute RVec3 mFixedPoint1;
+//    [Value] attribute RVec3 mBodyPoint2;
+//    [Value] attribute RVec3 mFixedPoint2;
+//    attribute float mRatio;
+//    attribute float mMinLength;
+//    attribute float mMaxLength;
+//};
+//
+//PulleyConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface PulleyConstraint {
+//    void SetLength(float inMinLength, float inMaxLength);
+//    float GetMinLength();
+//    float GetMaxLength();
+//    float GetCurrentLength();
+//};
+//
+//PulleyConstraint implements TwoBodyConstraint;
+//
+//interface GearConstraintSettings {
+//    void GearConstraintSettings();
+//    void SetRatio(long inNumTeethGear1, long inNumTeethGear2);
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute Vec3 mHingeAxis1;
+//    [Value] attribute Vec3 mHingeAxis2;
+//    attribute float mRatio;
+//};
+//
+//GearConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface GearConstraint {
+//    void SetConstraints([Const] Constraint inGear1, [Const] Constraint inGear2);
+//    float GetTotalLambda();
+//};
+//
+//GearConstraint implements TwoBodyConstraint;
+//
+//interface RackAndPinionConstraintSettings {
+//    void RackAndPinionConstraintSettings();
+//    void SetRatio(long inNumTeethRack, float inRackLength, long inNumTeethPinion);
+//
+//    attribute EConstraintSpace mSpace;
+//    [Value] attribute Vec3 mHingeAxis;
+//    [Value] attribute Vec3 mSliderAxis;
+//    attribute float mRatio;
+//};
+//
+//RackAndPinionConstraintSettings implements TwoBodyConstraintSettings;
+//
+//interface RackAndPinionConstraint {
+//    void SetConstraints([Const] Constraint inPinion, [Const] Constraint inRack);
+//    float GetTotalLambda();
+//};
+//
+//RackAndPinionConstraint implements TwoBodyConstraint;
+//
+//interface BodyID {
+//    void BodyID();
+//    void BodyID(unsigned long inIndexAndSequenceNumber);
+//    unsigned long GetIndex();
+//    unsigned long GetIndexAndSequenceNumber();
+//};
+//
+//interface SubShapeID {
+//    void SubShapeID();
+//    [Const] long GetValue();
+//    void SetValue(long inValue);
+//};
+//
+//interface MotionProperties {
+//    EMotionQuality GetMotionQuality();
+//    EAllowedDOFs GetAllowedDOFs();
+//    boolean GetAllowSleeping();
+//    [Value] Vec3 GetLinearVelocity();
+//    void SetLinearVelocity([Const, Ref] Vec3 inVelocity);
+//    void SetLinearVelocityClamped([Const, Ref] Vec3 inVelocity);
+//    [Value] Vec3 GetAngularVelocity();
+//    void SetAngularVelocity([Const, Ref] Vec3 inVelocity);
+//    void SetAngularVelocityClamped([Const, Ref] Vec3 inVelocity);
+//    void MoveKinematic([Const, Ref] Vec3 inPosition, [Const, Ref] Quat inRotation, float inDeltaTime);
+//    float GetMaxLinearVelocity();
+//    void SetMaxLinearVelocity(float inVelocity);
+//    float GetMaxAngularVelocity();
+//    void SetMaxAngularVelocity(float inVelocity);
+//    void ClampLinearVelocity();
+//    void ClampAngularVelocity();
+//    float GetLinearDamping();
+//    void SetLinearDamping(float inDamping);
+//    float GetAngularDamping();
+//    void SetAngularDamping(float inDamping);
+//    float GetGravityFactor();
+//    void SetGravityFactor(float inFactor);
+//    void SetMassProperties(EAllowedDOFs inAllowedDOFs, [Const, Ref] MassProperties inMassProperties);
+//    float GetInverseMass();
+//    float GetInverseMassUnchecked();
+//    void SetInverseMass(float inInvM);
+//    [Value] Vec3 GetInverseInertiaDiagonal();
+//    [Value] Quat GetInertiaRotation();
+//    void SetInverseInertia([Const, Ref] Vec3 inInvI, [Const, Ref] Quat inRotation);
+//    [Value] Mat44 GetLocalSpaceInverseInertia();
+//    [Value] Mat44 GetInverseInertiaForRotation([Const, Ref] Mat44 inRotation);
+//    [Value] Vec3 MultiplyWorldSpaceInverseInertiaByVector([Const, Ref] Quat inRotation, [Const, Ref] Vec3 inV);
+//    [Value] Vec3 GetPointVelocityCOM([Const, Ref] Vec3 inPointRelativeToCOM);
+//    [Value] Vec3 GetAccumulatedForce();
+//    [Value] Vec3 GetAccumulatedTorque();
+//    void ResetForce();
+//    void ResetTorque();
+//    void ResetMotion();
+//    [Const, Value] Vec3 LockTranslation([Const, Ref] Vec3 inV);
+//    [Const, Value] Vec3 LockAngular([Const, Ref] Vec3 inV);
+//    void SetNumVelocityStepsOverride(unsigned long inN);
+//    unsigned long GetNumVelocityStepsOverride();
+//    void SetNumPositionStepsOverride(unsigned long inN);
+//    unsigned long GetNumPositionStepsOverride();
+//};
+//
+//interface GroupFilter {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//};
+//
+//[JSImplementation="GroupFilter"]
+//interface GroupFilterJS {
+//    void GroupFilterJS();
+//    [Const] boolean CanCollide([Const, Ref] CollisionGroup inGroup1, [Const, Ref] CollisionGroup inGroup2);
+//};
+//
+//interface GroupFilterTable {
+//    void GroupFilterTable(unsigned long inNumGroups);
+//    void DisableCollision(unsigned long inSubGroup1, unsigned long inSubGroup2);
+//    void EnableCollision(unsigned long inSubGroup1, unsigned long inSubGroup2);
+//    boolean IsCollisionEnabled(unsigned long inSubGroup1, unsigned long inSubGroup2);
+//};
+//
+//GroupFilterTable implements GroupFilter;
+//
+//interface CollisionGroup {
+//    void CollisionGroup();
+//    void CollisionGroup(GroupFilter inFilter, unsigned long inGroupID, unsigned long inSubGroupID);
+//    void SetGroupFilter(GroupFilter inFilter);
+//    [Const] GroupFilter GetGroupFilter();
+//    void SetGroupID(unsigned long inGroupID);
+//    unsigned long GetGroupID();
+//    void SetSubGroupID(unsigned long inSubGroupID);
+//    unsigned long GetSubGroupID();
+//};
+//
+//[NoDelete]
+//interface Body {
+//    [Const, Ref] BodyID GetID();
+//    boolean IsActive();
+//    boolean IsRigidBody();
+//    boolean IsSoftBody();
+//    boolean IsStatic();
+//    boolean IsKinematic();
+//    boolean IsDynamic();
+//    boolean CanBeKinematicOrDynamic();
+//    EBodyType GetBodyType();
+//    EMotionType GetMotionType();
+//    void SetIsSensor(boolean inIsSensor);
+//    boolean IsSensor();
+//    void SetCollideKinematicVsNonDynamic(boolean inCollide);
+//    boolean GetCollideKinematicVsNonDynamic();
+//    void SetUseManifoldReduction(boolean inUseReduction);
+//    boolean GetUseManifoldReduction();
+//    void SetApplyGyroscopicForce(boolean inApply);
+//    boolean GetApplyGyroscopicForce();
+//    void SetEnhancedInternalEdgeRemoval(boolean inApply);
+//    boolean GetEnhancedInternalEdgeRemoval();
+//    unsigned long GetObjectLayer();
+//    [Ref] CollisionGroup GetCollisionGroup();
+//    boolean GetAllowSleeping();
+//    void SetAllowSleeping(boolean inAllow);
+//    void ResetSleepTimer();
+//    float GetFriction();
+//    void SetFriction(float inFriction);
+//    float GetRestitution();
+//    void SetRestitution(float inRestitution);
+//    [Value] Vec3 GetLinearVelocity();
+//    void SetLinearVelocity([Const, Ref] Vec3 inVelocity);
+//    void SetLinearVelocityClamped([Const, Ref] Vec3 inVelocity);
+//    [Value] Vec3 GetAngularVelocity();
+//    void SetAngularVelocity([Const, Ref] Vec3 inVelocity);
+//    void SetAngularVelocityClamped([Const, Ref] Vec3 inVelocity);
+//    void AddForce([Const, Ref] Vec3 inForce);
+//    void AddForce([Const, Ref] Vec3 inForce, [Const, Ref] RVec3 inPosition);
+//    void AddTorque([Const, Ref] Vec3 inTorque);
+//    [Const, Value] Vec3 GetAccumulatedForce();
+//    [Const, Value] Vec3 GetAccumulatedTorque();
+//    void ResetForce();
+//    void ResetTorque();
+//    void ResetMotion();
+//    void AddImpulse([Const, Ref] Vec3 inImpulse);
+//    void AddImpulse([Const, Ref] Vec3 inImpulse, [Const, Ref] RVec3 inPosition);
+//    void AddAngularImpulse([Const, Ref] Vec3 inAngularImpulse);
+//    void MoveKinematic([Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, float inDeltaTime);
+//    boolean ApplyBuoyancyImpulse([Const, Ref] RVec3 inSurfacePosition, [Const, Ref] Vec3 inSurfaceNormal, float inBuoyancy, float inLinearDrag, float inAngularDrag, [Const, Ref] Vec3 inFluidVelocity, [Const, Ref] Vec3 inGravity, float inDeltaTime);
+//    boolean IsInBroadPhase();
+//    [Const, Value] Mat44 GetInverseInertia();
+//    [Const] Shape GetShape();
+//    [Value] RVec3 GetPosition();
+//    [Value] Quat GetRotation();
+//    [Value] RMat44 GetWorldTransform();
+//    [Value] RVec3 GetCenterOfMassPosition();
+//    [Value] RMat44 GetCenterOfMassTransform();
+//    [Value] RMat44 GetInverseCenterOfMassTransform();
+//    [Value] AABox GetWorldSpaceBounds();
+//    [Value] TransformedShape GetTransformedShape();
+//    [Value] BodyCreationSettings GetBodyCreationSettings();
+//    [Value] SoftBodyCreationSettings GetSoftBodyCreationSettings();
+//    MotionProperties GetMotionProperties();
+//    [Const, Value] Vec3 GetWorldSpaceSurfaceNormal([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] RVec3 inPosition);
+//    unsigned long long GetUserData();
+//    void SetUserData(unsigned long long inUserData);
+//};
+//
+//interface BodyInterface {
+//    Body CreateBody([Const, Ref] BodyCreationSettings inSettings);
+//    Body CreateSoftBody([Const, Ref] SoftBodyCreationSettings inSettings);
+//    void CreateBodyWithID([Const, Ref] BodyID inBodyID, [Const, Ref] BodyCreationSettings inSettings);
+//    void CreateSoftBodyWithID([Const, Ref] BodyID inBodyID, [Const, Ref] SoftBodyCreationSettings inSettings);
+//    Body CreateBodyWithoutID([Const, Ref] BodyCreationSettings inSettings);
+//    Body CreateSoftBodyWithoutID([Const, Ref] SoftBodyCreationSettings inSettings);
+//    void DestroyBodyWithoutID(Body inBody);
+//    boolean AssignBodyID(Body ioBody);
+//    boolean AssignBodyID(Body ioBody, [Const, Ref] BodyID inBodyID);
+//    Body UnassignBodyID([Const, Ref] BodyID inBodyID);
+//    void DestroyBody([Const, Ref] BodyID inBodyID);
+//    void AddBody([Const, Ref] BodyID inBodyID, EActivation inActivationMode);
+//    void RemoveBody([Const, Ref] BodyID inBodyID);
+//    boolean IsAdded([Const, Ref] BodyID inBodyID);
+//    [Value] BodyID CreateAndAddBody([Const, Ref] BodyCreationSettings inSettings, EActivation inActivationMode);
+//    [Value] BodyID CreateAndAddSoftBody([Const, Ref] SoftBodyCreationSettings inSettings, EActivation inActivationMode);
+//    TwoBodyConstraint CreateConstraint([Const] TwoBodyConstraintSettings inSettings, [Const, Ref] BodyID inBodyID1, [Const, Ref] BodyID inBodyID2);
+//    void ActivateConstraint([Const] TwoBodyConstraint inConstraint);
+//    [Const] Shape GetShape([Const, Ref] BodyID inBodyID);
+//    void SetShape([Const, Ref] BodyID inBodyID, [Const] Shape inShape, boolean inUpdateMassProperties, EActivation inActivationMode);
+//    void NotifyShapeChanged([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inPreviousCenterOfMass, boolean inUpdateMassProperties, EActivation inActivationMode);
+//    void SetObjectLayer([Const, Ref] BodyID inBodyID, unsigned long inLayer);
+//    unsigned long GetObjectLayer([Const, Ref] BodyID inBodyID);
+//    void SetPositionAndRotation([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, EActivation inActivationMode);
+//    void SetPositionAndRotationWhenChanged([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, EActivation inActivationMode);
+//    void GetPositionAndRotation([Const, Ref] BodyID inBodyID, [Ref] RVec3 outPosition, [Ref] Quat outRotation);
+//    void SetPosition([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inPosition, EActivation inActivationMode);
+//    [Value] RVec3 GetPosition([Const, Ref] BodyID inBodyID);
+//    void SetRotation([Const, Ref] BodyID inBodyID, [Const, Ref] Quat inRotation, EActivation inActivationMode);
+//    [Value] Quat GetRotation([Const, Ref] BodyID inBodyID);
+//    [Value] RMat44 GetWorldTransform([Const, Ref] BodyID inBodyID);
+//    [Value] RMat44 GetCenterOfMassTransform([Const, Ref] BodyID inBodyID);
+//    void SetLinearVelocity([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inLinearVelocity);
+//    [Value] Vec3 GetLinearVelocity([Const, Ref] BodyID inBodyID);
+//    void AddLinearVelocity([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inLinearVelocity);
+//    void AddLinearAndAngularVelocity([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inLinearVelocity, [Const, Ref] Vec3 inAngularVelocity);
+//    void SetAngularVelocity([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inAngularVelocity);
+//    [Value] Vec3 GetAngularVelocity([Const, Ref] BodyID inBodyID);
+//    [Value] Vec3 GetPointVelocity([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inPoint);
+//    void SetPositionRotationAndVelocity([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, [Const, Ref] Vec3 inLinearVelocity, [Const, Ref] Vec3 inAngularVelocity);
+//    void MoveKinematic([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, float inDeltaTime);
+//    void ActivateBody([Const, Ref] BodyID inBodyID);
+//    void ActivateBodiesInAABox([Const, Ref] AABox inBox, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//    void DeactivateBody([Const, Ref] BodyID inBodyID);
+//    boolean IsActive([Const, Ref] BodyID inBodyID);
+//    void ResetSleepTimer([Const, Ref] BodyID inBodyID);
+//    EBodyType GetBodyType([Const, Ref] BodyID inBodyID);
+//    void SetMotionType([Const, Ref] BodyID inBodyID, EMotionType inMotionType, EActivation inActivationMode);
+//    EMotionType GetMotionType([Const, Ref] BodyID inBodyID);
+//    void SetMotionQuality([Const, Ref] BodyID inBodyID, EMotionQuality inMotionQuality);
+//    EMotionQuality GetMotionQuality([Const, Ref] BodyID inBodyID);
+//    [Value] Mat44 GetInverseInertia([Const, Ref] BodyID inBodyID);
+//    void SetRestitution([Const, Ref] BodyID inBodyID, float inRestitution);
+//    float GetRestitution([Const, Ref] BodyID inBodyID);
+//    void SetFriction([Const, Ref] BodyID inBodyID, float inFriction);
+//    float GetFriction([Const, Ref] BodyID inBodyID);
+//    void SetGravityFactor([Const, Ref] BodyID inBodyID, float inFactor);
+//    float GetGravityFactor([Const, Ref] BodyID inBodyID);
+//    void SetUseManifoldReduction([Const, Ref] BodyID inBodyID, boolean inUseReduction);
+//    boolean GetUseManifoldReduction([Const, Ref] BodyID inBodyID);
+//    void AddForce([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inForce, EActivation inActivationMode);
+//    void AddForce([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inForce, [Const, Ref] RVec3 inPoint, EActivation inActivationMode);
+//    void AddTorque([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inTorque, EActivation inActivationMode);
+//    void AddForceAndTorque([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inForce, [Const, Ref] Vec3 inTorque, EActivation inActivationMode);
+//    boolean ApplyBuoyancyImpulse([Const, Ref] BodyID inBodyID, [Const, Ref] RVec3 inSurfacePosition, [Const, Ref] Vec3 inSurfaceNormal, float inBuoyancy, float inLinearDrag, float inAngularDrag, [Const, Ref] Vec3 inFluidVelocity, [Const, Ref] Vec3 inGravity, float inDeltaTime);
+//    void AddImpulse([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inImpulse);
+//    void AddImpulse([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inImpulse, [Const, Ref] RVec3 inPosition);
+//    void AddAngularImpulse([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inAngularImpulse);
+//    [Value] TransformedShape GetTransformedShape([Const, Ref] BodyID inBodyID);
+//    unsigned long long GetUserData([Const, Ref] BodyID inBodyID);
+//    void SetUserData([Const, Ref] BodyID inBodyID, unsigned long long inUserData);
+//    [Const] PhysicsMaterial GetMaterial([Const, Ref] BodyID inBodyID, [Const, Ref] SubShapeID inSubShapeID);
+//    void InvalidateContactCache([Const, Ref] BodyID inBodyID);
+//};
+//
+//interface StateRecorder {
+//    void SetValidating(boolean inValidating);
+//    boolean	IsValidating();
+//};
+//
+//interface StateRecorderImpl {
+//    void StateRecorderImpl();
+//    void Clear();
+//    void Rewind();
+//    boolean	IsEqual([Ref] StateRecorderImpl inReference);
+//};
+//
+//StateRecorderImpl implements StateRecorder;
+//
+//interface BodyLockInterface {
+//    Body TryGetBody([Const, Ref] BodyID inBodyID);
+//};
+//
+//interface BodyLockInterfaceNoLock {
+//};
+//
+//BodyLockInterfaceNoLock implements BodyLockInterface;
+//
+//interface BodyLockInterfaceLocking {
+//};
+//
+//BodyLockInterfaceLocking implements BodyLockInterface;
+//
+//interface PhysicsSettings {
+//    void PhysicsSettings();
+//
+//    attribute long mMaxInFlightBodyPairs;
+//    attribute long mStepListenersBatchSize;
+//    attribute long mStepListenerBatchesPerJob;
+//    attribute float mBaumgarte;
+//    attribute float mSpeculativeContactDistance;
+//    attribute float mPenetrationSlop;
+//    attribute float mLinearCastThreshold;
+//    attribute float mLinearCastMaxPenetration;
+//    attribute float mManifoldToleranceSq;
+//    attribute float mMaxPenetrationDistance;
+//    attribute float mBodyPairCacheMaxDeltaPositionSq;
+//    attribute float mBodyPairCacheCosMaxDeltaRotationDiv2;
+//    attribute float mContactNormalCosMaxDeltaRotation;
+//    attribute float mContactPointPreserveLambdaMaxDistSq;
+//    attribute long mNumVelocitySteps;
+//    attribute long mNumPositionSteps;
+//    attribute float mMinVelocityForRestitution;
+//    attribute float mTimeBeforeSleep;
+//    attribute float mPointVelocitySleepThreshold;
+//    attribute boolean mDeterministicSimulation;
+//    attribute boolean mConstraintWarmStart;
+//    attribute boolean mUseBodyPairContactCache;
+//    attribute boolean mUseManifoldReduction;
+//    attribute boolean mUseLargeIslandSplitter;
+//    attribute boolean mAllowSleeping;
+//    attribute boolean mCheckActiveEdges;
+//};
+//
+//interface CollideShapeResultFace {
+//    boolean empty();
+//    long size();
+//    [Ref] Vec3 at(long inIndex);
+//    void push_back([Const, Ref] Vec3 inValue);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface CollideShapeResult {
+//    void CollideShapeResult();
+//
+//    [Value] attribute Vec3 mContactPointOn1;
+//    [Value] attribute Vec3 mContactPointOn2;
+//    [Value] attribute Vec3 mPenetrationAxis;
+//    attribute float mPenetrationDepth;
+//    [Value] attribute SubShapeID mSubShapeID1;
+//    [Value] attribute SubShapeID mSubShapeID2;
+//    [Value] attribute BodyID mBodyID2;
+//    [Value] attribute CollideShapeResultFace mShape1Face;
+//    [Value] attribute CollideShapeResultFace mShape2Face;
+//};
+//
+//interface ContactPoints {
+//    boolean empty();
+//    long size();
+//    [Ref] Vec3 at(long inIndex);
+//    void push_back([Const, Ref] Vec3 inValue);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ContactManifold {
+//    void ContactManifold();
+//    [Value] ContactManifold SwapShapes();
+//    [Value] RVec3 GetWorldSpaceContactPointOn1(unsigned long inIndex);
+//    [Value] RVec3 GetWorldSpaceContactPointOn2(unsigned long inIndex);
+//
+//    [Value] attribute RVec3 mBaseOffset;
+//    [Value] attribute Vec3 mWorldSpaceNormal;
+//    attribute float mPenetrationDepth;
+//    [Value] attribute SubShapeID mSubShapeID1;
+//    [Value] attribute SubShapeID mSubShapeID2;
+//    [Value] attribute ContactPoints mRelativeContactPointsOn1;
+//    [Value] attribute ContactPoints mRelativeContactPointsOn2;
+//};
+//
+//interface ContactSettings {
+//    void ContactSettings();
+//    attribute float mCombinedFriction;
+//    attribute float mCombinedRestitution;
+//    attribute float mInvMassScale1;
+//    attribute float mInvInertiaScale1;
+//    attribute float mInvMassScale2;
+//    attribute float mInvInertiaScale2;
+//    attribute boolean mIsSensor;
+//    [Value] attribute Vec3 mRelativeLinearSurfaceVelocity;
+//    [Value] attribute Vec3 mRelativeAngularSurfaceVelocity;
+//};
+//
+//interface SubShapeIDPair {
+//    void SubShapeIDPair();
+//    [Const, Ref] BodyID GetBody1ID();
+//    [Const, Ref] SubShapeID GetSubShapeID1();
+//    [Const, Ref] BodyID GetBody2ID();
+//    [Const, Ref] SubShapeID GetSubShapeID2();
+//};
+//
+//interface ContactListener {
+//};
+//
+//interface ContactListenerEm {
+//};
+//
+//ContactListenerEm implements ContactListener;
+//
+//[JSImplementation="ContactListenerEm"]
+//interface ContactListenerJS {
+//    void ContactListenerJS();
+//    long OnContactValidate([Const, Ref] Body inBody1, [Const, Ref] Body inBody2, [Const] RVec3 inBaseOffset, [Const, Ref] CollideShapeResult inCollisionResult); // Return value ValidateResult doesn't work with emscripten
+//    void OnContactAdded([Const, Ref] Body inBody1, [Const, Ref] Body inBody2, [Const, Ref] ContactManifold inManifold, [Ref] ContactSettings ioSettings);
+//    void OnContactPersisted([Const, Ref] Body inBody1, [Const, Ref] Body inBody2, [Const, Ref] ContactManifold inManifold, [Ref] ContactSettings ioSettings);
+//    void OnContactRemoved([Const, Ref] SubShapeIDPair inSubShapePair);
+//};
+//
+//interface SoftBodyManifold {
+//    [Const, Ref] ArraySoftBodyVertex GetVertices();
+//    boolean HasContact([Const, Ref] SoftBodyVertex inVertex);
+//    [Value] Vec3 GetLocalContactPoint([Const, Ref] SoftBodyVertex inVertex);
+//    [Value] Vec3 GetContactNormal([Const, Ref] SoftBodyVertex inVertex);
+//    [Value] BodyID GetContactBodyID([Const, Ref] SoftBodyVertex inVertex);
+//};
+//
+//interface SoftBodyContactSettings {
+//    attribute float mInvMassScale1;
+//    attribute float mInvMassScale2;
+//    attribute float mInvInertiaScale2;
+//    attribute boolean mIsSensor;
+//};
+//
+//interface SoftBodyContactListener {
+//};
+//
+//interface SoftBodyContactListenerEm {
+//};
+//
+//SoftBodyContactListenerEm implements SoftBodyContactListener;
+//
+//[JSImplementation="SoftBodyContactListenerEm"]
+//interface SoftBodyContactListenerJS {
+//    void SoftBodyContactListenerJS();
+//    long OnSoftBodyContactValidate([Const, Ref] Body inSoftBody, [Const, Ref] Body inOtherBody, SoftBodyContactSettings ioSettings);
+//    void OnSoftBodyContactAdded([Const, Ref] Body inSoftBody, [Const, Ref] SoftBodyManifold inManifold);
+//};
+//
+//interface RayCastBodyCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="RayCastBodyCollector"]
+//interface RayCastBodyCollectorJS {
+//    void RayCastBodyCollectorJS();
+//    void Reset();
+//    void AddHit([Const, Ref] BroadPhaseCastResult inResult);
+//};
+//
+//interface CollideShapeBodyCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="CollideShapeBodyCollector"]
+//interface CollideShapeBodyCollectorJS {
+//    void CollideShapeBodyCollectorJS();
+//    void Reset();
+//    void AddHit([Const, Ref] BodyID inResult);
+//};
+//
+//interface CastShapeBodyCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="CastShapeBodyCollector"]
+//interface CastShapeBodyCollectorJS {
+//    void CastShapeBodyCollectorJS();
+//    void Reset();
+//    void AddHit([Const, Ref] BroadPhaseCastResult inResult);
+//};
+//
+//interface BroadPhaseQuery {
+//    void CastRay([Const, Ref] RayCast inRay, [Ref] RayCastBodyCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//    void CollideAABox([Const, Ref] AABox inBox, [Ref] CollideShapeBodyCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//    void CollideSphere([Const, Ref] Vec3 inCenter, float inRadius, [Ref] CollideShapeBodyCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//    void CollidePoint([Const, Ref] Vec3 inPoint, [Ref] CollideShapeBodyCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//    void CollideOrientedBox([Const, Ref] OrientedBox inBox, [Ref] CollideShapeBodyCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//    void CastAABox([Const, Ref] AABoxCast inBox, [Ref] CastShapeBodyCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter);
+//};
+//
+//interface RayCastSettings {
+//    void RayCastSettings();
+//
+//    attribute EBackFaceMode mBackFaceMode;
+//    attribute boolean mTreatConvexAsSolid;
+//};
+//
+//interface CastRayCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="CastRayCollector"]
+//interface CastRayCollectorJS {
+//    void CastRayCollectorJS();
+//    void Reset();
+//    void OnBody([Const, Ref] Body inBody);
+//    void AddHit([Const, Ref] RayCastResult inResult);
+//};
+//
+//interface ArrayRayCastResult {
+//    boolean empty();
+//    long size();
+//    [Ref] RayCastResult at(long inIndex);
+//    void push_back([Const, Ref] RayCastResult inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface CastRayAllHitCollisionCollector {
+//    void CastRayAllHitCollisionCollector();
+//    void Sort();
+//    boolean HadHit();
+//    [Value] attribute ArrayRayCastResult mHits;
+//};
+//
+//CastRayAllHitCollisionCollector implements CastRayCollector;
+//
+//interface CastRayClosestHitCollisionCollector {
+//    void CastRayClosestHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute RayCastResult mHit;
+//};
+//
+//CastRayClosestHitCollisionCollector implements CastRayCollector;
+//
+//interface CastRayAnyHitCollisionCollector {
+//    void CastRayAnyHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute RayCastResult mHit;
+//};
+//
+//CastRayAnyHitCollisionCollector implements CastRayCollector;
+//
+//interface CollidePointResult {
+//    void CollidePointResult();
+//
+//    [Value] attribute BodyID mBodyID;
+//    [Value] attribute SubShapeID mSubShapeID2;
+//};
+//
+//interface CollidePointCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="CollidePointCollector"]
+//interface CollidePointCollectorJS {
+//    void CollidePointCollectorJS();
+//    void Reset();
+//    void OnBody([Const, Ref] Body inBody);
+//    void AddHit([Const, Ref] CollidePointResult inResult);
+//};
+//
+//interface ArrayCollidePointResult {
+//    boolean empty();
+//    long size();
+//    [Ref] CollidePointResult at(long inIndex);
+//    void push_back([Const, Ref] CollidePointResult inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface CollidePointAllHitCollisionCollector {
+//    void CollidePointAllHitCollisionCollector();
+//    void Sort();
+//    boolean HadHit();
+//    [Value] attribute ArrayCollidePointResult mHits;
+//};
+//
+//CollidePointAllHitCollisionCollector implements CollidePointCollector;
+//
+//interface CollidePointClosestHitCollisionCollector {
+//    void CollidePointClosestHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute CollidePointResult mHit;
+//};
+//
+//CollidePointClosestHitCollisionCollector implements CollidePointCollector;
+//
+//interface CollidePointAnyHitCollisionCollector {
+//    void CollidePointAnyHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute CollidePointResult mHit;
+//};
+//
+//CollidePointAnyHitCollisionCollector implements CollidePointCollector;
+//
+//interface CollideSettingsBase {
+//    attribute EActiveEdgeMode mActiveEdgeMode;
+//    attribute ECollectFacesMode mCollectFacesMode;
+//    attribute float mCollisionTolerance;
+//    attribute float mPenetrationTolerance;
+//    [Value] attribute Vec3 mActiveEdgeMovementDirection;
+//};
+//
+//interface CollideShapeSettings {
+//    void CollideShapeSettings();
+//
+//    attribute float mMaxSeparationDistance;
+//    attribute EBackFaceMode mBackFaceMode;
+//};
+//
+//CollideShapeSettings implements CollideSettingsBase;
+//
+//interface CollideShapeCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="CollideShapeCollector"]
+//interface CollideShapeCollectorJS {
+//    void CollideShapeCollectorJS();
+//    void Reset();
+//    void OnBody([Const, Ref] Body inBody);
+//    void AddHit([Const, Ref] CollideShapeResult inResult);
+//};
+//
+//interface ArrayCollideShapeResult {
+//    boolean empty();
+//    long size();
+//    [Ref] CollideShapeResult at(long inIndex);
+//    void push_back([Const, Ref] CollideShapeResult inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface CollideShapeAllHitCollisionCollector {
+//    void CollideShapeAllHitCollisionCollector();
+//    void Sort();
+//    boolean HadHit();
+//    [Value] attribute ArrayCollideShapeResult mHits;
+//};
+//
+//CollideShapeAllHitCollisionCollector implements CollideShapeCollector;
+//
+//interface CollideShapeClosestHitCollisionCollector {
+//    void CollideShapeClosestHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute CollideShapeResult mHit;
+//};
+//
+//CollideShapeClosestHitCollisionCollector implements CollideShapeCollector;
+//
+//interface CollideShapeAnyHitCollisionCollector {
+//    void CollideShapeAnyHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute CollideShapeResult mHit;
+//};
+//
+//CollideShapeAnyHitCollisionCollector implements CollideShapeCollector;
+//
+//interface ShapeCastSettings {
+//    void ShapeCastSettings();
+//
+//    attribute EBackFaceMode mBackFaceModeTriangles;
+//    attribute EBackFaceMode mBackFaceModeConvex;
+//    attribute boolean mUseShrunkenShapeAndConvexRadius;
+//    attribute boolean mReturnDeepestPoint;
+//};
+//
+//ShapeCastSettings implements CollideSettingsBase;
+//
+//interface ShapeCastResult {
+//    void ShapeCastResult();
+//
+//    attribute float mFraction;
+//    attribute boolean mIsBackFaceHit;
+//};
+//
+//ShapeCastResult implements CollideShapeResult;
+//
+//interface CastShapeCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="CastShapeCollector"]
+//interface CastShapeCollectorJS {
+//    void CastShapeCollectorJS();
+//    void Reset();
+//    void OnBody([Const, Ref] Body inBody);
+//    void AddHit([Const, Ref] ShapeCastResult inResult);
+//};
+//
+//interface ArrayShapeCastResult {
+//    boolean empty();
+//    long size();
+//    [Ref] ShapeCastResult at(long inIndex);
+//    void push_back([Const, Ref] ShapeCastResult inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface CastShapeAllHitCollisionCollector {
+//    void CastShapeAllHitCollisionCollector();
+//    void Sort();
+//    boolean HadHit();
+//    [Value] attribute ArrayShapeCastResult mHits;
+//};
+//
+//CastShapeAllHitCollisionCollector implements CastShapeCollector;
+//
+//interface CastShapeClosestHitCollisionCollector {
+//    void CastShapeClosestHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute ShapeCastResult mHit;
+//};
+//
+//CastShapeClosestHitCollisionCollector implements CastShapeCollector;
+//
+//interface CastShapeAnyHitCollisionCollector {
+//    void CastShapeAnyHitCollisionCollector();
+//    boolean HadHit();
+//    [Value] attribute ShapeCastResult mHit;
+//};
+//
+//CastShapeAnyHitCollisionCollector implements CastShapeCollector;
+//
+//interface TransformedShapeCollector {
+//    void Reset();
+//    void SetContext([Const] TransformedShape inContext);
+//    [Const] TransformedShape GetContext();
+//    void UpdateEarlyOutFraction(float inFraction);
+//    void ResetEarlyOutFraction(optional float inFraction);
+//    void ForceEarlyOut();
+//    boolean ShouldEarlyOut();
+//    float GetEarlyOutFraction();
+//    float GetPositiveEarlyOutFraction();
+//};
+//
+//[JSImplementation="TransformedShapeCollector"]
+//interface TransformedShapeCollectorJS {
+//    void TransformedShapeCollectorJS();
+//    void Reset();
+//    void OnBody([Const, Ref] Body inBody);
+//    void AddHit([Const, Ref] TransformedShape inResult);
+//};
+//
+//interface NarrowPhaseQuery {
+//    void CastRay([Const, Ref] RRayCast inRay, [Const, Ref] RayCastSettings inRayCastSettings, [Ref] CastRayCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CollidePoint([Const, Ref] RVec3 inPoint, [Ref] CollidePointCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CollideShape([Const] Shape inShape, [Const, Ref] Vec3 inShapeScale, [Const, Ref] RMat44 inCenterOfMassTransform, [Const, Ref] CollideShapeSettings inCollideShapeSettings, [Const, Ref] RVec3 inBaseOffset, [Ref] CollideShapeCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CastShape([Const, Ref] RShapeCast inShapeCast, [Const, Ref] ShapeCastSettings inShapeCastSettings, [Const, Ref] RVec3 inBaseOffset, [Ref] CastShapeCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter);
+//    void CollectTransformedShapes([Const, Ref] AABox inBox, [Ref] TransformedShapeCollector ioCollector, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter);
+//};
+//
+//interface PhysicsStepListener {
+//};
+//
+//[JSImplementation="PhysicsStepListener"]
+//interface PhysicsStepListenerJS {
+//    void PhysicsStepListenerJS();
+//    void OnStep(float inDeltaTime, [Ref] PhysicsSystem inSystem);
+//};
+//
+//interface BodyActivationListener {
+//};
+//
+//[JSImplementation="BodyActivationListener"]
+//interface BodyActivationListenerJS {
+//    void BodyActivationListenerJS();
+//    void OnBodyActivated([Const, Ref] BodyID inBodyID, unsigned long long inBodyUserData);
+//    void OnBodyDeactivated([Const, Ref] BodyID inBodyID, unsigned long long inBodyUserData);
+//};
+//
+//interface BodyIDVector {
+//    void BodyIDVector();
+//    boolean empty();
+//    long size();
+//    [Ref] BodyID at(long inIndex);
+//    void push_back([Const, Ref] BodyID inBodyID);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface PhysicsSystem {
+//    void SetGravity([Const, Ref] Vec3 inGravity);
+//    [Value] Vec3 GetGravity();
+//    [Const, Ref] PhysicsSettings GetPhysicsSettings();
+//    void SetPhysicsSettings([Const, Ref] PhysicsSettings inPhysicsSettings);
+//    unsigned long GetNumBodies();
+//    unsigned long GetNumActiveBodies(EBodyType inBodyType);
+//    unsigned long GetMaxBodies();
+//    void GetBodies([Ref] BodyIDVector outBodies);
+//    void GetActiveBodies(EBodyType inBodyType, [Ref] BodyIDVector outBodies);
+//    [Const, Value] AABox GetBounds();
+//    void AddConstraint(Constraint inConstraint);
+//    void RemoveConstraint(Constraint inConstraint);
+//    void SetContactListener(ContactListener inListener);
+//    ContactListener GetContactListener();
+//    void SetSoftBodyContactListener(SoftBodyContactListener inListener);
+//    SoftBodyContactListener GetSoftBodyContactListener();
+//    void OptimizeBroadPhase();
+//    [Ref] BodyInterface GetBodyInterface();
+//    [Ref] BodyInterface GetBodyInterfaceNoLock();
+//    [Const, Ref] BodyLockInterfaceNoLock GetBodyLockInterfaceNoLock();
+//    [Const, Ref] BodyLockInterfaceLocking GetBodyLockInterface();
+//    [Const, Ref] BroadPhaseQuery GetBroadPhaseQuery();
+//    [Const, Ref] NarrowPhaseQuery GetNarrowPhaseQuery();
+//    [Const, Ref] NarrowPhaseQuery GetNarrowPhaseQueryNoLock();
+//    void SaveState([Ref] StateRecorder inStream, optional EStateRecorderState inState = "EStateRecorderState_All");
+//    boolean	RestoreState([Ref] StateRecorder inStream);
+//    void AddStepListener(PhysicsStepListener inListener);
+//    void RemoveStepListener(PhysicsStepListener inListener);
+//    void SetBodyActivationListener(BodyActivationListener inListener);
+//    [Const] BodyActivationListener GetBodyActivationListener();
+//    boolean WereBodiesInContact([Const, Ref] BodyID inBodyID1, [Const, Ref] BodyID inBodyID2);
+//};
+//
+//interface MassProperties {
+//    void MassProperties();
+//    void SetMassAndInertiaOfSolidBox([Const, Ref] Vec3 inBoxSize, float inDensity);
+//    void ScaleToMass(float inMass);
+//    [Value] static Vec3 sGetEquivalentSolidBoxSize(float inMass, [Const, Ref] Vec3 inInertiaDiagonal);
+//    void Rotate([Const, Ref] Mat44 inRotation);
+//    void Translate([Const, Ref] Vec3 inTranslation);
+//    void Scale([Const, Ref] Vec3 inScale);
+//
+//    attribute float mMass;
+//    [Value] attribute Mat44 mInertia;
+//};
+//
+//interface BodyCreationSettings {
+//    void BodyCreationSettings();
+//    void BodyCreationSettings([Const] Shape inShape, [Ref] RVec3 inPosition, [Ref] Quat inRotation, EMotionType inMotionType, unsigned long inObjectLayer);
+//    [Const] ShapeSettings GetShapeSettings();
+//    void SetShapeSettings([Const] ShapeSettings inShape);
+//    [Value] ShapeResult ConvertShapeSettings();
+//    [Const] Shape GetShape();
+//    void SetShape([Const] Shape inShape);
+//    boolean HasMassProperties();
+//    [Value] MassProperties GetMassProperties();
+//
+//    [Value] attribute RVec3 mPosition;
+//    [Value] attribute Quat mRotation;
+//    [Value] attribute Vec3 mLinearVelocity;
+//    [Value] attribute Vec3 mAngularVelocity;
+//    attribute unsigned long long mUserData;
+//    attribute unsigned long mObjectLayer;
+//    [Value] attribute CollisionGroup mCollisionGroup;
+//    attribute EMotionType mMotionType;
+//    attribute EAllowedDOFs mAllowedDOFs;
+//    attribute boolean mAllowDynamicOrKinematic;
+//    attribute boolean mIsSensor;
+//    attribute boolean mUseManifoldReduction;
+//    attribute boolean mCollideKinematicVsNonDynamic;
+//    attribute boolean mApplyGyroscopicForce;
+//    attribute EMotionQuality mMotionQuality;
+//    attribute boolean mEnhancedInternalEdgeRemoval;
+//    attribute boolean mAllowSleeping;
+//    attribute float mFriction;
+//    attribute float mRestitution;
+//    attribute float mLinearDamping;
+//    attribute float mAngularDamping;
+//    attribute float mMaxLinearVelocity;
+//    attribute float mMaxAngularVelocity;
+//    attribute float mGravityFactor;
+//    attribute unsigned long mNumVelocityStepsOverride;
+//    attribute unsigned long mNumPositionStepsOverride;
+//    attribute EOverrideMassProperties mOverrideMassProperties;
+//    attribute float mInertiaMultiplier;
+//    [Value] attribute MassProperties mMassPropertiesOverride;
+//};
+//
+//interface SoftBodySharedSettingsVertex {
+//    void SoftBodySharedSettingsVertex();
+//
+//    [Value] attribute Float3 mPosition;
+//    [Value] attribute Float3 mVelocity;
+//    attribute float mInvMass;
+//};
+//
+//interface SoftBodySharedSettingsFace {
+//    void SoftBodySharedSettingsFace(unsigned long inVertex1, unsigned long inVertex2, unsigned long inVertex3, unsigned long inMaterialIndex);
+//
+//    attribute unsigned long[] mVertex;
+//    attribute unsigned long mMaterialIndex;
+//};
+//
+//interface SoftBodySharedSettingsEdge {
+//    void SoftBodySharedSettingsEdge(unsigned long inVertex1, unsigned long inVertex2, float inCompliance);
+//
+//    attribute unsigned long[] mVertex;
+//    attribute float mRestLength;
+//    attribute float mCompliance;
+//};
+//
+//interface SoftBodySharedSettingsDihedralBend {
+//    void SoftBodySharedSettingsDihedralBend(unsigned long inVertex1, unsigned long inVertex2, unsigned long inVertex3, unsigned long inVertex4, float inCompliance);
+//
+//    attribute unsigned long[] mVertex;
+//    attribute float mCompliance;
+//    attribute float mInitialAngle;
+//};
+//
+//interface SoftBodySharedSettingsVolume {
+//    void SoftBodySharedSettingsVolume(unsigned long inVertex1, unsigned long inVertex2, unsigned long inVertex3, unsigned long inVertex4, float inCompliance);
+//
+//    attribute unsigned long[] mVertex;
+//    attribute float mSixRestVolume;
+//    attribute float mCompliance;
+//};
+//
+//interface SoftBodySharedSettingsInvBind
+//{
+//    attribute unsigned long mJointIndex;
+//    [Value] attribute Mat44 mInvBind;
+//};
+//
+//interface SoftBodySharedSettingsSkinWeight
+//{
+//    attribute unsigned long mInvBindIndex;
+//    attribute float mWeight;
+//};
+//
+//interface SoftBodySharedSettingsSkinned
+//{
+//    attribute unsigned long mVertex;
+//    [Value] attribute SoftBodySharedSettingsSkinWeight[] mWeights;
+//    attribute float mMaxDistance;
+//    attribute float mBackStopDistance;
+//    attribute float mBackStopRadius;
+//};
+//
+//interface SoftBodySharedSettingsLRA {
+//    void SoftBodySharedSettingsLRA(unsigned long inVertex1, unsigned long inVertex2, float inMaxDistance);
+//
+//    attribute unsigned long[] mVertex;
+//    attribute float mMaxDistance;
+//};
+//
+//interface ArraySoftBodySharedSettingsVertex {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsVertex at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsVertex inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsFace {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsFace at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsFace inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsEdge {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsEdge at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsEdge inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsDihedralBend {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsDihedralBend at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsDihedralBend inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsVolume {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsVolume at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsVolume inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsInvBind {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsInvBind at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsInvBind inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsSkinned {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsSkinned at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsSkinned inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArraySoftBodySharedSettingsLRA {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsLRA at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsLRA inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface SoftBodySharedSettingsVertexAttributes {
+//    void SoftBodySharedSettingsVertexAttributes();
+//
+//    attribute float mCompliance;
+//    attribute float mShearCompliance;
+//    attribute float mBendCompliance;
+//    attribute SoftBodySharedSettings_ELRAType mLRAType;
+//    attribute float mLRAMaxDistanceMultiplier;
+//};
+//
+//interface ArraySoftBodySharedSettingsVertexAttributes {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodySharedSettingsVertexAttributes at(long inIndex);
+//    void push_back([Const, Ref] SoftBodySharedSettingsVertexAttributes inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//    SoftBodySharedSettingsVertexAttributes data();
+//};
+//
+//interface SoftBodySharedSettings {
+//    void SoftBodySharedSettings();
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//    void CreateConstraints(SoftBodySharedSettingsVertexAttributes inVertexAttributes, unsigned long inVertexAttributesLength, optional SoftBodySharedSettings_EBendType inBendType, optional float inAngleTolerance);
+//    void AddFace([Const, Ref] SoftBodySharedSettingsFace inFace);
+//    void CalculateEdgeLengths();
+//    void CalculateLRALengths();
+//    void CalculateBendConstraintConstants();
+//    void CalculateVolumeConstraintVolumes();
+//    void CalculateSkinnedConstraintNormals();
+//    void Optimize();
+//    SoftBodySharedSettings Clone();
+//
+//    [Value] attribute ArraySoftBodySharedSettingsVertex mVertices;
+//    [Value] attribute ArraySoftBodySharedSettingsFace mFaces;
+//    [Value] attribute ArraySoftBodySharedSettingsEdge mEdgeConstraints;
+//    [Value] attribute ArraySoftBodySharedSettingsDihedralBend mDihedralBendConstraints;
+//    [Value] attribute ArraySoftBodySharedSettingsVolume mVolumeConstraints;
+//    [Value] attribute ArraySoftBodySharedSettingsSkinned mSkinnedConstraints;
+//    [Value] attribute ArraySoftBodySharedSettingsInvBind mInvBindMatrices;
+//    [Value] attribute ArraySoftBodySharedSettingsLRA mLRAConstraints;
+//    [Value] attribute PhysicsMaterialList mMaterials;
+//    attribute float mVertexRadius;
+//};
+//
+//interface SoftBodyCreationSettings {
+//    void SoftBodyCreationSettings([Const] SoftBodySharedSettings inSettings, [Ref] RVec3 inPosition, [Ref] Quat inRotation, unsigned long inObjectLayer);
+//
+//    [Value] attribute RVec3 mPosition;
+//    [Value] attribute Quat mRotation;
+//    attribute unsigned long long mUserData;
+//    attribute unsigned long mObjectLayer;
+//    [Value] attribute CollisionGroup mCollisionGroup;
+//    attribute unsigned long mNumIterations;
+//    attribute float mLinearDamping;
+//    attribute float mMaxLinearVelocity;
+//    attribute float mRestitution;
+//    attribute float mFriction;
+//    attribute float mPressure;
+//    attribute float mGravityFactor;
+//    attribute boolean mUpdatePosition;
+//    attribute boolean mMakeRotationIdentity;
+//    attribute boolean mAllowSleeping;
+//};
+//
+//interface SoftBodyVertex {
+//    [Value] attribute Vec3 mPreviousPosition;
+//    [Value] attribute Vec3 mPosition;
+//    [Value] attribute Vec3 mVelocity;
+//    attribute float mInvMass;
+//};
+//
+//interface SoftBodyVertexTraits {
+//    static readonly attribute unsigned long mPreviousPositionOffset;
+//    static readonly attribute unsigned long mPositionOffset;
+//    static readonly attribute unsigned long mVelocityOffset;
+//};
+//
+//interface ArraySoftBodyVertex {
+//    boolean empty();
+//    long size();
+//    [Ref] SoftBodyVertex at(long inIndex);
+//    void push_back([Const, Ref] SoftBodyVertex inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface SoftBodyMotionProperties {
+//    [Const] SoftBodySharedSettings GetSettings();
+//    [Ref] ArraySoftBodyVertex GetVertices();
+//    [Ref] SoftBodyVertex GetVertex(unsigned long inIndex);
+//    [Const, Ref] PhysicsMaterialList GetMaterials();
+//    [Const, Ref] ArraySoftBodySharedSettingsFace GetFaces();
+//    [Const, Ref] SoftBodySharedSettingsFace GetFace(unsigned long inIndex);
+//    unsigned long GetNumIterations();
+//    void SetNumIterations(unsigned long inNumIterations);
+//    float GetPressure();
+//    void SetPressure(float inPressure);
+//    boolean GetUpdatePosition();
+//    void SetUpdatePosition(boolean inUpdatePosition);
+//    boolean GetEnableSkinConstraints();
+//    void SetEnableSkinConstraints(boolean inEnableSkinConstraints);
+//    float GetSkinnedMaxDistanceMultiplier();
+//    void SetSkinnedMaxDistanceMultiplier(float inSkinnedMaxDistanceMultiplier);
+//    [Const, Ref] AABox GetLocalBounds();
+//    void CustomUpdate(float inDeltaTime, [Ref] Body ioSoftBody, [Ref] PhysicsSystem inSystem);
+//    void SkinVertices([Const, Ref] RMat44 inRootTransform, Mat44MemRef inJointMatrices, unsigned long inNumJoints, boolean inHardSkinAll, [Ref] TempAllocator ioTempAllocator);
+//};
+//
+//SoftBodyMotionProperties implements MotionProperties;
+//
+//interface SoftBodyShape {
+//    [Const] unsigned long GetSubShapeIDBits();
+//    [Const] unsigned long GetFaceIndex([Const, Ref] SubShapeID inSubShapeID);
+//};
+//
+//SoftBodyShape implements Shape;
+//
+//interface CharacterBaseSettings {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//
+//    [Value] attribute Vec3 mUp;
+//    [Value] attribute Plane mSupportingVolume;
+//    attribute float mMaxSlopeAngle;
+//    attribute boolean mEnhancedInternalEdgeRemoval;
+//    [Const] attribute Shape mShape;
+//};
+//
+//interface CharacterVirtualSettings {
+//    void CharacterVirtualSettings();
+//
+//    attribute float mMass;
+//    attribute float mMaxStrength;
+//    [Value] attribute Vec3 mShapeOffset;
+//    attribute EBackFaceMode mBackFaceMode;
+//    attribute float mPredictiveContactDistance;
+//    attribute unsigned long mMaxCollisionIterations;
+//    attribute unsigned long mMaxConstraintIterations;
+//    attribute float mMinTimeRemaining;
+//    attribute float mCollisionTolerance;
+//    attribute float mCharacterPadding;
+//    attribute unsigned long mMaxNumHits;
+//    attribute float mHitReductionCosMaxAngle;
+//    attribute float mPenetrationRecoverySpeed;
+//};
+//
+//CharacterVirtualSettings implements CharacterBaseSettings;
+//
+//interface CharacterContactSettings {
+//    void CharacterContactSettings();
+//
+//    attribute boolean mCanPushCharacter;
+//    attribute boolean mCanReceiveImpulses;
+//};
+//
+//interface CharacterContactListener {
+//};
+//
+//interface CharacterContactListenerEm {
+//};
+//
+//CharacterContactListenerEm implements CharacterContactListener;
+//
+//[JSImplementation="CharacterContactListenerEm"]
+//interface CharacterContactListenerJS {
+//    void CharacterContactListenerJS();
+//    void OnAdjustBodyVelocity([Const] CharacterVirtual inCharacter, [Const, Ref] Body inBody2, [Ref] Vec3 ioLinearVelocity, [Ref] Vec3 ioAngularVelocity);
+//    boolean OnContactValidate([Const] CharacterVirtual inCharacter, [Const, Ref] BodyID inBodyID2, [Const, Ref] SubShapeID inSubShapeID2);
+//    boolean OnCharacterContactValidate([Const] CharacterVirtual inCharacter, [Const] CharacterVirtual inOtherCharacter, [Const, Ref] SubShapeID inSubShapeID2);
+//    void OnContactAdded([Const] CharacterVirtual inCharacter, [Const, Ref] BodyID inBodyID2, [Const, Ref] SubShapeID inSubShapeID2, [Const] RVec3 inContactPosition, [Const] Vec3 inContactNormal, [Ref] CharacterContactSettings ioSettings);
+//    void OnCharacterContactAdded([Const] CharacterVirtual inCharacter, [Const] CharacterVirtual inOtherCharacter, [Const, Ref] SubShapeID inSubShapeID2, [Const] RVec3 inContactPosition, [Const] Vec3 inContactNormal, [Ref] CharacterContactSettings ioSettings);
+//    void OnContactSolve([Const] CharacterVirtual inCharacter, [Const, Ref] BodyID inBodyID2, [Const, Ref] SubShapeID inSubShapeID2, [Const] RVec3 inContactPosition, [Const] Vec3 inContactNormal, [Const] Vec3 inContactVelocity, [Const] PhysicsMaterial inContactMaterial, [Const] Vec3 inCharacterVelocity, [Ref] Vec3 ioNewCharacterVelocity);
+//    void OnCharacterContactSolve([Const] CharacterVirtual inCharacter, [Const] CharacterVirtual inOtherCharacter, [Const, Ref] SubShapeID inSubShapeID2, [Const] RVec3 inContactPosition, [Const] Vec3 inContactNormal, [Const] Vec3 inContactVelocity, [Const] PhysicsMaterial inContactMaterial, [Const] Vec3 inCharacterVelocity, [Ref] Vec3 ioNewCharacterVelocity);
+//};
+//
+//interface CharacterVsCharacterCollision {
+//};
+//
+//interface CharacterVsCharacterCollisionSimple {
+//    void Add(CharacterVirtual inCharacter);
+//    void Remove(CharacterVirtual inCharacter);
+//};
+//
+//CharacterVsCharacterCollisionSimple implements CharacterVsCharacterCollision;
+//
+//[Prefix="CharacterVirtual::"]
+//interface ExtendedUpdateSettings {
+//    void ExtendedUpdateSettings();
+//
+//    [Value] attribute Vec3 mStickToFloorStepDown;
+//    [Value] attribute Vec3 mWalkStairsStepUp;
+//    attribute float mWalkStairsMinStepForward;
+//    attribute float mWalkStairsStepForwardTest;
+//    attribute float mWalkStairsCosAngleForwardContact;
+//    [Value] attribute Vec3 mWalkStairsStepDownExtra;
+//};
+//
+//interface TempAllocator {
+//};
+//
+//interface BroadPhaseLayerFilter {
+//    void BroadPhaseLayerFilter();
+//};
+//
+//interface ObjectVsBroadPhaseLayerFilter {
+//    void ObjectVsBroadPhaseLayerFilter();
+//};
+//
+//interface ObjectVsBroadPhaseLayerFilterEm {
+//};
+//
+//ObjectVsBroadPhaseLayerFilterEm implements ObjectVsBroadPhaseLayerFilter;
+//
+//[JSImplementation="ObjectVsBroadPhaseLayerFilterEm"]
+//interface ObjectVsBroadPhaseLayerFilterJS {
+//    void ObjectVsBroadPhaseLayerFilterJS();
+//    [Const] boolean ShouldCollide(unsigned long inLayer1, BroadPhaseLayer inLayer2);
+//};
+//
+//interface DefaultBroadPhaseLayerFilter {
+//    void DefaultBroadPhaseLayerFilter([Const, Ref] ObjectVsBroadPhaseLayerFilter inFilter, unsigned long inObjectLayer);
+//};
+//
+//DefaultBroadPhaseLayerFilter implements ObjectLayerFilter;
+//
+//interface ObjectLayerFilter {
+//    void ObjectLayerFilter();
+//};
+//
+//[JSImplementation="ObjectLayerFilter"]
+//interface ObjectLayerFilterJS {
+//    void ObjectLayerFilterJS();
+//    [Const] boolean ShouldCollide(unsigned long inLayer);
+//};
+//
+//interface ObjectLayerPairFilter {
+//    void ObjectLayerPairFilter();
+//    boolean ShouldCollide(unsigned long inLayer1, unsigned long inLayer2);
+//};
+//
+//[JSImplementation="ObjectLayerPairFilter"]
+//interface ObjectLayerPairFilterJS {
+//    void ObjectLayerPairFilterJS();
+//    [Const] boolean ShouldCollide(unsigned long inLayer1, unsigned long inLayer2);
+//};
+//
+//interface DefaultObjectLayerFilter {
+//    void DefaultObjectLayerFilter([Const, Ref] ObjectLayerPairFilter inFilter, unsigned long inObjectLayer);
+//};
+//
+//DefaultObjectLayerFilter implements ObjectLayerFilter;
+//
+//interface SpecifiedObjectLayerFilter {
+//    void SpecifiedObjectLayerFilter(unsigned long inObjectLayer);
+//};
+//
+//SpecifiedObjectLayerFilter implements ObjectLayerFilter;
+//
+//interface BodyFilter {
+//    void BodyFilter();
+//};
+//
+//[JSImplementation="BodyFilter"]
+//interface BodyFilterJS {
+//    void BodyFilterJS();
+//    [Const] boolean ShouldCollide([Const, Ref] BodyID inBodyID);
+//    [Const] boolean ShouldCollideLocked([Const, Ref] Body inBody);
+//};
+//
+//interface IgnoreSingleBodyFilter {
+//    void IgnoreSingleBodyFilter([Const, Ref] BodyID inBodyID);
+//};
+//
+//IgnoreSingleBodyFilter implements BodyFilter;
+//
+//interface IgnoreMultipleBodiesFilter {
+//    void IgnoreMultipleBodiesFilter();
+//    void Clear();
+//    void Reserve(unsigned long inSize);
+//    void IgnoreBody([Const, Ref] BodyID inBodyID);
+//};
+//
+//IgnoreMultipleBodiesFilter implements BodyFilter;
+//
+//interface ShapeFilter {
+//    void ShapeFilter();
+//};
+//
+//[JSImplementation="ShapeFilter"]
+//interface ShapeFilterJS {
+//    void ShapeFilterJS();
+//    [Const] boolean ShouldCollide([Const] Shape inShape2, [Const, Ref] SubShapeID inSubShapeIDOfShape2);
+//};
+//
+//[JSImplementation="ShapeFilter"]
+//interface ShapeFilterJS2 {
+//    void ShapeFilterJS2();
+//    [Const] boolean ShouldCollide([Const] Shape inShape1, [Const, Ref] SubShapeID inSubShapeIDOfShape1, [Const] Shape inShape2, [Const, Ref] SubShapeID inSubShapeIDOfShape2);
+//};
+//
+//interface CharacterBase {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//    void SetMaxSlopeAngle(float inMaxSlopeAngle);
+//    float GetCosMaxSlopeAngle();
+//    void SetUp([Const, Ref] Vec3 inUp);
+//    [Value] Vec3 GetUp();
+//    [Const] Shape GetShape();
+//    EGroundState GetGroundState();
+//    boolean IsSlopeTooSteep([Ref] Vec3 inNormal);
+//    boolean IsSupported();
+//    [Value] RVec3 GetGroundPosition();
+//    [Value] Vec3 GetGroundNormal();
+//    [Value] Vec3 GetGroundVelocity();
+//    [Const] PhysicsMaterial GetGroundMaterial();
+//    [Value] BodyID GetGroundBodyID();
+//};
+//
+//interface CharacterVirtual {
+//    void CharacterVirtual([Const] CharacterVirtualSettings inSettings, [Ref] RVec3 inPosition, [Ref] Quat inRotation, PhysicsSystem inSystem);
+//    void SetListener(CharacterContactListener inListener);
+//    void SetCharacterVsCharacterCollision(CharacterVsCharacterCollision inCharacterVsCharacterCollision);
+//    CharacterContactListener GetListener();
+//    [Value] Vec3 GetLinearVelocity();
+//    void SetLinearVelocity([Const, Ref] Vec3 inLinearVelocity);
+//    [Value] RVec3 GetPosition();
+//    void SetPosition([Const, Ref] RVec3 inPosition);
+//    [Value] Quat GetRotation();
+//    void SetRotation([Const, Ref] Quat inRotation);
+//    [Value] RMat44 GetWorldTransform();
+//    [Value] RMat44 GetCenterOfMassTransform();
+//    float GetMass();
+//    void SetMass(float inMass);
+//    float GetMaxStrength();
+//    void SetMaxStrength(float inMaxStrength);
+//    float GetPenetrationRecoverySpeed();
+//    void SetPenetrationRecoverySpeed(float inSpeed);
+//    float GetCharacterPadding();
+//    unsigned long GetMaxNumHits();
+//    void SetMaxNumHits(unsigned long inMaxHits);
+//    float GetHitReductionCosMaxAngle();
+//    void SetHitReductionCosMaxAngle(float inCosMaxAngle);
+//    boolean GetMaxHitsExceeded();
+//    [Value] Vec3 GetShapeOffset();
+//    void SetShapeOffset([Const, Ref] Vec3 inShapeOffset);
+//    unsigned long long GetUserData();
+//    void SetUserData(unsigned long long inUserData);
+//    [Value] Vec3 CancelVelocityTowardsSteepSlopes([Const, Ref] Vec3 inDesiredVelocity);
+//    void Update(float inDeltaTime, [Const, Ref] Vec3 inGravity, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter, [Ref] TempAllocator inAllocator);
+//    boolean CanWalkStairs([Const, Ref] Vec3 inLinearVelocity);
+//    boolean WalkStairs(float inDeltaTime, [Const, Ref] Vec3 inStepUp, [Const, Ref] Vec3 inStepForward, [Const, Ref] Vec3 inStepForwardTest, [Const, Ref] Vec3 inStepDownExtra, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter, [Ref] TempAllocator inAllocator);
+//    boolean StickToFloor([Const, Ref] Vec3 inStepDown, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter, [Ref] TempAllocator inAllocator);
+//    void ExtendedUpdate(float inDeltaTime, [Const, Ref] Vec3 inGravity, [Const, Ref] ExtendedUpdateSettings inSettings, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter, [Ref] TempAllocator inAllocator);
+//    void RefreshContacts([Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter, [Ref] TempAllocator inAllocator);
+//    void UpdateGroundVelocity();
+//    boolean SetShape([Const] Shape inShape, float inMaxPenetrationDepth, [Const, Ref] BroadPhaseLayerFilter inBroadPhaseLayerFilter, [Const, Ref] ObjectLayerFilter inObjectLayerFilter, [Const, Ref] BodyFilter inBodyFilter, [Const, Ref] ShapeFilter inShapeFilter, [Ref] TempAllocator inAllocator);
+//};
+//
+//CharacterVirtual implements CharacterBase;
+//
+//interface LinearCurve {
+//    void LinearCurve();
+//    void Clear();
+//    void Reserve(unsigned long inSize);
+//    void AddPoint(float inX, float inY);
+//    void Sort();
+//    float GetMinX();
+//    float GetMaxX();
+//    float GetValue(float inX);
+//};
+//
+//interface ArrayFloat {
+//    boolean empty();
+//    long size();
+//    float at(long inIndex);
+//    void push_back(float inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//    FloatMemRef data();
+//};
+//
+//interface ArrayUint {
+//    boolean empty();
+//    long size();
+//    unsigned long at(long inIndex);
+//    void push_back(unsigned long inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//    UintMemRef data();
+//};
+//
+//interface ArrayUint8 {
+//    boolean empty();
+//    long size();
+//    octet at(long inIndex);
+//    void push_back(octet inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//    Uint8MemRef data();
+//};
+//
+//interface ArrayVehicleAntiRollBar {
+//    boolean empty();
+//    long size();
+//    [Ref] VehicleAntiRollBar at(long inIndex);
+//    void push_back([Ref] VehicleAntiRollBar inValue);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArrayWheelSettings {
+//    boolean empty();
+//    long size();
+//    WheelSettings at(long inIndex);
+//    void push_back(WheelSettings inValue);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface ArrayVehicleDifferentialSettings {
+//    boolean empty();
+//    long size();
+//    [Ref] VehicleDifferentialSettings at(long inIndex);
+//    void push_back([Ref] VehicleDifferentialSettings inValue);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface VehicleCollisionTester {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//};
+//
+//interface VehicleCollisionTesterRay {
+//    void VehicleCollisionTesterRay(unsigned long inObjectLayer, [Ref] optional Vec3 inUp, optional float inMaxSlopeAngle);
+//};
+//
+//VehicleCollisionTesterRay implements VehicleCollisionTester;
+//
+//interface VehicleCollisionTesterCastSphere {
+//    void VehicleCollisionTesterCastSphere(unsigned long inObjectLayer, float inRadius, [Ref] optional Vec3 inUp, optional float inMaxSlopeAngle);
+//};
+//
+//VehicleCollisionTesterCastSphere implements VehicleCollisionTester;
+//
+//interface VehicleCollisionTesterCastCylinder {
+//    void VehicleCollisionTesterCastCylinder(unsigned long inObjectLayer, optional float inConvexRadiusFraction);
+//};
+//
+//VehicleCollisionTesterCastCylinder implements VehicleCollisionTester;
+//
+//interface VehicleConstraintSettings {
+//    void VehicleConstraintSettings();
+//
+//    [Value] attribute Vec3 mUp;
+//    [Value] attribute Vec3 mForward;
+//    attribute float mMaxPitchRollAngle;
+//    [Value] attribute ArrayWheelSettings mWheels;
+//    [Value] attribute ArrayVehicleAntiRollBar mAntiRollBars;
+//    attribute VehicleControllerSettings mController;
+//};
+//
+//VehicleConstraintSettings implements ConstraintSettings;
+//
+//interface VehicleConstraint {
+//    void VehicleConstraint([Ref] Body inVehicleBody, [Const, Ref] VehicleConstraintSettings inSettings);
+//    void SetMaxPitchRollAngle(float inMaxPitchRollAngle);
+//    void SetVehicleCollisionTester([Const] VehicleCollisionTester inTester);
+//    void OverrideGravity([Const, Ref] Vec3 inGravity);
+//    boolean IsGravityOverridden();
+//    [Value] Vec3 GetGravityOverride();
+//    void ResetGravityOverride();
+//    [Value] Vec3 GetLocalUp();
+//    [Value] Vec3 GetLocalForward();
+//    [Value] Vec3 GetWorldUp();
+//    Body GetVehicleBody();
+//    VehicleController GetController();
+//    [Const] Wheel GetWheel(unsigned long inIdx);
+//    [Value] Mat44 GetWheelLocalTransform(unsigned long inWheelIndex, [Ref] Vec3 inWheelRight, [Ref] Vec3 inWheelUp);
+//    [Value] RMat44 GetWheelWorldTransform(unsigned long inWheelIndex, [Ref] Vec3 inWheelRight, [Ref] Vec3 inWheelUp);
+//    void SetNumStepsBetweenCollisionTestActive(unsigned long inSteps);
+//    [Const] unsigned long GetNumStepsBetweenCollisionTestActive();
+//    void SetNumStepsBetweenCollisionTestInactive(unsigned long inSteps);
+//    [Const] unsigned long GetNumStepsBetweenCollisionTestInactive();
+//};
+//
+//VehicleConstraint implements Constraint;
+//
+//interface VehicleConstraintStepListener {
+//    void VehicleConstraintStepListener(VehicleConstraint inConstraint);
+//};
+//
+//VehicleConstraintStepListener implements PhysicsStepListener;
+//
+//interface VehicleConstraintCallbacksEm {
+//    void SetVehicleConstraint([Ref] VehicleConstraint inConstraint);
+//};
+//
+//[JSImplementation="VehicleConstraintCallbacksEm"]
+//interface VehicleConstraintCallbacksJS {
+//    void VehicleConstraintCallbacksJS();
+//    float GetCombinedFriction(unsigned long inWheelIndex, ETireFrictionDirection inTireFrictionDirection, float inTireFriction, [Const, Ref] Body inBody2, [Const, Ref] SubShapeID inSubShapeID2);
+//    void OnPreStepCallback([Ref] VehicleConstraint inVehicle, float inDeltaTime, [Ref] PhysicsSystem inPhysicsSystem);
+//    void OnPostCollideCallback([Ref] VehicleConstraint inVehicle, float inDeltaTime, [Ref] PhysicsSystem inPhysicsSystem);
+//    void OnPostStepCallback([Ref] VehicleConstraint inVehicle, float inDeltaTime, [Ref] PhysicsSystem inPhysicsSystem);
+//};
+//
+//interface TireMaxImpulseCallbackResult {
+//    attribute float mLongitudinalImpulse;
+//    attribute float mLateralImpulse;
+//};
+//
+//interface WheeledVehicleControllerCallbacksEm {
+//    void SetWheeledVehicleController([Ref] WheeledVehicleController inController);
+//};
+//
+//[JSImplementation="WheeledVehicleControllerCallbacksEm"]
+//interface WheeledVehicleControllerCallbacksJS {
+//    void WheeledVehicleControllerCallbacksJS();
+//    void OnTireMaxImpulseCallback(unsigned long inWheelIndex, TireMaxImpulseCallbackResult outResult, float inSuspensionImpulse, float inLongitudinalFriction, float inLateralFriction, float inLongitudinalSlip, float inLateralSlip, float inDeltaTime);
+//};
+//
+//interface WheelSettings {
+//    void WheelSettings();
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//
+//    [Value] attribute Vec3 mPosition;
+//    [Value] attribute Vec3 mSuspensionForcePoint;
+//    [Value] attribute Vec3 mSuspensionDirection;
+//    [Value] attribute Vec3 mSteeringAxis;
+//    [Value] attribute Vec3 mWheelUp;
+//    [Value] attribute Vec3 mWheelForward;
+//    [Value] attribute SpringSettings mSuspensionSpring;
+//    attribute float mSuspensionMinLength;
+//    attribute float mSuspensionMaxLength;
+//    attribute float mSuspensionPreloadLength;
+//    attribute float mRadius;
+//    attribute float mWidth;
+//    attribute boolean mEnableSuspensionForcePoint;
+//};
+//
+//interface VehicleAntiRollBar {
+//    void VehicleAntiRollBar();
+//
+//    attribute long mLeftWheel;
+//    attribute long mRightWheel;
+//    attribute float mStiffness;
+//};
+//
+//interface Wheel {
+//    void Wheel([Const, Ref] WheelSettings inSettings);
+//    [Const] WheelSettings GetSettings();
+//    float GetAngularVelocity();
+//    void SetAngularVelocity(float inVel);
+//    float GetRotationAngle();
+//    void SetRotationAngle(float inAngle);
+//    float GetSteerAngle();
+//    void SetSteerAngle(float inAngle);
+//    boolean HasContact();
+//    [Value] BodyID GetContactBodyID();
+//    [Value] RVec3 GetContactPosition();
+//    [Value] Vec3 GetContactPointVelocity();
+//    [Value] Vec3 GetContactNormal();
+//    [Value] Vec3 GetContactLongitudinal();
+//    [Value] Vec3 GetContactLateral();
+//    float GetSuspensionLength();
+//    boolean HasHitHardPoint();
+//    float GetSuspensionLambda();
+//    float GetLongitudinalLambda();
+//    float GetLateralLambda();
+//};
+//
+//interface WheelSettingsWV {
+//    void WheelSettingsWV();
+//
+//    attribute float mInertia;
+//    attribute float mAngularDamping;
+//    attribute float mMaxSteerAngle;
+//    [Value] attribute LinearCurve mLongitudinalFriction;
+//    [Value] attribute LinearCurve mLateralFriction;
+//    attribute float mMaxBrakeTorque;
+//    attribute float mMaxHandBrakeTorque;
+//};
+//
+//WheelSettingsWV implements WheelSettings;
+//
+//interface WheelWV {
+//    void WheelWV([Const, Ref] WheelSettingsWV inWheel);
+//    [Const] WheelSettingsWV GetSettings();
+//
+//    attribute float mLongitudinalSlip;
+//    attribute float mLateralSlip;
+//    attribute float mCombinedLongitudinalFriction;
+//    attribute float mCombinedLateralFriction;
+//    attribute float mBrakeImpulse;
+//};
+//
+//WheelWV implements Wheel;
+//
+//interface WheelSettingsTV {
+//    void WheelSettingsTV();
+//
+//    attribute float mLongitudinalFriction;
+//    attribute float mLateralFriction;
+//};
+//
+//WheelSettingsTV implements WheelSettings;
+//
+//interface WheelTV {
+//    void WheelTV([Const, Ref] WheelSettingsTV inWheel);
+//    [Const] WheelSettingsTV GetSettings();
+//
+//    attribute long mTrackIndex;
+//    attribute float mCombinedLongitudinalFriction;
+//    attribute float mCombinedLateralFriction;
+//    attribute float mBrakeImpulse;
+//};
+//
+//WheelTV implements Wheel;
+//
+//interface VehicleTrackSettings {
+//    attribute long mDrivenWheel;
+//    [Value] attribute ArrayUint mWheels;
+//    attribute float mInertia;
+//    attribute float mAngularDamping;
+//    attribute float mMaxBrakeTorque;
+//    attribute float mDifferentialRatio;
+//};
+//
+//interface VehicleTrack {
+//    attribute float mAngularVelocity;
+//};
+//
+//VehicleTrack implements VehicleTrackSettings;
+//
+//interface WheeledVehicleControllerSettings {
+//    void WheeledVehicleControllerSettings();
+//
+//    [Value] attribute VehicleEngineSettings	mEngine;
+//    [Value] attribute VehicleTransmissionSettings	mTransmission;
+//    [Value] attribute ArrayVehicleDifferentialSettings mDifferentials;
+//    attribute float mDifferentialLimitedSlipRatio;
+//};
+//
+//WheeledVehicleControllerSettings implements VehicleControllerSettings;
+//
+//interface TrackedVehicleControllerSettings {
+//    void TrackedVehicleControllerSettings();
+//
+//    [Value] attribute VehicleEngineSettings	mEngine;
+//    [Value] attribute VehicleTransmissionSettings mTransmission;
+//    [Value] attribute VehicleTrackSettings[] mTracks;
+//};
+//
+//TrackedVehicleControllerSettings implements VehicleControllerSettings;
+//
+//interface TrackedVehicleController {
+//    void TrackedVehicleController([Const, Ref] TrackedVehicleControllerSettings inSettings, [Ref] VehicleConstraint inConstraint);
+//    void SetDriverInput(float inForward, float inLeftRatio, float inRightRatio, float inBrake);
+//    void SetForwardInput(float inForward);
+//    float GetForwardInput();
+//    void SetLeftRatio(float inLeftRatio);
+//    float GetLeftRatio();
+//    void SetRightRatio(float inRightRatio);
+//    float GetRightRatio();
+//    void SetBrakeInput(float inBrake);
+//    float GetBrakeInput();
+//    [Ref] VehicleEngine GetEngine();
+//    [Ref] VehicleTransmission GetTransmission();
+//    VehicleTrack[] GetTracks();
+//};
+//
+//TrackedVehicleController implements VehicleController;
+//
+//interface VehicleEngineSettings {
+//    attribute float mMaxTorque;
+//    attribute float mMinRPM;
+//    attribute float mMaxRPM;
+//    [Value] attribute LinearCurve mNormalizedTorque;
+//    attribute float mInertia;
+//    attribute float mAngularDamping;
+//};
+//
+//interface VehicleEngine {
+//    void ClampRPM();
+//    float GetCurrentRPM();
+//    void SetCurrentRPM(float inRPM);
+//    float GetAngularVelocity();
+//    float GetTorque(float inAcceleration);
+//};
+//
+//VehicleEngine implements VehicleEngineSettings;
+//
+//interface VehicleTransmissionSettings {
+//    attribute ETransmissionMode mMode;
+//    [Value] attribute ArrayFloat mGearRatios;
+//    [Value] attribute ArrayFloat mReverseGearRatios;
+//    attribute float mSwitchTime;
+//    attribute float mClutchReleaseTime;
+//    attribute float mSwitchLatency;
+//    attribute float mShiftUpRPM;
+//    attribute float mShiftDownRPM;
+//    attribute float mClutchStrength;
+//};
+//
+//interface VehicleTransmission {
+//    void Set(long inCurrentGear, float inClutchFriction);
+//    long GetCurrentGear();
+//    float GetClutchFriction();
+//    boolean IsSwitchingGear();
+//    float GetCurrentRatio();
+//};
+//
+//VehicleTransmission implements VehicleTransmissionSettings;
+//
+//interface VehicleDifferentialSettings {
+//    void VehicleDifferentialSettings();
+//
+//    attribute long mLeftWheel;
+//    attribute long mRightWheel;
+//    attribute float mDifferentialRatio;
+//    attribute float mLeftRightSplit;
+//    attribute float mLimitedSlipRatio;
+//    attribute float mEngineTorqueRatio;
+//};
+//
+//interface VehicleControllerSettings {
+//};
+//
+//interface VehicleController {
+//    unsigned long GetRefCount();
+//    void AddRef();
+//    void Release();
+//};
+//
+//interface WheeledVehicleController {
+//    void WheeledVehicleController([Const, Ref] WheeledVehicleControllerSettings inSettings, [Ref] VehicleConstraint inConstraint);
+//    void SetDriverInput(float inForward, float inRight, float inBrake, float inHandBrake);
+//    void SetForwardInput(float inForward);
+//    float GetForwardInput();
+//    void SetRightInput(float inRight);
+//    float GetRightInput();
+//    void SetBrakeInput(float inBrake);
+//    float GetBrakeInput();
+//    void SetHandBrakeInput(float inHandBrake);
+//    float GetHandBrakeInput();
+//    [Ref] VehicleEngine GetEngine();
+//    [Ref] VehicleTransmission GetTransmission();
+//    [Ref] ArrayVehicleDifferentialSettings GetDifferentials();
+//    float GetDifferentialLimitedSlipRatio();
+//    void SetDifferentialLimitedSlipRatio(float inV);
+//    float GetWheelSpeedAtClutch();
+//};
+//
+//WheeledVehicleController implements VehicleController;
+//
+//interface MotorcycleControllerSettings {
+//    void MotorcycleControllerSettings();
+//
+//    attribute float mMaxLeanAngle;
+//    attribute float mLeanSpringConstant;
+//    attribute float mLeanSpringDamping;
+//    attribute float mLeanSpringIntegrationCoefficient;
+//    attribute float mLeanSpringIntegrationCoefficientDecay;
+//    attribute float mLeanSmoothingFactor;
+//};
+//
+//MotorcycleControllerSettings implements WheeledVehicleControllerSettings;
+//
+//interface MotorcycleController {
+//    void MotorcycleController([Const, Ref] MotorcycleControllerSettings inSettings, [Ref] VehicleConstraint inConstraint);
+//    float GetWheelBase();
+//    void EnableLeanController(boolean inEnable);
+//    boolean IsLeanControllerEnabled();
+//};
+//
+//MotorcycleController implements WheeledVehicleController;
+//
+//interface Skeleton {
+//    void Skeleton();
+//    long AddJoint([Const, Ref] JPHString inName, long inParentIndex);
+//    long GetJointCount();
+//    boolean AreJointsCorrectlyOrdered();
+//    void CalculateParentJointIndices();
+//};
+//
+//interface SkeletalAnimationJointState {
+//    void FromMatrix([Const, Ref] Mat44 inMatrix);
+//    [Value] Mat44 ToMatrix();
+//
+//    [Value] attribute Vec3 mTranslation;
+//    [Value] attribute Quat mRotation;
+//};
+//
+//interface SkeletalAnimationKeyframe {
+//    void SkeletalAnimationKeyframe();
+//
+//    attribute float mTime;
+//};
+//
+//SkeletalAnimationKeyframe implements SkeletalAnimationJointState;
+//
+//interface ArraySkeletonKeyframe {
+//    void ArraySkeletonKeyframe();
+//    boolean empty();
+//    long size();
+//    [Ref] SkeletalAnimationKeyframe at(long inIndex);
+//    void push_back([Ref] SkeletalAnimationKeyframe inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface SkeletalAnimationAnimatedJoint {
+//    void SkeletalAnimationAnimatedJoint();
+//
+//    [Value] attribute JPHString mJointName;
+//    [Value] attribute ArraySkeletonKeyframe mKeyframes;
+//};
+//
+//interface ArraySkeletonAnimatedJoint {
+//    void ArraySkeletonAnimatedJoint();
+//    boolean empty();
+//    long size();
+//    [Ref] SkeletalAnimationAnimatedJoint at(long inIndex);
+//    void push_back([Ref] SkeletalAnimationAnimatedJoint inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface SkeletalAnimation {
+//    void SkeletalAnimation();
+//    float GetDuration();
+//    void ScaleJoints(float inScale);
+//    void Sample(float inTime, [Ref] SkeletonPose ioPose);
+//    [Ref] ArraySkeletonAnimatedJoint GetAnimatedJoints();
+//};
+//
+//interface SkeletonPose {
+//    void SkeletonPose();
+//    void SetSkeleton([Const] Skeleton inSkeleton);
+//    [Const] Skeleton GetSkeleton();
+//    void SetRootOffset([Ref] RVec3 inOffset);
+//    [Value] RVec3 GetRootOffset();
+//    long GetJointCount();
+//    [Ref] SkeletalAnimationJointState GetJoint(long inJoint);
+//    [Ref] ArrayMat44 GetJointMatrices();
+//    [Ref] Mat44 GetJointMatrix(long inJoint);
+//    void CalculateJointMatrices();
+//    void CalculateJointStates();
+//};
+//
+//interface RagdollPart {
+//    attribute TwoBodyConstraintSettings mToParent;
+//};
+//
+//RagdollPart implements BodyCreationSettings;
+//
+//interface ArrayRagdollPart {
+//    void ArrayRagdollPart();
+//    boolean empty();
+//    long size();
+//    [Ref] RagdollPart at(long inIndex);
+//    void push_back([Ref] RagdollPart inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface RagdollAdditionalConstraint {
+//    attribute long[] mBodyIdx;
+//    attribute TwoBodyConstraintSettings mConstraint;
+//};
+//
+//interface ArrayRagdollAdditionalConstraint {
+//    void ArrayRagdollAdditionalConstraint();
+//    boolean empty();
+//    long size();
+//    [Ref] RagdollAdditionalConstraint at(long inIndex);
+//    void push_back([Ref] RagdollAdditionalConstraint inValue);
+//    void reserve(unsigned long inSize);
+//    void resize(unsigned long inSize);
+//    void clear();
+//};
+//
+//interface RagdollSettings {
+//    void RagdollSettings();
+//    boolean Stabilize();
+//    Ragdoll CreateRagdoll(long inCollisionGroup, long inUserData, PhysicsSystem inSystem);
+//    Skeleton GetSkeleton();
+//    void DisableParentChildCollisions([Const] optional Mat44MemRef inJointMatrices, optional float inMinSeparationDistance);
+//    void CalculateBodyIndexToConstraintIndex();
+//    void CalculateConstraintIndexToBodyIdxPair();
+//
+//    attribute Skeleton mSkeleton;
+//    [Value] attribute ArrayRagdollPart mParts;
+//    [Value] attribute ArrayRagdollAdditionalConstraint mAdditionalConstraints;
+//};
+//
+//interface Ragdoll {
+//    void Ragdoll(PhysicsSystem inSystem);
+//    void AddToPhysicsSystem(EActivation inActivationMode, optional boolean inLockBodies);
+//    void RemoveFromPhysicsSystem(optional boolean inLockBodies);
+//    void Activate(optional boolean inLockBodies);
+//    boolean IsActive(optional boolean inLockBodies);
+//    void SetGroupID(long inGroupID, optional boolean inLockBodies);
+//    void SetPose([Const, Ref] SkeletonPose inPose, optional boolean inLockBodies);
+//    void GetPose([Ref] SkeletonPose outPose, optional boolean inLockBodies);
+//    void ResetWarmStart();
+//    void DriveToPoseUsingKinematics([Const, Ref] SkeletonPose inPose, float inDeltaTime, optional boolean inLockBodies);
+//    void DriveToPoseUsingMotors([Const, Ref] SkeletonPose inPose);
+//    void SetLinearAndAngularVelocity([Const, Ref] Vec3 inLinearVelocity, [Const, Ref] Vec3 inAngularVelocity, optional boolean inLockBodies);
+//    void SetLinearVelocity([Const, Ref] Vec3 inLinearVelocity, optional boolean inLockBodies);
+//    void AddLinearVelocity([Const, Ref] Vec3 inLinearVelocity, optional boolean inLockBodies);
+//    void AddImpulse([Const, Ref] Vec3 inImpulse, optional boolean inLockBodies);
+//    void GetRootTransform([Ref] RVec3 outPosition, [Ref] Quat outRotation, optional boolean inLockBodies);
+//    long GetBodyCount();
+//    [Value] BodyID GetBodyID(long inBodyIndex);
+//    [Const, Ref] BodyIDVector GetBodyIDs();
+//    long GetConstraintCount();
+//    [Value] AABox GetWorldSpaceBounds(optional boolean inLockBodies);
+//    [Const] TwoBodyConstraint GetConstraint(long inConstraintIndex);
+//    [Const] RagdollSettings GetRagdollSettings();
+//};
+//
+//interface BroadPhaseLayerInterface {
+//    unsigned long GetNumBroadPhaseLayers();
+//};
+//
+//interface BroadPhaseLayer {
+//    void BroadPhaseLayer(unsigned short inLayer);
+//    unsigned short GetValue();
+//};
+//
+//interface BroadPhaseLayerInterfaceEm {
+//};
+//
+//BroadPhaseLayerInterfaceEm implements BroadPhaseLayerInterface;
+//
+//[JSImplementation="BroadPhaseLayerInterfaceEm"]
+//interface BroadPhaseLayerInterfaceJS {
+//    void BroadPhaseLayerInterfaceJS();
+//    [Const] unsigned long GetNumBroadPhaseLayers();
+//    [Const] unsigned short GetBPLayer(unsigned long inLayer); // Unfortunately the C++ version of GetBroadPhaseLayer is not compatible with JS so we have to use a different name and use an unsigned short instead of a BroadPhaseLayer
+//};
+//
+//interface BroadPhaseLayerInterfaceTable {
+//    void BroadPhaseLayerInterfaceTable(unsigned long inNumObjectLayers, unsigned long inNumBroadPhaseLayers);
+//    void MapObjectToBroadPhaseLayer(unsigned long inObjectLayer, [Const, Ref] BroadPhaseLayer inBroadPhaseLayer);
+//};
+//
+//BroadPhaseLayerInterfaceTable implements BroadPhaseLayerInterface;
+//
+//interface ObjectVsBroadPhaseLayerFilterTable {
+//    void ObjectVsBroadPhaseLayerFilterTable([Const, Ref] BroadPhaseLayerInterface inBroadPhaseLayerInterface, unsigned long inNumBroadPhaseLayers, [Const, Ref] ObjectLayerPairFilter inObjectLayerPairFilter, unsigned long inNumObjectLayers);
+//};
+//
+//ObjectVsBroadPhaseLayerFilterTable implements ObjectVsBroadPhaseLayerFilter;
+//
+//interface ObjectLayerPairFilterTable {
+//    void ObjectLayerPairFilterTable(unsigned long inNumObjectLayers);
+//    unsigned long GetNumObjectLayers();
+//    void DisableCollision(unsigned long inLayer1, unsigned long inLayer2);
+//    void EnableCollision(unsigned long inLayer1, unsigned long inLayer2);
+//};
+//
+//ObjectLayerPairFilterTable implements ObjectLayerPairFilter;
+//
+//interface BroadPhaseLayerInterfaceMask {
+//    void BroadPhaseLayerInterfaceMask(unsigned long inNumBroadPhaseLayers);
+//    void ConfigureLayer([Const, Ref] BroadPhaseLayer inBroadPhaseLayer, unsigned long inGroupsToInclude, unsigned long inGroupsToExclude);
+//};
+//
+//BroadPhaseLayerInterfaceMask implements BroadPhaseLayerInterface;
+//
+//interface ObjectVsBroadPhaseLayerFilterMask {
+//    void ObjectVsBroadPhaseLayerFilterMask([Const, Ref] BroadPhaseLayerInterfaceMask inBroadPhaseLayerInterface);
+//};
+//
+//ObjectVsBroadPhaseLayerFilterMask implements ObjectVsBroadPhaseLayerFilter;
+//
+//interface ObjectLayerPairFilterMask {
+//    void ObjectLayerPairFilterMask();
+//    static unsigned long sGetObjectLayer(unsigned long inGroup, unsigned long inMask);
+//    static unsigned long sGetGroup(unsigned long inObjectLayer);
+//    static unsigned long sGetMask(unsigned long inObjectLayer);
+//};
+//
+//ObjectLayerPairFilterMask implements ObjectLayerPairFilter;
+//
+//interface JoltSettings {
+//    void JoltSettings();
+//
+//    attribute unsigned long mMaxBodies;
+//    attribute unsigned long mMaxBodyPairs;
+//    attribute unsigned long mMaxContactConstraints;
+//    attribute BroadPhaseLayerInterface mBroadPhaseLayerInterface;
+//    attribute ObjectVsBroadPhaseLayerFilter mObjectVsBroadPhaseLayerFilter;
+//    attribute ObjectLayerPairFilter mObjectLayerPairFilter;
+//};
+//
+//interface JoltInterface {
+//    void JoltInterface([Const, Ref] JoltSettings inSettings);
+//    void Step(float inDeltaTime, long inCollisionSteps);
+//    PhysicsSystem GetPhysicsSystem();
+//    TempAllocator GetTempAllocator();
+//    ObjectLayerPairFilter GetObjectLayerPairFilter();
+//    ObjectVsBroadPhaseLayerFilter GetObjectVsBroadPhaseLayerFilter();
+//    static unsigned long long sGetTotalMemory();
+//    static unsigned long long sGetFreeMemory();
+//};
