@@ -255,9 +255,9 @@ interface Vec3 {
     [Value] static Vec3 sMax([Const, Ref] Vec3 inLHS, [Const, Ref] Vec3 inRHS);
     [Value] static Vec3 sClamp([Const, Ref] Vec3 inValue, [Const, Ref] Vec3 inMin, [Const, Ref] Vec3 inMax);
     [Value] static Vec3 sUnitSpherical(float inTheta, float inPhi);
-    [Operator="[]"] float GetComponent(unsigned long inCoordinate);
-    [Operator="=="] boolean Equals([Const, Ref] Vec3 inV);
-    [Operator="!="] boolean NotEquals([Const, Ref] Vec3 inV);
+//    [Operator="[]"] float GetComponent(unsigned long inCoordinate);
+//    [Operator="=="] boolean Equals([Const, Ref] Vec3 inV);
+//    [Operator="!="] boolean NotEquals([Const, Ref] Vec3 inV);
     float LengthSq();
     float Length();
     [Value] Vec3 Normalized();
@@ -280,10 +280,10 @@ interface Vec3 {
     [Const, Value] Vec3 Reciprocal();
     [Const, Value] Vec3 Cross([Const, Ref] Vec3 inRHS);
     float Dot([Const, Ref] Vec3 inRHS);
-    [Operator="+=", Ref] Vec3 Add([Const, Ref] Vec3 inV);
-    [Operator="-=", Ref] Vec3 Sub([Const, Ref] Vec3 inV);
-    [Operator="*=", Ref] Vec3 Mul(float inV);
-    [Operator="/=", Ref] Vec3 Div(float inV);
+//    [Operator="+=", Ref] Vec3 Add([Const, Ref] Vec3 inV);
+//    [Operator="-=", Ref] Vec3 Sub([Const, Ref] Vec3 inV);
+//    [Operator="*=", Ref] Vec3 Mul(float inV);
+//    [Operator="/=", Ref] Vec3 Div(float inV);
     float ReduceMin();
     float ReduceMax();
     [Const, Value] Vec3 Sqrt();
