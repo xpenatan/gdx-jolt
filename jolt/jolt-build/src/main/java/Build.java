@@ -135,6 +135,7 @@ public class Build {
 
         // Compile glue code and link
         EmscriptenTarget linkTarget = new EmscriptenTarget(idlReader);
+        linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt");
         linkTarget.headerDirs.add("-include" + libBuildCPPPath + "/src/jolt/JoltCustom.h");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/emscripten/jolt.a");
         multiTarget.add(linkTarget);
