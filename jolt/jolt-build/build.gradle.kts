@@ -48,7 +48,7 @@ tasks.register<JavaExec>("build_project") {
     group = "jolt"
     description = "Generate native project"
     mainClass.set(mainClassName)
-    args = mutableListOf("teavm", "windows64")
+    args = mutableListOf()
     classpath = sourceSets["main"].runtimeClasspath
 }
 
