@@ -34,8 +34,9 @@ jobs:
           java-version: 11
 
       - name: Set up MinGW
-        run: |
-          sudo apt install -y --force-yes mingw-w64 lib32z1
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
 
       - name: Change wrapper permissions
         run: chmod +x ./gradlew
