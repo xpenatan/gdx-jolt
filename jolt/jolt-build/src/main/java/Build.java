@@ -113,7 +113,7 @@ public class Build {
         glueTarget.addJNIHeaders();
         glueTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         if(isArm) {
-            glueTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/arm/libjolt4.a");
+            glueTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/arm/libjolt64.a");
         }
         else {
             glueTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/libjolt64.a");
@@ -157,6 +157,10 @@ public class Build {
         androidTarget.headerDirs.add(libBuildCPPPath + "/src/jolt");
         androidTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
         androidTarget.cppFlags.add("-Wno-error=format-security");
+        androidTarget.cppFlags.add("-std=c++17");
+        int i = Runtime.getRuntime().availableProcessors();
+        androidTarget.customArgs.add("-j" + i );
+
         multiTarget.add(androidTarget);
         return multiTarget;
     }
