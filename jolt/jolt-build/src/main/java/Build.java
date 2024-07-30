@@ -105,6 +105,7 @@ public class Build {
         macTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         macTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
         macTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
+        macTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         multiTarget.add(macTarget);
 
         // Compile glue code and link
