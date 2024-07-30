@@ -84,240 +84,240 @@ using namespace std;
 //static_assert(sizeof(ObjectLayer) == 4);
 //
 //// Types that need to be exposed to JavaScript
-//using JPHString = String;
+using JPHString = String;
 using ArrayVec3 = Array<Vec3>;
-//using ArrayFloat = Array<float>;
-//using ArrayUint = Array<uint>;
-//using ArrayUint8 = Array<uint8>;
+using ArrayFloat = Array<float>;
+using ArrayUint = Array<uint>;
+using ArrayUint8 = Array<uint8>;
 using Vec3MemRef = Vec3;
-//using QuatMemRef = Quat;
-//using ArrayQuat = Array<Quat>;
-//using Mat44MemRef = Mat44;
-//using ArrayMat44 = Array<Mat44>;
-//using FloatMemRef = float;
-//using UintMemRef = uint;
-//using Uint8MemRef = uint8;
-//using SoftBodySharedSettingsVertex = SoftBodySharedSettings::Vertex;
-//using SoftBodySharedSettingsFace = SoftBodySharedSettings::Face;
-//using SoftBodySharedSettingsEdge = SoftBodySharedSettings::Edge;
-//using SoftBodySharedSettingsDihedralBend = SoftBodySharedSettings::DihedralBend;
-//using SoftBodySharedSettingsVolume = SoftBodySharedSettings::Volume;
-//using SoftBodySharedSettingsInvBind = SoftBodySharedSettings::InvBind;
-//using SoftBodySharedSettingsSkinWeight = SoftBodySharedSettings::SkinWeight;
-//using SoftBodySharedSettingsSkinned = SoftBodySharedSettings::Skinned;
-//using SoftBodySharedSettingsLRA = SoftBodySharedSettings::LRA;
-//using SoftBodySharedSettingsVertexAttributes = SoftBodySharedSettings::VertexAttributes;
-//using CollideShapeResultFace = CollideShapeResult::Face;
-//using ArraySoftBodySharedSettingsVertex = Array<SoftBodySharedSettingsVertex>;
-//using ArraySoftBodySharedSettingsFace = Array<SoftBodySharedSettingsFace>;
-//using ArraySoftBodySharedSettingsEdge = Array<SoftBodySharedSettingsEdge>;
-//using ArraySoftBodySharedSettingsDihedralBend = Array<SoftBodySharedSettingsDihedralBend>;
-//using ArraySoftBodySharedSettingsVolume = Array<SoftBodySharedSettingsVolume>;
-//using ArraySoftBodySharedSettingsInvBind = Array<SoftBodySharedSettingsInvBind>;
-//using ArraySoftBodySharedSettingsSkinWeight = Array<SoftBodySharedSettingsSkinWeight>;
-//using ArraySoftBodySharedSettingsSkinned = Array<SoftBodySharedSettingsSkinned>;
-//using ArraySoftBodySharedSettingsLRA = Array<SoftBodySharedSettingsLRA>;
-//using ArraySoftBodySharedSettingsVertexAttributes = Array<SoftBodySharedSettingsVertexAttributes>;
-//using ArraySoftBodyVertex = Array<SoftBodyVertex>;
-//using EGroundState = CharacterBase::EGroundState;
-//using Vector2 = Vector<2>;
-//using ArrayRayCastResult = Array<RayCastResult>;
-//using CastRayAllHitCollisionCollector = AllHitCollisionCollector<CastRayCollector>;
-//using CastRayClosestHitCollisionCollector = ClosestHitCollisionCollector<CastRayCollector>;
-//using CastRayAnyHitCollisionCollector = AnyHitCollisionCollector<CastRayCollector>;
-//using ArrayCollidePointResult = Array<CollidePointResult>;
-//using CollidePointAllHitCollisionCollector = AllHitCollisionCollector<CollidePointCollector>;
-//using CollidePointClosestHitCollisionCollector = ClosestHitCollisionCollector<CollidePointCollector>;
-//using CollidePointAnyHitCollisionCollector = AnyHitCollisionCollector<CollidePointCollector>;
-//using ArrayCollideShapeResult = Array<CollideShapeResult>;
-//using CollideShapeAllHitCollisionCollector = AllHitCollisionCollector<CollideShapeCollector>;
-//using CollideShapeClosestHitCollisionCollector = ClosestHitCollisionCollector<CollideShapeCollector>;
-//using CollideShapeAnyHitCollisionCollector = AnyHitCollisionCollector<CollideShapeCollector>;
-//using ArrayShapeCastResult = Array<ShapeCastResult>;
-//using CastShapeAllHitCollisionCollector = AllHitCollisionCollector<CastShapeCollector>;
-//using CastShapeClosestHitCollisionCollector = ClosestHitCollisionCollector<CastShapeCollector>;
-//using CastShapeAnyHitCollisionCollector = AnyHitCollisionCollector<CastShapeCollector>;
-//using ArrayWheelSettings = Array<Ref<WheelSettings>>;
-//using ArrayVehicleAntiRollBar = Array<VehicleAntiRollBar>;
-//using ArrayVehicleDifferentialSettings = Array<VehicleDifferentialSettings>;
-//using SkeletalAnimationJointState = SkeletalAnimation::JointState;
-//using SkeletalAnimationKeyframe = SkeletalAnimation::Keyframe;
-//using SkeletalAnimationAnimatedJoint = SkeletalAnimation::AnimatedJoint;
-//using ArraySkeletonKeyframe = Array<SkeletalAnimationKeyframe>;
-//using ArraySkeletonAnimatedJoint = Array<SkeletalAnimationAnimatedJoint>;
-//using RagdollPart = RagdollSettings::Part;
-//using RagdollAdditionalConstraint = RagdollSettings::AdditionalConstraint;
-//using ArrayRagdollPart = Array<RagdollPart>;
-//using ArrayRagdollAdditionalConstraint = Array<RagdollAdditionalConstraint>;
-//using CompoundShapeSubShape = CompoundShape::SubShape;
-//
-//// Alias for EBodyType values to avoid clashes
-//constexpr EBodyType EBodyType_RigidBody = EBodyType::RigidBody;
-//constexpr EBodyType EBodyType_SoftBody = EBodyType::SoftBody;
-//
-//// Alias for EMotionType values to avoid clashes
-//constexpr EMotionType EMotionType_Static = EMotionType::Static;
-//constexpr EMotionType EMotionType_Kinematic = EMotionType::Kinematic;
-//constexpr EMotionType EMotionType_Dynamic = EMotionType::Dynamic;
-//
-//// Alias for EMotionQuality values to avoid clashes
-//constexpr EMotionQuality EMotionQuality_Discrete = EMotionQuality::Discrete;
-//constexpr EMotionQuality EMotionQuality_LinearCast = EMotionQuality::LinearCast;
-//
-//// Alias for EActivation values to avoid clashes
-//constexpr EActivation EActivation_Activate = EActivation::Activate;
-//constexpr EActivation EActivation_DontActivate = EActivation::DontActivate;
-//
-//// Alias for EShapeType values to avoid clashes
-//constexpr EShapeType EShapeType_Convex = EShapeType::Convex;
-//constexpr EShapeType EShapeType_Compound = EShapeType::Compound;
-//constexpr EShapeType EShapeType_Decorated = EShapeType::Decorated;
-//constexpr EShapeType EShapeType_Mesh = EShapeType::Mesh;
-//constexpr EShapeType EShapeType_HeightField = EShapeType::HeightField;
-//
-//// Alias for EShapeSubType values to avoid clashes
-//constexpr EShapeSubType EShapeSubType_Sphere = EShapeSubType::Sphere;
-//constexpr EShapeSubType EShapeSubType_Box = EShapeSubType::Box;
-//constexpr EShapeSubType EShapeSubType_Capsule = EShapeSubType::Capsule;
-//constexpr EShapeSubType EShapeSubType_TaperedCapsule = EShapeSubType::TaperedCapsule;
-//constexpr EShapeSubType EShapeSubType_Cylinder = EShapeSubType::Cylinder;
-//constexpr EShapeSubType EShapeSubType_ConvexHull = EShapeSubType::ConvexHull;
-//constexpr EShapeSubType EShapeSubType_StaticCompound = EShapeSubType::StaticCompound;
-//constexpr EShapeSubType EShapeSubType_MutableCompound = EShapeSubType::MutableCompound;
-//constexpr EShapeSubType EShapeSubType_RotatedTranslated = EShapeSubType::RotatedTranslated;
-//constexpr EShapeSubType EShapeSubType_Scaled = EShapeSubType::Scaled;
-//constexpr EShapeSubType EShapeSubType_OffsetCenterOfMass = EShapeSubType::OffsetCenterOfMass;
-//constexpr EShapeSubType EShapeSubType_Mesh = EShapeSubType::Mesh;
-//constexpr EShapeSubType EShapeSubType_HeightField = EShapeSubType::HeightField;
-//
-//// Alias for EConstraintSpace values to avoid clashes
-//constexpr EConstraintSpace EConstraintSpace_LocalToBodyCOM = EConstraintSpace::LocalToBodyCOM;
-//constexpr EConstraintSpace EConstraintSpace_WorldSpace = EConstraintSpace::WorldSpace;
-//
-//// Alias for ESpringMode values to avoid clashes
-//constexpr ESpringMode ESpringMode_FrequencyAndDamping = ESpringMode::FrequencyAndDamping;
-//constexpr ESpringMode ESpringMode_StiffnessAndDamping = ESpringMode::StiffnessAndDamping;
-//
-//// Alias for EOverrideMassProperties values to avoid clashes
-//constexpr EOverrideMassProperties EOverrideMassProperties_CalculateMassAndInertia = EOverrideMassProperties::CalculateMassAndInertia;
-//constexpr EOverrideMassProperties EOverrideMassProperties_CalculateInertia = EOverrideMassProperties::CalculateInertia;
-//constexpr EOverrideMassProperties EOverrideMassProperties_MassAndInertiaProvided = EOverrideMassProperties::MassAndInertiaProvided;
-//
-//// Alias for EAllowedDOFs values to avoid clashes
-//constexpr EAllowedDOFs EAllowedDOFs_TranslationX = EAllowedDOFs::TranslationX;
-//constexpr EAllowedDOFs EAllowedDOFs_TranslationY = EAllowedDOFs::TranslationY;
-//constexpr EAllowedDOFs EAllowedDOFs_TranslationZ = EAllowedDOFs::TranslationZ;
-//constexpr EAllowedDOFs EAllowedDOFs_RotationX = EAllowedDOFs::RotationX;
-//constexpr EAllowedDOFs EAllowedDOFs_RotationY = EAllowedDOFs::RotationY;
-//constexpr EAllowedDOFs EAllowedDOFs_RotationZ = EAllowedDOFs::RotationZ;
-//constexpr EAllowedDOFs EAllowedDOFs_Plane2D = EAllowedDOFs::Plane2D;
-//constexpr EAllowedDOFs EAllowedDOFs_All = EAllowedDOFs::All;
-//
-//// Alias for EStateRecorderState values to avoid clashes
-//constexpr EStateRecorderState EStateRecorderState_None = EStateRecorderState::None;
-//constexpr EStateRecorderState EStateRecorderState_Global = EStateRecorderState::Global;
-//constexpr EStateRecorderState EStateRecorderState_Bodies = EStateRecorderState::Bodies;
-//constexpr EStateRecorderState EStateRecorderState_Contacts = EStateRecorderState::Contacts;
-//constexpr EStateRecorderState EStateRecorderState_Constraints = EStateRecorderState::Constraints;
-//constexpr EStateRecorderState EStateRecorderState_All = EStateRecorderState::All;
-//
-//// Alias for EBackFaceMode values to avoid clashes
-//constexpr EBackFaceMode EBackFaceMode_IgnoreBackFaces = EBackFaceMode::IgnoreBackFaces;
-//constexpr EBackFaceMode EBackFaceMode_CollideWithBackFaces = EBackFaceMode::CollideWithBackFaces;
-//
-//// Alias for EGroundState values to avoid clashes
-//constexpr EGroundState EGroundState_OnGround = EGroundState::OnGround;
-//constexpr EGroundState EGroundState_OnSteepGround = EGroundState::OnSteepGround;
-//constexpr EGroundState EGroundState_NotSupported = EGroundState::NotSupported;
-//constexpr EGroundState EGroundState_InAir = EGroundState::InAir;
-//
-//// Alias for ValidateResult values to avoid clashes
-//constexpr ValidateResult ValidateResult_AcceptAllContactsForThisBodyPair = ValidateResult::AcceptAllContactsForThisBodyPair;
-//constexpr ValidateResult ValidateResult_AcceptContact = ValidateResult::AcceptContact;
-//constexpr ValidateResult ValidateResult_RejectContact = ValidateResult::RejectContact;
-//constexpr ValidateResult ValidateResult_RejectAllContactsForThisBodyPair = ValidateResult::RejectAllContactsForThisBodyPair;
-//
-//// Alias for SoftBodyValidateResult values to avoid clashes
-//constexpr SoftBodyValidateResult SoftBodyValidateResult_AcceptContact = SoftBodyValidateResult::AcceptContact;
-//constexpr SoftBodyValidateResult SoftBodyValidateResult_RejectContact = SoftBodyValidateResult::RejectContact;
-//
-//// Alias for EActiveEdgeMode values to avoid clashes
-//constexpr EActiveEdgeMode EActiveEdgeMode_CollideOnlyWithActive = EActiveEdgeMode::CollideOnlyWithActive;
-//constexpr EActiveEdgeMode EActiveEdgeMode_CollideWithAll = EActiveEdgeMode::CollideWithAll;
-//
-//// Alias for ECollectFacesMode values to avoid clashes
-//constexpr ECollectFacesMode ECollectFacesMode_CollectFaces = ECollectFacesMode::CollectFaces;
-//constexpr ECollectFacesMode ECollectFacesMode_NoFaces = ECollectFacesMode::NoFaces;
-//
-//// Alias for EConstraintType values to avoid clashes
-//constexpr EConstraintType EConstraintType_Constraint = EConstraintType::Constraint;
-//constexpr EConstraintType EConstraintType_TwoBodyConstraint = EConstraintType::TwoBodyConstraint;
-//
-//// Alias for EConstraintSubType values to avoid clashes
-//constexpr EConstraintSubType EConstraintSubType_Fixed = EConstraintSubType::Fixed;
-//constexpr EConstraintSubType EConstraintSubType_Point = EConstraintSubType::Point;
-//constexpr EConstraintSubType EConstraintSubType_Hinge = EConstraintSubType::Hinge;
-//constexpr EConstraintSubType EConstraintSubType_Slider = EConstraintSubType::Slider;
-//constexpr EConstraintSubType EConstraintSubType_Distance = EConstraintSubType::Distance;
-//constexpr EConstraintSubType EConstraintSubType_Cone = EConstraintSubType::Cone;
-//constexpr EConstraintSubType EConstraintSubType_SwingTwist = EConstraintSubType::SwingTwist;
-//constexpr EConstraintSubType EConstraintSubType_SixDOF = EConstraintSubType::SixDOF;
-//constexpr EConstraintSubType EConstraintSubType_Path = EConstraintSubType::Path;
-//constexpr EConstraintSubType EConstraintSubType_Vehicle = EConstraintSubType::Vehicle;
-//constexpr EConstraintSubType EConstraintSubType_RackAndPinion = EConstraintSubType::RackAndPinion;
-//constexpr EConstraintSubType EConstraintSubType_Gear = EConstraintSubType::Gear;
-//constexpr EConstraintSubType EConstraintSubType_Pulley = EConstraintSubType::Pulley;
-//
-///// Alias for EPathRotationConstraintType to avoid clash
-//constexpr EPathRotationConstraintType EPathRotationConstraintType_Free = EPathRotationConstraintType::Free;
-//constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainAroundTangent = EPathRotationConstraintType::ConstrainAroundTangent;
-//constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainAroundNormal = EPathRotationConstraintType::ConstrainAroundNormal;
-//constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainAroundBinormal = EPathRotationConstraintType::ConstrainAroundBinormal;
-//constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainToPath = EPathRotationConstraintType::ConstrainToPath;
-//constexpr EPathRotationConstraintType EPathRotationConstraintType_FullyConstrained = EPathRotationConstraintType::FullyConstrained;
-//
-//// Alias for SixDOFConstraintSettings::EAxis to avoid clashes
-//using SixDOFConstraintSettings_EAxis = SixDOFConstraintSettings::EAxis;
-//constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_TranslationX = SixDOFConstraintSettings_EAxis::TranslationX;
-//constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_TranslationY = SixDOFConstraintSettings_EAxis::TranslationY;
-//constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_TranslationZ = SixDOFConstraintSettings_EAxis::TranslationZ;
-//constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_RotationX = SixDOFConstraintSettings_EAxis::RotationX;
-//constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_RotationY = SixDOFConstraintSettings_EAxis::RotationY;
-//constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_RotationZ = SixDOFConstraintSettings_EAxis::RotationZ;
-//
-//// Alias for EMotorState values to avoid clashes
-//constexpr EMotorState EMotorState_Off = EMotorState::Off;
-//constexpr EMotorState EMotorState_Velocity = EMotorState::Velocity;
-//constexpr EMotorState EMotorState_Position = EMotorState::Position;
-//
-//// Alias for ETransmissionMode values to avoid clashes
-//constexpr ETransmissionMode ETransmissionMode_Auto = ETransmissionMode::Auto;
-//constexpr ETransmissionMode ETransmissionMode_Manual = ETransmissionMode::Manual;
-//
-//// Defining ETireFrictionDirection since we cannot pass references to float
-//enum ETireFrictionDirection
-//{
-//    ETireFrictionDirection_Longitudinal,
-//    ETireFrictionDirection_Lateral
-//};
-//
-//// Alias for ESwingType values to avoid clashes
-//constexpr ESwingType ESwingType_Cone = ESwingType::Cone;
-//constexpr ESwingType ESwingType_Pyramid = ESwingType::Pyramid;
-//
-//// Alias for EBendType values to avoid clashes
-//using SoftBodySharedSettings_EBendType = SoftBodySharedSettings::EBendType;
-//constexpr SoftBodySharedSettings_EBendType SoftBodySharedSettings_EBendType_None = SoftBodySharedSettings::EBendType::None;
-//constexpr SoftBodySharedSettings_EBendType SoftBodySharedSettings_EBendType_Distance = SoftBodySharedSettings::EBendType::Distance;
-//constexpr SoftBodySharedSettings_EBendType SoftBodySharedSettings_EBendType_Dihedral = SoftBodySharedSettings::EBendType::Dihedral;
-//
-//// Alias for ELRAType values to avoid clashes
-//using SoftBodySharedSettings_ELRAType = SoftBodySharedSettings::ELRAType;
-//constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_None = SoftBodySharedSettings::ELRAType::None;
-//constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_EuclideanDistance = SoftBodySharedSettings::ELRAType::EuclideanDistance;
-//constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_GeodesicDistance = SoftBodySharedSettings::ELRAType::GeodesicDistance;
-//
-//// Helper class to store information about the memory layout of SoftBodyVertex
+using QuatMemRef = Quat;
+using ArrayQuat = Array<Quat>;
+using Mat44MemRef = Mat44;
+using ArrayMat44 = Array<Mat44>;
+using FloatMemRef = float;
+using UintMemRef = uint;
+using Uint8MemRef = uint8;
+using SoftBodySharedSettingsVertex = SoftBodySharedSettings::Vertex;
+using SoftBodySharedSettingsFace = SoftBodySharedSettings::Face;
+using SoftBodySharedSettingsEdge = SoftBodySharedSettings::Edge;
+using SoftBodySharedSettingsDihedralBend = SoftBodySharedSettings::DihedralBend;
+using SoftBodySharedSettingsVolume = SoftBodySharedSettings::Volume;
+using SoftBodySharedSettingsInvBind = SoftBodySharedSettings::InvBind;
+using SoftBodySharedSettingsSkinWeight = SoftBodySharedSettings::SkinWeight;
+using SoftBodySharedSettingsSkinned = SoftBodySharedSettings::Skinned;
+using SoftBodySharedSettingsLRA = SoftBodySharedSettings::LRA;
+using SoftBodySharedSettingsVertexAttributes = SoftBodySharedSettings::VertexAttributes;
+using CollideShapeResultFace = CollideShapeResult::Face;
+using ArraySoftBodySharedSettingsVertex = Array<SoftBodySharedSettingsVertex>;
+using ArraySoftBodySharedSettingsFace = Array<SoftBodySharedSettingsFace>;
+using ArraySoftBodySharedSettingsEdge = Array<SoftBodySharedSettingsEdge>;
+using ArraySoftBodySharedSettingsDihedralBend = Array<SoftBodySharedSettingsDihedralBend>;
+using ArraySoftBodySharedSettingsVolume = Array<SoftBodySharedSettingsVolume>;
+using ArraySoftBodySharedSettingsInvBind = Array<SoftBodySharedSettingsInvBind>;
+using ArraySoftBodySharedSettingsSkinWeight = Array<SoftBodySharedSettingsSkinWeight>;
+using ArraySoftBodySharedSettingsSkinned = Array<SoftBodySharedSettingsSkinned>;
+using ArraySoftBodySharedSettingsLRA = Array<SoftBodySharedSettingsLRA>;
+using ArraySoftBodySharedSettingsVertexAttributes = Array<SoftBodySharedSettingsVertexAttributes>;
+using ArraySoftBodyVertex = Array<SoftBodyVertex>;
+using EGroundState = CharacterBase::EGroundState;
+using Vector2 = Vector<2>;
+using ArrayRayCastResult = Array<RayCastResult>;
+using CastRayAllHitCollisionCollector = AllHitCollisionCollector<CastRayCollector>;
+using CastRayClosestHitCollisionCollector = ClosestHitCollisionCollector<CastRayCollector>;
+using CastRayAnyHitCollisionCollector = AnyHitCollisionCollector<CastRayCollector>;
+using ArrayCollidePointResult = Array<CollidePointResult>;
+using CollidePointAllHitCollisionCollector = AllHitCollisionCollector<CollidePointCollector>;
+using CollidePointClosestHitCollisionCollector = ClosestHitCollisionCollector<CollidePointCollector>;
+using CollidePointAnyHitCollisionCollector = AnyHitCollisionCollector<CollidePointCollector>;
+using ArrayCollideShapeResult = Array<CollideShapeResult>;
+using CollideShapeAllHitCollisionCollector = AllHitCollisionCollector<CollideShapeCollector>;
+using CollideShapeClosestHitCollisionCollector = ClosestHitCollisionCollector<CollideShapeCollector>;
+using CollideShapeAnyHitCollisionCollector = AnyHitCollisionCollector<CollideShapeCollector>;
+using ArrayShapeCastResult = Array<ShapeCastResult>;
+using CastShapeAllHitCollisionCollector = AllHitCollisionCollector<CastShapeCollector>;
+using CastShapeClosestHitCollisionCollector = ClosestHitCollisionCollector<CastShapeCollector>;
+using CastShapeAnyHitCollisionCollector = AnyHitCollisionCollector<CastShapeCollector>;
+using ArrayWheelSettings = Array<Ref<WheelSettings>>;
+using ArrayVehicleAntiRollBar = Array<VehicleAntiRollBar>;
+using ArrayVehicleDifferentialSettings = Array<VehicleDifferentialSettings>;
+using SkeletalAnimationJointState = SkeletalAnimation::JointState;
+using SkeletalAnimationKeyframe = SkeletalAnimation::Keyframe;
+using SkeletalAnimationAnimatedJoint = SkeletalAnimation::AnimatedJoint;
+using ArraySkeletonKeyframe = Array<SkeletalAnimationKeyframe>;
+using ArraySkeletonAnimatedJoint = Array<SkeletalAnimationAnimatedJoint>;
+using RagdollPart = RagdollSettings::Part;
+using RagdollAdditionalConstraint = RagdollSettings::AdditionalConstraint;
+using ArrayRagdollPart = Array<RagdollPart>;
+using ArrayRagdollAdditionalConstraint = Array<RagdollAdditionalConstraint>;
+using CompoundShapeSubShape = CompoundShape::SubShape;
+
+// Alias for EBodyType values to avoid clashes
+constexpr EBodyType EBodyType_RigidBody = EBodyType::RigidBody;
+constexpr EBodyType EBodyType_SoftBody = EBodyType::SoftBody;
+
+// Alias for EMotionType values to avoid clashes
+constexpr EMotionType EMotionType_Static = EMotionType::Static;
+constexpr EMotionType EMotionType_Kinematic = EMotionType::Kinematic;
+constexpr EMotionType EMotionType_Dynamic = EMotionType::Dynamic;
+
+// Alias for EMotionQuality values to avoid clashes
+constexpr EMotionQuality EMotionQuality_Discrete = EMotionQuality::Discrete;
+constexpr EMotionQuality EMotionQuality_LinearCast = EMotionQuality::LinearCast;
+
+// Alias for EActivation values to avoid clashes
+constexpr EActivation EActivation_Activate = EActivation::Activate;
+constexpr EActivation EActivation_DontActivate = EActivation::DontActivate;
+
+// Alias for EShapeType values to avoid clashes
+constexpr EShapeType EShapeType_Convex = EShapeType::Convex;
+constexpr EShapeType EShapeType_Compound = EShapeType::Compound;
+constexpr EShapeType EShapeType_Decorated = EShapeType::Decorated;
+constexpr EShapeType EShapeType_Mesh = EShapeType::Mesh;
+constexpr EShapeType EShapeType_HeightField = EShapeType::HeightField;
+
+// Alias for EShapeSubType values to avoid clashes
+constexpr EShapeSubType EShapeSubType_Sphere = EShapeSubType::Sphere;
+constexpr EShapeSubType EShapeSubType_Box = EShapeSubType::Box;
+constexpr EShapeSubType EShapeSubType_Capsule = EShapeSubType::Capsule;
+constexpr EShapeSubType EShapeSubType_TaperedCapsule = EShapeSubType::TaperedCapsule;
+constexpr EShapeSubType EShapeSubType_Cylinder = EShapeSubType::Cylinder;
+constexpr EShapeSubType EShapeSubType_ConvexHull = EShapeSubType::ConvexHull;
+constexpr EShapeSubType EShapeSubType_StaticCompound = EShapeSubType::StaticCompound;
+constexpr EShapeSubType EShapeSubType_MutableCompound = EShapeSubType::MutableCompound;
+constexpr EShapeSubType EShapeSubType_RotatedTranslated = EShapeSubType::RotatedTranslated;
+constexpr EShapeSubType EShapeSubType_Scaled = EShapeSubType::Scaled;
+constexpr EShapeSubType EShapeSubType_OffsetCenterOfMass = EShapeSubType::OffsetCenterOfMass;
+constexpr EShapeSubType EShapeSubType_Mesh = EShapeSubType::Mesh;
+constexpr EShapeSubType EShapeSubType_HeightField = EShapeSubType::HeightField;
+
+// Alias for EConstraintSpace values to avoid clashes
+constexpr EConstraintSpace EConstraintSpace_LocalToBodyCOM = EConstraintSpace::LocalToBodyCOM;
+constexpr EConstraintSpace EConstraintSpace_WorldSpace = EConstraintSpace::WorldSpace;
+
+// Alias for ESpringMode values to avoid clashes
+constexpr ESpringMode ESpringMode_FrequencyAndDamping = ESpringMode::FrequencyAndDamping;
+constexpr ESpringMode ESpringMode_StiffnessAndDamping = ESpringMode::StiffnessAndDamping;
+
+// Alias for EOverrideMassProperties values to avoid clashes
+constexpr EOverrideMassProperties EOverrideMassProperties_CalculateMassAndInertia = EOverrideMassProperties::CalculateMassAndInertia;
+constexpr EOverrideMassProperties EOverrideMassProperties_CalculateInertia = EOverrideMassProperties::CalculateInertia;
+constexpr EOverrideMassProperties EOverrideMassProperties_MassAndInertiaProvided = EOverrideMassProperties::MassAndInertiaProvided;
+
+// Alias for EAllowedDOFs values to avoid clashes
+constexpr EAllowedDOFs EAllowedDOFs_TranslationX = EAllowedDOFs::TranslationX;
+constexpr EAllowedDOFs EAllowedDOFs_TranslationY = EAllowedDOFs::TranslationY;
+constexpr EAllowedDOFs EAllowedDOFs_TranslationZ = EAllowedDOFs::TranslationZ;
+constexpr EAllowedDOFs EAllowedDOFs_RotationX = EAllowedDOFs::RotationX;
+constexpr EAllowedDOFs EAllowedDOFs_RotationY = EAllowedDOFs::RotationY;
+constexpr EAllowedDOFs EAllowedDOFs_RotationZ = EAllowedDOFs::RotationZ;
+constexpr EAllowedDOFs EAllowedDOFs_Plane2D = EAllowedDOFs::Plane2D;
+constexpr EAllowedDOFs EAllowedDOFs_All = EAllowedDOFs::All;
+
+// Alias for EStateRecorderState values to avoid clashes
+constexpr EStateRecorderState EStateRecorderState_None = EStateRecorderState::None;
+constexpr EStateRecorderState EStateRecorderState_Global = EStateRecorderState::Global;
+constexpr EStateRecorderState EStateRecorderState_Bodies = EStateRecorderState::Bodies;
+constexpr EStateRecorderState EStateRecorderState_Contacts = EStateRecorderState::Contacts;
+constexpr EStateRecorderState EStateRecorderState_Constraints = EStateRecorderState::Constraints;
+constexpr EStateRecorderState EStateRecorderState_All = EStateRecorderState::All;
+
+// Alias for EBackFaceMode values to avoid clashes
+constexpr EBackFaceMode EBackFaceMode_IgnoreBackFaces = EBackFaceMode::IgnoreBackFaces;
+constexpr EBackFaceMode EBackFaceMode_CollideWithBackFaces = EBackFaceMode::CollideWithBackFaces;
+
+// Alias for EGroundState values to avoid clashes
+constexpr EGroundState EGroundState_OnGround = EGroundState::OnGround;
+constexpr EGroundState EGroundState_OnSteepGround = EGroundState::OnSteepGround;
+constexpr EGroundState EGroundState_NotSupported = EGroundState::NotSupported;
+constexpr EGroundState EGroundState_InAir = EGroundState::InAir;
+
+// Alias for ValidateResult values to avoid clashes
+constexpr ValidateResult ValidateResult_AcceptAllContactsForThisBodyPair = ValidateResult::AcceptAllContactsForThisBodyPair;
+constexpr ValidateResult ValidateResult_AcceptContact = ValidateResult::AcceptContact;
+constexpr ValidateResult ValidateResult_RejectContact = ValidateResult::RejectContact;
+constexpr ValidateResult ValidateResult_RejectAllContactsForThisBodyPair = ValidateResult::RejectAllContactsForThisBodyPair;
+
+// Alias for SoftBodyValidateResult values to avoid clashes
+constexpr SoftBodyValidateResult SoftBodyValidateResult_AcceptContact = SoftBodyValidateResult::AcceptContact;
+constexpr SoftBodyValidateResult SoftBodyValidateResult_RejectContact = SoftBodyValidateResult::RejectContact;
+
+// Alias for EActiveEdgeMode values to avoid clashes
+constexpr EActiveEdgeMode EActiveEdgeMode_CollideOnlyWithActive = EActiveEdgeMode::CollideOnlyWithActive;
+constexpr EActiveEdgeMode EActiveEdgeMode_CollideWithAll = EActiveEdgeMode::CollideWithAll;
+
+// Alias for ECollectFacesMode values to avoid clashes
+constexpr ECollectFacesMode ECollectFacesMode_CollectFaces = ECollectFacesMode::CollectFaces;
+constexpr ECollectFacesMode ECollectFacesMode_NoFaces = ECollectFacesMode::NoFaces;
+
+// Alias for EConstraintType values to avoid clashes
+constexpr EConstraintType EConstraintType_Constraint = EConstraintType::Constraint;
+constexpr EConstraintType EConstraintType_TwoBodyConstraint = EConstraintType::TwoBodyConstraint;
+
+// Alias for EConstraintSubType values to avoid clashes
+constexpr EConstraintSubType EConstraintSubType_Fixed = EConstraintSubType::Fixed;
+constexpr EConstraintSubType EConstraintSubType_Point = EConstraintSubType::Point;
+constexpr EConstraintSubType EConstraintSubType_Hinge = EConstraintSubType::Hinge;
+constexpr EConstraintSubType EConstraintSubType_Slider = EConstraintSubType::Slider;
+constexpr EConstraintSubType EConstraintSubType_Distance = EConstraintSubType::Distance;
+constexpr EConstraintSubType EConstraintSubType_Cone = EConstraintSubType::Cone;
+constexpr EConstraintSubType EConstraintSubType_SwingTwist = EConstraintSubType::SwingTwist;
+constexpr EConstraintSubType EConstraintSubType_SixDOF = EConstraintSubType::SixDOF;
+constexpr EConstraintSubType EConstraintSubType_Path = EConstraintSubType::Path;
+constexpr EConstraintSubType EConstraintSubType_Vehicle = EConstraintSubType::Vehicle;
+constexpr EConstraintSubType EConstraintSubType_RackAndPinion = EConstraintSubType::RackAndPinion;
+constexpr EConstraintSubType EConstraintSubType_Gear = EConstraintSubType::Gear;
+constexpr EConstraintSubType EConstraintSubType_Pulley = EConstraintSubType::Pulley;
+
+/// Alias for EPathRotationConstraintType to avoid clash
+constexpr EPathRotationConstraintType EPathRotationConstraintType_Free = EPathRotationConstraintType::Free;
+constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainAroundTangent = EPathRotationConstraintType::ConstrainAroundTangent;
+constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainAroundNormal = EPathRotationConstraintType::ConstrainAroundNormal;
+constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainAroundBinormal = EPathRotationConstraintType::ConstrainAroundBinormal;
+constexpr EPathRotationConstraintType EPathRotationConstraintType_ConstrainToPath = EPathRotationConstraintType::ConstrainToPath;
+constexpr EPathRotationConstraintType EPathRotationConstraintType_FullyConstrained = EPathRotationConstraintType::FullyConstrained;
+
+// Alias for SixDOFConstraintSettings::EAxis to avoid clashes
+using SixDOFConstraintSettings_EAxis = SixDOFConstraintSettings::EAxis;
+constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_TranslationX = SixDOFConstraintSettings_EAxis::TranslationX;
+constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_TranslationY = SixDOFConstraintSettings_EAxis::TranslationY;
+constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_TranslationZ = SixDOFConstraintSettings_EAxis::TranslationZ;
+constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_RotationX = SixDOFConstraintSettings_EAxis::RotationX;
+constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_RotationY = SixDOFConstraintSettings_EAxis::RotationY;
+constexpr SixDOFConstraintSettings_EAxis SixDOFConstraintSettings_EAxis_RotationZ = SixDOFConstraintSettings_EAxis::RotationZ;
+
+// Alias for EMotorState values to avoid clashes
+constexpr EMotorState EMotorState_Off = EMotorState::Off;
+constexpr EMotorState EMotorState_Velocity = EMotorState::Velocity;
+constexpr EMotorState EMotorState_Position = EMotorState::Position;
+
+// Alias for ETransmissionMode values to avoid clashes
+constexpr ETransmissionMode ETransmissionMode_Auto = ETransmissionMode::Auto;
+constexpr ETransmissionMode ETransmissionMode_Manual = ETransmissionMode::Manual;
+
+// Defining ETireFrictionDirection since we cannot pass references to float
+enum ETireFrictionDirection
+{
+    ETireFrictionDirection_Longitudinal,
+    ETireFrictionDirection_Lateral
+};
+
+// Alias for ESwingType values to avoid clashes
+constexpr ESwingType ESwingType_Cone = ESwingType::Cone;
+constexpr ESwingType ESwingType_Pyramid = ESwingType::Pyramid;
+
+// Alias for EBendType values to avoid clashes
+using SoftBodySharedSettings_EBendType = SoftBodySharedSettings::EBendType;
+constexpr SoftBodySharedSettings_EBendType SoftBodySharedSettings_EBendType_None = SoftBodySharedSettings::EBendType::None;
+constexpr SoftBodySharedSettings_EBendType SoftBodySharedSettings_EBendType_Distance = SoftBodySharedSettings::EBendType::Distance;
+constexpr SoftBodySharedSettings_EBendType SoftBodySharedSettings_EBendType_Dihedral = SoftBodySharedSettings::EBendType::Dihedral;
+
+// Alias for ELRAType values to avoid clashes
+using SoftBodySharedSettings_ELRAType = SoftBodySharedSettings::ELRAType;
+constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_None = SoftBodySharedSettings::ELRAType::None;
+constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_EuclideanDistance = SoftBodySharedSettings::ELRAType::EuclideanDistance;
+constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_GeodesicDistance = SoftBodySharedSettings::ELRAType::GeodesicDistance;
+
+// Helper class to store information about the memory layout of SoftBodyVertex
 //class SoftBodyVertexTraits
 //{
 //public:
