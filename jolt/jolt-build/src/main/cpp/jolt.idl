@@ -406,8 +406,8 @@ interface Vec3 {
 
 interface Float3 {
     void Float3(float inX, float inY, float inZ);
-    [Operator="=="] boolean Equals([Const, Ref] Float3 inV);
-    [Operator="!="] boolean NotEquals([Const, Ref] Float3 inV);
+//    [Operator="=="] boolean Equals([Const, Ref] Float3 inV);
+//    [Operator="!="] boolean NotEquals([Const, Ref] Float3 inV);
 
     attribute float x;
     attribute float y;
