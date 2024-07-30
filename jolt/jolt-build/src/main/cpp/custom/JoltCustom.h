@@ -68,7 +68,8 @@
 #include "Jolt/Skeleton/Skeleton.h"
 
 #include <iostream>
-#include <malloc.h>
+//#include <malloc.h>
+#include <stdlib.h>
 #include <unistd.h>
 //#include <emscripten/em_asm.h>
 
