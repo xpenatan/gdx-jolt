@@ -366,110 +366,110 @@ public:
     ObjectLayerPairFilter *	mObjectLayerPairFilter = nullptr;
 };
 
-///// Main API for JavaScript
-////class JoltInterface
-////{
-////public:
-////    /// Constructor
-////    JoltInterface(const JoltSettings &inSettings)
-////    {
-////        // Install callbacks
-////        Trace = TraceImpl;
-////        JPH_IF_ENABLE_ASSERTS(AssertFailed = AssertFailedImpl;)
-////
-////        // Create a factory
-////        Factory::sInstance = new Factory();
-////
-////        // Register all Jolt physics types
-////        RegisterTypes();
-////
-////        // Init temp allocator
-////        mTempAllocator = new TempAllocatorImpl(inSettings.mTempAllocatorSize);
-////
-////        // Check required objects
-////        if (inSettings.mBroadPhaseLayerInterface == nullptr || inSettings.mObjectVsBroadPhaseLayerFilter == nullptr || inSettings.mObjectLayerPairFilter == nullptr)
-////            Trace("Error: BroadPhaseLayerInterface, ObjectVsBroadPhaseLayerFilter and ObjectLayerPairFilter must be provided");
-////
-////        // Store interfaces
-////        mBroadPhaseLayerInterface = inSettings.mBroadPhaseLayerInterface;
-////        mObjectVsBroadPhaseLayerFilter = inSettings.mObjectVsBroadPhaseLayerFilter;
-////        mObjectLayerPairFilter = inSettings.mObjectLayerPairFilter;
-////
-////        // Init the physics system
-////        constexpr uint cNumBodyMutexes = 0;
-////        mPhysicsSystem = new PhysicsSystem();
-////        mPhysicsSystem->Init(inSettings.mMaxBodies, cNumBodyMutexes, inSettings.mMaxBodyPairs, inSettings.mMaxContactConstraints, *inSettings.mBroadPhaseLayerInterface, *inSettings.mObjectVsBroadPhaseLayerFilter, *inSettings.mObjectLayerPairFilter);
-////    }
-////
-////    /// Destructor
-////    ~JoltInterface()
-////    {
-////        // Destroy subsystems
-////        delete mPhysicsSystem;
-////        delete mBroadPhaseLayerInterface;
-////        delete mObjectVsBroadPhaseLayerFilter;
-////        delete mObjectLayerPairFilter;
-////        delete mTempAllocator;
-////        delete Factory::sInstance;
-////        Factory::sInstance = nullptr;
-////        UnregisterTypes();
-////    }
-////
-////    /// Step the world
-////    void Step(float inDeltaTime, int inCollisionSteps)
-////    {
-////        mPhysicsSystem->Update(inDeltaTime, inCollisionSteps, mTempAllocator, &mJobSystem);
-////    }
-////
-////    /// Access to the physics system
-////    PhysicsSystem * GetPhysicsSystem()
-////    {
-////        return mPhysicsSystem;
-////    }
-////
-////    /// Access to the temp allocator
-////    TempAllocator * GetTempAllocator()
-////    {
-////        return mTempAllocator;
-////    }
-////
-////    /// Access the default object layer pair filter
-////    ObjectLayerPairFilter *GetObjectLayerPairFilter()
-////    {
-////        return mObjectLayerPairFilter;
-////    }
-////
-////    /// Access the default object vs broadphase layer filter
-////    ObjectVsBroadPhaseLayerFilter *GetObjectVsBroadPhaseLayerFilter()
-////    {
-////        return mObjectVsBroadPhaseLayerFilter;
-////    }
-////
-////    /// Get the total reserved memory in bytes
-////    /// See: https://github.com/emscripten-core/emscripten/blob/7459cab167138419168b5ac5eacf74702d5a3dae/test/core/test_mallinfo.c#L16-L18
-////    static size_t sGetTotalMemory()
-////    {
-////        return (size_t)EM_ASM_PTR(return HEAP8.length);
-////    }
-////
-////    /// Get the amount of free memory in bytes
-////    /// See: https://github.com/emscripten-core/emscripten/blob/7459cab167138419168b5ac5eacf74702d5a3dae/test/core/test_mallinfo.c#L20-L25
-////    static size_t sGetFreeMemory()
-////    {
-////        struct mallinfo i = mallinfo();
-////        uintptr_t total_memory = sGetTotalMemory();
-////        uintptr_t dynamic_top = (uintptr_t)sbrk(0);
-////        return total_memory - dynamic_top + i.fordblks;
-////    }
-////
-////private:
-////    TempAllocatorImpl * mTempAllocator;
-////    JobSystemThreadPool mJobSystem { cMaxPhysicsJobs, cMaxPhysicsBarriers, min<int>(thread::hardware_concurrency() - 1, 16) }; // Limit to 16 threads since we limit the webworker thread pool size to this as well
-////    BroadPhaseLayerInterface *mBroadPhaseLayerInterface = nullptr;
-////    ObjectVsBroadPhaseLayerFilter *mObjectVsBroadPhaseLayerFilter = nullptr;
-////    ObjectLayerPairFilter * mObjectLayerPairFilter = nullptr;
-////    PhysicsSystem * mPhysicsSystem = nullptr;
-////};
+/// Main API for JavaScript
+class JoltInterface
+{
+public:
+    /// Constructor
+    JoltInterface(const JoltSettings &inSettings)
+    {
+        // Install callbacks
+        Trace = TraceImpl;
+        JPH_IF_ENABLE_ASSERTS(AssertFailed = AssertFailedImpl;)
+
+        // Create a factory
+        Factory::sInstance = new Factory();
+
+        // Register all Jolt physics types
+        RegisterTypes();
+
+        // Init temp allocator
+        mTempAllocator = new TempAllocatorImpl(inSettings.mTempAllocatorSize);
+
+        // Check required objects
+        if (inSettings.mBroadPhaseLayerInterface == nullptr || inSettings.mObjectVsBroadPhaseLayerFilter == nullptr || inSettings.mObjectLayerPairFilter == nullptr)
+            Trace("Error: BroadPhaseLayerInterface, ObjectVsBroadPhaseLayerFilter and ObjectLayerPairFilter must be provided");
+
+        // Store interfaces
+        mBroadPhaseLayerInterface = inSettings.mBroadPhaseLayerInterface;
+        mObjectVsBroadPhaseLayerFilter = inSettings.mObjectVsBroadPhaseLayerFilter;
+        mObjectLayerPairFilter = inSettings.mObjectLayerPairFilter;
+
+        // Init the physics system
+        constexpr uint cNumBodyMutexes = 0;
+        mPhysicsSystem = new PhysicsSystem();
+        mPhysicsSystem->Init(inSettings.mMaxBodies, cNumBodyMutexes, inSettings.mMaxBodyPairs, inSettings.mMaxContactConstraints, *inSettings.mBroadPhaseLayerInterface, *inSettings.mObjectVsBroadPhaseLayerFilter, *inSettings.mObjectLayerPairFilter);
+    }
+
+    /// Destructor
+    ~JoltInterface()
+    {
+        // Destroy subsystems
+        delete mPhysicsSystem;
+        delete mBroadPhaseLayerInterface;
+        delete mObjectVsBroadPhaseLayerFilter;
+        delete mObjectLayerPairFilter;
+        delete mTempAllocator;
+        delete Factory::sInstance;
+        Factory::sInstance = nullptr;
+        UnregisterTypes();
+    }
+
+    /// Step the world
+    void Step(float inDeltaTime, int inCollisionSteps)
+    {
+        mPhysicsSystem->Update(inDeltaTime, inCollisionSteps, mTempAllocator, &mJobSystem);
+    }
+
+    /// Access to the physics system
+    PhysicsSystem * GetPhysicsSystem()
+    {
+        return mPhysicsSystem;
+    }
+
+    /// Access to the temp allocator
+    TempAllocator * GetTempAllocator()
+    {
+        return mTempAllocator;
+    }
+
+    /// Access the default object layer pair filter
+    ObjectLayerPairFilter *GetObjectLayerPairFilter()
+    {
+        return mObjectLayerPairFilter;
+    }
+
+    /// Access the default object vs broadphase layer filter
+    ObjectVsBroadPhaseLayerFilter *GetObjectVsBroadPhaseLayerFilter()
+    {
+        return mObjectVsBroadPhaseLayerFilter;
+    }
+
+//    /// Get the total reserved memory in bytes
+//    /// See: https://github.com/emscripten-core/emscripten/blob/7459cab167138419168b5ac5eacf74702d5a3dae/test/core/test_mallinfo.c#L16-L18
+//    static size_t sGetTotalMemory()
+//    {
+//        return (size_t)EM_ASM_PTR(return HEAP8.length);
+//    }
+//
+//    /// Get the amount of free memory in bytes
+//    /// See: https://github.com/emscripten-core/emscripten/blob/7459cab167138419168b5ac5eacf74702d5a3dae/test/core/test_mallinfo.c#L20-L25
+//    static size_t sGetFreeMemory()
+//    {
+//        struct mallinfo i = mallinfo();
+//        uintptr_t total_memory = sGetTotalMemory();
+//        uintptr_t dynamic_top = (uintptr_t)sbrk(0);
+//        return total_memory - dynamic_top + i.fordblks;
+//    }
+
+private:
+    TempAllocatorImpl * mTempAllocator;
+    JobSystemThreadPool mJobSystem { cMaxPhysicsJobs, cMaxPhysicsBarriers, min<int>(thread::hardware_concurrency() - 1, 16) }; // Limit to 16 threads since we limit the webworker thread pool size to this as well
+    BroadPhaseLayerInterface *mBroadPhaseLayerInterface = nullptr;
+    ObjectVsBroadPhaseLayerFilter *mObjectVsBroadPhaseLayerFilter = nullptr;
+    ObjectLayerPairFilter * mObjectLayerPairFilter = nullptr;
+    PhysicsSystem * mPhysicsSystem = nullptr;
+};
 
 /// Helper class to extract triangles from the shape
 class ShapeGetTriangles
@@ -575,37 +575,37 @@ public:
     }
 };
 
-///// A wrapper around CharacterContactListener that is compatible with JavaScript
-//class CharacterContactListenerEm: public CharacterContactListener
-//{
-//public:
-//    // JavaScript compatible virtual functions
-//    virtual void OnContactAdded(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, CharacterContactSettings &ioSettings) = 0;
-//    virtual void OnCharacterContactAdded(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, CharacterContactSettings &ioSettings) = 0;
-//    virtual void OnContactSolve(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, const Vec3 *inContactVelocity, const PhysicsMaterial *inContactMaterial, const Vec3 *inCharacterVelocity, Vec3 &ioNewCharacterVelocity) = 0;
-//    virtual void OnCharacterContactSolve(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, const Vec3 *inContactVelocity, const PhysicsMaterial *inContactMaterial, const Vec3 *inCharacterVelocity, Vec3 &ioNewCharacterVelocity) = 0;
-//
-//    // Functions that call the JavaScript compatible virtual functions
-//    virtual void OnContactAdded(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, CharacterContactSettings &ioSettings) override
-//    {
-//        OnContactAdded(inCharacter, inBodyID2, inSubShapeID2, &inContactPosition, &inContactNormal, ioSettings);
-//    }
-//
-//    virtual void OnCharacterContactAdded(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, CharacterContactSettings &ioSettings) override
-//    {
-//        OnCharacterContactAdded(inCharacter, inOtherCharacter, inSubShapeID2, &inContactPosition, &inContactNormal, ioSettings);
-//    }
-//
-//    virtual void OnContactSolve(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, Vec3Arg inContactVelocity, const PhysicsMaterial *inContactMaterial, Vec3Arg inCharacterVelocity, Vec3 &ioNewCharacterVelocity) override
-//    {
-//        OnContactSolve(inCharacter, inBodyID2, inSubShapeID2, &inContactPosition, &inContactNormal, &inContactVelocity, inContactMaterial, &inCharacterVelocity, ioNewCharacterVelocity);
-//    }
-//
-//    virtual void OnCharacterContactSolve(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, Vec3Arg inContactVelocity, const PhysicsMaterial *inContactMaterial, Vec3Arg inCharacterVelocity, Vec3 &ioNewCharacterVelocity) override
-//    {
-//        OnCharacterContactSolve(inCharacter, inOtherCharacter, inSubShapeID2, &inContactPosition, &inContactNormal, &inContactVelocity, inContactMaterial, &inCharacterVelocity, ioNewCharacterVelocity);
-//    }
-//};
+/// A wrapper around CharacterContactListener that is compatible with JavaScript
+class CharacterContactListenerEm: public CharacterContactListener
+{
+public:
+    // JavaScript compatible virtual functions
+    virtual void OnContactAdded(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, CharacterContactSettings &ioSettings) = 0;
+    virtual void OnCharacterContactAdded(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, CharacterContactSettings &ioSettings) = 0;
+    virtual void OnContactSolve(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, const Vec3 *inContactVelocity, const PhysicsMaterial *inContactMaterial, const Vec3 *inCharacterVelocity, Vec3 &ioNewCharacterVelocity) = 0;
+    virtual void OnCharacterContactSolve(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, const RVec3 *inContactPosition, const Vec3 *inContactNormal, const Vec3 *inContactVelocity, const PhysicsMaterial *inContactMaterial, const Vec3 *inCharacterVelocity, Vec3 &ioNewCharacterVelocity) = 0;
+
+    // Functions that call the JavaScript compatible virtual functions
+    virtual void OnContactAdded(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, CharacterContactSettings &ioSettings) override
+    {
+        OnContactAdded(inCharacter, inBodyID2, inSubShapeID2, &inContactPosition, &inContactNormal, ioSettings);
+    }
+
+    virtual void OnCharacterContactAdded(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, CharacterContactSettings &ioSettings) override
+    {
+        OnCharacterContactAdded(inCharacter, inOtherCharacter, inSubShapeID2, &inContactPosition, &inContactNormal, ioSettings);
+    }
+
+    virtual void OnContactSolve(const CharacterVirtual *inCharacter, const BodyID &inBodyID2, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, Vec3Arg inContactVelocity, const PhysicsMaterial *inContactMaterial, Vec3Arg inCharacterVelocity, Vec3 &ioNewCharacterVelocity) override
+    {
+        OnContactSolve(inCharacter, inBodyID2, inSubShapeID2, &inContactPosition, &inContactNormal, &inContactVelocity, inContactMaterial, &inCharacterVelocity, ioNewCharacterVelocity);
+    }
+
+    virtual void OnCharacterContactSolve(const CharacterVirtual *inCharacter, const CharacterVirtual *inOtherCharacter, const SubShapeID &inSubShapeID2, RVec3Arg inContactPosition, Vec3Arg inContactNormal, Vec3Arg inContactVelocity, const PhysicsMaterial *inContactMaterial, Vec3Arg inCharacterVelocity, Vec3 &ioNewCharacterVelocity) override
+    {
+        OnCharacterContactSolve(inCharacter, inOtherCharacter, inSubShapeID2, &inContactPosition, &inContactNormal, &inContactVelocity, inContactMaterial, &inCharacterVelocity, ioNewCharacterVelocity);
+    }
+};
 
 /// A wrapper around the physics step listener that is compatible with JavaScript (JS doesn't like multiple inheritance)
 class VehicleConstraintStepListener : public PhysicsStepListener
@@ -642,7 +642,7 @@ public:
 class BroadPhaseLayerInterfaceEm : public BroadPhaseLayerInterface
 {
 public:
-    virtual unsigned short	GetBPLayer(ObjectLayer inLayer) const = 0;
+    virtual unsigned short GetBPLayer(ObjectLayer inLayer) const = 0;
 
     virtual BroadPhaseLayer	GetBroadPhaseLayer(ObjectLayer inLayer) const override
     {

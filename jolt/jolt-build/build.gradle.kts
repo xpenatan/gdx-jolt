@@ -25,7 +25,8 @@ val sourceDestination = "${buildDir}/jolt/"
 tasks.register<Download>("download_source") {
     group = "jolt"
     description = "Download jolt source"
-    src("https://github.com/jrouwe/JoltPhysics/archive/refs/tags/v5.0.0.zip")
+//    src("https://github.com/jrouwe/JoltPhysics/archive/refs/tags/v5.0.0.zip")
+    src("https://github.com/jrouwe/JoltPhysics/archive/master.zip")
     dest(File(zippedPath))
     doLast {
         unzipTo(File(sourcePath), dest)
@@ -47,7 +48,7 @@ tasks.register<JavaExec>("build_project") {
     group = "jolt"
     description = "Generate native project"
     mainClass.set(mainClassName)
-    args = mutableListOf()
+    args = mutableListOf("teavm", "windows64")
     classpath = sourceSets["main"].runtimeClasspath
 }
 
