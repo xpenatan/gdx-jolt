@@ -35,9 +35,6 @@ jobs:
 
       - uses: msys2/setup-msys2@v2
 
-#      - name: Change wrapper permissions
-#        run: chmod +x ./gradlew
-
       - name: Download sources
         run: ./gradlew download_all_sources
 
@@ -114,7 +111,8 @@ jobs:
         run: ./gradlew download_all_sources
 
       - name: Build project
-        run: ./gradlew :jolt:jolt-build:build_project_mac64 :jolt:jolt-build:build_project_macArm
+        run: ./gradlew :jolt:jolt-build:build_project_macArm
+#        run: ./gradlew :jolt:jolt-build:build_project_mac64 :jolt:jolt-build:build_project_macArm
 
       - name: Upload natives
         uses: actions/upload-artifact@v4
