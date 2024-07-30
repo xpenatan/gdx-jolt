@@ -56,15 +56,16 @@ public class Build {
         windowsTarget.isStatic = true;
         windowsTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         windowsTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        windowsTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         multiTarget.add(windowsTarget);
 
         // Compile glue code and link
-        WindowsTarget glueTarget = new WindowsTarget();
-        glueTarget.addJNIHeaders();
-        glueTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
-        glueTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/jolt64.a");
-        glueTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
-        multiTarget.add(glueTarget);
+        WindowsTarget libTarget = new WindowsTarget();
+        libTarget.addJNIHeaders();
+        libTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
+        libTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/jolt64.a");
+        libTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        multiTarget.add(libTarget);
 
         return multiTarget;
     }
@@ -79,6 +80,7 @@ public class Build {
         linuxTarget.isStatic = true;
         linuxTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linuxTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        linuxTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         multiTarget.add(linuxTarget);
 
         // Compile glue code and link
@@ -102,6 +104,7 @@ public class Build {
         macTarget.isStatic = true;
         macTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         macTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        macTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         multiTarget.add(macTarget);
 
         // Compile glue code and link
