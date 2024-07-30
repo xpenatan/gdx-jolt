@@ -157,8 +157,6 @@ public class Build {
         androidTarget.headerDirs.add(libBuildCPPPath + "/src/jolt");
         androidTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
         androidTarget.cppFlags.add("-Wno-error=format-security");
-        int i = Runtime.getRuntime().availableProcessors();
-        androidTarget.customArgs.add("-j" + i );
 
         multiTarget.add(androidTarget);
         return multiTarget;
