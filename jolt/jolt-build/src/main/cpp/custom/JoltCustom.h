@@ -318,54 +318,54 @@ constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_Euclid
 constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_GeodesicDistance = SoftBodySharedSettings::ELRAType::GeodesicDistance;
 
 // Helper class to store information about the memory layout of SoftBodyVertex
-//class SoftBodyVertexTraits
-//{
-//public:
-//    static constexpr uint mPreviousPositionOffset = offsetof(SoftBodyVertex, mPreviousPosition);
-//    static constexpr uint mPositionOffset = offsetof(SoftBodyVertex, mPosition);
-//    static constexpr uint mVelocityOffset = offsetof(SoftBodyVertex, mVelocity);
-//};
-//
-//// Callback for traces
-//static void TraceImpl(const char *inFMT, ...)
-//{
-//    // Format the message
-//    va_list list;
-//    va_start(list, inFMT);
-//    char buffer[1024];
-//    vsnprintf(buffer, sizeof(buffer), inFMT, list);
-//
-//    // Print to the TTY
-//    cout << buffer << endl;
-//}
-//
-//#ifdef JPH_ENABLE_ASSERTS
-//
-//// Callback for asserts
-//static bool AssertFailedImpl(const char *inExpression, const char *inMessage, const char *inFile, uint inLine)
-//{
-//    // Print to the TTY
-//    cout << inFile << ":" << inLine << ": (" << inExpression << ") " << (inMessage != nullptr? inMessage : "") << endl;
-//
-//    // Breakpoint
-//    return true;
-//};
-//
-//#endif // JPH_ENABLE_ASSERTS
-//
-///// Settings to pass to constructor
-//class JoltSettings
-//{
-//public:
-//    uint mMaxBodies = 10240;
-//    uint mMaxBodyPairs = 65536;
-//    uint mMaxContactConstraints = 10240;
-//    uint mTempAllocatorSize = 10 * 1024 * 1024;
-//    BroadPhaseLayerInterface *mBroadPhaseLayerInterface = nullptr;
-//    ObjectVsBroadPhaseLayerFilter *mObjectVsBroadPhaseLayerFilter = nullptr;
-//    ObjectLayerPairFilter *	mObjectLayerPairFilter = nullptr;
-//};
-//
+class SoftBodyVertexTraits
+{
+public:
+    static constexpr uint mPreviousPositionOffset = offsetof(SoftBodyVertex, mPreviousPosition);
+    static constexpr uint mPositionOffset = offsetof(SoftBodyVertex, mPosition);
+    static constexpr uint mVelocityOffset = offsetof(SoftBodyVertex, mVelocity);
+};
+
+// Callback for traces
+static void TraceImpl(const char *inFMT, ...)
+{
+    // Format the message
+    va_list list;
+    va_start(list, inFMT);
+    char buffer[1024];
+    vsnprintf(buffer, sizeof(buffer), inFMT, list);
+
+    // Print to the TTY
+    cout << buffer << endl;
+}
+
+#ifdef JPH_ENABLE_ASSERTS
+
+// Callback for asserts
+static bool AssertFailedImpl(const char *inExpression, const char *inMessage, const char *inFile, uint inLine)
+{
+    // Print to the TTY
+    cout << inFile << ":" << inLine << ": (" << inExpression << ") " << (inMessage != nullptr? inMessage : "") << endl;
+
+    // Breakpoint
+    return true;
+};
+
+#endif // JPH_ENABLE_ASSERTS
+
+/// Settings to pass to constructor
+class JoltSettings
+{
+public:
+    uint mMaxBodies = 10240;
+    uint mMaxBodyPairs = 65536;
+    uint mMaxContactConstraints = 10240;
+    uint mTempAllocatorSize = 10 * 1024 * 1024;
+    BroadPhaseLayerInterface *mBroadPhaseLayerInterface = nullptr;
+    ObjectVsBroadPhaseLayerFilter *mObjectVsBroadPhaseLayerFilter = nullptr;
+    ObjectLayerPairFilter *	mObjectLayerPairFilter = nullptr;
+};
+
 ///// Main API for JavaScript
 ////class JoltInterface
 ////{
@@ -470,111 +470,111 @@ constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_Geodes
 ////    ObjectLayerPairFilter * mObjectLayerPairFilter = nullptr;
 ////    PhysicsSystem * mPhysicsSystem = nullptr;
 ////};
-//
-///// Helper class to extract triangles from the shape
-//class ShapeGetTriangles
-//{
-//public:
-//                            ShapeGetTriangles(const Shape *inShape, const AABox &inBox, Vec3Arg inPositionCOM, QuatArg inRotation, Vec3Arg inScale)
-//    {
-//        const size_t cBlockSize = 8096;
-//
-//        // First collect all leaf shapes
-//        AllHitCollisionCollector<TransformedShapeCollector> collector;
-//        inShape->CollectTransformedShapes(inBox, inPositionCOM, inRotation, inScale, SubShapeIDCreator(), collector, { });
-//
-//        size_t cur_pos = 0;
-//
-//        // Iterate the leaf shapes
-//        for (const TransformedShape &ts : collector.mHits)
-//        {
-//            // Start iterating triangles
-//            Shape::GetTrianglesContext context;
-//            ts.GetTrianglesStart(context, inBox, RVec3::sZero());
-//
-//            for (;;)
-//            {
-//                // Ensure we have space to get more triangles
-//                size_t tri_left = mMaterials.size() - cur_pos;
-//                if (tri_left < Shape::cGetTrianglesMinTrianglesRequested)
-//                {
-//                    mVertices.resize(mVertices.size() + 3 * cBlockSize);
-//                    mMaterials.resize(mMaterials.size() + cBlockSize);
-//                    tri_left = mMaterials.size() - cur_pos;
-//                }
-//
-//                // Fetch next batch
-//                int count = ts.GetTrianglesNext(context, tri_left, mVertices.data() + 3 * cur_pos, mMaterials.data() + cur_pos);
-//                if (count == 0)
-//                {
-//                    // We're done
-//                    mVertices.resize(3 * cur_pos);
-//                    mMaterials.resize(cur_pos);
-//                    break;
-//                }
-//
-//                cur_pos += count;
-//            }
-//        }
-//
-//        // Free excess memory
-//        mVertices.shrink_to_fit();
-//        mMaterials.shrink_to_fit();
-//    }
-//
-//    int GetNumTriangles() const
-//    {
-//        return (int)mMaterials.size();
-//    }
-//
-//    int GetVerticesSize() const
-//    {
-//        return (int)mVertices.size() * sizeof(Float3);
-//    }
-//
-//    const Float3 * GetVerticesData() const
-//    {
-//        return mVertices.data();
-//    }
-//
-//    const PhysicsMaterial * GetMaterial(int inTriangle) const
-//    {
-//        return mMaterials[inTriangle];
-//    }
-//
-//private:
-//    Array<Float3> mVertices;
-//    Array<const PhysicsMaterial *>	mMaterials;
-//};
-//
-///// A wrapper around ContactListener that is compatible with JavaScript
-//class ContactListenerEm: public ContactListener
-//{
-//public:
-//    // JavaScript compatible virtual functions
-//    virtual int OnContactValidate(const Body &inBody1, const Body &inBody2, const RVec3 *inBaseOffset, const CollideShapeResult &inCollisionResult) = 0;
-//
-//    // Functions that call the JavaScript compatible virtual functions
-//    virtual ValidateResult	OnContactValidate(const Body &inBody1, const Body &inBody2, RVec3Arg inBaseOffset, const CollideShapeResult &inCollisionResult) override
-//    {
-//        return (ValidateResult)OnContactValidate(inBody1, inBody2, &inBaseOffset, inCollisionResult);
-//    }
-//};
-//
-///// A wrapper around SoftBodyContactListener that is compatible with JavaScript
-//class SoftBodyContactListenerEm: public SoftBodyContactListener
-//{
-//public:
-//    // JavaScript compatible virtual functions
-//    virtual int OnSoftBodyContactValidate(const Body &inSoftBody, const Body &inOtherBody, SoftBodyContactSettings *ioSettings) = 0;
-//
-//    // Functions that call the JavaScript compatible virtual functions
-//    virtual SoftBodyValidateResult	OnSoftBodyContactValidate(const Body &inSoftBody, const Body &inOtherBody, SoftBodyContactSettings &ioSettings)
-//    {
-//        return (SoftBodyValidateResult)OnSoftBodyContactValidate(inSoftBody, inOtherBody, &ioSettings);
-//    }
-//};
-//
+
+/// Helper class to extract triangles from the shape
+class ShapeGetTriangles
+{
+public:
+                            ShapeGetTriangles(const Shape *inShape, const AABox &inBox, Vec3Arg inPositionCOM, QuatArg inRotation, Vec3Arg inScale)
+    {
+        const size_t cBlockSize = 8096;
+
+        // First collect all leaf shapes
+        AllHitCollisionCollector<TransformedShapeCollector> collector;
+        inShape->CollectTransformedShapes(inBox, inPositionCOM, inRotation, inScale, SubShapeIDCreator(), collector, { });
+
+        size_t cur_pos = 0;
+
+        // Iterate the leaf shapes
+        for (const TransformedShape &ts : collector.mHits)
+        {
+            // Start iterating triangles
+            Shape::GetTrianglesContext context;
+            ts.GetTrianglesStart(context, inBox, RVec3::sZero());
+
+            for (;;)
+            {
+                // Ensure we have space to get more triangles
+                size_t tri_left = mMaterials.size() - cur_pos;
+                if (tri_left < Shape::cGetTrianglesMinTrianglesRequested)
+                {
+                    mVertices.resize(mVertices.size() + 3 * cBlockSize);
+                    mMaterials.resize(mMaterials.size() + cBlockSize);
+                    tri_left = mMaterials.size() - cur_pos;
+                }
+
+                // Fetch next batch
+                int count = ts.GetTrianglesNext(context, tri_left, mVertices.data() + 3 * cur_pos, mMaterials.data() + cur_pos);
+                if (count == 0)
+                {
+                    // We're done
+                    mVertices.resize(3 * cur_pos);
+                    mMaterials.resize(cur_pos);
+                    break;
+                }
+
+                cur_pos += count;
+            }
+        }
+
+        // Free excess memory
+        mVertices.shrink_to_fit();
+        mMaterials.shrink_to_fit();
+    }
+
+    int GetNumTriangles() const
+    {
+        return (int)mMaterials.size();
+    }
+
+    int GetVerticesSize() const
+    {
+        return (int)mVertices.size() * sizeof(Float3);
+    }
+
+    const Float3 * GetVerticesData() const
+    {
+        return mVertices.data();
+    }
+
+    const PhysicsMaterial * GetMaterial(int inTriangle) const
+    {
+        return mMaterials[inTriangle];
+    }
+
+private:
+    Array<Float3> mVertices;
+    Array<const PhysicsMaterial *>	mMaterials;
+};
+
+/// A wrapper around ContactListener that is compatible with JavaScript
+class ContactListenerEm: public ContactListener
+{
+public:
+    // JavaScript compatible virtual functions
+    virtual int OnContactValidate(const Body &inBody1, const Body &inBody2, const RVec3 *inBaseOffset, const CollideShapeResult &inCollisionResult) = 0;
+
+    // Functions that call the JavaScript compatible virtual functions
+    virtual ValidateResult	OnContactValidate(const Body &inBody1, const Body &inBody2, RVec3Arg inBaseOffset, const CollideShapeResult &inCollisionResult) override
+    {
+        return (ValidateResult)OnContactValidate(inBody1, inBody2, &inBaseOffset, inCollisionResult);
+    }
+};
+
+/// A wrapper around SoftBodyContactListener that is compatible with JavaScript
+class SoftBodyContactListenerEm: public SoftBodyContactListener
+{
+public:
+    // JavaScript compatible virtual functions
+    virtual int OnSoftBodyContactValidate(const Body &inSoftBody, const Body &inOtherBody, SoftBodyContactSettings *ioSettings) = 0;
+
+    // Functions that call the JavaScript compatible virtual functions
+    virtual SoftBodyValidateResult	OnSoftBodyContactValidate(const Body &inSoftBody, const Body &inOtherBody, SoftBodyContactSettings &ioSettings)
+    {
+        return (SoftBodyValidateResult)OnSoftBodyContactValidate(inSoftBody, inOtherBody, &ioSettings);
+    }
+};
+
 ///// A wrapper around CharacterContactListener that is compatible with JavaScript
 //class CharacterContactListenerEm: public CharacterContactListener
 //{
@@ -606,140 +606,140 @@ constexpr SoftBodySharedSettings_ELRAType SoftBodySharedSettings_ELRAType_Geodes
 //        OnCharacterContactSolve(inCharacter, inOtherCharacter, inSubShapeID2, &inContactPosition, &inContactNormal, &inContactVelocity, inContactMaterial, &inCharacterVelocity, ioNewCharacterVelocity);
 //    }
 //};
-//
-///// A wrapper around the physics step listener that is compatible with JavaScript (JS doesn't like multiple inheritance)
-//class VehicleConstraintStepListener : public PhysicsStepListener
-//{
-//public:
-//    VehicleConstraintStepListener(VehicleConstraint *inVehicleConstraint)
-//    {
-//        mInstance = inVehicleConstraint;
-//    }
-//
-//    virtual void OnStep(float inDeltaTime, PhysicsSystem &inPhysicsSystem) override
-//    {
-//        PhysicsStepListener* instance = mInstance;
-//        instance->OnStep(inDeltaTime, inPhysicsSystem);
-//    }
-//
-//private:
-//    VehicleConstraint * mInstance;
-//};
-//
-///// Wrapper class around ObjectVsBroadPhaseLayerFilter to make it compatible with JavaScript (JS cannot pass parameter by value)
-//class ObjectVsBroadPhaseLayerFilterEm : public ObjectVsBroadPhaseLayerFilter
-//{
-//public:
-//    virtual bool ShouldCollide(ObjectLayer inLayer1, BroadPhaseLayer *inLayer2) const = 0;
-//
-//    virtual bool ShouldCollide(ObjectLayer inLayer1, BroadPhaseLayer inLayer2) const
-//    {
-//        return ShouldCollide(inLayer1, &inLayer2);
-//    }
-//};
-//
-///// Wrapper class around BroadPhaseLayerInterface to make it compatible with JavaScript (JS cannot return parameter by value)
-//class BroadPhaseLayerInterfaceEm : public BroadPhaseLayerInterface
-//{
-//public:
-//    virtual unsigned short	GetBPLayer(ObjectLayer inLayer) const = 0;
-//
-//    virtual BroadPhaseLayer	GetBroadPhaseLayer(ObjectLayer inLayer) const override
-//    {
-//        return BroadPhaseLayer(GetBPLayer(inLayer));
-//    }
-//
-//#if defined(JPH_EXTERNAL_PROFILE) || defined(JPH_PROFILE_ENABLED)
-//    /// Get the user readable name of a broadphase layer (debugging purposes)
-//    virtual const char * GetBroadPhaseLayerName(BroadPhaseLayer inLayer) const override
-//    {
-//        return "Undefined";
-//    }
-//#endif // JPH_EXTERNAL_PROFILE || JPH_PROFILE_ENABLED
-//};
-//
-///// A wrapper around the vehicle constraint callbacks that is compatible with JavaScript
-//class VehicleConstraintCallbacksEm
-//{
-//public:
-//    virtual ~VehicleConstraintCallbacksEm() = default;
-//
-//    void SetVehicleConstraint(VehicleConstraint &inConstraint)
-//    {
-//        inConstraint.SetCombineFriction([this](uint inWheelIndex, float &ioLongitudinalFriction, float &ioLateralFriction, const Body &inBody2, const SubShapeID &inSubShapeID2) {
-//            ioLongitudinalFriction = GetCombinedFriction(inWheelIndex, ETireFrictionDirection_Longitudinal, ioLongitudinalFriction, inBody2, inSubShapeID2);
-//            ioLateralFriction = GetCombinedFriction(inWheelIndex, ETireFrictionDirection_Lateral, ioLateralFriction, inBody2, inSubShapeID2);
-//        });
-//        inConstraint.SetPreStepCallback([this](VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) {
-//            OnPreStepCallback(inVehicle, inDeltaTime, inPhysicsSystem);
-//        });
-//        inConstraint.SetPostCollideCallback([this](VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) {
-//            OnPostCollideCallback(inVehicle, inDeltaTime, inPhysicsSystem);
-//        });
-//        inConstraint.SetPostStepCallback([this](VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) {
-//            OnPostStepCallback(inVehicle, inDeltaTime, inPhysicsSystem);
-//        });
-//    }
-//
-//    virtual float GetCombinedFriction(unsigned int inWheelIndex, ETireFrictionDirection inTireFrictionDirection, float inTireFriction, const Body &inBody2, const SubShapeID &inSubShapeID2) = 0;
-//    virtual void OnPreStepCallback(VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) = 0;
-//    virtual void OnPostCollideCallback(VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) = 0;
-//    virtual void OnPostStepCallback(VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) = 0;
-//};
-//
-///// The tire max impulse callback returns multiple parameters, so we need to store them in a class
-//class TireMaxImpulseCallbackResult
-//{
-//public:
-//    float mLongitudinalImpulse;
-//    float mLateralImpulse;
-//};
-//
-///// A wrapper around the wheeled vehicle controller callbacks that is compatible with JavaScript
-//class WheeledVehicleControllerCallbacksEm
-//{
-//public:
-//    virtual ~WheeledVehicleControllerCallbacksEm() = default;
-//
-//    void SetWheeledVehicleController(WheeledVehicleController &inController)
-//    {
-//        inController.SetTireMaxImpulseCallback([this](uint inWheelIndex, float &outLongitudinalImpulse, float &outLateralImpulse, float inSuspensionImpulse, float inLongitudinalFriction, float inLateralFriction, float inLongitudinalSlip, float inLateralSlip, float inDeltaTime) {
-//            // Pre-fill the structure with default calculated values
-//            TireMaxImpulseCallbackResult result;
-//            result.mLongitudinalImpulse = inLongitudinalFriction * inSuspensionImpulse;
-//            result.mLateralImpulse = inLateralFriction * inSuspensionImpulse;
-//
-//            OnTireMaxImpulseCallback(inWheelIndex, &result, inSuspensionImpulse, inLongitudinalFriction, inLateralFriction, inLongitudinalSlip, inLateralSlip, inDeltaTime);
-//
-//            // Read the results
-//            outLongitudinalImpulse = result.mLongitudinalImpulse;
-//            outLateralImpulse = result.mLateralImpulse;
-//        });
-//    }
-//
-//    virtual void OnTireMaxImpulseCallback(uint inWheelIndex, TireMaxImpulseCallbackResult *outResult, float inSuspensionImpulse, float inLongitudinalFriction, float inLateralFriction, float inLongitudinalSlip, float inLateralSlip, float inDeltaTime) = 0;
-//};
-//
-//class PathConstraintPathEm: public PathConstraintPath
-//{
-//public:
-//    virtual float  GetClosestPoint(Vec3Arg inPosition, float inFractionHint) const
-//    {
-//        return GetClosestPoint(&inPosition, inFractionHint);
-//    }
-//
-//    virtual void GetPointOnPath(float inFraction, Vec3 &outPathPosition, Vec3 &outPathTangent, Vec3 &outPathNormal, Vec3 &outPathBinormal) const
-//    {
-//        GetPointOnPath(inFraction, &outPathPosition, &outPathTangent, &outPathNormal, &outPathBinormal);
-//    }
-//
-//    virtual float GetClosestPoint(const Vec3 *inPosition, float inFractionHint) const = 0;
-//    virtual void GetPointOnPath(float inFraction, Vec3 *outPathPosition, Vec3 *outPathTangent, Vec3 *outPathNormal, Vec3 *outPathBinormal) const = 0;
-//};
-//
-//class HeightFieldShapeConstantValues
-//{
-//public:
-//    /// Value used to create gaps in the height field
-//    static constexpr float cNoCollisionValue = HeightFieldShapeConstants::cNoCollisionValue;
-//};
+
+/// A wrapper around the physics step listener that is compatible with JavaScript (JS doesn't like multiple inheritance)
+class VehicleConstraintStepListener : public PhysicsStepListener
+{
+public:
+    VehicleConstraintStepListener(VehicleConstraint *inVehicleConstraint)
+    {
+        mInstance = inVehicleConstraint;
+    }
+
+    virtual void OnStep(float inDeltaTime, PhysicsSystem &inPhysicsSystem) override
+    {
+        PhysicsStepListener* instance = mInstance;
+        instance->OnStep(inDeltaTime, inPhysicsSystem);
+    }
+
+private:
+    VehicleConstraint * mInstance;
+};
+
+/// Wrapper class around ObjectVsBroadPhaseLayerFilter to make it compatible with JavaScript (JS cannot pass parameter by value)
+class ObjectVsBroadPhaseLayerFilterEm : public ObjectVsBroadPhaseLayerFilter
+{
+public:
+    virtual bool ShouldCollide(ObjectLayer inLayer1, BroadPhaseLayer *inLayer2) const = 0;
+
+    virtual bool ShouldCollide(ObjectLayer inLayer1, BroadPhaseLayer inLayer2) const
+    {
+        return ShouldCollide(inLayer1, &inLayer2);
+    }
+};
+
+/// Wrapper class around BroadPhaseLayerInterface to make it compatible with JavaScript (JS cannot return parameter by value)
+class BroadPhaseLayerInterfaceEm : public BroadPhaseLayerInterface
+{
+public:
+    virtual unsigned short	GetBPLayer(ObjectLayer inLayer) const = 0;
+
+    virtual BroadPhaseLayer	GetBroadPhaseLayer(ObjectLayer inLayer) const override
+    {
+        return BroadPhaseLayer(GetBPLayer(inLayer));
+    }
+
+#if defined(JPH_EXTERNAL_PROFILE) || defined(JPH_PROFILE_ENABLED)
+    /// Get the user readable name of a broadphase layer (debugging purposes)
+    virtual const char * GetBroadPhaseLayerName(BroadPhaseLayer inLayer) const override
+    {
+        return "Undefined";
+    }
+#endif // JPH_EXTERNAL_PROFILE || JPH_PROFILE_ENABLED
+};
+
+/// A wrapper around the vehicle constraint callbacks that is compatible with JavaScript
+class VehicleConstraintCallbacksEm
+{
+public:
+    virtual ~VehicleConstraintCallbacksEm() = default;
+
+    void SetVehicleConstraint(VehicleConstraint &inConstraint)
+    {
+        inConstraint.SetCombineFriction([this](uint inWheelIndex, float &ioLongitudinalFriction, float &ioLateralFriction, const Body &inBody2, const SubShapeID &inSubShapeID2) {
+            ioLongitudinalFriction = GetCombinedFriction(inWheelIndex, ETireFrictionDirection_Longitudinal, ioLongitudinalFriction, inBody2, inSubShapeID2);
+            ioLateralFriction = GetCombinedFriction(inWheelIndex, ETireFrictionDirection_Lateral, ioLateralFriction, inBody2, inSubShapeID2);
+        });
+        inConstraint.SetPreStepCallback([this](VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) {
+            OnPreStepCallback(inVehicle, inDeltaTime, inPhysicsSystem);
+        });
+        inConstraint.SetPostCollideCallback([this](VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) {
+            OnPostCollideCallback(inVehicle, inDeltaTime, inPhysicsSystem);
+        });
+        inConstraint.SetPostStepCallback([this](VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) {
+            OnPostStepCallback(inVehicle, inDeltaTime, inPhysicsSystem);
+        });
+    }
+
+    virtual float GetCombinedFriction(unsigned int inWheelIndex, ETireFrictionDirection inTireFrictionDirection, float inTireFriction, const Body &inBody2, const SubShapeID &inSubShapeID2) = 0;
+    virtual void OnPreStepCallback(VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) = 0;
+    virtual void OnPostCollideCallback(VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) = 0;
+    virtual void OnPostStepCallback(VehicleConstraint &inVehicle, float inDeltaTime, PhysicsSystem &inPhysicsSystem) = 0;
+};
+
+/// The tire max impulse callback returns multiple parameters, so we need to store them in a class
+class TireMaxImpulseCallbackResult
+{
+public:
+    float mLongitudinalImpulse;
+    float mLateralImpulse;
+};
+
+/// A wrapper around the wheeled vehicle controller callbacks that is compatible with JavaScript
+class WheeledVehicleControllerCallbacksEm
+{
+public:
+    virtual ~WheeledVehicleControllerCallbacksEm() = default;
+
+    void SetWheeledVehicleController(WheeledVehicleController &inController)
+    {
+        inController.SetTireMaxImpulseCallback([this](uint inWheelIndex, float &outLongitudinalImpulse, float &outLateralImpulse, float inSuspensionImpulse, float inLongitudinalFriction, float inLateralFriction, float inLongitudinalSlip, float inLateralSlip, float inDeltaTime) {
+            // Pre-fill the structure with default calculated values
+            TireMaxImpulseCallbackResult result;
+            result.mLongitudinalImpulse = inLongitudinalFriction * inSuspensionImpulse;
+            result.mLateralImpulse = inLateralFriction * inSuspensionImpulse;
+
+            OnTireMaxImpulseCallback(inWheelIndex, &result, inSuspensionImpulse, inLongitudinalFriction, inLateralFriction, inLongitudinalSlip, inLateralSlip, inDeltaTime);
+
+            // Read the results
+            outLongitudinalImpulse = result.mLongitudinalImpulse;
+            outLateralImpulse = result.mLateralImpulse;
+        });
+    }
+
+    virtual void OnTireMaxImpulseCallback(uint inWheelIndex, TireMaxImpulseCallbackResult *outResult, float inSuspensionImpulse, float inLongitudinalFriction, float inLateralFriction, float inLongitudinalSlip, float inLateralSlip, float inDeltaTime) = 0;
+};
+
+class PathConstraintPathEm: public PathConstraintPath
+{
+public:
+    virtual float  GetClosestPoint(Vec3Arg inPosition, float inFractionHint) const
+    {
+        return GetClosestPoint(&inPosition, inFractionHint);
+    }
+
+    virtual void GetPointOnPath(float inFraction, Vec3 &outPathPosition, Vec3 &outPathTangent, Vec3 &outPathNormal, Vec3 &outPathBinormal) const
+    {
+        GetPointOnPath(inFraction, &outPathPosition, &outPathTangent, &outPathNormal, &outPathBinormal);
+    }
+
+    virtual float GetClosestPoint(const Vec3 *inPosition, float inFractionHint) const = 0;
+    virtual void GetPointOnPath(float inFraction, Vec3 *outPathPosition, Vec3 *outPathTangent, Vec3 *outPathNormal, Vec3 *outPathBinormal) const = 0;
+};
+
+class HeightFieldShapeConstantValues
+{
+public:
+    /// Value used to create gaps in the height field
+    static constexpr float cNoCollisionValue = HeightFieldShapeConstants::cNoCollisionValue;
+};
