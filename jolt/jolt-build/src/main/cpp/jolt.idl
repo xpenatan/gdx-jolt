@@ -681,7 +681,7 @@ interface IndexedTriangleList {
 interface ShapeResult {
     boolean IsValid();
     boolean HasError();
-    [Const, Ref] IDLString GetError();
+//    [Const, Ref] IDLString GetError();
     Shape Get();
     void Clear();
 };
@@ -3222,7 +3222,7 @@ MotorcycleController implements WheeledVehicleController;
 
 interface Skeleton {
     void Skeleton();
-    long AddJoint([Const, Ref] IDLString inName, long inParentIndex);
+//    long AddJoint([Const, Ref] IDLString inName, long inParentIndex);
     long GetJointCount();
     boolean AreJointsCorrectlyOrdered();
     void CalculateParentJointIndices();
@@ -3257,7 +3257,7 @@ interface ArraySkeletonKeyframe {
 interface SkeletalAnimationAnimatedJoint {
     void SkeletalAnimationAnimatedJoint();
 
-    [Value] attribute IDLString mJointName;
+//    [Value] attribute IDLString mJointName;
     [Value] attribute ArraySkeletonKeyframe mKeyframes;
 };
 
