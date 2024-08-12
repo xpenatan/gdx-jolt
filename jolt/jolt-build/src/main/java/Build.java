@@ -56,6 +56,7 @@ public class Build {
         windowsTarget.isStatic = true;
         windowsTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         windowsTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        windowsTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         windowsTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         windowsTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         windowsTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -67,6 +68,7 @@ public class Build {
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/jolt64.a");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         linkTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -85,6 +87,7 @@ public class Build {
         linuxTarget.isStatic = true;
         linuxTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linuxTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        linuxTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linuxTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linuxTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         linuxTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -96,6 +99,7 @@ public class Build {
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/linux/libjolt64.a");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         linkTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -114,6 +118,7 @@ public class Build {
         macTarget.isStatic = true;
         macTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         macTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        macTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         macTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         macTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         macTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -130,6 +135,7 @@ public class Build {
             linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/libjolt64.a");
         }
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         linkTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -149,6 +155,7 @@ public class Build {
         libTarget.compileGlueCode = false;
         libTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt");
         libTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        libTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         libTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         libTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         libTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -159,6 +166,7 @@ public class Build {
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt");
         linkTarget.headerDirs.add("-include" + libBuildCPPPath + "/src/jolt/JoltCustom.h");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/emscripten/jolt.a");
+        linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         linkTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");
@@ -177,6 +185,7 @@ public class Build {
         androidTarget.headerDirs.add(libBuildCPPPath + "/src/jolt");
         androidTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
         androidTarget.cppFlags.add("-Wno-error=format-security");
+        androidTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         androidTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         androidTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
         androidTarget.cppFlags.add("-DJPH_OBJECT_LAYER_BITS=32");

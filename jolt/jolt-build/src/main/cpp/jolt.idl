@@ -632,7 +632,7 @@ interface Triangle {
     void Triangle();
     void Triangle([Const, Ref] Vec3 inV1, [Const, Ref] Vec3 inV2, [Const, Ref] Vec3 inV3);
 
-//    [Value] attribute Float3[] mV;
+    [Value] attribute Float3[] mV;
     attribute unsigned long mMaterialIndex;
 };
 
@@ -662,7 +662,7 @@ interface IndexedTriangle {
     void IndexedTriangle();
     void IndexedTriangle(unsigned long inI1, unsigned long inI2, unsigned long inI3, unsigned long inMaterialIndex);
 
-//    attribute unsigned long[] mIdx;
+    attribute unsigned long[] mIdx;
     attribute unsigned long mMaterialIndex;
 };
 
@@ -1290,12 +1290,12 @@ interface SixDOFConstraintSettings {
     [Value] attribute RVec3 mPosition2;
     [Value] attribute Vec3 mAxisX2;
     [Value] attribute Vec3 mAxisY2;
-//    attribute float[] mMaxFriction;
+    attribute float[] mMaxFriction;
     attribute ESwingType mSwingType;
-//    attribute float[] mLimitMin;
-//    attribute float[] mLimitMax;
-//    [Value] attribute SpringSettings[] mLimitsSpringSettings;
-//    [Value] attribute MotorSettings[] mMotorSettings;
+    attribute float[] mLimitMin;
+    attribute float[] mLimitMax;
+    [Value] attribute SpringSettings[] mLimitsSpringSettings;
+    [Value] attribute MotorSettings[] mMotorSettings;
 };
 SixDOFConstraintSettings implements TwoBodyConstraintSettings;
 
@@ -2225,6 +2225,8 @@ interface BodyIDVector {
 };
 
 interface PhysicsSystem {
+    void PhysicsSystem();
+    void Init(long inMaxBodies, long inNumBodyMutexes, long inMaxBodyPairs, long inMaxContactConstraints, [Const, Ref] BroadPhaseLayerInterface inBroadPhaseLayerInterface, [Const, Ref] ObjectVsBroadPhaseLayerFilter inObjectVsBroadPhaseLayerFilter, [Const, Ref] ObjectLayerPairFilter inObjectLayerPairFilter);
     void SetGravity([Const, Ref] Vec3 inGravity);
     [Value] Vec3 GetGravity();
     [Const, Ref] PhysicsSettings GetPhysicsSettings();
@@ -2324,14 +2326,14 @@ interface SoftBodySharedSettingsVertex {
 interface SoftBodySharedSettingsFace {
     void SoftBodySharedSettingsFace(unsigned long inVertex1, unsigned long inVertex2, unsigned long inVertex3, unsigned long inMaterialIndex);
 
-//    attribute unsigned long[] mVertex;
+    attribute unsigned long[] mVertex;
     attribute unsigned long mMaterialIndex;
 };
 
 interface SoftBodySharedSettingsEdge {
     void SoftBodySharedSettingsEdge(unsigned long inVertex1, unsigned long inVertex2, float inCompliance);
 
-//    attribute unsigned long[] mVertex;
+    attribute unsigned long[] mVertex;
     attribute float mRestLength;
     attribute float mCompliance;
 };
@@ -2339,7 +2341,7 @@ interface SoftBodySharedSettingsEdge {
 interface SoftBodySharedSettingsDihedralBend {
     void SoftBodySharedSettingsDihedralBend(unsigned long inVertex1, unsigned long inVertex2, unsigned long inVertex3, unsigned long inVertex4, float inCompliance);
 
-//    attribute unsigned long[] mVertex;
+    attribute unsigned long[] mVertex;
     attribute float mCompliance;
     attribute float mInitialAngle;
 };
@@ -2347,7 +2349,7 @@ interface SoftBodySharedSettingsDihedralBend {
 interface SoftBodySharedSettingsVolume {
     void SoftBodySharedSettingsVolume(unsigned long inVertex1, unsigned long inVertex2, unsigned long inVertex3, unsigned long inVertex4, float inCompliance);
 
-//    attribute unsigned long[] mVertex;
+    attribute unsigned long[] mVertex;
     attribute float mSixRestVolume;
     attribute float mCompliance;
 };
@@ -2367,7 +2369,7 @@ interface SoftBodySharedSettingsSkinWeight
 interface SoftBodySharedSettingsSkinned
 {
     attribute unsigned long mVertex;
-//    [Value] attribute SoftBodySharedSettingsSkinWeight[] mWeights;
+    [Value] attribute SoftBodySharedSettingsSkinWeight[] mWeights;
     attribute float mMaxDistance;
     attribute float mBackStopDistance;
     attribute float mBackStopRadius;
@@ -2376,7 +2378,7 @@ interface SoftBodySharedSettingsSkinned
 interface SoftBodySharedSettingsLRA {
     void SoftBodySharedSettingsLRA(unsigned long inVertex1, unsigned long inVertex2, float inMaxDistance);
 
-//    attribute unsigned long[] mVertex;
+    attribute unsigned long[] mVertex;
     attribute float mMaxDistance;
 };
 
@@ -3100,7 +3102,7 @@ interface TrackedVehicleControllerSettings {
 
     [Value] attribute VehicleEngineSettings mEngine;
     [Value] attribute VehicleTransmissionSettings mTransmission;
-//    [Value] attribute VehicleTrackSettings[] mTracks;
+    [Value] attribute VehicleTrackSettings[] mTracks;
 };
 TrackedVehicleControllerSettings implements VehicleControllerSettings;
 
@@ -3311,7 +3313,7 @@ interface ArrayRagdollPart {
 };
 
 interface RagdollAdditionalConstraint {
-//    attribute long[] mBodyIdx;
+    attribute long[] mBodyIdx;
     attribute TwoBodyConstraintSettings mConstraint;
 };
 
