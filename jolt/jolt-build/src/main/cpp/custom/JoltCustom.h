@@ -84,7 +84,6 @@ using namespace std;
 //static_assert(sizeof(ObjectLayer) == 4);
 //
 //// Types that need to be exposed to JavaScript
-using JPHString = String;
 using ArrayVec3 = Array<Vec3>;
 using ArrayFloat = Array<float>;
 using ArrayUint = Array<uint>;
@@ -475,7 +474,7 @@ private:
 class ShapeGetTriangles
 {
 public:
-                            ShapeGetTriangles(const Shape *inShape, const AABox &inBox, Vec3Arg inPositionCOM, QuatArg inRotation, Vec3Arg inScale)
+    ShapeGetTriangles(const Shape *inShape, const AABox &inBox, Vec3Arg inPositionCOM, QuatArg inRotation, Vec3Arg inScale)
     {
         const size_t cBlockSize = 8096;
 
