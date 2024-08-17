@@ -66,7 +66,7 @@ public class Build {
         WindowsTarget linkTarget = new WindowsTarget();
         linkTarget.addJNIHeaders();
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
-        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/jolt64.a");
+        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/jolt64_.a");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
@@ -97,7 +97,7 @@ public class Build {
         LinuxTarget linkTarget = new LinuxTarget();
         linkTarget.addJNIHeaders();
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
-        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/linux/libjolt64.a");
+        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/linux/libjolt64_.a");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
@@ -132,7 +132,7 @@ public class Build {
             linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/arm/libjolt64.a");
         }
         else {
-            linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/libjolt64.a");
+            linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/libjolt64_.a");
         }
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
@@ -165,7 +165,7 @@ public class Build {
         EmscriptenTarget linkTarget = new EmscriptenTarget(idlReader);
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt");
         linkTarget.headerDirs.add("-include" + libBuildCPPPath + "/src/jolt/JoltCustom.h");
-        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/emscripten/jolt.a");
+        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/emscripten/jolt_.a");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
