@@ -8,9 +8,11 @@ import jolt.JoltSettings;
 import jolt.MeshShapeSettings;
 import jolt.PhysicsMaterialList;
 import jolt.RVec3;
+import jolt.ShapeResult;
 import jolt.TriangleList;
 import jolt.jolt.geometry.Triangle;
 import jolt.jolt.math.Quat;
+import jolt.jolt.math.Vec3;
 import jolt.jolt.physics.PhysicsSystem;
 import jolt.jolt.physics.body.Body;
 import jolt.jolt.physics.body.BodyCreationSettings;
@@ -39,7 +41,7 @@ public class BasicExample extends ScreenAdapter {
         JoltSettings settings = new JoltSettings();
         setupCollisionFiltering(settings);
         jolt = new JoltInterface(settings);
-        settings.dispose();
+//        settings.dispose();
 
         physicsSystem = jolt.GetPhysicsSystem();
         bodyInterface = physicsSystem.GetBodyInterface();
@@ -141,12 +143,26 @@ public class BasicExample extends ScreenAdapter {
                 }
             }
         var materials = new PhysicsMaterialList();
-        var shape = new MeshShapeSettings(triangles, materials).Create().Get();
-        triangles.dispose();
-        materials.dispose();
+        ShapeResult shapeResult = new MeshShapeSettings(triangles, materials).Create();
+
+        boolean hasError = shapeResult.HasError();
+        boolean isValid = shapeResult.IsValid();
+        System.out.println("ShapeResult hasError: " + hasError);
+        System.out.println("ShapeResult isValid: " + isValid);
+
+        var shape = shapeResult.Get();
+//        triangles.dispose();
+//        materials.dispose();
+
+        RVec3 rVec3 = new RVec3(posX, posY, posZ);
+        Quat quat = new Quat(0, 0, 0, 1);
+
+//        Vec3 vec3 = shape.GetCenterOfMass();
+//
+//        System.out.println("vec3 X: " + vec3.GetX());
 
         // Create body
-        var creationSettings = new BodyCreationSettings(shape, new RVec3(posX, posY, posZ), new Quat(0, 0, 0, 1), EMotionType_Static, LAYER_NON_MOVING);
+        var creationSettings = new BodyCreationSettings(shape, rVec3, quat, EMotionType_Static, LAYER_NON_MOVING);
         var body = bodyInterface.CreateBody(creationSettings);
         creationSettings.dispose();
         addToScene(body, 0xc7c7c7);

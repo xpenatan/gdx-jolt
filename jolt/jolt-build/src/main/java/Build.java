@@ -3,7 +3,7 @@ import com.github.xpenatan.jparser.builder.targets.AndroidTarget;
 import com.github.xpenatan.jparser.builder.targets.EmscriptenTarget;
 import com.github.xpenatan.jparser.builder.targets.LinuxTarget;
 import com.github.xpenatan.jparser.builder.targets.MacTarget;
-import com.github.xpenatan.jparser.builder.targets.WindowsTarget;
+import com.github.xpenatan.jparser.builder.targets.WindowsMSVCTarget;
 import com.github.xpenatan.jparser.builder.tool.BuildToolListener;
 import com.github.xpenatan.jparser.builder.tool.BuildToolOptions;
 import com.github.xpenatan.jparser.builder.tool.BuilderTool;
@@ -51,8 +51,10 @@ public class Build {
 
         BuildMultiTarget multiTarget = new BuildMultiTarget();
 
+        WindowsMSVCTarget.DEBUG_BUILD = true;
+
         // Make a static library
-        WindowsTarget windowsTarget = new WindowsTarget();
+        WindowsMSVCTarget windowsTarget = new WindowsMSVCTarget();
         windowsTarget.isStatic = true;
         windowsTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         windowsTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
@@ -63,10 +65,10 @@ public class Build {
         multiTarget.add(windowsTarget);
 
         // Compile glue code and link
-        WindowsTarget linkTarget = new WindowsTarget();
+        WindowsMSVCTarget linkTarget = new WindowsMSVCTarget();
         linkTarget.addJNIHeaders();
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
-        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/jolt64_.a");
+        linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/vc/jolt64_.lib");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
@@ -146,6 +148,9 @@ public class Build {
 
     private static BuildMultiTarget getTeaVMTarget(BuildToolOptions op, IDLReader idlReader) {
         String libBuildCPPPath = op.getModuleBuildCPPPath();
+
+        EmscriptenTarget.DEBUG_BUILD = true;
+
 
         BuildMultiTarget multiTarget = new BuildMultiTarget();
 
