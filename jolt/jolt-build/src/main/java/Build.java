@@ -58,6 +58,7 @@ public class Build {
         windowsTarget.isStatic = true;
         windowsTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         windowsTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        windowsTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         windowsTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         windowsTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         windowsTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -70,6 +71,7 @@ public class Build {
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/windows/vc/jolt64_.lib");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        linkTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -89,6 +91,7 @@ public class Build {
         linuxTarget.isStatic = true;
         linuxTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linuxTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        linuxTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         linuxTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linuxTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linuxTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -101,6 +104,7 @@ public class Build {
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/linux/libjolt64_.a");
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        linkTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -120,6 +124,7 @@ public class Build {
         macTarget.isStatic = true;
         macTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         macTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        macTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         macTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         macTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         macTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -137,6 +142,7 @@ public class Build {
             linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/libjolt64_.a");
         }
         linkTarget.cppInclude.add(libBuildCPPPath + "/src/jniglue/JNIGlue.cpp");
+        linkTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -149,8 +155,7 @@ public class Build {
     private static BuildMultiTarget getTeaVMTarget(BuildToolOptions op, IDLReader idlReader) {
         String libBuildCPPPath = op.getModuleBuildCPPPath();
 
-        EmscriptenTarget.DEBUG_BUILD = true;
-
+        EmscriptenTarget.DEBUG_BUILD = false;
 
         BuildMultiTarget multiTarget = new BuildMultiTarget();
 
@@ -160,6 +165,7 @@ public class Build {
         libTarget.compileGlueCode = false;
         libTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt");
         libTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
+        libTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         libTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         libTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         libTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -171,6 +177,7 @@ public class Build {
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt");
         linkTarget.headerDirs.add("-include" + libBuildCPPPath + "/src/jolt/JoltCustom.h");
         linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/emscripten/jolt_.a");
+        linkTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         linkTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         linkTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         linkTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
@@ -190,6 +197,7 @@ public class Build {
         androidTarget.headerDirs.add(libBuildCPPPath + "/src/jolt");
         androidTarget.cppInclude.add(libBuildCPPPath + "/**/jolt/Jolt/**.cpp");
         androidTarget.cppFlags.add("-Wno-error=format-security");
+        androidTarget.cppFlags.add("-DJPH_DEBUG_RENDERER");
         androidTarget.cppFlags.add("-DJPH_DISABLE_CUSTOM_ALLOCATOR");
         androidTarget.cppFlags.add("-DJPH_ENABLE_ASSERTS");
         androidTarget.cppFlags.add("-DJPH_CROSS_PLATFORM_DETERMINISTIC");
