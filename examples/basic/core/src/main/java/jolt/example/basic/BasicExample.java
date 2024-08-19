@@ -10,9 +10,9 @@ import jolt.PhysicsMaterialList;
 import jolt.RVec3;
 import jolt.ShapeResult;
 import jolt.TriangleList;
+import jolt.idl.helper.IDLString;
 import jolt.jolt.geometry.Triangle;
 import jolt.jolt.math.Quat;
-import jolt.jolt.math.Vec3;
 import jolt.jolt.physics.PhysicsSystem;
 import jolt.jolt.physics.body.Body;
 import jolt.jolt.physics.body.BodyCreationSettings;
@@ -113,14 +113,14 @@ public class BasicExample extends ScreenAdapter {
                 {
                     Triangle t = triangles.at((x * n + z) * 2);
                     var v1 = t.get_mV(0);
-                    var v2 = t.get_mV(1);
-                    var v3 = t.get_mV(2);
                     v1.set_x(x1);
                     v1.set_y(height(x, z));
                     v1.set_z(z1);
+                    var v2 = t.get_mV(1);
                     v2.set_x(x1);
                     v2.set_y(height(x, z + 1));
                     v2.set_z(z2);
+                    var v3 = t.get_mV(2);
                     v3.set_x(x2);
                     v3.set_y(height(x + 1, z + 1));
                     v3.set_z(z2);
@@ -129,14 +129,14 @@ public class BasicExample extends ScreenAdapter {
                 {
                     var t = triangles.at((x * n + z) * 2 + 1);
                     var v1 = t.get_mV(0);
-                    var v2 = t.get_mV(1);
-                    var v3 = t.get_mV(2);
                     v1.set_x(x1);
                     v1.set_y(height(x, z));
                     v1.set_z(z1);
+                    var v2 = t.get_mV(1);
                     v2.set_x(x2);
                     v2.set_y(height(x + 1, z + 1));
                     v2.set_z(z2);
+                    var v3 = t.get_mV(2);
                     v3.set_x(x2);
                     v3.set_y(height(x + 1, z));
                     v3.set_z(z1);
@@ -144,25 +144,19 @@ public class BasicExample extends ScreenAdapter {
             }
         var materials = new PhysicsMaterialList();
         ShapeResult shapeResult = new MeshShapeSettings(triangles, materials).Create();
-
+        triangles.dispose();
+        materials.dispose();
         boolean hasError = shapeResult.HasError();
         boolean isValid = shapeResult.IsValid();
         System.out.println("ShapeResult hasError: " + hasError);
         System.out.println("ShapeResult isValid: " + isValid);
-
+//        IDLString idlString = shapeResult.GetError();
+//        long cPointer = idlString.getCPointer();
+//        String data = idlString.data();
+//        System.out.println("ShapeResult GetError: " + data);
         var shape = shapeResult.Get();
-//        triangles.dispose();
-//        materials.dispose();
-
-        RVec3 rVec3 = new RVec3(posX, posY, posZ);
-        Quat quat = new Quat(0, 0, 0, 1);
-
-//        Vec3 vec3 = shape.GetCenterOfMass();
-//
-//        System.out.println("vec3 X: " + vec3.GetX());
-
         // Create body
-        var creationSettings = new BodyCreationSettings(shape, rVec3, quat, EMotionType_Static, LAYER_NON_MOVING);
+        var creationSettings = new BodyCreationSettings(shape, new RVec3(posX, posY, posZ), new Quat(0, 0, 0, 1), EMotionType_Static, LAYER_NON_MOVING);
         var body = bodyInterface.CreateBody(creationSettings);
         creationSettings.dispose();
         addToScene(body, 0xc7c7c7);
