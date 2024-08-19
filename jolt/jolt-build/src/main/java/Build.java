@@ -136,7 +136,7 @@ public class Build {
         linkTarget.addJNIHeaders();
         linkTarget.headerDirs.add("-I" + libBuildCPPPath + "/src/jolt/");
         if(isArm) {
-            linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/arm/libjolt64.a");
+            linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/arm/libjolt64_.a");
         }
         else {
             linkTarget.linkerFlags.add(libBuildCPPPath + "/libs/mac/libjolt64_.a");
