@@ -1944,7 +1944,7 @@ interface SoftBodyContactListenerJS {
 };
 
 interface RayCastBodyCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -1963,7 +1963,7 @@ interface RayCastBodyCollectorJS {
 };
 
 interface CollideShapeBodyCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -1982,7 +1982,7 @@ interface CollideShapeBodyCollectorJS {
 };
 
 interface CastShapeBodyCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -2017,7 +2017,7 @@ interface RayCastSettings {
 };
 
 interface CastRayCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -2076,7 +2076,7 @@ interface CollidePointResult {
 };
 
 interface CollidePointCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -2144,7 +2144,7 @@ interface CollideShapeSettings {
 CollideShapeSettings implements CollideSettingsBase;
 
 interface CollideShapeCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -2214,7 +2214,7 @@ interface ShapeCastResult {
 ShapeCastResult implements CollideShapeResult;
 
 interface CastShapeCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -2266,7 +2266,7 @@ interface CastShapeAnyHitCollisionCollector {
 CastShapeAnyHitCollisionCollector implements CastShapeCollector;
 
 interface TransformedShapeCollector {
-    void Reset();
+//    void Reset();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
     void UpdateEarlyOutFraction(float inFraction);
@@ -2797,7 +2797,7 @@ interface ObjectLayerFilterJS {
 
 interface ObjectLayerPairFilter {
     void ObjectLayerPairFilter();
-    boolean ShouldCollide(unsigned long inLayer1, unsigned long inLayer2);
+//    boolean ShouldCollide(unsigned long inLayer1, unsigned long inLayer2);
 };
 
 [JSImplementation="ObjectLayerPairFilter"]
@@ -2841,19 +2841,16 @@ interface IgnoreMultipleBodiesFilter {
 IgnoreMultipleBodiesFilter implements BodyFilter;
 
 interface ShapeFilter {
-    void ShapeFilter();
 };
 
-[JSImplementation="ShapeFilter"]
+interface ShapeFilterEm : ShapeFilter {
+};
+
+[JSImplementation="ShapeFilterEm"]
 interface ShapeFilterJS {
     void ShapeFilterJS();
-    [Const] boolean ShouldCollide([Const] Shape inShape2, [Const, Ref] SubShapeID inSubShapeIDOfShape2);
-};
-
-[JSImplementation="ShapeFilter"]
-interface ShapeFilterJS2 {
-    void ShapeFilterJS2();
-    [Const] boolean ShouldCollide([Const] Shape inShape1, [Const, Ref] SubShapeID inSubShapeIDOfShape1, [Const] Shape inShape2, [Const, Ref] SubShapeID inSubShapeIDOfShape2);
+    [Const] boolean ShouldCollide_1([Const] Shape inShape2, [Const, Ref] SubShapeID inSubShapeIDOfShape2);
+    [Const] boolean ShouldCollide_2([Const] Shape inShape1, [Const, Ref] SubShapeID inSubShapeIDOfShape1, [Const] Shape inShape2, [Const, Ref] SubShapeID inSubShapeIDOfShape2);
 };
 
 interface CharacterBase {

@@ -792,6 +792,24 @@ class DebugRendererTriangleTraits
         static constexpr uint mSize = sizeof(DebugRendererTriangle);
 };
 
+class ShapeFilterEm : public JPH::ShapeFilter
+{
+    public:
+
+        virtual bool ShouldCollide_1(const Shape *inShape2, const SubShapeID &inSubShapeIDOfShape2) const = 0;
+        virtual bool ShouldCollide_2(const Shape *inShape1, const SubShapeID &inSubShapeIDOfShape1, const Shape *inShape2, const SubShapeID &inSubShapeIDOfShape2) const = 0;
+
+        virtual bool ShouldCollide(const Shape *inShape2, const SubShapeID &inSubShapeIDOfShape2) const
+        {
+            return ShouldCollide_1(inShape2, inSubShapeIDOfShape2);
+        }
+
+        virtual bool ShouldCollide(const Shape *inShape1, const SubShapeID &inSubShapeIDOfShape1, const Shape *inShape2, const SubShapeID &inSubShapeIDOfShape2) const
+        {
+            return ShouldCollide_2(inShape1, inSubShapeIDOfShape1, inShape2, inSubShapeIDOfShape2);
+        }
+};
+
 class DebugRendererEm : public JPH::DebugRenderer
 {
     public:
