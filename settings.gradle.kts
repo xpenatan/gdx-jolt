@@ -7,11 +7,11 @@ include(":jolt:jolt-teavm")
 include(":jolt:jolt-android")
 
 // Examples
-include(":examples:basic:base")
-include(":examples:basic:core")
-include(":examples:basic:desktop")
-include(":examples:basic:teavm")
-include(":examples:basic:android")
+include(":examples:SamplesApp:base")
+include(":examples:SamplesApp:core")
+include(":examples:SamplesApp:desktop")
+include(":examples:SamplesApp:teavm")
+include(":examples:SamplesApp:android")
 
 //includeBuild("E:\\Dev\\Projects\\java\\gdx-teavm") {
 //    dependencySubstitution {
