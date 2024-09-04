@@ -7,6 +7,7 @@ import com.github.xpenatan.jparser.builder.targets.WindowsMSVCTarget;
 import com.github.xpenatan.jparser.builder.tool.BuildToolListener;
 import com.github.xpenatan.jparser.builder.tool.BuildToolOptions;
 import com.github.xpenatan.jparser.builder.tool.BuilderTool;
+import com.github.xpenatan.jparser.idl.IDLHelper;
 import com.github.xpenatan.jparser.idl.IDLReader;
 import java.util.ArrayList;
 
@@ -17,6 +18,14 @@ public class Build {
         String modulePrefix = "jolt";
         String basePackage = "jolt";
         String sourceDir =  "/build/jolt";
+
+        IDLHelper.cppConverter = idlType -> {
+            if(idlType.equals("unsigned long long")) {
+                return "uint64";
+            }
+            return null;
+        };
+
         BuildToolOptions op = new BuildToolOptions(modulePrefix, libName, basePackage, sourceDir, args);
         BuilderTool.build(op, new BuildToolListener() {
             @Override

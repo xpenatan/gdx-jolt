@@ -22,7 +22,7 @@ public class InitScreen extends ScreenAdapter {
     public void render(float delta) {
         if(init) {
             init = false;
-            game.setScreen(new BasicExample());
+            game.setScreen(new GameScreen());
         }
     }
 }

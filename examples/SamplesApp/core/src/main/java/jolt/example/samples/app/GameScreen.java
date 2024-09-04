@@ -23,7 +23,7 @@ import jolt.jolt.physics.collision.broadphase.ObjectVsBroadPhaseLayerFilterTable
 import static jolt.EMotionType.EMotionType_Static;
 import static jolt.jolt.physics.EActivation.EActivation_Activate;
 
-public class BasicExample extends ScreenAdapter {
+public class GameScreen extends ScreenAdapter {
 
     // Object layers
     static int LAYER_NON_MOVING = 0;

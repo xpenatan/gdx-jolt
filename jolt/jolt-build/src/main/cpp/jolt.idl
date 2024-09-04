@@ -3543,3 +3543,13 @@ interface JoltInterface {
 //    static unsigned long long sGetTotalMemory();
 //    static unsigned long long sGetFreeMemory();
 };
+
+interface TempAllocatorImpl {
+    void TempAllocatorImpl(unsigned long inSize);
+
+};
+
+interface JobSystemThreadPool {
+    void JobSystemThreadPool(unsigned long inMaxJobs, unsigned long inMaxBarriers, optional long inNumThreads);
+
+};
