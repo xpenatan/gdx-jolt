@@ -1,15 +1,14 @@
 [versions]
 projectGroup = "com.github.xpenatan.jJolt"
 projectName = "jJolt"
+jJoltRelease = "5.6.0.0"
+jJoltSnapshot = "-SNAPSHOT"
+joltSource = "5.6.0"
 
 javaMainTarget = "1.8"
 javaWebTarget = "17"
 javaFfmTarget = "25"
 
-joltVersion = "5.6.0"
-joltCommit = "e77f175595e64cb44218cc9d9d56fc365ad0e36a"
-joltJsVersion = "1.1.0"
-joltJsCommit = "c9c122bcd48e92885fbee7d267c928c3781d581c"
 jparserVersion = "-SNAPSHOT"
 fdxVersion = "-SNAPSHOT"
 gdxVersion = "1.14.2"
@@ -20,7 +19,6 @@ gdxImguiVersion = "1.92.4.0"
 junitVersion = "4.12"
 useRepoLibs = "false"
 exampleVersion = "-SNAPSHOT"
-snapshotVersion = "-SNAPSHOT"
 
 easyPublishingVersion = "0.1.1"
 androidGradlePluginVersion = "9.1.1"

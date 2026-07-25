@@ -369,12 +369,12 @@ jobs:
           git pull origin ${{ github.ref_name }}  # Pulls the latest from the branch
 
       - name: Get version
-        uses: madhead/read-java-properties@latest
         id: version
-        with:
-          file: "./gradle.properties"
-          property: version
-          default: 0.0.1
+        shell: bash
+        run: |
+          version="$(sed -n 's/^jJoltRelease = "\(.*\)"/\1/p' gradle/libs.versions.toml)"
+          test -n "$version"
+          echo "value=$version" >> "$GITHUB_OUTPUT"
 
       - name: Set up JDK 25
         uses: actions/setup-java@v5

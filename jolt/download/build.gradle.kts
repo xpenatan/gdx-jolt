@@ -10,12 +10,7 @@ plugins {
 val buildDirFile = layout.buildDirectory.get().asFile
 val joltSourceRoot = buildDirFile.resolve("jolt-source")
 val joltArchiveFile = buildDirFile.resolve("tmp/jolt-source.zip")
-val joltJsSourceRoot = buildDirFile.resolve("jolt-js-source")
-val joltJsArchiveFile = buildDirFile.resolve("tmp/jolt-js-source.zip")
-val joltVersion = libs.versions.joltVersion.get()
-val joltCommit = libs.versions.joltCommit.get()
-val joltJsVersion = libs.versions.joltJsVersion.get()
-val joltJsCommit = libs.versions.joltJsCommit.get()
+val joltSourceVersion = libs.versions.joltSource.get()
 
 fun downloadAndExtract(url: String, archiveFile: File, outputDir: File) {
     println("URL: $url")
@@ -44,24 +39,15 @@ fun downloadAndExtract(url: String, archiveFile: File, outputDir: File) {
 
 tasks.register("jolt_download_source") {
     group = "jolt"
-    description = "Download the pinned Jolt Physics and JoltPhysics.js sources into the build directory."
-    inputs.property("joltVersion", joltVersion)
-    inputs.property("joltCommit", joltCommit)
-    inputs.property("joltJsVersion", joltJsVersion)
-    inputs.property("joltJsCommit", joltJsCommit)
+    description = "Download the Jolt Physics source tag into the build directory."
+    inputs.property("joltSourceVersion", joltSourceVersion)
     outputs.dir(joltSourceRoot)
-    outputs.dir(joltJsSourceRoot)
 
     doLast {
         downloadAndExtract(
-            "https://github.com/jrouwe/JoltPhysics/archive/$joltCommit.zip",
+            "https://github.com/jrouwe/JoltPhysics/archive/refs/tags/v$joltSourceVersion.zip",
             joltArchiveFile,
             joltSourceRoot
-        )
-        downloadAndExtract(
-            "https://github.com/jrouwe/JoltPhysics.js/archive/$joltJsCommit.zip",
-            joltJsArchiveFile,
-            joltJsSourceRoot
         )
     }
 }

@@ -50,9 +50,9 @@ easyPublishing {
         ":extensions:fdx"
     )
 
-    groupId.set(libs.versions.projectGroup.get())
-    releaseVersion.set(providers.gradleProperty("version"))
-    snapshotVersion.set(libs.versions.snapshotVersion.get())
+    groupId.set(libs.versions.projectGroup)
+    releaseVersion.set(libs.versions.jJoltRelease)
+    snapshotVersion.set(libs.versions.jJoltSnapshot)
 
     snapshotRepositoryUrl.set("https://central.sonatype.com/repository/maven-snapshots/")
     releaseRepositoryUrl.set("https://central.sonatype.com")
@@ -61,7 +61,7 @@ easyPublishing {
     signingKey.set(providers.environmentVariable("SIGNING_KEY"))
     signingPassword.set(providers.environmentVariable("SIGNING_PASSWORD"))
 
-    pomName.set(libs.versions.projectName.get())
+    pomName.set(libs.versions.projectName)
     pomDescription.set("Jolt Physics Java Bindings")
     projectUrl.set("https://github.com/xpenatan/jJolt")
 
