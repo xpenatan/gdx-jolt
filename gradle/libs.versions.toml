@@ -9,10 +9,9 @@ javaMainTarget = "1.8"
 javaWebTarget = "17"
 javaFfmTarget = "25"
 
-jparserVersion = "-SNAPSHOT"
-fdxVersion = "-SNAPSHOT"
-gdxVersion = "1.14.2"
-teavmVersion = "0.15.0"
+jParser = "-SNAPSHOT"
+libfdx = "-SNAPSHOT"
+libgdx = "1.14.2"
 
 gdxTeavmVersion = "-SNAPSHOT"
 gdxImguiVersion = "1.92.4.0"
@@ -31,59 +30,59 @@ gdxGltfVersion = "2.2.1"
 easyPublishing = { id = "com.github.xpenatan.easy-publishing", version.ref = "easyPublishingVersion" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePluginVersion" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGradlePluginVersion" }
-jparser = { id = "com.github.xpenatan.jparser", version.ref = "jparserVersion" }
-libfdx = { id = "io.github.libfdx", version.ref = "fdxVersion" }
+jparser = { id = "com.github.xpenatan.jparser", version.ref = "jParser" }
+libfdx = { id = "io.github.libfdx", version.ref = "libfdx" }
 
 [libraries]
-jparserApiCore = { module = "com.github.xpenatan.jParser:api-core", version.ref = "jparserVersion" }
-jparserApiWeb = { module = "com.github.xpenatan.jParser:api-web", version.ref = "jparserVersion" }
-jparserLoaderC = { module = "com.github.xpenatan.jParser:loader-c", version.ref = "jparserVersion" }
-jparserLoaderCore = { module = "com.github.xpenatan.jParser:loader-core", version.ref = "jparserVersion" }
-jparserLoaderWeb = { module = "com.github.xpenatan.jParser:loader-web", version.ref = "jparserVersion" }
-jparserRuntimeAndroid = { module = "com.github.xpenatan.jParser:runtime-android", version.ref = "jparserVersion" }
-jparserRuntimeBase = { module = "com.github.xpenatan.jParser:runtime-base", version.ref = "jparserVersion" }
-jparserRuntimeC = { module = "com.github.xpenatan.jParser:runtime-c", version.ref = "jparserVersion" }
-jparserRuntimeCore = { module = "com.github.xpenatan.jParser:runtime-core", version.ref = "jparserVersion" }
-jparserRuntimeJni = { module = "com.github.xpenatan.jParser:runtime-jni", version.ref = "jparserVersion" }
-jparserRuntimeWeb = { module = "com.github.xpenatan.jParser:runtime-web", version.ref = "jparserVersion" }
-jparserRuntimeWebWasm = { module = "com.github.xpenatan.jParser:runtime-web_wasm", version.ref = "jparserVersion" }
-jparserRuntimeDesktopCWindowsX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_windows_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopCLinuxX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_linux_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopCMacX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_mac_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopCMacArm64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_mac_arm64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopJni = { module = "com.github.xpenatan.jParser:runtime-desktop-jni", version.ref = "jparserVersion" }
-jparserRuntimeDesktopJniWindowsX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_windows_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopJniLinuxX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_linux_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopJniMacX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_mac_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopJniMacArm64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_mac_arm64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopFfm = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm", version.ref = "jparserVersion" }
-jparserRuntimeDesktopFfmWindowsX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_windows_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopFfmLinuxX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_linux_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopFfmMacX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_mac_x64", version.ref = "jparserVersion" }
-jparserRuntimeDesktopFfmMacArm64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_mac_arm64", version.ref = "jparserVersion" }
+jparserApiCore = { module = "com.github.xpenatan.jParser:api-core", version.ref = "jParser" }
+jparserApiWeb = { module = "com.github.xpenatan.jParser:api-web", version.ref = "jParser" }
+jparserLoaderC = { module = "com.github.xpenatan.jParser:loader-c", version.ref = "jParser" }
+jparserLoaderCore = { module = "com.github.xpenatan.jParser:loader-core", version.ref = "jParser" }
+jparserLoaderWeb = { module = "com.github.xpenatan.jParser:loader-web", version.ref = "jParser" }
+jparserRuntimeAndroid = { module = "com.github.xpenatan.jParser:runtime-android", version.ref = "jParser" }
+jparserRuntimeBase = { module = "com.github.xpenatan.jParser:runtime-base", version.ref = "jParser" }
+jparserRuntimeC = { module = "com.github.xpenatan.jParser:runtime-c", version.ref = "jParser" }
+jparserRuntimeCore = { module = "com.github.xpenatan.jParser:runtime-core", version.ref = "jParser" }
+jparserRuntimeJni = { module = "com.github.xpenatan.jParser:runtime-jni", version.ref = "jParser" }
+jparserRuntimeWeb = { module = "com.github.xpenatan.jParser:runtime-web", version.ref = "jParser" }
+jparserRuntimeWebWasm = { module = "com.github.xpenatan.jParser:runtime-web_wasm", version.ref = "jParser" }
+jparserRuntimeDesktopCWindowsX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_windows_x64", version.ref = "jParser" }
+jparserRuntimeDesktopCLinuxX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_linux_x64", version.ref = "jParser" }
+jparserRuntimeDesktopCMacX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_mac_x64", version.ref = "jParser" }
+jparserRuntimeDesktopCMacArm64 = { module = "com.github.xpenatan.jParser:runtime-desktop-c_mac_arm64", version.ref = "jParser" }
+jparserRuntimeDesktopJni = { module = "com.github.xpenatan.jParser:runtime-desktop-jni", version.ref = "jParser" }
+jparserRuntimeDesktopJniWindowsX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_windows_x64", version.ref = "jParser" }
+jparserRuntimeDesktopJniLinuxX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_linux_x64", version.ref = "jParser" }
+jparserRuntimeDesktopJniMacX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_mac_x64", version.ref = "jParser" }
+jparserRuntimeDesktopJniMacArm64 = { module = "com.github.xpenatan.jParser:runtime-desktop-jni_mac_arm64", version.ref = "jParser" }
+jparserRuntimeDesktopFfm = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm", version.ref = "jParser" }
+jparserRuntimeDesktopFfmWindowsX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_windows_x64", version.ref = "jParser" }
+jparserRuntimeDesktopFfmLinuxX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_linux_x64", version.ref = "jParser" }
+jparserRuntimeDesktopFfmMacX64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_mac_x64", version.ref = "jParser" }
+jparserRuntimeDesktopFfmMacArm64 = { module = "com.github.xpenatan.jParser:runtime-desktop-ffm_mac_arm64", version.ref = "jParser" }
 
-fdxApplication = { module = "io.github.libfdx:application", version.ref = "fdxVersion" }
-fdxAssetManager = { module = "io.github.libfdx:asset_manager", version.ref = "fdxVersion" }
-fdxBackendAndroid = { module = "io.github.libfdx:backend_android", version.ref = "fdxVersion" }
-fdxBackendDesktop = { module = "io.github.libfdx:backend_desktop", version.ref = "fdxVersion" }
-fdxBackendWeb = { module = "io.github.libfdx:backend_web", version.ref = "fdxVersion" }
-fdxDisplay = { module = "io.github.libfdx:display", version.ref = "fdxVersion" }
-fdxG3d = { module = "io.github.libfdx:g3d", version.ref = "fdxVersion" }
-fdxGlDesktop = { module = "io.github.libfdx:gl_desktop", version.ref = "fdxVersion" }
-fdxGlWeb = { module = "io.github.libfdx:gl_web", version.ref = "fdxVersion" }
-fdxGraphics = { module = "io.github.libfdx:graphics", version.ref = "fdxVersion" }
-fdxVulkanAndroidJni = { module = "io.github.libfdx:vulkan_android_jni", version.ref = "fdxVersion" }
-fdxVulkanDesktop = { module = "io.github.libfdx:vulkan_desktop", version.ref = "fdxVersion" }
-fdxWgpuAndroidJni = { module = "io.github.libfdx:wgpu_android_jni", version.ref = "fdxVersion" }
-fdxWgpuCore = { module = "io.github.libfdx:wgpu_core", version.ref = "fdxVersion" }
-fdxWgpuDesktopFfm = { module = "io.github.libfdx:wgpu_desktop_ffm", version.ref = "fdxVersion" }
-fdxWgpuDesktopJni = { module = "io.github.libfdx:wgpu_desktop_jni", version.ref = "fdxVersion" }
-fdxWgpuWeb = { module = "io.github.libfdx:wgpu_web", version.ref = "fdxVersion" }
+fdxApplication = { module = "io.github.libfdx:application", version.ref = "libfdx" }
+fdxAssetManager = { module = "io.github.libfdx:asset_manager", version.ref = "libfdx" }
+fdxBackendAndroid = { module = "io.github.libfdx:backend_android", version.ref = "libfdx" }
+fdxBackendDesktop = { module = "io.github.libfdx:backend_desktop", version.ref = "libfdx" }
+fdxBackendWeb = { module = "io.github.libfdx:backend_web", version.ref = "libfdx" }
+fdxDisplay = { module = "io.github.libfdx:display", version.ref = "libfdx" }
+fdxG3d = { module = "io.github.libfdx:g3d", version.ref = "libfdx" }
+fdxGlDesktop = { module = "io.github.libfdx:gl_desktop", version.ref = "libfdx" }
+fdxGlWeb = { module = "io.github.libfdx:gl_web", version.ref = "libfdx" }
+fdxGraphics = { module = "io.github.libfdx:graphics", version.ref = "libfdx" }
+fdxVulkanAndroidJni = { module = "io.github.libfdx:vulkan_android_jni", version.ref = "libfdx" }
+fdxVulkanDesktop = { module = "io.github.libfdx:vulkan_desktop", version.ref = "libfdx" }
+fdxWgpuAndroidJni = { module = "io.github.libfdx:wgpu_android_jni", version.ref = "libfdx" }
+fdxWgpuCore = { module = "io.github.libfdx:wgpu_core", version.ref = "libfdx" }
+fdxWgpuDesktopFfm = { module = "io.github.libfdx:wgpu_desktop_ffm", version.ref = "libfdx" }
+fdxWgpuDesktopJni = { module = "io.github.libfdx:wgpu_desktop_jni", version.ref = "libfdx" }
+fdxWgpuWeb = { module = "io.github.libfdx:wgpu_web", version.ref = "libfdx" }
 
-gdxCore = { module = "com.badlogicgames.gdx:gdx", version.ref = "gdxVersion" }
-gdxBackendAndroid = { module = "com.badlogicgames.gdx:gdx-backend-android", version.ref = "gdxVersion" }
-gdxBackendLwjgl3 = { module = "com.badlogicgames.gdx:gdx-backend-lwjgl3", version.ref = "gdxVersion" }
-gdxPlatform = { module = "com.badlogicgames.gdx:gdx-platform", version.ref = "gdxVersion" }
+gdxCore = { module = "com.badlogicgames.gdx:gdx", version.ref = "libgdx" }
+gdxBackendAndroid = { module = "com.badlogicgames.gdx:gdx-backend-android", version.ref = "libgdx" }
+gdxBackendLwjgl3 = { module = "com.badlogicgames.gdx:gdx-backend-lwjgl3", version.ref = "libgdx" }
+gdxPlatform = { module = "com.badlogicgames.gdx:gdx-platform", version.ref = "libgdx" }
 gdxTeavmBackendGlfw = { module = "com.github.xpenatan.gdx-teavm:backend-glfw", version.ref = "gdxTeavmVersion" }
 gdxTeavmBackendWeb = { module = "com.github.xpenatan.gdx-teavm:backend-web", version.ref = "gdxTeavmVersion" }
 gdxGltfCore = { module = "com.github.mgsx-dev.gdx-gltf:core", version.ref = "gdxGltfVersion" }
@@ -100,10 +99,6 @@ jjoltDesktopJni = { module = "com.github.xpenatan.jJolt:desktop-jni", version.re
 jjoltGdxGl = { module = "com.github.xpenatan.jJolt:gdx-gl", version.ref = "exampleVersion" }
 jjoltJoltFdx = { module = "com.github.xpenatan.jJolt:jolt-fdx", version.ref = "exampleVersion" }
 jjoltWebWasm = { module = "com.github.xpenatan.jJolt:web-wasm", version.ref = "exampleVersion" }
-
-teavmClasslib = { module = "org.teavm:teavm-classlib", version.ref = "teavmVersion" }
-teavmCore = { module = "org.teavm:teavm-core", version.ref = "teavmVersion" }
-teavmTooling = { module = "org.teavm:teavm-tooling", version.ref = "teavmVersion" }
 
 androidDesugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "androidDesugarVersion" }
 androidxTestJunit = { module = "androidx.test.ext:junit", version.ref = "androidxTestJunitVersion" }

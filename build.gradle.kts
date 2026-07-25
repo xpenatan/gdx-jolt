@@ -27,7 +27,7 @@ allprojects  {
                     requested.name.startsWith("runtime-")
             )
             if(isJParserRuntime) {
-                useVersion(libs.versions.jparserVersion.get())
+                useVersion(libs.versions.jParser.get())
             }
             else if(requested.group == "com.github.xpenatan.gdx-teavm") {
                 useVersion(libs.versions.gdxTeavmVersion.get())

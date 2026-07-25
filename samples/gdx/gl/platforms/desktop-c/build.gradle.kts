@@ -42,8 +42,6 @@ dependencies {
     joltRuntimeClasspath(project(joltRuntimeProject))
     joltRuntimeClasspath(joltDesktopCNativeJarClasspath)
 
-    implementation(libs.teavmTooling)
-    implementation(libs.teavmClasslib)
 }
 
 fun currentHostJoltCBuildTask(): String? {

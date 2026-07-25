@@ -15,8 +15,6 @@ dependencies {
     api(libs.jparserApiCore)
     api(libs.jparserLoaderCore)
     api(libs.jparserLoaderC)
-    api(libs.teavmCore)
-    api(libs.teavmClasslib)
 }
 
 sourceSets {
