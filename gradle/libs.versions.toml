@@ -19,7 +19,7 @@ junitVersion = "4.12"
 useRepoLibs = "false"
 exampleVersion = "-SNAPSHOT"
 
-easyPublishingVersion = "0.1.1"
+easyPublishingVersion = "0.1.2"
 androidGradlePluginVersion = "9.1.1"
 androidxTestJunitVersion = "1.2.1"
 androidxTestRunnerVersion = "1.6.2"
@@ -30,7 +30,7 @@ gdxGltfVersion = "2.2.1"
 easyPublishing = { id = "com.github.xpenatan.easy-publishing", version.ref = "easyPublishingVersion" }
 androidApplication = { id = "com.android.application", version.ref = "androidGradlePluginVersion" }
 androidLibrary = { id = "com.android.library", version.ref = "androidGradlePluginVersion" }
-jparser = { id = "com.github.xpenatan.jparser", version.ref = "jParser" }
+jparser = { id = "com.github.xpenatan.jParser", version.ref = "jParser" }
 libfdx = { id = "io.github.libfdx", version.ref = "libfdx" }
 
 [libraries]
