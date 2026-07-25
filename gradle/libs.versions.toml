@@ -22,7 +22,7 @@ useRepoLibs = "false"
 exampleVersion = "-SNAPSHOT"
 snapshotVersion = "-SNAPSHOT"
 
-easyPublishingVersion = "0.1.0"
+easyPublishingVersion = "0.1.1"
 androidGradlePluginVersion = "9.1.1"
 androidxTestJunitVersion = "1.2.1"
 androidxTestRunnerVersion = "1.6.2"
