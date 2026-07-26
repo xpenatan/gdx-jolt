@@ -11,7 +11,7 @@ import jolt.math.Float3;
 import jolt.math.Float2;
 import jolt.core.Color;
 
-public class DebugRendererVertex extends NativeObject {
+public final class DebugRendererVertex extends NativeObject {
 
     static public final DebugRendererVertex NULL = DebugRendererVertex.native_new();
 

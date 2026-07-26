@@ -11,7 +11,7 @@ import jolt.enums.SixDOFConstraintSettings_EAxis;
 import jolt.math.Quat;
 import jolt.enums.EMotorState;
 
-public class SixDOFConstraint extends TwoBodyConstraint {
+public final class SixDOFConstraint extends TwoBodyConstraint {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class StateRecorderImpl extends StateRecorder {
+public final class StateRecorderImpl extends StateRecorder {
 
     static public final StateRecorderImpl NULL = StateRecorderImpl.native_new();
 

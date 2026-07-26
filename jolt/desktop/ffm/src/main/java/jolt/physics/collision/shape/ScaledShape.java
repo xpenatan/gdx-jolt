@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ScaledShape extends DecoratedShape {
+public final class ScaledShape extends DecoratedShape {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

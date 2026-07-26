@@ -23,7 +23,7 @@ import gen.web.jolt.physics.collision.shape.SubShapeID;
 import gen.web.jolt.math.Float3;
 import gen.web.jolt.physics.body.BodyID;
 
-public class TransformedShape extends NativeObject {
+public final class TransformedShape extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

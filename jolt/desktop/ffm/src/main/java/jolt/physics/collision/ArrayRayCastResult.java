@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayRayCastResult extends NativeObject {
+public final class ArrayRayCastResult extends NativeObject {
 
     private RayCastResult RayCastResult_TEMP_GEN_0;
 

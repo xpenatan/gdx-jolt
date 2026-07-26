@@ -12,7 +12,7 @@ import jolt.math.Mat44;
 import jolt.math.Vec3;
 import jolt.math.Vec4;
 
-public class RMat44 extends NativeObject {
+public final class RMat44 extends NativeObject {
 
     static public final RMat44 NULL = RMat44.native_new();
 

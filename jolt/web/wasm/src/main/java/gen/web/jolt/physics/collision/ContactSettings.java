@@ -9,7 +9,7 @@ package gen.web.jolt.physics.collision;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Vec3;
 
-public class ContactSettings extends NativeObject {
+public final class ContactSettings extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

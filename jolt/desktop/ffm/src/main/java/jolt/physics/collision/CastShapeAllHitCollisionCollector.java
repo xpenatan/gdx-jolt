@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CastShapeAllHitCollisionCollector extends CastShapeCollector {
+public final class CastShapeAllHitCollisionCollector extends CastShapeCollector {
 
     private ArrayShapeCastResult ArrayShapeCastResult_TEMP_GEN_0;
 

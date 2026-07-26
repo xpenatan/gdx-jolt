@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ShapeCastSettings extends CollideSettingsBase {
+public final class ShapeCastSettings extends CollideSettingsBase {
 
     static public final ShapeCastSettings NULL = ShapeCastSettings.native_new();
 

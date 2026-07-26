@@ -11,7 +11,7 @@ import jolt.enums.EMotorState;
 import jolt.math.Quat;
 import jolt.math.Vector2;
 
-public class HingeConstraint extends TwoBodyConstraint {
+public final class HingeConstraint extends TwoBodyConstraint {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

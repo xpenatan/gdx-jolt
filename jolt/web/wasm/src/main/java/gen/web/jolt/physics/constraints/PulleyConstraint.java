@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.constraints;
 
-public class PulleyConstraint extends TwoBodyConstraint {
+public final class PulleyConstraint extends TwoBodyConstraint {
 
     static public final PulleyConstraint NULL = PulleyConstraint.native_new();
 

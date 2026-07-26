@@ -8,7 +8,7 @@ package gen.c.jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayUint extends NativeObject {
+public final class ArrayUint extends NativeObject {
 
     private UintMemRef UintMemRef_TEMP_GEN_0;
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CapsuleShapeSettings extends ConvexShapeSettings {
+public final class CapsuleShapeSettings extends ConvexShapeSettings {
 
     static public final CapsuleShapeSettings NULL = CapsuleShapeSettings.native_new();
 

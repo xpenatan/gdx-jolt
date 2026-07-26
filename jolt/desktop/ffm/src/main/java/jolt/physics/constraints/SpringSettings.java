@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SpringSettings extends NativeObject {
+public final class SpringSettings extends NativeObject {
 
     static public final SpringSettings NULL = SpringSettings.native_new();
 

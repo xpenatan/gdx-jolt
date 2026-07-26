@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayRayCastResult extends NativeObject {
+public final class ArrayRayCastResult extends NativeObject {
 
     static public final ArrayRayCastResult NULL = ArrayRayCastResult.native_new();
 

@@ -10,7 +10,7 @@ import jolt.math.TwoBodyConstraintSettings;
 import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 
-public class SliderConstraintSettings extends TwoBodyConstraintSettings {
+public final class SliderConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final SliderConstraintSettings NULL = SliderConstraintSettings.native_new();
 

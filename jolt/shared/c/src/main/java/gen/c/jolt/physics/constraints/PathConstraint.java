@@ -8,7 +8,7 @@ package gen.c.jolt.physics.constraints;
 
 import gen.c.jolt.enums.EMotorState;
 
-public class PathConstraint extends TwoBodyConstraint {
+public final class PathConstraint extends TwoBodyConstraint {
 
     private PathConstraintPath PathConstraintPath_TEMP_GEN_0;
 

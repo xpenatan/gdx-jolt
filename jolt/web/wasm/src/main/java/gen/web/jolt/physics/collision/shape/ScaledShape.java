@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision.shape;
 
 import gen.web.jolt.math.Vec3;
 
-public class ScaledShape extends DecoratedShape {
+public final class ScaledShape extends DecoratedShape {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

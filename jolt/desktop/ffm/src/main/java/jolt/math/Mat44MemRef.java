@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Mat44MemRef extends NativeObject {
+public final class Mat44MemRef extends NativeObject {
 
     static public final Mat44MemRef NULL = Mat44MemRef.native_new();
 

@@ -24,7 +24,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodyMotionProperties extends MotionProperties {
+public final class SoftBodyMotionProperties extends MotionProperties {
 
     private SoftBodySharedSettings SoftBodySharedSettings_TEMP_GEN_0;
 

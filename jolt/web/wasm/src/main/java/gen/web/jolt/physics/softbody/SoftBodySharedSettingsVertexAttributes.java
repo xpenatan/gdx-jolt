@@ -9,7 +9,7 @@ package gen.web.jolt.physics.softbody;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.enums.SoftBodySharedSettings_ELRAType;
 
-public class SoftBodySharedSettingsVertexAttributes extends NativeObject {
+public final class SoftBodySharedSettingsVertexAttributes extends NativeObject {
 
     static public final SoftBodySharedSettingsVertexAttributes NULL = SoftBodySharedSettingsVertexAttributes.native_new();
 

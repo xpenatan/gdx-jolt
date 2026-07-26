@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayUint extends NativeObject {
+public final class ArrayUint extends NativeObject {
 
     private UintMemRef UintMemRef_TEMP_GEN_0;
 

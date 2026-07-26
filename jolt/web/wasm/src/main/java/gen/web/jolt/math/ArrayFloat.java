@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayFloat extends NativeObject {
+public final class ArrayFloat extends NativeObject {
 
     private FloatMemRef FloatMemRef_TEMP_GEN_0;
 

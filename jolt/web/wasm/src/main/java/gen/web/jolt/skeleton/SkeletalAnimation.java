@@ -8,7 +8,7 @@ package gen.web.jolt.skeleton;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class SkeletalAnimation extends NativeObject {
+public final class SkeletalAnimation extends NativeObject {
 
     private ArraySkeletonAnimatedJoint ArraySkeletonAnimatedJoint_TEMP_GEN_0;
 

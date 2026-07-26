@@ -11,7 +11,7 @@ import jolt.math.Vec3;
 import jolt.math.ArrayMat44;
 import jolt.math.Mat44;
 
-public class SkeletonPose extends NativeObject {
+public final class SkeletonPose extends NativeObject {
 
     static public final SkeletonPose NULL = SkeletonPose.native_new();
 

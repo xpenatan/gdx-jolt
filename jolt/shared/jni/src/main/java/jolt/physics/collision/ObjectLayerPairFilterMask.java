@@ -6,7 +6,7 @@
 
 package jolt.physics.collision;
 
-public class ObjectLayerPairFilterMask extends ObjectLayerPairFilter {
+public final class ObjectLayerPairFilterMask extends ObjectLayerPairFilter {
 
     static public final ObjectLayerPairFilterMask NULL = ObjectLayerPairFilterMask.native_new();
 

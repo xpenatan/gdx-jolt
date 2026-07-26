@@ -6,7 +6,7 @@
 
 package jolt.physics.collision.broadphase;
 
-public class SpecifiedBroadPhaseLayerFilter extends BroadPhaseLayerFilter {
+public final class SpecifiedBroadPhaseLayerFilter extends BroadPhaseLayerFilter {
 
     static public final SpecifiedBroadPhaseLayerFilter NULL = SpecifiedBroadPhaseLayerFilter.native_new();
 

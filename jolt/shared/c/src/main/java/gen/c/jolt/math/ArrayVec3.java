@@ -8,7 +8,7 @@ package gen.c.jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayVec3 extends NativeObject {
+public final class ArrayVec3 extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

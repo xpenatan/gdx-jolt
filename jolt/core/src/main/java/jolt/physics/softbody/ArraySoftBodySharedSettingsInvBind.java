@@ -8,7 +8,7 @@ package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsInvBind extends NativeObject {
+public final class ArraySoftBodySharedSettingsInvBind extends NativeObject {
 
     static public final ArraySoftBodySharedSettingsInvBind NULL = ArraySoftBodySharedSettingsInvBind.native_new();
 

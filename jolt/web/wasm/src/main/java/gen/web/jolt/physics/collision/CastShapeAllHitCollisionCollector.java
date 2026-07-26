@@ -9,7 +9,7 @@ package gen.web.jolt.physics.collision;
 import gen.web.jolt.physics.softbody.CastShapeCollector;
 import gen.web.jolt.physics.collision.shape.ArrayShapeCastResult;
 
-public class CastShapeAllHitCollisionCollector extends CastShapeCollector {
+public final class CastShapeAllHitCollisionCollector extends CastShapeCollector {
 
     private ArrayShapeCastResult ArrayShapeCastResult_TEMP_GEN_0;
 

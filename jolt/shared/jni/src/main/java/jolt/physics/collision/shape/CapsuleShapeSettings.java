@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.physics.collision.PhysicsMaterial;
 
-public class CapsuleShapeSettings extends ConvexShapeSettings {
+public final class CapsuleShapeSettings extends ConvexShapeSettings {
 
     static public final CapsuleShapeSettings NULL = CapsuleShapeSettings.native_new();
 

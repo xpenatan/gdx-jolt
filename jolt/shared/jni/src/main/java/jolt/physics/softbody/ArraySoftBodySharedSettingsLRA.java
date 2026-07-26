@@ -8,7 +8,7 @@ package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsLRA extends NativeObject {
+public final class ArraySoftBodySharedSettingsLRA extends NativeObject {
 
     private SoftBodySharedSettingsLRA SoftBodySharedSettingsLRA_TEMP_GEN_0;
 

@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class JobSystemThreadPool extends JobSystemWithBarrier {
+public final class JobSystemThreadPool extends JobSystemWithBarrier {
 
     static public final JobSystemThreadPool NULL = JobSystemThreadPool.native_new();
 

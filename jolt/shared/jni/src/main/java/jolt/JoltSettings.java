@@ -11,7 +11,7 @@ import jolt.physics.collision.broadphase.BroadPhaseLayerInterface;
 import jolt.physics.collision.broadphase.ObjectVsBroadPhaseLayerFilter;
 import jolt.physics.collision.ObjectLayerPairFilter;
 
-public class JoltSettings extends NativeObject {
+public final class JoltSettings extends NativeObject {
 
     private BroadPhaseLayerInterface BroadPhaseLayerInterface_TEMP_GEN_0;
 

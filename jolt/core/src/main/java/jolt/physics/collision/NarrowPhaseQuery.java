@@ -21,7 +21,7 @@ import jolt.physics.softbody.CastShapeCollector;
 import jolt.geometry.AABox;
 import jolt.physics.softbody.TransformedShapeCollector;
 
-public class NarrowPhaseQuery extends NativeObject {
+public final class NarrowPhaseQuery extends NativeObject {
 
     static public final NarrowPhaseQuery NULL = NarrowPhaseQuery.native_new();
 

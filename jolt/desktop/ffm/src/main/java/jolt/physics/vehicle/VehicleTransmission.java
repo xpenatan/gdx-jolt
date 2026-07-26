@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleTransmission extends VehicleTransmissionSettings {
+public final class VehicleTransmission extends VehicleTransmissionSettings {
 
     static public final VehicleTransmission NULL = VehicleTransmission.native_new();
 

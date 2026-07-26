@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleConstraintStepListener extends PhysicsStepListener {
+public final class VehicleConstraintStepListener extends PhysicsStepListener {
 
     static public final VehicleConstraintStepListener NULL = VehicleConstraintStepListener.native_new();
 

@@ -6,7 +6,7 @@
 
 package jolt.physics.vehicle;
 
-public class TrackedVehicleControllerSettings extends VehicleControllerSettings {
+public final class TrackedVehicleControllerSettings extends VehicleControllerSettings {
 
     static public final TrackedVehicleControllerSettings NULL = TrackedVehicleControllerSettings.native_new();
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySoftBodySharedSettingsRodStretchShear extends NativeObject {
+public final class ArraySoftBodySharedSettingsRodStretchShear extends NativeObject {
 
     private SoftBodySharedSettingsRodStretchShear SoftBodySharedSettingsRodStretchShear_TEMP_GEN_0;
 

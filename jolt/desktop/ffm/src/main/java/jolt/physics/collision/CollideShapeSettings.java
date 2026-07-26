@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CollideShapeSettings extends CollideSettingsBase {
+public final class CollideShapeSettings extends CollideSettingsBase {
 
     static public final CollideShapeSettings NULL = CollideShapeSettings.native_new();
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodySharedSettingsEdge extends NativeObject {
+public final class SoftBodySharedSettingsEdge extends NativeObject {
 
     static public final SoftBodySharedSettingsEdge NULL = SoftBodySharedSettingsEdge.native_new();
 

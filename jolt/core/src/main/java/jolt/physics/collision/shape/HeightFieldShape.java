@@ -12,7 +12,7 @@ import jolt.core.TempAllocator;
 import jolt.math.Uint8MemRef;
 import jolt.physics.collision.PhysicsMaterialList;
 
-public class HeightFieldShape extends Shape {
+public final class HeightFieldShape extends Shape {
 
     static public final HeightFieldShape NULL = HeightFieldShape.native_new();
 

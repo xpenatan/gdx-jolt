@@ -8,7 +8,7 @@ package jolt.skeleton;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySkeletonKeyframe extends NativeObject {
+public final class ArraySkeletonKeyframe extends NativeObject {
 
     static public final ArraySkeletonKeyframe NULL = ArraySkeletonKeyframe.native_new();
 

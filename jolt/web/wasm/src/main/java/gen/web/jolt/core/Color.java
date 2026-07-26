@@ -9,7 +9,7 @@ package gen.web.jolt.core;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Vec4;
 
-public class Color extends NativeObject {
+public final class Color extends NativeObject {
 
     private Color Color_TEMP_GEN_0;
 

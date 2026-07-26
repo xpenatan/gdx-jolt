@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleCollisionTesterCastCylinder extends VehicleCollisionTester {
+public final class VehicleCollisionTesterCastCylinder extends VehicleCollisionTester {
 
     static public final VehicleCollisionTesterCastCylinder NULL = VehicleCollisionTesterCastCylinder.native_new();
 

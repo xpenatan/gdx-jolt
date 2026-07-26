@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodySharedSettingsDihedralBend extends NativeObject {
+public final class SoftBodySharedSettingsDihedralBend extends NativeObject {
 
     static public final SoftBodySharedSettingsDihedralBend NULL = SoftBodySharedSettingsDihedralBend.native_new();
 

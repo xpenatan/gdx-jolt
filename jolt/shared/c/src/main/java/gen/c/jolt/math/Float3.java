@@ -8,7 +8,7 @@ package gen.c.jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Float3 extends NativeObject {
+public final class Float3 extends NativeObject {
 
     static public final Float3 NULL = Float3.native_new();
 

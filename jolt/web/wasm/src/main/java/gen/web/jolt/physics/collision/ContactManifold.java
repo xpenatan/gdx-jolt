@@ -10,7 +10,7 @@ import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.physics.collision.shape.SubShapeID;
 
-public class ContactManifold extends NativeObject {
+public final class ContactManifold extends NativeObject {
 
     private ContactManifold ContactManifold_TEMP_GEN_0;
 

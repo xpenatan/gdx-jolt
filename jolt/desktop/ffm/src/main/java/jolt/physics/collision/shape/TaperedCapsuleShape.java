@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class TaperedCapsuleShape extends ConvexShape {
+public final class TaperedCapsuleShape extends ConvexShape {
 
     static public final TaperedCapsuleShape NULL = TaperedCapsuleShape.native_new();
 

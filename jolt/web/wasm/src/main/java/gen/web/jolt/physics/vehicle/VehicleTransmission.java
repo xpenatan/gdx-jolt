@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.vehicle;
 
-public class VehicleTransmission extends VehicleTransmissionSettings {
+public final class VehicleTransmission extends VehicleTransmissionSettings {
 
     static public final VehicleTransmission NULL = VehicleTransmission.native_new();
 

@@ -9,7 +9,7 @@ package gen.c.jolt.physics.collision.shape;
 import gen.c.jolt.math.Quat;
 import gen.c.jolt.math.Vec3;
 
-public class RotatedTranslatedShape extends DecoratedShape {
+public final class RotatedTranslatedShape extends DecoratedShape {
 
     private Quat Quat_TEMP_GEN_0;
 

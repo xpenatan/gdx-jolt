@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class IgnoreMultipleBodiesFilter extends BodyFilter {
+public final class IgnoreMultipleBodiesFilter extends BodyFilter {
 
     static public final IgnoreMultipleBodiesFilter NULL = IgnoreMultipleBodiesFilter.native_new();
 

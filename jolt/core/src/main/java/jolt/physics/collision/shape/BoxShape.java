@@ -9,7 +9,7 @@ package jolt.physics.collision.shape;
 import jolt.math.Vec3;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class BoxShape extends ConvexShape {
+public final class BoxShape extends ConvexShape {
 
     static public final BoxShape NULL = BoxShape.native_new();
 

@@ -9,7 +9,7 @@ package gen.web.jolt.physics.collision;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.enums.EBackFaceMode;
 
-public class RayCastSettings extends NativeObject {
+public final class RayCastSettings extends NativeObject {
 
     static public final RayCastSettings NULL = RayCastSettings.native_new();
 

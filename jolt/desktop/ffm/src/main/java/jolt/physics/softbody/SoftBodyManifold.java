@@ -17,7 +17,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodyManifold extends NativeObject {
+public final class SoftBodyManifold extends NativeObject {
 
     private ArraySoftBodyVertex ArraySoftBodyVertex_TEMP_GEN_0;
 

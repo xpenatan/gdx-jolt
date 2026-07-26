@@ -30,7 +30,7 @@ import jolt.physics.body.BodyActivationListener;
 import jolt.physics.body.BodyID;
 import jolt.physics.collision.SimShapeFilter;
 
-public class PhysicsSystem extends NativeObject {
+public final class PhysicsSystem extends NativeObject {
 
     static public final PhysicsSystem NULL = PhysicsSystem.native_new();
 

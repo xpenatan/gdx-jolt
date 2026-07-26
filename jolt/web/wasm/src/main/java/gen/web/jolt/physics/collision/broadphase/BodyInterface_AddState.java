@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision.broadphase;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class BodyInterface_AddState extends NativeObject {
+public final class BodyInterface_AddState extends NativeObject {
 
     static public final BodyInterface_AddState NULL = BodyInterface_AddState.native_new();
 

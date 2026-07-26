@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.math.Vec3;
 
-public class OffsetCenterOfMassShapeSettings extends DecoratedShapeSettings {
+public final class OffsetCenterOfMassShapeSettings extends DecoratedShapeSettings {
 
     static public final OffsetCenterOfMassShapeSettings NULL = OffsetCenterOfMassShapeSettings.native_new();
 

@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics;
 
-public class StateRecorderImpl extends StateRecorder {
+public final class StateRecorderImpl extends StateRecorder {
 
     static public final StateRecorderImpl NULL = StateRecorderImpl.native_new();
 

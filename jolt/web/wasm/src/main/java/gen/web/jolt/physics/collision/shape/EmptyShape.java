@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision.shape;
 
 import gen.web.jolt.math.Vec3;
 
-public class EmptyShape extends Shape {
+public final class EmptyShape extends Shape {
 
     static public final EmptyShape NULL = EmptyShape.native_new();
 

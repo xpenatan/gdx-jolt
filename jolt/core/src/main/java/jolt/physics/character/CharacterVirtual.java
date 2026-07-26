@@ -21,7 +21,7 @@ import jolt.physics.collision.TransformedShape;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.Jolt;
 
-public class CharacterVirtual extends CharacterBase {
+public final class CharacterVirtual extends CharacterBase {
 
     static public final CharacterVirtual NULL = CharacterVirtual.native_new();
 

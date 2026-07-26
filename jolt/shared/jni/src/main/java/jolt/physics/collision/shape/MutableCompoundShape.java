@@ -11,7 +11,7 @@ import jolt.math.Quat;
 import jolt.math.Vec3MemRef;
 import jolt.math.QuatMemRef;
 
-public class MutableCompoundShape extends CompoundShape {
+public final class MutableCompoundShape extends CompoundShape {
 
     static public final MutableCompoundShape NULL = MutableCompoundShape.native_new();
 

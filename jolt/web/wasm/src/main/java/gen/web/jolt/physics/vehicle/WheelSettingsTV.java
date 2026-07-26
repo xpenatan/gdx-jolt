@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.vehicle;
 
-public class WheelSettingsTV extends WheelSettings {
+public final class WheelSettingsTV extends WheelSettings {
 
     static public final WheelSettingsTV NULL = WheelSettingsTV.native_new();
 

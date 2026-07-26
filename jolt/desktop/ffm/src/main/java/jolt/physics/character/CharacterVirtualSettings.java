@@ -18,7 +18,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CharacterVirtualSettings extends CharacterBaseSettings {
+public final class CharacterVirtualSettings extends CharacterBaseSettings {
 
     private CharacterID CharacterID_TEMP_GEN_0;
 

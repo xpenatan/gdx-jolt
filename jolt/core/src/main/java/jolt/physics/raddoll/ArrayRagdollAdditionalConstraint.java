@@ -8,7 +8,7 @@ package jolt.physics.raddoll;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayRagdollAdditionalConstraint extends NativeObject {
+public final class ArrayRagdollAdditionalConstraint extends NativeObject {
 
     static public final ArrayRagdollAdditionalConstraint NULL = ArrayRagdollAdditionalConstraint.native_new();
 

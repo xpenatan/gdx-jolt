@@ -8,7 +8,7 @@ package gen.web.jolt.skeleton;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySkeletonKeyframe extends NativeObject {
+public final class ArraySkeletonKeyframe extends NativeObject {
 
     private SkeletalAnimationKeyframe SkeletalAnimationKeyframe_TEMP_GEN_0;
 

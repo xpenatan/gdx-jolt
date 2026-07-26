@@ -19,7 +19,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class MeshShapeSettings extends ShapeSettings {
+public final class MeshShapeSettings extends ShapeSettings {
 
     private VertexList VertexList_TEMP_GEN_0;
 

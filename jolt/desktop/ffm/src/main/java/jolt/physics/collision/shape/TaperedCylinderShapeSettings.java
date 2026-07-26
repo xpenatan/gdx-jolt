@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class TaperedCylinderShapeSettings extends ConvexShapeSettings {
+public final class TaperedCylinderShapeSettings extends ConvexShapeSettings {
 
     static public final TaperedCylinderShapeSettings NULL = TaperedCylinderShapeSettings.native_new();
 

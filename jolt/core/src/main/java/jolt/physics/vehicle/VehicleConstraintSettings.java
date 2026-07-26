@@ -9,7 +9,7 @@ package jolt.physics.vehicle;
 import jolt.physics.constraints.ConstraintSettings;
 import jolt.math.Vec3;
 
-public class VehicleConstraintSettings extends ConstraintSettings {
+public final class VehicleConstraintSettings extends ConstraintSettings {
 
     static public final VehicleConstraintSettings NULL = VehicleConstraintSettings.native_new();
 

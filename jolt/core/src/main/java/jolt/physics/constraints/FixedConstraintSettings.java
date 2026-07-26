@@ -10,7 +10,7 @@ import jolt.math.TwoBodyConstraintSettings;
 import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 
-public class FixedConstraintSettings extends TwoBodyConstraintSettings {
+public final class FixedConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final FixedConstraintSettings NULL = FixedConstraintSettings.native_new();
 

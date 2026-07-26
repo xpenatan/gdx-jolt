@@ -6,7 +6,7 @@
 
 package jolt.physics.body;
 
-public class IgnoreMultipleBodiesFilter extends BodyFilter {
+public final class IgnoreMultipleBodiesFilter extends BodyFilter {
 
     static public final IgnoreMultipleBodiesFilter NULL = IgnoreMultipleBodiesFilter.native_new();
 

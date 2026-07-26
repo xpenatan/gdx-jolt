@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class GroupFilterTable extends GroupFilter {
+public final class GroupFilterTable extends GroupFilter {
 
     static public final GroupFilterTable NULL = GroupFilterTable.native_new();
 

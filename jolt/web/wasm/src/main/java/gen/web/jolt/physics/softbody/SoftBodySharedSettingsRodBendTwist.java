@@ -9,7 +9,7 @@ package gen.web.jolt.physics.softbody;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Quat;
 
-public class SoftBodySharedSettingsRodBendTwist extends NativeObject {
+public final class SoftBodySharedSettingsRodBendTwist extends NativeObject {
 
     private Quat Quat_TEMP_GEN_0;
 

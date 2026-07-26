@@ -6,7 +6,7 @@
 
 package jolt.physics.body;
 
-public class BodyLockInterfaceLocking extends BodyLockInterface {
+public final class BodyLockInterfaceLocking extends BodyLockInterface {
 
     static public final BodyLockInterfaceLocking NULL = BodyLockInterfaceLocking.native_new();
 

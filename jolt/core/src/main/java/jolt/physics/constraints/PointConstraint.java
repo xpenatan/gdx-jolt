@@ -8,7 +8,7 @@ package jolt.physics.constraints;
 
 import jolt.math.Vec3;
 
-public class PointConstraint extends TwoBodyConstraint {
+public final class PointConstraint extends TwoBodyConstraint {
 
     static public final PointConstraint NULL = PointConstraint.native_new();
 

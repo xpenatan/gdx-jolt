@@ -19,7 +19,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SixDOFConstraintSettings extends TwoBodyConstraintSettings {
+public final class SixDOFConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

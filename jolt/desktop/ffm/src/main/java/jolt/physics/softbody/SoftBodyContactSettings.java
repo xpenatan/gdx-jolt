@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodyContactSettings extends NativeObject {
+public final class SoftBodyContactSettings extends NativeObject {
 
     static public final SoftBodyContactSettings NULL = SoftBodyContactSettings.native_new();
 

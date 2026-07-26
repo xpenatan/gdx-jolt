@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import jolt.physics.softbody.CollideShapeCollector;
 
-public class CollideShapeAnyHitCollisionCollector extends CollideShapeCollector {
+public final class CollideShapeAnyHitCollisionCollector extends CollideShapeCollector {
 
     static public final CollideShapeAnyHitCollisionCollector NULL = CollideShapeAnyHitCollisionCollector.native_new();
 

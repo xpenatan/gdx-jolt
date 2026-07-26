@@ -8,7 +8,7 @@ package jolt.physics.vehicle;
 
 import jolt.math.Vec3;
 
-public class VehicleCollisionTesterRay extends VehicleCollisionTester {
+public final class VehicleCollisionTesterRay extends VehicleCollisionTester {
 
     static public final VehicleCollisionTesterRay NULL = VehicleCollisionTesterRay.native_new();
 

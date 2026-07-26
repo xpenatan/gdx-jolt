@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class DebugRendererTriangleTraits extends NativeObject {
+public final class DebugRendererTriangleTraits extends NativeObject {
 
     static public final DebugRendererTriangleTraits NULL = DebugRendererTriangleTraits.native_new();
 

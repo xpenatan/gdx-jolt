@@ -28,7 +28,7 @@ import java.lang.invoke.MethodHandle;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.Jolt;
 
-public class CharacterVirtual extends CharacterBase {
+public final class CharacterVirtual extends CharacterBase {
 
     private CharacterID CharacterID_TEMP_GEN_0;
 

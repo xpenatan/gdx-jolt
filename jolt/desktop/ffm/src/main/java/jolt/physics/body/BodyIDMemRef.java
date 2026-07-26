@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class BodyIDMemRef extends NativeObject {
+public final class BodyIDMemRef extends NativeObject {
 
     static public final BodyIDMemRef NULL = BodyIDMemRef.native_new();
 

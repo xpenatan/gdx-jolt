@@ -8,7 +8,7 @@ package gen.web.jolt.geometry;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class IndexedTriangle extends NativeObject {
+public final class IndexedTriangle extends NativeObject {
 
     static public final IndexedTriangle NULL = IndexedTriangle.native_new();
 

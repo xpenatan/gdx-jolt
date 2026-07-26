@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision;
 
 import gen.c.jolt.enums.EBackFaceMode;
 
-public class CollideShapeSettings extends CollideSettingsBase {
+public final class CollideShapeSettings extends CollideSettingsBase {
 
     static public final CollideShapeSettings NULL = CollideShapeSettings.native_new();
 

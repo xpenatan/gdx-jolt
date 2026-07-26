@@ -18,7 +18,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SkeletonPose extends NativeObject {
+public final class SkeletonPose extends NativeObject {
 
     private Skeleton Skeleton_TEMP_GEN_0;
 

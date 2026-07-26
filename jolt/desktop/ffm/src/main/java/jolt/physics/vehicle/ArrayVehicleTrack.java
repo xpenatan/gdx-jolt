@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayVehicleTrack extends NativeObject {
+public final class ArrayVehicleTrack extends NativeObject {
 
     private VehicleTrack VehicleTrack_TEMP_GEN_0;
 

@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Quat;
 
-public class CompoundShapeSubShape extends NativeObject {
+public final class CompoundShapeSubShape extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

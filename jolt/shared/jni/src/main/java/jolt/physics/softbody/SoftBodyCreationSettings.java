@@ -11,7 +11,7 @@ import jolt.math.Vec3;
 import jolt.math.Quat;
 import jolt.physics.collision.CollisionGroup;
 
-public class SoftBodyCreationSettings extends NativeObject {
+public final class SoftBodyCreationSettings extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

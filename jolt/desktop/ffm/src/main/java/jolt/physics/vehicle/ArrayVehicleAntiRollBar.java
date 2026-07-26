@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayVehicleAntiRollBar extends NativeObject {
+public final class ArrayVehicleAntiRollBar extends NativeObject {
 
     private VehicleAntiRollBar VehicleAntiRollBar_TEMP_GEN_0;
 

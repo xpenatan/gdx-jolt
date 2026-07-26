@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.enums.SoftBodySharedSettings_EBendType;
 import gen.c.jolt.physics.collision.PhysicsMaterialList;
 
-public class SoftBodySharedSettings extends NativeObject {
+public final class SoftBodySharedSettings extends NativeObject {
 
     private ArraySoftBodySharedSettingsVertex ArraySoftBodySharedSettingsVertex_TEMP_GEN_0;
 

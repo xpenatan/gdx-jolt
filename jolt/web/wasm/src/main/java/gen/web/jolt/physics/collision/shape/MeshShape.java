@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.collision.shape;
 
-public class MeshShape extends Shape {
+public final class MeshShape extends Shape {
 
     static public final MeshShape NULL = MeshShape.native_new();
 

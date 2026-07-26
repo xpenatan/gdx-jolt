@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CylinderShapeSettings extends ConvexShapeSettings {
+public final class CylinderShapeSettings extends ConvexShapeSettings {
 
     static public final CylinderShapeSettings NULL = CylinderShapeSettings.native_new();
 

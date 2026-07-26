@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySoftBodySharedSettingsRodBendTwist extends NativeObject {
+public final class ArraySoftBodySharedSettingsRodBendTwist extends NativeObject {
 
     private SoftBodySharedSettingsRodBendTwist SoftBodySharedSettingsRodBendTwist_TEMP_GEN_0;
 

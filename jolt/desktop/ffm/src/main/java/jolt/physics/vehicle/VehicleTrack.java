@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleTrack extends VehicleTrackSettings {
+public final class VehicleTrack extends VehicleTrackSettings {
 
     static public final VehicleTrack NULL = VehicleTrack.native_new();
 

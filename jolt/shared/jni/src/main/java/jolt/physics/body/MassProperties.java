@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class MassProperties extends NativeObject {
+public final class MassProperties extends NativeObject {
 
     static private Vec3 Vec3_TEMP_STATIC_GEN_0;
 

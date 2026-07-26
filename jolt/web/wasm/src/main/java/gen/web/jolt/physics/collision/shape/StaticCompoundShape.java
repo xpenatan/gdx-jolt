@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.collision.shape;
 
-public class StaticCompoundShape extends CompoundShape {
+public final class StaticCompoundShape extends CompoundShape {
 
     static public final StaticCompoundShape NULL = StaticCompoundShape.native_new();
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayWheelSettings extends NativeObject {
+public final class ArrayWheelSettings extends NativeObject {
 
     private WheelSettings WheelSettings_TEMP_GEN_0;
 

@@ -28,7 +28,7 @@ import jolt.physics.collision.PhysicsMaterialList;
 import jolt.math.VertexList;
 import jolt.geometry.IndexedTriangleList;
 
-public class JoltNew extends NativeObject {
+public final class JoltNew extends NativeObject {
 
     static public final JoltNew NULL = JoltNew.native_new();
 

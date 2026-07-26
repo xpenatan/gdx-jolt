@@ -8,7 +8,7 @@ package jolt.physics.vehicle;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayWheelSettings extends NativeObject {
+public final class ArrayWheelSettings extends NativeObject {
 
     static public final ArrayWheelSettings NULL = ArrayWheelSettings.native_new();
 

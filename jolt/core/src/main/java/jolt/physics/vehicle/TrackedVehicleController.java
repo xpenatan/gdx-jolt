@@ -8,7 +8,7 @@ package jolt.physics.vehicle;
 import jolt.Jolt;
 
 
-public class TrackedVehicleController extends VehicleController {
+public final class TrackedVehicleController extends VehicleController {
 
     static public final TrackedVehicleController NULL = TrackedVehicleController.native_new();
 

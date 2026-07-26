@@ -11,7 +11,7 @@ import gen.web.jolt.physics.body.Body;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.math.Mat44;
 
-public class VehicleConstraint extends Constraint {
+public final class VehicleConstraint extends Constraint {
 
     private VehicleCollisionTester VehicleCollisionTester_TEMP_GEN_0;
 

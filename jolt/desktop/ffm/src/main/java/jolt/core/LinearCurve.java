@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class LinearCurve extends NativeObject {
+public final class LinearCurve extends NativeObject {
 
     static public final LinearCurve NULL = LinearCurve.native_new();
 

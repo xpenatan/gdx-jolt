@@ -9,7 +9,7 @@ package jolt.physics.softbody;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Mat44;
 
-public class SoftBodySharedSettingsInvBind extends NativeObject {
+public final class SoftBodySharedSettingsInvBind extends NativeObject {
 
     static public final SoftBodySharedSettingsInvBind NULL = SoftBodySharedSettingsInvBind.native_new();
 

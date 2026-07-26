@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SphereShapeSettings extends ConvexShapeSettings {
+public final class SphereShapeSettings extends ConvexShapeSettings {
 
     static public final SphereShapeSettings NULL = SphereShapeSettings.native_new();
 

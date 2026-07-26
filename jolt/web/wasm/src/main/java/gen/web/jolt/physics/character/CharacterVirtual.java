@@ -21,7 +21,7 @@ import gen.web.jolt.physics.collision.TransformedShape;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.Jolt;
 
-public class CharacterVirtual extends CharacterBase {
+public final class CharacterVirtual extends CharacterBase {
 
     private CharacterID CharacterID_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.c.jolt.core;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Factory extends NativeObject {
+public final class Factory extends NativeObject {
 
     static private Factory Factory_TEMP_STATIC_GEN_0;
 

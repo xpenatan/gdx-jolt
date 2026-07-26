@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.physics.collision.shape.SubShapeID;
 
-public class ContactManifold extends NativeObject {
+public final class ContactManifold extends NativeObject {
 
     static public final ContactManifold NULL = ContactManifold.native_new();
 

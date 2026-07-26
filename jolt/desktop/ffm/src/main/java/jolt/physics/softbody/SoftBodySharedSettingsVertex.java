@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodySharedSettingsVertex extends NativeObject {
+public final class SoftBodySharedSettingsVertex extends NativeObject {
 
     private Float3 Float3_TEMP_GEN_0;
 

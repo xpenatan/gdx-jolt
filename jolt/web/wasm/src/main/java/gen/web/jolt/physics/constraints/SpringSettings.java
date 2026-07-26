@@ -9,7 +9,7 @@ package gen.web.jolt.physics.constraints;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.enums.ESpringMode;
 
-public class SpringSettings extends NativeObject {
+public final class SpringSettings extends NativeObject {
 
     static public final SpringSettings NULL = SpringSettings.native_new();
 

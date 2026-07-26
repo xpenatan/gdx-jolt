@@ -17,7 +17,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class FixedConstraintSettings extends TwoBodyConstraintSettings {
+public final class FixedConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

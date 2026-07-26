@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CharacterSettings extends CharacterBaseSettings {
+public final class CharacterSettings extends CharacterBaseSettings {
 
     static public final CharacterSettings NULL = CharacterSettings.native_new();
 

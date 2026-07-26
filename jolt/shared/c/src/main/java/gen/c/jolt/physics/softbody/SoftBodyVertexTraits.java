@@ -8,7 +8,7 @@ package gen.c.jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class SoftBodyVertexTraits extends NativeObject {
+public final class SoftBodyVertexTraits extends NativeObject {
 
     static public final SoftBodyVertexTraits NULL = SoftBodyVertexTraits.native_new();
 

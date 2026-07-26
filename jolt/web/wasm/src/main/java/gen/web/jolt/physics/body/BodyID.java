@@ -8,7 +8,7 @@ package gen.web.jolt.physics.body;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class BodyID extends NativeObject {
+public final class BodyID extends NativeObject {
 
     static public final BodyID NULL = BodyID.native_new();
 

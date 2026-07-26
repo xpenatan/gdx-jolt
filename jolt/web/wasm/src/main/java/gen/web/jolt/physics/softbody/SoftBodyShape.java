@@ -9,7 +9,7 @@ package gen.web.jolt.physics.softbody;
 import gen.web.jolt.physics.collision.shape.Shape;
 import gen.web.jolt.physics.collision.shape.SubShapeID;
 
-public class SoftBodyShape extends Shape {
+public final class SoftBodyShape extends Shape {
 
     static public final SoftBodyShape NULL = SoftBodyShape.native_new();
 

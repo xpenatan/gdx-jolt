@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class BroadPhaseLayerInterfaceTable extends BroadPhaseLayerInterface {
+public final class BroadPhaseLayerInterfaceTable extends BroadPhaseLayerInterface {
 
     static public final BroadPhaseLayerInterfaceTable NULL = BroadPhaseLayerInterfaceTable.native_new();
 

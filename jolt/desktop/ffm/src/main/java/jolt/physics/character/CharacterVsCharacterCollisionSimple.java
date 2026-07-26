@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CharacterVsCharacterCollisionSimple extends CharacterVsCharacterCollision {
+public final class CharacterVsCharacterCollisionSimple extends CharacterVsCharacterCollision {
 
     static public final CharacterVsCharacterCollisionSimple NULL = CharacterVsCharacterCollisionSimple.native_new();
 

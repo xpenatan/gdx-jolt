@@ -8,7 +8,7 @@ package jolt.physics.vehicle;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayVehicleAntiRollBar extends NativeObject {
+public final class ArrayVehicleAntiRollBar extends NativeObject {
 
     static public final ArrayVehicleAntiRollBar NULL = ArrayVehicleAntiRollBar.native_new();
 

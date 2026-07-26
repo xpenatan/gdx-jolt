@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class WheelSettingsWV extends WheelSettings {
+public final class WheelSettingsWV extends WheelSettings {
 
     private LinearCurve LinearCurve_TEMP_GEN_0;
 

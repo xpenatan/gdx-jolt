@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class PhysicsMaterialList extends NativeObject {
+public final class PhysicsMaterialList extends NativeObject {
 
     private PhysicsMaterial PhysicsMaterial_TEMP_GEN_0;
 

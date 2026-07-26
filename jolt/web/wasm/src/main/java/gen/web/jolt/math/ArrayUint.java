@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayUint extends NativeObject {
+public final class ArrayUint extends NativeObject {
 
     private UintMemRef UintMemRef_TEMP_GEN_0;
 

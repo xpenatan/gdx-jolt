@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class HeightFieldShapeConstantValues extends NativeObject {
+public final class HeightFieldShapeConstantValues extends NativeObject {
 
     static public final HeightFieldShapeConstantValues NULL = HeightFieldShapeConstantValues.native_new();
 

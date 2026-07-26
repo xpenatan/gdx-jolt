@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodyShape extends Shape {
+public final class SoftBodyShape extends Shape {
 
     static public final SoftBodyShape NULL = SoftBodyShape.native_new();
 

@@ -12,7 +12,7 @@ import gen.web.jolt.core.TempAllocator;
 import gen.web.jolt.math.Uint8MemRef;
 import gen.web.jolt.physics.collision.PhysicsMaterialList;
 
-public class HeightFieldShape extends Shape {
+public final class HeightFieldShape extends Shape {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

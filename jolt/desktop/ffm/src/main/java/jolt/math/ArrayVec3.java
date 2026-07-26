@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayVec3 extends NativeObject {
+public final class ArrayVec3 extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

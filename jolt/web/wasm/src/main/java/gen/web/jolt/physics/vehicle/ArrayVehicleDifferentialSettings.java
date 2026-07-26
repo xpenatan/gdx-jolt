@@ -8,7 +8,7 @@ package gen.web.jolt.physics.vehicle;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayVehicleDifferentialSettings extends NativeObject {
+public final class ArrayVehicleDifferentialSettings extends NativeObject {
 
     private VehicleDifferentialSettings VehicleDifferentialSettings_TEMP_GEN_0;
 

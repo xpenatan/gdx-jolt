@@ -11,7 +11,7 @@ import jolt.math.ArrayFloat;
 import jolt.math.ArrayUint8;
 import jolt.physics.collision.PhysicsMaterialList;
 
-public class HeightFieldShapeSettings extends ShapeSettings {
+public final class HeightFieldShapeSettings extends ShapeSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -9,7 +9,7 @@ package jolt.physics.collision;
 import jolt.physics.softbody.CastShapeCollector;
 import jolt.physics.collision.shape.ShapeCastResult;
 
-public class CastShapeClosestHitCollisionCollector extends CastShapeCollector {
+public final class CastShapeClosestHitCollisionCollector extends CastShapeCollector {
 
     static public final CastShapeClosestHitCollisionCollector NULL = CastShapeClosestHitCollisionCollector.native_new();
 

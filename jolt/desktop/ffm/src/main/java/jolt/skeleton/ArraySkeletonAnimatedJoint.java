@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySkeletonAnimatedJoint extends NativeObject {
+public final class ArraySkeletonAnimatedJoint extends NativeObject {
 
     private SkeletalAnimationAnimatedJoint SkeletalAnimationAnimatedJoint_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package jolt.physics.vehicle;
 
 import jolt.core.LinearCurve;
 
-public class WheelSettingsWV extends WheelSettings {
+public final class WheelSettingsWV extends WheelSettings {
 
     private LinearCurve LinearCurve_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.web.jolt.renderer;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class DebugRendererTriangle extends NativeObject {
+public final class DebugRendererTriangle extends NativeObject {
 
     private DebugRendererVertex DebugRendererVertex_TEMP_GEN_0;
 

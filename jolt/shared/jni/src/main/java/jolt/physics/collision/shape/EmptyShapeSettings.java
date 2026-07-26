@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.math.Vec3;
 
-public class EmptyShapeSettings extends ShapeSettings {
+public final class EmptyShapeSettings extends ShapeSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

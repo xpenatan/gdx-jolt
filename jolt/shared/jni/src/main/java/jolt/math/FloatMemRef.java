@@ -8,7 +8,7 @@ package jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class FloatMemRef extends NativeObject {
+public final class FloatMemRef extends NativeObject {
 
     static public final FloatMemRef NULL = FloatMemRef.native_new();
 

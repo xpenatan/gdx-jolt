@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayShapeCastResult extends NativeObject {
+public final class ArrayShapeCastResult extends NativeObject {
 
     private ShapeCastResult ShapeCastResult_TEMP_GEN_0;
 

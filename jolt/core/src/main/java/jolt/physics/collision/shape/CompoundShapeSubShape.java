@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Quat;
 
-public class CompoundShapeSubShape extends NativeObject {
+public final class CompoundShapeSubShape extends NativeObject {
 
     static public final CompoundShapeSubShape NULL = CompoundShapeSubShape.native_new();
 

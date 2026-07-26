@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class Vec3MemRef extends NativeObject {
+public final class Vec3MemRef extends NativeObject {
 
     static public final Vec3MemRef NULL = Vec3MemRef.native_new();
 

@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ObjectVsBroadPhaseLayerFilterMask extends ObjectVsBroadPhaseLayerFilter {
+public final class ObjectVsBroadPhaseLayerFilterMask extends ObjectVsBroadPhaseLayerFilter {
 
     static public final ObjectVsBroadPhaseLayerFilterMask NULL = ObjectVsBroadPhaseLayerFilterMask.native_new();
 

@@ -8,7 +8,7 @@ package gen.web.jolt.core;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class MutexMask extends NativeObject {
+public final class MutexMask extends NativeObject {
 
     static public final MutexMask NULL = MutexMask.native_new();
 

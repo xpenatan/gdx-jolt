@@ -9,7 +9,7 @@ package jolt.physics.collision.shape;
 import jolt.physics.collision.CollideSettingsBase;
 import jolt.enums.EBackFaceMode;
 
-public class ShapeCastSettings extends CollideSettingsBase {
+public final class ShapeCastSettings extends CollideSettingsBase {
 
     static public final ShapeCastSettings NULL = ShapeCastSettings.native_new();
 

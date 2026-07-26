@@ -8,7 +8,7 @@ package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class SoftBodyContactSettings extends NativeObject {
+public final class SoftBodyContactSettings extends NativeObject {
 
     static public final SoftBodyContactSettings NULL = SoftBodyContactSettings.native_new();
 

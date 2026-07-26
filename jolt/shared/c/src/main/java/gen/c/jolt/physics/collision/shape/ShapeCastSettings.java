@@ -9,7 +9,7 @@ package gen.c.jolt.physics.collision.shape;
 import gen.c.jolt.physics.collision.CollideSettingsBase;
 import gen.c.jolt.enums.EBackFaceMode;
 
-public class ShapeCastSettings extends CollideSettingsBase {
+public final class ShapeCastSettings extends CollideSettingsBase {
 
     static public final ShapeCastSettings NULL = ShapeCastSettings.native_new();
 

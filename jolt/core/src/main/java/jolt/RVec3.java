@@ -9,7 +9,7 @@ package jolt;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 
-public class RVec3 extends NativeObject {
+public final class RVec3 extends NativeObject {
 
     static public final RVec3 NULL = RVec3.native_new();
 

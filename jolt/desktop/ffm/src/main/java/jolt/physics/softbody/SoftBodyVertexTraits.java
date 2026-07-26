@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodyVertexTraits extends NativeObject {
+public final class SoftBodyVertexTraits extends NativeObject {
 
     static public final SoftBodyVertexTraits NULL = SoftBodyVertexTraits.native_new();
 

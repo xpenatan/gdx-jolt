@@ -35,7 +35,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class JoltNew extends NativeObject {
+public final class JoltNew extends NativeObject {
 
     static public final JoltNew NULL = JoltNew.native_new();
 

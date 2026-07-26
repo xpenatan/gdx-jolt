@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision.shape;
 
 import gen.c.jolt.physics.collision.PhysicsMaterial;
 
-public class CapsuleShape extends ConvexShape {
+public final class CapsuleShape extends ConvexShape {
 
     static public final CapsuleShape NULL = CapsuleShape.native_new();
 

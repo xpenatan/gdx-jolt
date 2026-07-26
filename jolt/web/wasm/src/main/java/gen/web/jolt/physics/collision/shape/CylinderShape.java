@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision.shape;
 
 import gen.web.jolt.physics.collision.PhysicsMaterial;
 
-public class CylinderShape extends ConvexShape {
+public final class CylinderShape extends ConvexShape {
 
     static public final CylinderShape NULL = CylinderShape.native_new();
 

@@ -9,7 +9,7 @@ package jolt.physics.collision.shape;
 import jolt.geometry.Plane;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class PlaneShape extends Shape {
+public final class PlaneShape extends Shape {
 
     private Plane Plane_TEMP_GEN_0;
 

@@ -9,7 +9,7 @@ package jolt.physics.collision.shape;
 import jolt.geometry.Plane;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class PlaneShapeSettings extends ShapeSettings {
+public final class PlaneShapeSettings extends ShapeSettings {
 
     static public final PlaneShapeSettings NULL = PlaneShapeSettings.native_new();
 

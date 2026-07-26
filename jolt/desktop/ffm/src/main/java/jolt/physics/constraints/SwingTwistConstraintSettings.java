@@ -18,7 +18,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SwingTwistConstraintSettings extends TwoBodyConstraintSettings {
+public final class SwingTwistConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

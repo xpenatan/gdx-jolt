@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.character;
 
-public class CharacterVsCharacterCollisionSimple extends CharacterVsCharacterCollision {
+public final class CharacterVsCharacterCollisionSimple extends CharacterVsCharacterCollision {
 
     static public final CharacterVsCharacterCollisionSimple NULL = CharacterVsCharacterCollisionSimple.native_new();
 

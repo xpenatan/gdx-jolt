@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class DebugRendererVertexTraits extends NativeObject {
+public final class DebugRendererVertexTraits extends NativeObject {
 
     static public final DebugRendererVertexTraits NULL = DebugRendererVertexTraits.native_new();
 

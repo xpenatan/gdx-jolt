@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision.shape;
 
 import gen.c.jolt.math.Vec3;
 
-public class ScaledShapeSettings extends DecoratedShapeSettings {
+public final class ScaledShapeSettings extends DecoratedShapeSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

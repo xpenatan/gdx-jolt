@@ -9,7 +9,7 @@ package jolt.physics.collision.shape;
 import jolt.math.Quat;
 import jolt.math.Vec3;
 
-public class RotatedTranslatedShape extends DecoratedShape {
+public final class RotatedTranslatedShape extends DecoratedShape {
 
     static public final RotatedTranslatedShape NULL = RotatedTranslatedShape.native_new();
 

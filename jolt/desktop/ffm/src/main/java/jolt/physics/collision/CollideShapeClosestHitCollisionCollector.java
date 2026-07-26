@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CollideShapeClosestHitCollisionCollector extends CollideShapeCollector {
+public final class CollideShapeClosestHitCollisionCollector extends CollideShapeCollector {
 
     private CollideShapeResult CollideShapeResult_TEMP_GEN_0;
 

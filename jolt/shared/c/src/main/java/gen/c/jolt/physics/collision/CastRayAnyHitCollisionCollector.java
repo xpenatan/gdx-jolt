@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision;
 
 import gen.c.jolt.physics.softbody.CastRayCollector;
 
-public class CastRayAnyHitCollisionCollector extends CastRayCollector {
+public final class CastRayAnyHitCollisionCollector extends CastRayCollector {
 
     private RayCastResult RayCastResult_TEMP_GEN_0;
 

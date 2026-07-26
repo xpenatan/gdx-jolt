@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class TireMaxImpulseCallbackResult extends NativeObject {
+public final class TireMaxImpulseCallbackResult extends NativeObject {
 
     static public final TireMaxImpulseCallbackResult NULL = TireMaxImpulseCallbackResult.native_new();
 

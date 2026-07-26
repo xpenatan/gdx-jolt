@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class PhysicsSettings extends NativeObject {
+public final class PhysicsSettings extends NativeObject {
 
     static public final PhysicsSettings NULL = PhysicsSettings.native_new();
 

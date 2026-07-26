@@ -12,7 +12,7 @@ import jolt.core.TempAllocator;
 import jolt.math.Uint8MemRef;
 import jolt.physics.collision.PhysicsMaterialList;
 
-public class HeightFieldShape extends Shape {
+public final class HeightFieldShape extends Shape {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

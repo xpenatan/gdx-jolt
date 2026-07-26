@@ -9,7 +9,7 @@ package jolt.physics.collision.shape;
 import jolt.math.Vec3;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class BoxShapeSettings extends ConvexShapeSettings {
+public final class BoxShapeSettings extends ConvexShapeSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class Plane extends NativeObject {
+public final class Plane extends NativeObject {
 
     static public final Plane NULL = Plane.native_new();
 

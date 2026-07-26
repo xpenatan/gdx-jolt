@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class Plane extends NativeObject {
+public final class Plane extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

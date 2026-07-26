@@ -8,7 +8,7 @@ package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class SoftBodySharedSettingsDihedralBend extends NativeObject {
+public final class SoftBodySharedSettingsDihedralBend extends NativeObject {
 
     static public final SoftBodySharedSettingsDihedralBend NULL = SoftBodySharedSettingsDihedralBend.native_new();
 

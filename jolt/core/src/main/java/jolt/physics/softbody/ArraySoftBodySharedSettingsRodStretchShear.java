@@ -8,7 +8,7 @@ package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsRodStretchShear extends NativeObject {
+public final class ArraySoftBodySharedSettingsRodStretchShear extends NativeObject {
 
     static public final ArraySoftBodySharedSettingsRodStretchShear NULL = ArraySoftBodySharedSettingsRodStretchShear.native_new();
 

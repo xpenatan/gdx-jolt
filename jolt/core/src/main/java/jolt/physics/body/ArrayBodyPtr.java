@@ -8,7 +8,7 @@ package jolt.physics.body;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayBodyPtr extends NativeObject {
+public final class ArrayBodyPtr extends NativeObject {
 
     static public final ArrayBodyPtr NULL = ArrayBodyPtr.native_new();
 

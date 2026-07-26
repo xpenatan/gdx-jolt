@@ -8,7 +8,7 @@ package gen.web.jolt.physics.character;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class CharacterID extends NativeObject {
+public final class CharacterID extends NativeObject {
 
     static private CharacterID CharacterID_TEMP_STATIC_GEN_0;
 

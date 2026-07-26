@@ -8,7 +8,7 @@ package gen.web.jolt.physics.raddoll;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayRagdollPart extends NativeObject {
+public final class ArrayRagdollPart extends NativeObject {
 
     private RagdollPart RagdollPart_TEMP_GEN_0;
 

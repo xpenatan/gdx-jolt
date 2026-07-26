@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class FloatMemRef extends NativeObject {
+public final class FloatMemRef extends NativeObject {
 
     static public final FloatMemRef NULL = FloatMemRef.native_new();
 

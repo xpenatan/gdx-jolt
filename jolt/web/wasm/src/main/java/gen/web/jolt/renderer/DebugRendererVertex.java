@@ -11,7 +11,7 @@ import gen.web.jolt.math.Float3;
 import gen.web.jolt.math.Float2;
 import gen.web.jolt.core.Color;
 
-public class DebugRendererVertex extends NativeObject {
+public final class DebugRendererVertex extends NativeObject {
 
     private Float3 Float3_TEMP_GEN_0;
 

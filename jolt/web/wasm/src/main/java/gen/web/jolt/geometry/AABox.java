@@ -11,7 +11,7 @@ import gen.web.jolt.math.Vec3;
 import gen.web.jolt.math.VertexList;
 import gen.web.jolt.math.Mat44;
 
-public class AABox extends NativeObject {
+public final class AABox extends NativeObject {
 
     static private AABox AABox_TEMP_STATIC_GEN_0;
 

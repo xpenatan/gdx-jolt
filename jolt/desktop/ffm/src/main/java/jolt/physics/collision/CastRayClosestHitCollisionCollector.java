@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CastRayClosestHitCollisionCollector extends CastRayCollector {
+public final class CastRayClosestHitCollisionCollector extends CastRayCollector {
 
     private RayCastResult RayCastResult_TEMP_GEN_0;
 

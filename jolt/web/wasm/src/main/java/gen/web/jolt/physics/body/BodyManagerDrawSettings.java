@@ -10,7 +10,7 @@ import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.enums.EShapeColor;
 import gen.web.jolt.enums.ESoftBodyConstraintColor;
 
-public class BodyManagerDrawSettings extends NativeObject {
+public final class BodyManagerDrawSettings extends NativeObject {
 
     static public final BodyManagerDrawSettings NULL = BodyManagerDrawSettings.native_new();
 

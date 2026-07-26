@@ -6,7 +6,7 @@
 
 package jolt.physics.constraints;
 
-public class DistanceConstraint extends TwoBodyConstraint {
+public final class DistanceConstraint extends TwoBodyConstraint {
 
     static public final DistanceConstraint NULL = DistanceConstraint.native_new();
 

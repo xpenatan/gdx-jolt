@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Mat44 extends NativeObject {
+public final class Mat44 extends NativeObject {
 
     static private Mat44 Mat44_TEMP_STATIC_GEN_0;
 

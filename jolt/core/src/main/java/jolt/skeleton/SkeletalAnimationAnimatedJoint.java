@@ -9,7 +9,7 @@ package jolt.skeleton;
 import com.github.xpenatan.jParser.api.NativeObject;
 import com.github.xpenatan.jparser.runtime.helper.NativeString;
 
-public class SkeletalAnimationAnimatedJoint extends NativeObject {
+public final class SkeletalAnimationAnimatedJoint extends NativeObject {
 
     static public final SkeletalAnimationAnimatedJoint NULL = SkeletalAnimationAnimatedJoint.native_new();
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayCharacterVirtualContact extends NativeObject {
+public final class ArrayCharacterVirtualContact extends NativeObject {
 
     private CharacterVirtualContact CharacterVirtualContact_TEMP_GEN_0;
 

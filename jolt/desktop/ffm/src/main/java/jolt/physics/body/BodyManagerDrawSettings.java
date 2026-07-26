@@ -17,7 +17,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class BodyManagerDrawSettings extends NativeObject {
+public final class BodyManagerDrawSettings extends NativeObject {
 
     static public final BodyManagerDrawSettings NULL = BodyManagerDrawSettings.native_new();
 

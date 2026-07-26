@@ -10,7 +10,7 @@ import gen.c.jolt.math.TwoBodyConstraintSettings;
 import gen.c.jolt.enums.EConstraintSpace;
 import gen.c.jolt.math.Vec3;
 
-public class RackAndPinionConstraintSettings extends TwoBodyConstraintSettings {
+public final class RackAndPinionConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

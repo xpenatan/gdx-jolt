@@ -8,7 +8,7 @@ package jolt.geometry;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class TriangleList extends NativeObject {
+public final class TriangleList extends NativeObject {
 
     static public final TriangleList NULL = TriangleList.native_new();
 

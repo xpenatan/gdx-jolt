@@ -8,7 +8,7 @@ package jolt.renderer;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class DebugArrayTriangle extends NativeObject {
+public final class DebugArrayTriangle extends NativeObject {
 
     private DebugRendererTriangle DebugRendererTriangle_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.constraints;
 
-public class DistanceConstraint extends TwoBodyConstraint {
+public final class DistanceConstraint extends TwoBodyConstraint {
 
     private SpringSettings SpringSettings_TEMP_GEN_0;
 

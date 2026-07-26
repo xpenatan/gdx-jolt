@@ -8,7 +8,7 @@ package jolt.physics;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class PhysicsSettings extends NativeObject {
+public final class PhysicsSettings extends NativeObject {
 
     static public final PhysicsSettings NULL = PhysicsSettings.native_new();
 

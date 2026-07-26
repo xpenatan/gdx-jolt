@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class QuatMemRef extends NativeObject {
+public final class QuatMemRef extends NativeObject {
 
     static public final QuatMemRef NULL = QuatMemRef.native_new();
 

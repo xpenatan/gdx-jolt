@@ -10,7 +10,7 @@ import gen.web.jolt.math.TwoBodyConstraintSettings;
 import gen.web.jolt.enums.EConstraintSpace;
 import gen.web.jolt.math.Vec3;
 
-public class SliderConstraintSettings extends TwoBodyConstraintSettings {
+public final class SliderConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

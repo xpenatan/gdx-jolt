@@ -10,7 +10,7 @@ import gen.c.jolt.math.Vec3;
 import gen.c.jolt.math.Quat;
 import gen.c.jolt.enums.EMotorState;
 
-public class SwingTwistConstraint extends TwoBodyConstraint {
+public final class SwingTwistConstraint extends TwoBodyConstraint {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

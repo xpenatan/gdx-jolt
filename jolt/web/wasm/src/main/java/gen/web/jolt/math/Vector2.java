@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class Vector2 extends NativeObject {
+public final class Vector2 extends NativeObject {
 
     private Vector2 Vector2_TEMP_GEN_0;
 

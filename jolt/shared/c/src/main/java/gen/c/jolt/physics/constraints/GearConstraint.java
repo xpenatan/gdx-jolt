@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.constraints;
 
-public class GearConstraint extends TwoBodyConstraint {
+public final class GearConstraint extends TwoBodyConstraint {
 
     static public final GearConstraint NULL = GearConstraint.native_new();
 

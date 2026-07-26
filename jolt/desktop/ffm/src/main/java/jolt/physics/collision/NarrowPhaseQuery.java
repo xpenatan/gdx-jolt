@@ -28,7 +28,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class NarrowPhaseQuery extends NativeObject {
+public final class NarrowPhaseQuery extends NativeObject {
 
     static public final NarrowPhaseQuery NULL = NarrowPhaseQuery.native_new();
 

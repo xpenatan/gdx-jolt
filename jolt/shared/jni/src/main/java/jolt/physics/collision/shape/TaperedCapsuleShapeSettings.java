@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.physics.collision.PhysicsMaterial;
 
-public class TaperedCapsuleShapeSettings extends ConvexShapeSettings {
+public final class TaperedCapsuleShapeSettings extends ConvexShapeSettings {
 
     static public final TaperedCapsuleShapeSettings NULL = TaperedCapsuleShapeSettings.native_new();
 

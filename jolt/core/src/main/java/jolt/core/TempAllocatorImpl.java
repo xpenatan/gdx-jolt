@@ -6,7 +6,7 @@
 
 package jolt.core;
 
-public class TempAllocatorImpl extends TempAllocator {
+public final class TempAllocatorImpl extends TempAllocator {
 
     static public final TempAllocatorImpl NULL = TempAllocatorImpl.native_new();
 

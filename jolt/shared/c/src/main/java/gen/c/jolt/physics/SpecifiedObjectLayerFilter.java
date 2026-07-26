@@ -8,7 +8,7 @@ package gen.c.jolt.physics;
 
 import gen.c.jolt.physics.collision.ObjectLayerFilter;
 
-public class SpecifiedObjectLayerFilter extends ObjectLayerFilter {
+public final class SpecifiedObjectLayerFilter extends ObjectLayerFilter {
 
     static public final SpecifiedObjectLayerFilter NULL = SpecifiedObjectLayerFilter.native_new();
 

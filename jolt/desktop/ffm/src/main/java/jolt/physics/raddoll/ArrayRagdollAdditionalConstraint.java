@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayRagdollAdditionalConstraint extends NativeObject {
+public final class ArrayRagdollAdditionalConstraint extends NativeObject {
 
     private RagdollAdditionalConstraint RagdollAdditionalConstraint_TEMP_GEN_0;
 

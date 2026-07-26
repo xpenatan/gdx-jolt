@@ -10,7 +10,7 @@ import jolt.math.Vec3;
 import jolt.math.Quat;
 import jolt.enums.EMotorState;
 
-public class SwingTwistConstraint extends TwoBodyConstraint {
+public final class SwingTwistConstraint extends TwoBodyConstraint {
 
     static public final SwingTwistConstraint NULL = SwingTwistConstraint.native_new();
 

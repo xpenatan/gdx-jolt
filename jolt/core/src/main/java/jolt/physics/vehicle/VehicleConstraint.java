@@ -11,7 +11,7 @@ import jolt.physics.body.Body;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class VehicleConstraint extends Constraint {
+public final class VehicleConstraint extends Constraint {
 
     static public final VehicleConstraint NULL = VehicleConstraint.native_new();
 

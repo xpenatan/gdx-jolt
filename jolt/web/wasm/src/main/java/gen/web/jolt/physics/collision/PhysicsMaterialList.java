@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class PhysicsMaterialList extends NativeObject {
+public final class PhysicsMaterialList extends NativeObject {
 
     private PhysicsMaterial PhysicsMaterial_TEMP_GEN_0;
 

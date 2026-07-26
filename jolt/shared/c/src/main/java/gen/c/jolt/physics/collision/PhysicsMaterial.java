@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class PhysicsMaterial extends NativeObject {
+public final class PhysicsMaterial extends NativeObject {
 
     static public final PhysicsMaterial NULL = PhysicsMaterial.native_new();
 

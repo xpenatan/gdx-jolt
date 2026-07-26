@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class WheelWV extends Wheel {
+public final class WheelWV extends Wheel {
 
     private WheelSettingsWV WheelSettingsWV_TEMP_GEN_0;
 

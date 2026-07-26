@@ -11,7 +11,7 @@ import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 import jolt.enums.ESwingType;
 
-public class SwingTwistConstraintSettings extends TwoBodyConstraintSettings {
+public final class SwingTwistConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final SwingTwistConstraintSettings NULL = SwingTwistConstraintSettings.native_new();
 

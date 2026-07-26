@@ -8,7 +8,7 @@ package gen.c.jolt.physics.vehicle;
 import gen.c.jolt.Jolt;
 
 
-public class TrackedVehicleController extends VehicleController {
+public final class TrackedVehicleController extends VehicleController {
 
     private VehicleEngine VehicleEngine_TEMP_GEN_0;
 

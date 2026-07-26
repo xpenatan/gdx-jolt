@@ -11,7 +11,7 @@ import gen.c.jolt.math.Vec3;
 import gen.c.jolt.math.Quat;
 import gen.c.jolt.enums.EPathRotationConstraintType;
 
-public class PathConstraintSettings extends TwoBodyConstraintSettings {
+public final class PathConstraintSettings extends TwoBodyConstraintSettings {
 
     private PathConstraintPath PathConstraintPath_TEMP_GEN_0;
 

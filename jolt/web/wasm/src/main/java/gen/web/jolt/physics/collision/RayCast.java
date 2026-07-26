@@ -10,7 +10,7 @@ import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.math.Mat44;
 
-public class RayCast extends NativeObject {
+public final class RayCast extends NativeObject {
 
     private RayCast RayCast_TEMP_GEN_0;
 

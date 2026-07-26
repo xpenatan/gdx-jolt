@@ -8,7 +8,7 @@ package jolt.physics.constraints;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class MotorSettings extends NativeObject {
+public final class MotorSettings extends NativeObject {
 
     static public final MotorSettings NULL = MotorSettings.native_new();
 

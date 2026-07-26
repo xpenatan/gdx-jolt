@@ -10,7 +10,7 @@ import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.geometry.AABox;
 import gen.web.jolt.math.Vec3;
 
-public class AABoxCast extends NativeObject {
+public final class AABoxCast extends NativeObject {
 
     private AABox AABox_TEMP_GEN_0;
 

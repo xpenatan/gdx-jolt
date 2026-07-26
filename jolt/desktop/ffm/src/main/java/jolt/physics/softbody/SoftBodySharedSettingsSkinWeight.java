@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodySharedSettingsSkinWeight extends NativeObject {
+public final class SoftBodySharedSettingsSkinWeight extends NativeObject {
 
     static public final SoftBodySharedSettingsSkinWeight NULL = SoftBodySharedSettingsSkinWeight.native_new();
 

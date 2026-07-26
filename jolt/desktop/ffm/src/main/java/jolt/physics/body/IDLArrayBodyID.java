@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class IDLArrayBodyID extends NativeArray {
+public final class IDLArrayBodyID extends NativeArray {
 
     private BodyID BodyID_TEMP_GEN_0;
 

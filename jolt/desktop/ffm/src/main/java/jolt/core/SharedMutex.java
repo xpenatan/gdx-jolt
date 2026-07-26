@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SharedMutex extends NativeObject {
+public final class SharedMutex extends NativeObject {
 
     static public final SharedMutex NULL = SharedMutex.native_new();
 

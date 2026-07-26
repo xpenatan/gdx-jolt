@@ -6,7 +6,7 @@
 
 package jolt.physics.collision.shape;
 
-public class ConvexHullShape extends ConvexShape {
+public final class ConvexHullShape extends ConvexShape {
 
     static public final ConvexHullShape NULL = ConvexHullShape.native_new();
 

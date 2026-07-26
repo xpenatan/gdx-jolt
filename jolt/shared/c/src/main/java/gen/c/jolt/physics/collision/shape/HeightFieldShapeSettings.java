@@ -11,7 +11,7 @@ import gen.c.jolt.math.ArrayFloat;
 import gen.c.jolt.math.ArrayUint8;
 import gen.c.jolt.physics.collision.PhysicsMaterialList;
 
-public class HeightFieldShapeSettings extends ShapeSettings {
+public final class HeightFieldShapeSettings extends ShapeSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

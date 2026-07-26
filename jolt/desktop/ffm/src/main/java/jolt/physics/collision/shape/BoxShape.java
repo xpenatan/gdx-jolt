@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class BoxShape extends ConvexShape {
+public final class BoxShape extends ConvexShape {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

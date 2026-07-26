@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.physics.body.BodyID;
 
-public class SoftBodyManifold extends NativeObject {
+public final class SoftBodyManifold extends NativeObject {
 
     static public final SoftBodyManifold NULL = SoftBodyManifold.native_new();
 

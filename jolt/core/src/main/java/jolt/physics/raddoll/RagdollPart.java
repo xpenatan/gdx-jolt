@@ -9,7 +9,7 @@ package jolt.physics.raddoll;
 import jolt.physics.body.BodyCreationSettings;
 import jolt.math.TwoBodyConstraintSettings;
 
-public class RagdollPart extends BodyCreationSettings {
+public final class RagdollPart extends BodyCreationSettings {
 
     static public final RagdollPart NULL = RagdollPart.native_new();
 

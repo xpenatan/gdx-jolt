@@ -12,7 +12,7 @@ import jolt.math.VertexList;
 import jolt.geometry.IndexedTriangleList;
 import jolt.enums.MeshShapeSettings_EBuildQuality;
 
-public class MeshShapeSettings extends ShapeSettings {
+public final class MeshShapeSettings extends ShapeSettings {
 
     private VertexList VertexList_TEMP_GEN_0;
 

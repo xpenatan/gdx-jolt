@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class EmptyShape extends Shape {
+public final class EmptyShape extends Shape {
 
     static public final EmptyShape NULL = EmptyShape.native_new();
 

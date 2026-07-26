@@ -13,7 +13,7 @@ import gen.web.jolt.physics.collision.shape.SubShapeID;
 import gen.web.jolt.enums.EMotionType;
 import gen.web.jolt.physics.collision.PhysicsMaterial;
 
-public class CharacterVirtualContact extends NativeObject {
+public final class CharacterVirtualContact extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

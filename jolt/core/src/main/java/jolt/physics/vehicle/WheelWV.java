@@ -6,7 +6,7 @@
 
 package jolt.physics.vehicle;
 
-public class WheelWV extends Wheel {
+public final class WheelWV extends Wheel {
 
     static public final WheelWV NULL = WheelWV.native_new();
 

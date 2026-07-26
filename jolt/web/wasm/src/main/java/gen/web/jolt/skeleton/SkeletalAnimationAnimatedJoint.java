@@ -9,7 +9,7 @@ package gen.web.jolt.skeleton;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.com.github.xpenatan.jparser.runtime.helper.NativeString;
 
-public class SkeletalAnimationAnimatedJoint extends NativeObject {
+public final class SkeletalAnimationAnimatedJoint extends NativeObject {
 
     private NativeString NativeString_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.web.jolt.physics.body;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class BodyPtrMemRef extends NativeObject {
+public final class BodyPtrMemRef extends NativeObject {
 
     static public final BodyPtrMemRef NULL = BodyPtrMemRef.native_new();
 

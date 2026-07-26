@@ -12,7 +12,7 @@ import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 import jolt.enums.ESwingType;
 
-public class SixDOFConstraintSettings extends TwoBodyConstraintSettings {
+public final class SixDOFConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final SixDOFConstraintSettings NULL = SixDOFConstraintSettings.native_new();
 

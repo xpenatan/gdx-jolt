@@ -10,7 +10,7 @@ import gen.c.jolt.enums.EMotorState;
 import gen.c.jolt.math.Vector2;
 import gen.c.jolt.math.Vec3;
 
-public class SliderConstraint extends TwoBodyConstraint {
+public final class SliderConstraint extends TwoBodyConstraint {
 
     private MotorSettings MotorSettings_TEMP_GEN_0;
 

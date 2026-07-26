@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import jolt.physics.softbody.CastRayCollector;
 
-public class CastRayClosestHitCollisionCollector extends CastRayCollector {
+public final class CastRayClosestHitCollisionCollector extends CastRayCollector {
 
     static public final CastRayClosestHitCollisionCollector NULL = CastRayClosestHitCollisionCollector.native_new();
 

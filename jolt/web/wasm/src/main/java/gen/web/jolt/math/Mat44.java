@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class Mat44 extends NativeObject {
+public final class Mat44 extends NativeObject {
 
     static private Mat44 Mat44_TEMP_STATIC_GEN_0;
 

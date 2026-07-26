@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision;
 
 import gen.c.jolt.physics.softbody.CollideShapeCollector;
 
-public class CollideShapeAnyHitCollisionCollector extends CollideShapeCollector {
+public final class CollideShapeAnyHitCollisionCollector extends CollideShapeCollector {
 
     private CollideShapeResult CollideShapeResult_TEMP_GEN_0;
 

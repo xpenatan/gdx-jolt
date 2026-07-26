@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.physics.body.BodyID;
 import jolt.physics.collision.shape.SubShapeID;
 
-public class CollidePointResult extends NativeObject {
+public final class CollidePointResult extends NativeObject {
 
     private BodyID BodyID_TEMP_GEN_0;
 

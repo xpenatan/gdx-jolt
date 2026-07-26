@@ -9,7 +9,7 @@ package gen.c.jolt.physics.softbody;
 import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.math.Mat44;
 
-public class SoftBodySharedSettingsInvBind extends NativeObject {
+public final class SoftBodySharedSettingsInvBind extends NativeObject {
 
     private Mat44 Mat44_TEMP_GEN_0;
 

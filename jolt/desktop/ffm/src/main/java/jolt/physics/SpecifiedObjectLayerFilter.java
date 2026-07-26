@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SpecifiedObjectLayerFilter extends ObjectLayerFilter {
+public final class SpecifiedObjectLayerFilter extends ObjectLayerFilter {
 
     static public final SpecifiedObjectLayerFilter NULL = SpecifiedObjectLayerFilter.native_new();
 

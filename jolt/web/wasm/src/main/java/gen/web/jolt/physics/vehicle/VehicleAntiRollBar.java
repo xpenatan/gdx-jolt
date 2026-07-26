@@ -8,7 +8,7 @@ package gen.web.jolt.physics.vehicle;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class VehicleAntiRollBar extends NativeObject {
+public final class VehicleAntiRollBar extends NativeObject {
 
     static public final VehicleAntiRollBar NULL = VehicleAntiRollBar.native_new();
 

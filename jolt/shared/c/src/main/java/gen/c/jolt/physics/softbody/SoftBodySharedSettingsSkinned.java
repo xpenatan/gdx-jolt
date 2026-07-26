@@ -8,7 +8,7 @@ package gen.c.jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class SoftBodySharedSettingsSkinned extends NativeObject {
+public final class SoftBodySharedSettingsSkinned extends NativeObject {
 
     private SoftBodySharedSettingsSkinWeight SoftBodySharedSettingsSkinWeight_TEMP_GEN_0;
 

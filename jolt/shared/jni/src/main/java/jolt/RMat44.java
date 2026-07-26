@@ -12,7 +12,7 @@ import jolt.math.Mat44;
 import jolt.math.Vec3;
 import jolt.math.Vec4;
 
-public class RMat44 extends NativeObject {
+public final class RMat44 extends NativeObject {
 
     static private RMat44 RMat44_TEMP_STATIC_GEN_0;
 

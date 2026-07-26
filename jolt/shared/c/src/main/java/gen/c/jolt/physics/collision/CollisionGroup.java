@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class CollisionGroup extends NativeObject {
+public final class CollisionGroup extends NativeObject {
 
     private GroupFilter GroupFilter_TEMP_GEN_0;
 

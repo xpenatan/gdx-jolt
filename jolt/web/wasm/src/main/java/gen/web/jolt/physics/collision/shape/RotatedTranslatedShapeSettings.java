@@ -9,7 +9,7 @@ package gen.web.jolt.physics.collision.shape;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.math.Quat;
 
-public class RotatedTranslatedShapeSettings extends DecoratedShapeSettings {
+public final class RotatedTranslatedShapeSettings extends DecoratedShapeSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

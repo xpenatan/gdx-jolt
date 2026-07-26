@@ -8,7 +8,7 @@ package jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayUint extends NativeObject {
+public final class ArrayUint extends NativeObject {
 
     static public final ArrayUint NULL = ArrayUint.native_new();
 

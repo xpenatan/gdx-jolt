@@ -9,7 +9,7 @@ package gen.c.jolt.physics.character;
 import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.math.Vec3;
 
-public class ExtendedUpdateSettings extends NativeObject {
+public final class ExtendedUpdateSettings extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

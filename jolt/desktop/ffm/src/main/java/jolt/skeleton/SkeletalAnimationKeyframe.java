@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SkeletalAnimationKeyframe extends SkeletalAnimationJointState {
+public final class SkeletalAnimationKeyframe extends SkeletalAnimationJointState {
 
     static public final SkeletalAnimationKeyframe NULL = SkeletalAnimationKeyframe.native_new();
 

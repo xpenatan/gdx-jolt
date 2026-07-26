@@ -8,7 +8,7 @@ package gen.web.jolt.physics;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class PhysicsStepListenerContext extends NativeObject {
+public final class PhysicsStepListenerContext extends NativeObject {
 
     private PhysicsSystem PhysicsSystem_TEMP_GEN_0;
 

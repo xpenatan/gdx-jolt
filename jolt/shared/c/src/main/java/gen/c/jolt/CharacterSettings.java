@@ -9,7 +9,7 @@ package gen.c.jolt;
 import gen.c.jolt.physics.character.CharacterBaseSettings;
 import gen.c.jolt.enums.EAllowedDOFs;
 
-public class CharacterSettings extends CharacterBaseSettings {
+public final class CharacterSettings extends CharacterBaseSettings {
 
     static public final CharacterSettings NULL = CharacterSettings.native_new();
 

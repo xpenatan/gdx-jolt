@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import jolt.physics.collision.shape.SubShapeID;
 
-public class RayCastResult extends BroadPhaseCastResult {
+public final class RayCastResult extends BroadPhaseCastResult {
 
     static public final RayCastResult NULL = RayCastResult.native_new();
 

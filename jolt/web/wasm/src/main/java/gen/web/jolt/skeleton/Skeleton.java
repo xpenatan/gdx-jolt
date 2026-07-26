@@ -9,7 +9,7 @@ package gen.web.jolt.skeleton;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.com.github.xpenatan.jparser.runtime.helper.NativeString;
 
-public class Skeleton extends NativeObject {
+public final class Skeleton extends NativeObject {
 
     static public final Skeleton NULL = Skeleton.native_new();
 

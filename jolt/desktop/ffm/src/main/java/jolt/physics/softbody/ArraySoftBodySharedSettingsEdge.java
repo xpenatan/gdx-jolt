@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySoftBodySharedSettingsEdge extends NativeObject {
+public final class ArraySoftBodySharedSettingsEdge extends NativeObject {
 
     private SoftBodySharedSettingsEdge SoftBodySharedSettingsEdge_TEMP_GEN_0;
 

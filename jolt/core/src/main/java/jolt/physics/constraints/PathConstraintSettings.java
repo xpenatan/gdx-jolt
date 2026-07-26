@@ -11,7 +11,7 @@ import jolt.math.Vec3;
 import jolt.math.Quat;
 import jolt.enums.EPathRotationConstraintType;
 
-public class PathConstraintSettings extends TwoBodyConstraintSettings {
+public final class PathConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final PathConstraintSettings NULL = PathConstraintSettings.native_new();
 

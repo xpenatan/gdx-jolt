@@ -12,7 +12,7 @@ import gen.c.jolt.math.Vec3;
 import gen.c.jolt.math.Quat;
 import gen.c.jolt.physics.collision.PhysicsMaterial;
 
-public class ShapeGetTriangles extends NativeObject {
+public final class ShapeGetTriangles extends NativeObject {
 
     private NativeObject NativeObject_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.collision.broadphase;
 
-public class ObjectVsBroadPhaseLayerFilterMask extends ObjectVsBroadPhaseLayerFilter {
+public final class ObjectVsBroadPhaseLayerFilterMask extends ObjectVsBroadPhaseLayerFilter {
 
     static public final ObjectVsBroadPhaseLayerFilterMask NULL = ObjectVsBroadPhaseLayerFilterMask.native_new();
 

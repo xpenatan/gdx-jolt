@@ -8,7 +8,7 @@ package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsVertexAttributes extends NativeObject {
+public final class ArraySoftBodySharedSettingsVertexAttributes extends NativeObject {
 
     private SoftBodySharedSettingsVertexAttributes SoftBodySharedSettingsVertexAttributes_TEMP_GEN_0;
 

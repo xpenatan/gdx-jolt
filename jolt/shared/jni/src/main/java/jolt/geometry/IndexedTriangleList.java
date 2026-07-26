@@ -8,7 +8,7 @@ package jolt.geometry;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class IndexedTriangleList extends NativeObject {
+public final class IndexedTriangleList extends NativeObject {
 
     private IndexedTriangle IndexedTriangle_TEMP_GEN_0;
 

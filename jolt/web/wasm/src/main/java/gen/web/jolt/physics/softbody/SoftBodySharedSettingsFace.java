@@ -8,7 +8,7 @@ package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class SoftBodySharedSettingsFace extends NativeObject {
+public final class SoftBodySharedSettingsFace extends NativeObject {
 
     static public final SoftBodySharedSettingsFace NULL = SoftBodySharedSettingsFace.native_new();
 

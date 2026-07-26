@@ -9,7 +9,7 @@ package gen.c.jolt.physics.softbody;
 import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.math.Quat;
 
-public class SoftBodySharedSettingsRodStretchShear extends NativeObject {
+public final class SoftBodySharedSettingsRodStretchShear extends NativeObject {
 
     private Quat Quat_TEMP_GEN_0;
 

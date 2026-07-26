@@ -15,7 +15,7 @@ import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 import jolt.Jolt;
 
-public class TrackedVehicleController extends VehicleController {
+public final class TrackedVehicleController extends VehicleController {
 
     private VehicleEngine VehicleEngine_TEMP_GEN_0;
 

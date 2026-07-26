@@ -17,7 +17,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class OrientedBox extends NativeObject {
+public final class OrientedBox extends NativeObject {
 
     private Mat44 Mat44_TEMP_GEN_0;
 

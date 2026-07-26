@@ -27,7 +27,7 @@ import jolt.physics.collision.TransformedShape;
 import jolt.physics.collision.shape.SubShapeID;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class BodyInterface extends NativeObject {
+public final class BodyInterface extends NativeObject {
 
     private Body Body_TEMP_GEN_0;
 

@@ -9,7 +9,7 @@ package gen.web.jolt.physics.collision.shape;
 import gen.web.jolt.math.ArrayVec3;
 import gen.web.jolt.physics.collision.PhysicsMaterial;
 
-public class ConvexHullShapeSettings extends ConvexShapeSettings {
+public final class ConvexHullShapeSettings extends ConvexShapeSettings {
 
     private ArrayVec3 ArrayVec3_TEMP_GEN_0;
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SoftBodySharedSettingsVolume extends NativeObject {
+public final class SoftBodySharedSettingsVolume extends NativeObject {
 
     static public final SoftBodySharedSettingsVolume NULL = SoftBodySharedSettingsVolume.native_new();
 

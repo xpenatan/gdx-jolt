@@ -9,7 +9,7 @@ package jolt.physics.raddoll;
 import jolt.physics.body.BodyCreationSettings;
 import jolt.math.TwoBodyConstraintSettings;
 
-public class RagdollPart extends BodyCreationSettings {
+public final class RagdollPart extends BodyCreationSettings {
 
     private TwoBodyConstraintSettings TwoBodyConstraintSettings_TEMP_GEN_0;
 

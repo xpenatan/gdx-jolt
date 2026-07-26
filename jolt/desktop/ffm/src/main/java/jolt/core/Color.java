@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Color extends NativeObject {
+public final class Color extends NativeObject {
 
     private Color Color_TEMP_GEN_0;
 

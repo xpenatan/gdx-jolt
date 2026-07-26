@@ -8,7 +8,7 @@ package jolt.core;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Factory extends NativeObject {
+public final class Factory extends NativeObject {
 
     static public final Factory NULL = Factory.native_new();
 

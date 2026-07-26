@@ -12,7 +12,7 @@ import gen.c.jolt.physics.ragdoll.Ragdoll;
 import gen.c.jolt.skeleton.Skeleton;
 import gen.c.jolt.math.Mat44MemRef;
 
-public class RagdollSettings extends NativeObject {
+public final class RagdollSettings extends NativeObject {
 
     private Ragdoll Ragdoll_TEMP_GEN_0;
 

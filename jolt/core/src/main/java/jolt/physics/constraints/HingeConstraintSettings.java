@@ -10,7 +10,7 @@ import jolt.math.TwoBodyConstraintSettings;
 import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 
-public class HingeConstraintSettings extends TwoBodyConstraintSettings {
+public final class HingeConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final HingeConstraintSettings NULL = HingeConstraintSettings.native_new();
 

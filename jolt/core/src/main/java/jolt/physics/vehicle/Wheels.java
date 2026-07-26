@@ -8,7 +8,7 @@ package jolt.physics.vehicle;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Wheels extends NativeObject {
+public final class Wheels extends NativeObject {
 
     static public final Wheels NULL = Wheels.native_new();
 

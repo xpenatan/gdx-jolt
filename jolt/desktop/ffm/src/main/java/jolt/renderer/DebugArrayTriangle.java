@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class DebugArrayTriangle extends NativeObject {
+public final class DebugArrayTriangle extends NativeObject {
 
     private DebugRendererTriangle DebugRendererTriangle_TEMP_GEN_0;
 

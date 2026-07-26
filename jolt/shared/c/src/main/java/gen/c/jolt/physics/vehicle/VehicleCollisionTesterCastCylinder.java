@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.vehicle;
 
-public class VehicleCollisionTesterCastCylinder extends VehicleCollisionTester {
+public final class VehicleCollisionTesterCastCylinder extends VehicleCollisionTester {
 
     static public final VehicleCollisionTesterCastCylinder NULL = VehicleCollisionTesterCastCylinder.native_new();
 

@@ -10,7 +10,7 @@ import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.physics.body.BodyID;
 
-public class SoftBodyManifold extends NativeObject {
+public final class SoftBodyManifold extends NativeObject {
 
     private ArraySoftBodyVertex ArraySoftBodyVertex_TEMP_GEN_0;
 

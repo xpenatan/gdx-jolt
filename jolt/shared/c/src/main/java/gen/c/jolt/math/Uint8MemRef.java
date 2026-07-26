@@ -8,7 +8,7 @@ package gen.c.jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Uint8MemRef extends NativeObject {
+public final class Uint8MemRef extends NativeObject {
 
     static public final Uint8MemRef NULL = Uint8MemRef.native_new();
 

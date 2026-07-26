@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.collision;
 
-public class GroupFilterTable extends GroupFilter {
+public final class GroupFilterTable extends GroupFilter {
 
     static public final GroupFilterTable NULL = GroupFilterTable.native_new();
 

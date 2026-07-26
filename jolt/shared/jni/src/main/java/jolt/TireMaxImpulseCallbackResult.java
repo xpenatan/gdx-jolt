@@ -8,7 +8,7 @@ package jolt;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class TireMaxImpulseCallbackResult extends NativeObject {
+public final class TireMaxImpulseCallbackResult extends NativeObject {
 
     static public final TireMaxImpulseCallbackResult NULL = TireMaxImpulseCallbackResult.native_new();
 

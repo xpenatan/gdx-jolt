@@ -9,7 +9,7 @@ package gen.web.jolt;
 import gen.web.jolt.physics.character.CharacterBaseSettings;
 import gen.web.jolt.enums.EAllowedDOFs;
 
-public class CharacterSettings extends CharacterBaseSettings {
+public final class CharacterSettings extends CharacterBaseSettings {
 
     static public final CharacterSettings NULL = CharacterSettings.native_new();
 

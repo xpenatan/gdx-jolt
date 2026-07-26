@@ -8,7 +8,7 @@ package jolt.core;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class LinearCurve extends NativeObject {
+public final class LinearCurve extends NativeObject {
 
     static public final LinearCurve NULL = LinearCurve.native_new();
 

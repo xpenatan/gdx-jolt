@@ -10,7 +10,7 @@ import jolt.math.TwoBodyConstraintSettings;
 import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 
-public class PulleyConstraintSettings extends TwoBodyConstraintSettings {
+public final class PulleyConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final PulleyConstraintSettings NULL = PulleyConstraintSettings.native_new();
 

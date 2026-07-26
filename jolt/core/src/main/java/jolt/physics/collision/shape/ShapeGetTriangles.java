@@ -12,7 +12,7 @@ import jolt.math.Vec3;
 import jolt.math.Quat;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class ShapeGetTriangles extends NativeObject {
+public final class ShapeGetTriangles extends NativeObject {
 
     static public final ShapeGetTriangles NULL = ShapeGetTriangles.native_new();
 

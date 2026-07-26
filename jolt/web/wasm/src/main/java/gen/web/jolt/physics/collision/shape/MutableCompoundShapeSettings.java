@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.collision.shape;
 
-public class MutableCompoundShapeSettings extends CompoundShapeSettings {
+public final class MutableCompoundShapeSettings extends CompoundShapeSettings {
 
     static public final MutableCompoundShapeSettings NULL = MutableCompoundShapeSettings.native_new();
 

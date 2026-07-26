@@ -9,7 +9,7 @@ package jolt.physics.raddoll;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.TwoBodyConstraintSettings;
 
-public class RagdollAdditionalConstraint extends NativeObject {
+public final class RagdollAdditionalConstraint extends NativeObject {
 
     static public final RagdollAdditionalConstraint NULL = RagdollAdditionalConstraint.native_new();
 

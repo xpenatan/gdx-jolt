@@ -9,7 +9,7 @@ package jolt.physics.collision;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 
-public class ContactSettings extends NativeObject {
+public final class ContactSettings extends NativeObject {
 
     static public final ContactSettings NULL = ContactSettings.native_new();
 

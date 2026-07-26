@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import jolt.physics.collision.shape.SubShapeID;
 
-public class RayCastResult extends BroadPhaseCastResult {
+public final class RayCastResult extends BroadPhaseCastResult {
 
     private SubShapeID SubShapeID_TEMP_GEN_0;
 

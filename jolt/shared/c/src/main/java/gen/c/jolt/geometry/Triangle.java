@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.math.Vec3;
 import gen.c.jolt.math.Float3;
 
-public class Triangle extends NativeObject {
+public final class Triangle extends NativeObject {
 
     private Float3 Float3_TEMP_GEN_0;
 

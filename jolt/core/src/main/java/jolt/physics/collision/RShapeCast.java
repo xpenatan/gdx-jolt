@@ -11,7 +11,7 @@ import jolt.physics.collision.shape.Shape;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class RShapeCast extends NativeObject {
+public final class RShapeCast extends NativeObject {
 
     static public final RShapeCast NULL = RShapeCast.native_new();
 

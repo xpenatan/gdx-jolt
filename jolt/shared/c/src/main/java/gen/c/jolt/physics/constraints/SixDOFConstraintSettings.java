@@ -12,7 +12,7 @@ import gen.c.jolt.enums.EConstraintSpace;
 import gen.c.jolt.math.Vec3;
 import gen.c.jolt.enums.ESwingType;
 
-public class SixDOFConstraintSettings extends TwoBodyConstraintSettings {
+public final class SixDOFConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.collision;
 
-public class DefaultObjectLayerFilter extends ObjectLayerFilter {
+public final class DefaultObjectLayerFilter extends ObjectLayerFilter {
 
     static public final DefaultObjectLayerFilter NULL = DefaultObjectLayerFilter.native_new();
 

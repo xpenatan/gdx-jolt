@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class TrackedVehicleControllerSettings extends VehicleControllerSettings {
+public final class TrackedVehicleControllerSettings extends VehicleControllerSettings {
 
     private VehicleEngineSettings VehicleEngineSettings_TEMP_GEN_0;
 

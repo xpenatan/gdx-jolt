@@ -8,7 +8,7 @@ package jolt.renderer;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class DebugRendererVertexTraits extends NativeObject {
+public final class DebugRendererVertexTraits extends NativeObject {
 
     static public final DebugRendererVertexTraits NULL = DebugRendererVertexTraits.native_new();
 

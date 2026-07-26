@@ -9,7 +9,7 @@ package jolt.physics.softbody;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 
-public class SoftBodyVertex extends NativeObject {
+public final class SoftBodyVertex extends NativeObject {
 
     static public final SoftBodyVertex NULL = SoftBodyVertex.native_new();
 

@@ -17,7 +17,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SliderConstraint extends TwoBodyConstraint {
+public final class SliderConstraint extends TwoBodyConstraint {
 
     private MotorSettings MotorSettings_TEMP_GEN_0;
 

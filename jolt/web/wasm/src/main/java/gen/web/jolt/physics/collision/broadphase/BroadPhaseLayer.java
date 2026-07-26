@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision.broadphase;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class BroadPhaseLayer extends NativeObject {
+public final class BroadPhaseLayer extends NativeObject {
 
     static public final BroadPhaseLayer NULL = BroadPhaseLayer.native_new();
 

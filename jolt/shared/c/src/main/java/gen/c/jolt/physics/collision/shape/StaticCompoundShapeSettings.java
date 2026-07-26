@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.collision.shape;
 
-public class StaticCompoundShapeSettings extends CompoundShapeSettings {
+public final class StaticCompoundShapeSettings extends CompoundShapeSettings {
 
     static public final StaticCompoundShapeSettings NULL = StaticCompoundShapeSettings.native_new();
 

@@ -10,7 +10,7 @@ import gen.web.jolt.math.TwoBodyConstraintSettings;
 import gen.web.jolt.enums.EConstraintSpace;
 import gen.web.jolt.math.Vec3;
 
-public class FixedConstraintSettings extends TwoBodyConstraintSettings {
+public final class FixedConstraintSettings extends TwoBodyConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class BodyLockInterfaceNoLock extends BodyLockInterface {
+public final class BodyLockInterfaceNoLock extends BodyLockInterface {
 
     static public final BodyLockInterfaceNoLock NULL = BodyLockInterfaceNoLock.native_new();
 

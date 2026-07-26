@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SphereShape extends ConvexShape {
+public final class SphereShape extends ConvexShape {
 
     static public final SphereShape NULL = SphereShape.native_new();
 

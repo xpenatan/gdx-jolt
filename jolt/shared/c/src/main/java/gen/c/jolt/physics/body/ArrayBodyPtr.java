@@ -8,7 +8,7 @@ package gen.c.jolt.physics.body;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayBodyPtr extends NativeObject {
+public final class ArrayBodyPtr extends NativeObject {
 
     private Body Body_TEMP_GEN_0;
 

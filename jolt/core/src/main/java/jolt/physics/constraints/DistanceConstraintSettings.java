@@ -10,7 +10,7 @@ import jolt.math.TwoBodyConstraintSettings;
 import jolt.enums.EConstraintSpace;
 import jolt.math.Vec3;
 
-public class DistanceConstraintSettings extends TwoBodyConstraintSettings {
+public final class DistanceConstraintSettings extends TwoBodyConstraintSettings {
 
     static public final DistanceConstraintSettings NULL = DistanceConstraintSettings.native_new();
 

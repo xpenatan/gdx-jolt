@@ -8,7 +8,7 @@ package gen.web.jolt.physics.body;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class BodyIDVector extends NativeObject {
+public final class BodyIDVector extends NativeObject {
 
     private BodyID BodyID_TEMP_GEN_0;
 

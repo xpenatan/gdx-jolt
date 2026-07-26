@@ -8,7 +8,7 @@ package gen.web.jolt.core;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class SharedMutex extends NativeObject {
+public final class SharedMutex extends NativeObject {
 
     static public final SharedMutex NULL = SharedMutex.native_new();
 

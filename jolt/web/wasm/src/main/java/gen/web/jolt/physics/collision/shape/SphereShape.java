@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision.shape;
 
 import gen.web.jolt.physics.collision.PhysicsMaterial;
 
-public class SphereShape extends ConvexShape {
+public final class SphereShape extends ConvexShape {
 
     static public final SphereShape NULL = SphereShape.native_new();
 

@@ -9,7 +9,7 @@ package jolt.physics.collision;
 import jolt.physics.softbody.CastShapeCollector;
 import jolt.physics.collision.shape.ShapeCastResult;
 
-public class CastShapeAnyHitCollisionCollector extends CastShapeCollector {
+public final class CastShapeAnyHitCollisionCollector extends CastShapeCollector {
 
     private ShapeCastResult ShapeCastResult_TEMP_GEN_0;
 

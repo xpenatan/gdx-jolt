@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class PathConstraintPathHermite extends PathConstraintPath {
+public final class PathConstraintPathHermite extends PathConstraintPath {
 
     static public final PathConstraintPathHermite NULL = PathConstraintPathHermite.native_new();
 

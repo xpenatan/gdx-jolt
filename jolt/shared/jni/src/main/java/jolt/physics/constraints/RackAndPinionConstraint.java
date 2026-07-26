@@ -6,7 +6,7 @@
 
 package jolt.physics.constraints;
 
-public class RackAndPinionConstraint extends TwoBodyConstraint {
+public final class RackAndPinionConstraint extends TwoBodyConstraint {
 
     static public final RackAndPinionConstraint NULL = RackAndPinionConstraint.native_new();
 

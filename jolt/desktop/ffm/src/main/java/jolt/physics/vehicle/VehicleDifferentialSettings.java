@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleDifferentialSettings extends NativeObject {
+public final class VehicleDifferentialSettings extends NativeObject {
 
     static public final VehicleDifferentialSettings NULL = VehicleDifferentialSettings.native_new();
 

@@ -18,7 +18,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class MutableCompoundShape extends CompoundShape {
+public final class MutableCompoundShape extends CompoundShape {
 
     static public final MutableCompoundShape NULL = MutableCompoundShape.native_new();
 

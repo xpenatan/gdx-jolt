@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.physics.collision.CollideShapeResult;
 
-public class ShapeCastResult extends CollideShapeResult {
+public final class ShapeCastResult extends CollideShapeResult {
 
     static public final ShapeCastResult NULL = ShapeCastResult.native_new();
 

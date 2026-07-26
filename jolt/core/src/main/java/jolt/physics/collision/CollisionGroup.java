@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class CollisionGroup extends NativeObject {
+public final class CollisionGroup extends NativeObject {
 
     static public final CollisionGroup NULL = CollisionGroup.native_new();
 

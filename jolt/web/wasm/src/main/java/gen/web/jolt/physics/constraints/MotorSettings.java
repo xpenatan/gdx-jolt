@@ -8,7 +8,7 @@ package gen.web.jolt.physics.constraints;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class MotorSettings extends NativeObject {
+public final class MotorSettings extends NativeObject {
 
     private SpringSettings SpringSettings_TEMP_GEN_0;
 

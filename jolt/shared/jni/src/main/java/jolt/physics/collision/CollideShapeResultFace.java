@@ -9,7 +9,7 @@ package jolt.physics.collision;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 
-public class CollideShapeResultFace extends NativeObject {
+public final class CollideShapeResultFace extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class MassProperties extends NativeObject {
+public final class MassProperties extends NativeObject {
 
     static public final MassProperties NULL = MassProperties.native_new();
 

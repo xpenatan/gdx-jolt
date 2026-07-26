@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.vehicle;
 
-public class VehicleEngine extends VehicleEngineSettings {
+public final class VehicleEngine extends VehicleEngineSettings {
 
     static public final VehicleEngine NULL = VehicleEngine.native_new();
 

@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayQuat extends NativeObject {
+public final class ArrayQuat extends NativeObject {
 
     private Quat Quat_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.web.jolt.physics.constraints;
 
 import gen.web.jolt.math.Vec3;
 
-public class ConeConstraint extends TwoBodyConstraint {
+public final class ConeConstraint extends TwoBodyConstraint {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class PlaneShape extends Shape {
+public final class PlaneShape extends Shape {
 
     private Plane Plane_TEMP_GEN_0;
 

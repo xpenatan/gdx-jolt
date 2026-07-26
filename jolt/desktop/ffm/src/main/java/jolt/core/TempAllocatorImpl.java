@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class TempAllocatorImpl extends TempAllocator {
+public final class TempAllocatorImpl extends TempAllocator {
 
     static public final TempAllocatorImpl NULL = TempAllocatorImpl.native_new();
 

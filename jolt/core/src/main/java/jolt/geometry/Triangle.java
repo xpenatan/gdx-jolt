@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Float3;
 
-public class Triangle extends NativeObject {
+public final class Triangle extends NativeObject {
 
     static public final Triangle NULL = Triangle.native_new();
 

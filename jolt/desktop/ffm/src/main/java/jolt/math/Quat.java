@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Quat extends NativeObject {
+public final class Quat extends NativeObject {
 
     static private Quat Quat_TEMP_STATIC_GEN_0;
 

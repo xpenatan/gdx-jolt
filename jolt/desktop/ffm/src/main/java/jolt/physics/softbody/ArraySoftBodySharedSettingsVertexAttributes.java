@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySoftBodySharedSettingsVertexAttributes extends NativeObject {
+public final class ArraySoftBodySharedSettingsVertexAttributes extends NativeObject {
 
     private SoftBodySharedSettingsVertexAttributes SoftBodySharedSettingsVertexAttributes_TEMP_GEN_0;
 

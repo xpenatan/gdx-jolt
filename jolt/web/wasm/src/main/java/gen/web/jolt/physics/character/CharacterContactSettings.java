@@ -8,7 +8,7 @@ package gen.web.jolt.physics.character;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class CharacterContactSettings extends NativeObject {
+public final class CharacterContactSettings extends NativeObject {
 
     static public final CharacterContactSettings NULL = CharacterContactSettings.native_new();
 

@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class GearConstraint extends TwoBodyConstraint {
+public final class GearConstraint extends TwoBodyConstraint {
 
     static public final GearConstraint NULL = GearConstraint.native_new();
 

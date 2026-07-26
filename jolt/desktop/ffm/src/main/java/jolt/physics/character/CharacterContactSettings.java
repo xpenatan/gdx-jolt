@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class CharacterContactSettings extends NativeObject {
+public final class CharacterContactSettings extends NativeObject {
 
     static public final CharacterContactSettings NULL = CharacterContactSettings.native_new();
 

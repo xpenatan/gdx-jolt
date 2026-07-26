@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.body;
 
-public class IgnoreSingleBodyFilter extends BodyFilter {
+public final class IgnoreSingleBodyFilter extends BodyFilter {
 
     static public final IgnoreSingleBodyFilter NULL = IgnoreSingleBodyFilter.native_new();
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleCollisionTesterRay extends VehicleCollisionTester {
+public final class VehicleCollisionTesterRay extends VehicleCollisionTester {
 
     static public final VehicleCollisionTesterRay NULL = VehicleCollisionTesterRay.native_new();
 

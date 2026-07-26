@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class RayCast extends NativeObject {
+public final class RayCast extends NativeObject {
 
     static public final RayCast NULL = RayCast.native_new();
 

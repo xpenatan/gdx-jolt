@@ -18,7 +18,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class PathConstraintSettings extends TwoBodyConstraintSettings {
+public final class PathConstraintSettings extends TwoBodyConstraintSettings {
 
     private PathConstraintPath PathConstraintPath_TEMP_GEN_0;
 

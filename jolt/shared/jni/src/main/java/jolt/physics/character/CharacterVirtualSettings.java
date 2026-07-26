@@ -11,7 +11,7 @@ import jolt.enums.EBackFaceMode;
 import jolt.physics.collision.shape.Shape;
 import jolt.physics.body.BodyID;
 
-public class CharacterVirtualSettings extends CharacterBaseSettings {
+public final class CharacterVirtualSettings extends CharacterBaseSettings {
 
     private CharacterID CharacterID_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.c.jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsDihedralBend extends NativeObject {
+public final class ArraySoftBodySharedSettingsDihedralBend extends NativeObject {
 
     private SoftBodySharedSettingsDihedralBend SoftBodySharedSettingsDihedralBend_TEMP_GEN_0;
 

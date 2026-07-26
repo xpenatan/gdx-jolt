@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.collision;
 
-public class ObjectLayerPairFilterTable extends ObjectLayerPairFilter {
+public final class ObjectLayerPairFilterTable extends ObjectLayerPairFilter {
 
     static public final ObjectLayerPairFilterTable NULL = ObjectLayerPairFilterTable.native_new();
 

@@ -6,7 +6,7 @@
 
 package jolt.physics.collision.broadphase;
 
-public class BroadPhaseLayerInterfaceTable extends BroadPhaseLayerInterface {
+public final class BroadPhaseLayerInterfaceTable extends BroadPhaseLayerInterface {
 
     static public final BroadPhaseLayerInterfaceTable NULL = BroadPhaseLayerInterfaceTable.native_new();
 

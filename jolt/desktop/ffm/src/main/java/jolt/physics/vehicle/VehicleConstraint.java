@@ -18,7 +18,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleConstraint extends Constraint {
+public final class VehicleConstraint extends Constraint {
 
     private VehicleCollisionTester VehicleCollisionTester_TEMP_GEN_0;
 

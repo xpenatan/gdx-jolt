@@ -6,7 +6,7 @@
 
 package jolt.physics.vehicle;
 
-public class MotorcycleControllerSettings extends WheeledVehicleControllerSettings {
+public final class MotorcycleControllerSettings extends WheeledVehicleControllerSettings {
 
     static public final MotorcycleControllerSettings NULL = MotorcycleControllerSettings.native_new();
 

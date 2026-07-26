@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.math.Vec3;
 
-public class ScaledShapeSettings extends DecoratedShapeSettings {
+public final class ScaledShapeSettings extends DecoratedShapeSettings {
 
     static public final ScaledShapeSettings NULL = ScaledShapeSettings.native_new();
 

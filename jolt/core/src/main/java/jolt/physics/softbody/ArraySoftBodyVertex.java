@@ -8,7 +8,7 @@ package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodyVertex extends NativeObject {
+public final class ArraySoftBodyVertex extends NativeObject {
 
     static public final ArraySoftBodyVertex NULL = ArraySoftBodyVertex.native_new();
 

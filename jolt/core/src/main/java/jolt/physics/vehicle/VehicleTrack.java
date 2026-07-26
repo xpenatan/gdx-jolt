@@ -6,7 +6,7 @@
 
 package jolt.physics.vehicle;
 
-public class VehicleTrack extends VehicleTrackSettings {
+public final class VehicleTrack extends VehicleTrackSettings {
 
     static public final VehicleTrack NULL = VehicleTrack.native_new();
 

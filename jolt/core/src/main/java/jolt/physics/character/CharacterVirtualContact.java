@@ -13,7 +13,7 @@ import jolt.physics.collision.shape.SubShapeID;
 import jolt.enums.EMotionType;
 import jolt.physics.collision.PhysicsMaterial;
 
-public class CharacterVirtualContact extends NativeObject {
+public final class CharacterVirtualContact extends NativeObject {
 
     static public final CharacterVirtualContact NULL = CharacterVirtualContact.native_new();
 

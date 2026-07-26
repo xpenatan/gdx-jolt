@@ -11,7 +11,7 @@ import jolt.physics.collision.shape.Shape;
 import jolt.math.Vec3;
 import jolt.math.Mat44;
 
-public class ShapeCast extends NativeObject {
+public final class ShapeCast extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

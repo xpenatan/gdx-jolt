@@ -13,7 +13,7 @@ import jolt.physics.character.CharacterContactListener;
 import jolt.physics.vehicle.TrackedVehicleController;
 import jolt.physics.vehicle.ArrayVehicleTrack;
 
-public class Jolt extends NativeObject {
+public final class Jolt extends NativeObject {
 
     static private CharacterContactListener CharacterContactListener_TEMP_STATIC_GEN_0;
 

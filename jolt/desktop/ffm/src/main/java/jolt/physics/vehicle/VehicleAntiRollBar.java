@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class VehicleAntiRollBar extends NativeObject {
+public final class VehicleAntiRollBar extends NativeObject {
 
     static public final VehicleAntiRollBar NULL = VehicleAntiRollBar.native_new();
 

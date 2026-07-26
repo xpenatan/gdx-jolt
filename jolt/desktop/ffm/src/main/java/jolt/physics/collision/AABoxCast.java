@@ -17,7 +17,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class AABoxCast extends NativeObject {
+public final class AABoxCast extends NativeObject {
 
     private AABox AABox_TEMP_GEN_0;
 

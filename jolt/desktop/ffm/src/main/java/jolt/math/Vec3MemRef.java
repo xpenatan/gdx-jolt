@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Vec3MemRef extends NativeObject {
+public final class Vec3MemRef extends NativeObject {
 
     static public final Vec3MemRef NULL = Vec3MemRef.native_new();
 

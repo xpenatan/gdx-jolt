@@ -8,7 +8,7 @@ package jolt.physics.collision;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayCollidePointResult extends NativeObject {
+public final class ArrayCollidePointResult extends NativeObject {
 
     private CollidePointResult CollidePointResult_TEMP_GEN_0;
 

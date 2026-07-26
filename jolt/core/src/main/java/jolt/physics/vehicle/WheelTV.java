@@ -6,7 +6,7 @@
 
 package jolt.physics.vehicle;
 
-public class WheelTV extends Wheel {
+public final class WheelTV extends Wheel {
 
     static public final WheelTV NULL = WheelTV.native_new();
 

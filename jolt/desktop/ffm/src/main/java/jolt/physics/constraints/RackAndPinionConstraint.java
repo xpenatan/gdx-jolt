@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class RackAndPinionConstraint extends TwoBodyConstraint {
+public final class RackAndPinionConstraint extends TwoBodyConstraint {
 
     static public final RackAndPinionConstraint NULL = RackAndPinionConstraint.native_new();
 

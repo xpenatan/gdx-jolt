@@ -21,7 +21,7 @@ import gen.web.jolt.physics.softbody.SoftBodyCreationSettings;
 import gen.web.jolt.physics.collision.shape.SubShapeID;
 import gen.web.jolt.physics.StateRecorder;
 
-public class Body extends NativeObject {
+public final class Body extends NativeObject {
 
     private BodyID BodyID_TEMP_GEN_0;
 

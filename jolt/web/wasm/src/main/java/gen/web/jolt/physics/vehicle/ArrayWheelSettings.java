@@ -8,7 +8,7 @@ package gen.web.jolt.physics.vehicle;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayWheelSettings extends NativeObject {
+public final class ArrayWheelSettings extends NativeObject {
 
     private WheelSettings WheelSettings_TEMP_GEN_0;
 

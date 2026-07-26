@@ -18,7 +18,7 @@ import gen.c.jolt.physics.collision.shape.Shape;
 import gen.c.jolt.physics.collision.TransformedShape;
 import gen.c.jolt.physics.softbody.CollideShapeCollector;
 
-public class Character extends CharacterBase {
+public final class Character extends CharacterBase {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.collision.broadphase;
 
-public class BroadPhaseLayerInterfaceMask extends BroadPhaseLayerInterface {
+public final class BroadPhaseLayerInterfaceMask extends BroadPhaseLayerInterface {
 
     static public final BroadPhaseLayerInterfaceMask NULL = BroadPhaseLayerInterfaceMask.native_new();
 

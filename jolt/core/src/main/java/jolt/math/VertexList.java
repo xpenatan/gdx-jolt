@@ -8,7 +8,7 @@ package jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class VertexList extends NativeObject {
+public final class VertexList extends NativeObject {
 
     static public final VertexList NULL = VertexList.native_new();
 

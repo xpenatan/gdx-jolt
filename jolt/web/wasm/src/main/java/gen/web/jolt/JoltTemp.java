@@ -20,7 +20,7 @@ import gen.web.jolt.physics.collision.shape.StaticCompoundShapeSettings;
 import gen.web.jolt.physics.body.BodyFilter;
 import gen.web.jolt.physics.collision.ShapeFilter;
 
-public class JoltTemp extends NativeObject {
+public final class JoltTemp extends NativeObject {
 
     static private Vec3 Vec3_TEMP_STATIC_GEN_0;
 

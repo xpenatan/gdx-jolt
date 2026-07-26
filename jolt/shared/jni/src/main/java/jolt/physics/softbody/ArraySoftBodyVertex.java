@@ -8,7 +8,7 @@ package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodyVertex extends NativeObject {
+public final class ArraySoftBodyVertex extends NativeObject {
 
     private SoftBodyVertex SoftBodyVertex_TEMP_GEN_0;
 

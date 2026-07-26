@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class WheelTV extends Wheel {
+public final class WheelTV extends Wheel {
 
     private WheelSettingsTV WheelSettingsTV_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package jolt.physics.collision.shape;
 
-public class TaperedCapsuleShape extends ConvexShape {
+public final class TaperedCapsuleShape extends ConvexShape {
 
     static public final TaperedCapsuleShape NULL = TaperedCapsuleShape.native_new();
 

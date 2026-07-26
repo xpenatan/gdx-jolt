@@ -20,7 +20,7 @@ import jolt.physics.collision.shape.StaticCompoundShapeSettings;
 import jolt.physics.body.BodyFilter;
 import jolt.physics.collision.ShapeFilter;
 
-public class JoltTemp extends NativeObject {
+public final class JoltTemp extends NativeObject {
 
     static public final JoltTemp NULL = JoltTemp.native_new();
 

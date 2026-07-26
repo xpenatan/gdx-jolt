@@ -9,7 +9,7 @@ package jolt.physics.character;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 
-public class ExtendedUpdateSettings extends NativeObject {
+public final class ExtendedUpdateSettings extends NativeObject {
 
     static public final ExtendedUpdateSettings NULL = ExtendedUpdateSettings.native_new();
 

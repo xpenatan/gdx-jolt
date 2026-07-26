@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class RayCastResult extends BroadPhaseCastResult {
+public final class RayCastResult extends BroadPhaseCastResult {
 
     private SubShapeID SubShapeID_TEMP_GEN_0;
 

@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.enums.SoftBodySharedSettings_EBendType;
 import jolt.physics.collision.PhysicsMaterialList;
 
-public class SoftBodySharedSettings extends NativeObject {
+public final class SoftBodySharedSettings extends NativeObject {
 
     static public final SoftBodySharedSettings NULL = SoftBodySharedSettings.native_new();
 

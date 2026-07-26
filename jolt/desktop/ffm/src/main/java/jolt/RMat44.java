@@ -19,7 +19,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class RMat44 extends NativeObject {
+public final class RMat44 extends NativeObject {
 
     static private RMat44 RMat44_TEMP_STATIC_GEN_0;
 

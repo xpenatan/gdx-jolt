@@ -23,7 +23,7 @@ import jolt.physics.collision.shape.SubShapeID;
 import jolt.math.Float3;
 import jolt.physics.body.BodyID;
 
-public class TransformedShape extends NativeObject {
+public final class TransformedShape extends NativeObject {
 
     static public final TransformedShape NULL = TransformedShape.native_new();
 

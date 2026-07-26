@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySoftBodySharedSettingsSkinned extends NativeObject {
+public final class ArraySoftBodySharedSettingsSkinned extends NativeObject {
 
     private SoftBodySharedSettingsSkinned SoftBodySharedSettingsSkinned_TEMP_GEN_0;
 

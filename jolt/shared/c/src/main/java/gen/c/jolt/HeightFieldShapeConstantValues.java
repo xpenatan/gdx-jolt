@@ -8,7 +8,7 @@ package gen.c.jolt;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class HeightFieldShapeConstantValues extends NativeObject {
+public final class HeightFieldShapeConstantValues extends NativeObject {
 
     static public final HeightFieldShapeConstantValues NULL = HeightFieldShapeConstantValues.native_new();
 

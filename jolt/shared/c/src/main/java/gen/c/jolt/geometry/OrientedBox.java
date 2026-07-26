@@ -10,7 +10,7 @@ import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.math.Mat44;
 import gen.c.jolt.math.Vec3;
 
-public class OrientedBox extends NativeObject {
+public final class OrientedBox extends NativeObject {
 
     private Mat44 Mat44_TEMP_GEN_0;
 

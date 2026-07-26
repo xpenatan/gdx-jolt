@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class VertexList extends NativeObject {
+public final class VertexList extends NativeObject {
 
     private Float3 Float3_TEMP_GEN_0;
 

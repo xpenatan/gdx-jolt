@@ -17,7 +17,7 @@ import gen.web.jolt.math.Mat44;
 import gen.web.jolt.math.Mat44MemRef;
 import gen.web.jolt.core.TempAllocator;
 
-public class SoftBodyMotionProperties extends MotionProperties {
+public final class SoftBodyMotionProperties extends MotionProperties {
 
     private SoftBodySharedSettings SoftBodySharedSettings_TEMP_GEN_0;
 

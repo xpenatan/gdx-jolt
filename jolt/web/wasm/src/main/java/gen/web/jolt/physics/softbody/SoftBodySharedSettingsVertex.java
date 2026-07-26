@@ -9,7 +9,7 @@ package gen.web.jolt.physics.softbody;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Float3;
 
-public class SoftBodySharedSettingsVertex extends NativeObject {
+public final class SoftBodySharedSettingsVertex extends NativeObject {
 
     private Float3 Float3_TEMP_GEN_0;
 

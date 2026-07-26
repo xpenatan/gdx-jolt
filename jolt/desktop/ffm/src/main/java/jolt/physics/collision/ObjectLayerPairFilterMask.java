@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ObjectLayerPairFilterMask extends ObjectLayerPairFilter {
+public final class ObjectLayerPairFilterMask extends ObjectLayerPairFilter {
 
     static public final ObjectLayerPairFilterMask NULL = ObjectLayerPairFilterMask.native_new();
 

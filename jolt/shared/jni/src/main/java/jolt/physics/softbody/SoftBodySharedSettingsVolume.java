@@ -8,7 +8,7 @@ package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class SoftBodySharedSettingsVolume extends NativeObject {
+public final class SoftBodySharedSettingsVolume extends NativeObject {
 
     static public final SoftBodySharedSettingsVolume NULL = SoftBodySharedSettingsVolume.native_new();
 

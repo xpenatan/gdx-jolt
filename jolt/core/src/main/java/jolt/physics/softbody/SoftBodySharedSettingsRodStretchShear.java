@@ -9,7 +9,7 @@ package jolt.physics.softbody;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Quat;
 
-public class SoftBodySharedSettingsRodStretchShear extends NativeObject {
+public final class SoftBodySharedSettingsRodStretchShear extends NativeObject {
 
     static public final SoftBodySharedSettingsRodStretchShear NULL = SoftBodySharedSettingsRodStretchShear.native_new();
 

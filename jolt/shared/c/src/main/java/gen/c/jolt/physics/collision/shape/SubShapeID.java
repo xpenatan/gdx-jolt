@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision.shape;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class SubShapeID extends NativeObject {
+public final class SubShapeID extends NativeObject {
 
     static public final SubShapeID NULL = SubShapeID.native_new();
 

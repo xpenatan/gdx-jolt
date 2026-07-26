@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.vehicle;
 
-public class MotorcycleController extends WheeledVehicleController {
+public final class MotorcycleController extends WheeledVehicleController {
 
     static public final MotorcycleController NULL = MotorcycleController.native_new();
 

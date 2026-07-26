@@ -8,7 +8,7 @@ package gen.web.jolt.math;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class Quat extends NativeObject {
+public final class Quat extends NativeObject {
 
     static private Quat Quat_TEMP_STATIC_GEN_0;
 

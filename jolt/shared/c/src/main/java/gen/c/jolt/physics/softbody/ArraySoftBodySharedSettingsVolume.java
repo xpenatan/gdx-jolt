@@ -8,7 +8,7 @@ package gen.c.jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsVolume extends NativeObject {
+public final class ArraySoftBodySharedSettingsVolume extends NativeObject {
 
     private SoftBodySharedSettingsVolume SoftBodySharedSettingsVolume_TEMP_GEN_0;
 

@@ -9,7 +9,7 @@ package gen.web.jolt.physics.collision.shape;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.com.github.xpenatan.jparser.runtime.helper.NativeString;
 
-public class ShapeResult extends NativeObject {
+public final class ShapeResult extends NativeObject {
 
     private NativeString NativeString_TEMP_GEN_0;
 

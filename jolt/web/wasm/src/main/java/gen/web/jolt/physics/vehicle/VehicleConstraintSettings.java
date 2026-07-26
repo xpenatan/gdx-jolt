@@ -9,7 +9,7 @@ package gen.web.jolt.physics.vehicle;
 import gen.web.jolt.physics.constraints.ConstraintSettings;
 import gen.web.jolt.math.Vec3;
 
-public class VehicleConstraintSettings extends ConstraintSettings {
+public final class VehicleConstraintSettings extends ConstraintSettings {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

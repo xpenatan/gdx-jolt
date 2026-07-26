@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class PulleyConstraint extends TwoBodyConstraint {
+public final class PulleyConstraint extends TwoBodyConstraint {
 
     static public final PulleyConstraint NULL = PulleyConstraint.native_new();
 

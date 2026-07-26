@@ -6,7 +6,7 @@
 
 package jolt.core;
 
-public class JobSystemThreadPool extends JobSystemWithBarrier {
+public final class JobSystemThreadPool extends JobSystemWithBarrier {
 
     static public final JobSystemThreadPool NULL = JobSystemThreadPool.native_new();
 

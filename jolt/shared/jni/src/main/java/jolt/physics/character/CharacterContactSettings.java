@@ -8,7 +8,7 @@ package jolt.physics.character;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class CharacterContactSettings extends NativeObject {
+public final class CharacterContactSettings extends NativeObject {
 
     static public final CharacterContactSettings NULL = CharacterContactSettings.native_new();
 

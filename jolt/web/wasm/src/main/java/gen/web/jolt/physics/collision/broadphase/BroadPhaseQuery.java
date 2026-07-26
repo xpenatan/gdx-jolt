@@ -17,7 +17,7 @@ import gen.web.jolt.geometry.OrientedBox;
 import gen.web.jolt.physics.collision.AABoxCast;
 import gen.web.jolt.physics.softbody.CastShapeBodyCollector;
 
-public class BroadPhaseQuery extends NativeObject {
+public final class BroadPhaseQuery extends NativeObject {
 
     private AABox AABox_TEMP_GEN_0;
 

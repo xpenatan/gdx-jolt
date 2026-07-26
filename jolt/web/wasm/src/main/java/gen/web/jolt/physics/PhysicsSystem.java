@@ -30,7 +30,7 @@ import gen.web.jolt.physics.body.BodyActivationListener;
 import gen.web.jolt.physics.body.BodyID;
 import gen.web.jolt.physics.collision.SimShapeFilter;
 
-public class PhysicsSystem extends NativeObject {
+public final class PhysicsSystem extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_0;
 

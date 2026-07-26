@@ -8,7 +8,7 @@ package jolt.physics.body;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class BodyIDMemRef extends NativeObject {
+public final class BodyIDMemRef extends NativeObject {
 
     static public final BodyIDMemRef NULL = BodyIDMemRef.native_new();
 

@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Vec4 extends NativeObject {
+public final class Vec4 extends NativeObject {
 
     static private Vec4 Vec4_TEMP_STATIC_GEN_0;
 

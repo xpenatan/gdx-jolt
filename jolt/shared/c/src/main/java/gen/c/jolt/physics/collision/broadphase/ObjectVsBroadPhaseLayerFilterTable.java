@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision.broadphase;
 
 import gen.c.jolt.physics.collision.ObjectLayerPairFilter;
 
-public class ObjectVsBroadPhaseLayerFilterTable extends ObjectVsBroadPhaseLayerFilter {
+public final class ObjectVsBroadPhaseLayerFilterTable extends ObjectVsBroadPhaseLayerFilter {
 
     static public final ObjectVsBroadPhaseLayerFilterTable NULL = ObjectVsBroadPhaseLayerFilterTable.native_new();
 

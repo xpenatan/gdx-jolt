@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.vehicle;
 
-public class TrackedVehicleControllerSettings extends VehicleControllerSettings {
+public final class TrackedVehicleControllerSettings extends VehicleControllerSettings {
 
     private VehicleEngineSettings VehicleEngineSettings_TEMP_GEN_0;
 

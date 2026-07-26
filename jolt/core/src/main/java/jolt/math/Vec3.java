@@ -8,7 +8,7 @@ package jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Vec3 extends NativeObject {
+public final class Vec3 extends NativeObject {
 
     static public final Vec3 NULL = Vec3.native_new();
 

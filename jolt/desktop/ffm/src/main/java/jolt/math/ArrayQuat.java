@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArrayQuat extends NativeObject {
+public final class ArrayQuat extends NativeObject {
 
     private Quat Quat_TEMP_GEN_0;
 

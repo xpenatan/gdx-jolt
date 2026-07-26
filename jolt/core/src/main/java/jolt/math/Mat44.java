@@ -8,7 +8,7 @@ package jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class Mat44 extends NativeObject {
+public final class Mat44 extends NativeObject {
 
     static public final Mat44 NULL = Mat44.native_new();
 

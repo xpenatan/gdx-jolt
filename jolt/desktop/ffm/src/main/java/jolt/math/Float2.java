@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class Float2 extends NativeObject {
+public final class Float2 extends NativeObject {
 
     static public final Float2 NULL = Float2.native_new();
 

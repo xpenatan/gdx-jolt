@@ -9,7 +9,7 @@ package gen.c.jolt.physics.collision.shape;
 import gen.c.jolt.geometry.Plane;
 import gen.c.jolt.physics.collision.PhysicsMaterial;
 
-public class PlaneShapeSettings extends ShapeSettings {
+public final class PlaneShapeSettings extends ShapeSettings {
 
     private Plane Plane_TEMP_GEN_0;
 

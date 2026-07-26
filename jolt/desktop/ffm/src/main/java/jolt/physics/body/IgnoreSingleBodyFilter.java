@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class IgnoreSingleBodyFilter extends BodyFilter {
+public final class IgnoreSingleBodyFilter extends BodyFilter {
 
     static public final IgnoreSingleBodyFilter NULL = IgnoreSingleBodyFilter.native_new();
 

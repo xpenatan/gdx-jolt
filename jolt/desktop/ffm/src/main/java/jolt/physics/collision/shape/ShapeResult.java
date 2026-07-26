@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ShapeResult extends NativeObject {
+public final class ShapeResult extends NativeObject {
 
     private NativeString NativeString_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.c.jolt.physics.vehicle;
 
 import gen.c.jolt.physics.PhysicsStepListener;
 
-public class VehicleConstraintStepListener extends PhysicsStepListener {
+public final class VehicleConstraintStepListener extends PhysicsStepListener {
 
     static public final VehicleConstraintStepListener NULL = VehicleConstraintStepListener.native_new();
 

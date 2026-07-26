@@ -8,7 +8,7 @@ package jolt.physics.collision.shape;
 
 import jolt.physics.collision.PhysicsMaterial;
 
-public class TaperedCylinderShapeSettings extends ConvexShapeSettings {
+public final class TaperedCylinderShapeSettings extends ConvexShapeSettings {
 
     static public final TaperedCylinderShapeSettings NULL = TaperedCylinderShapeSettings.native_new();
 

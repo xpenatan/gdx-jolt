@@ -18,7 +18,7 @@ import jolt.geometry.AABox;
 import jolt.physics.constraints.TwoBodyConstraint;
 import jolt.physics.raddoll.RagdollSettings;
 
-public class Ragdoll extends NativeObject {
+public final class Ragdoll extends NativeObject {
 
     private BodyID BodyID_TEMP_GEN_0;
 

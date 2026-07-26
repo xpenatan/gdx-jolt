@@ -18,7 +18,7 @@ import jolt.geometry.AABox;
 import jolt.physics.constraints.TwoBodyConstraint;
 import jolt.physics.raddoll.RagdollSettings;
 
-public class Ragdoll extends NativeObject {
+public final class Ragdoll extends NativeObject {
 
     static public final Ragdoll NULL = Ragdoll.native_new();
 

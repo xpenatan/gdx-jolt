@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayRayCastResult extends NativeObject {
+public final class ArrayRayCastResult extends NativeObject {
 
     private RayCastResult RayCastResult_TEMP_GEN_0;
 

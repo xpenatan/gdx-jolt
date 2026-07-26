@@ -16,7 +16,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ConvexHullShapeSettings extends ConvexShapeSettings {
+public final class ConvexHullShapeSettings extends ConvexShapeSettings {
 
     private ArrayVec3 ArrayVec3_TEMP_GEN_0;
 

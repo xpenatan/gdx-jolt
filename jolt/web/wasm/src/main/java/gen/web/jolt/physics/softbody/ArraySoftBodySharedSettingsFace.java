@@ -8,7 +8,7 @@ package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsFace extends NativeObject {
+public final class ArraySoftBodySharedSettingsFace extends NativeObject {
 
     private SoftBodySharedSettingsFace SoftBodySharedSettingsFace_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.web.jolt.physics.body;
 
 import gen.web.com.github.xpenatan.jparser.runtime.helper.NativeArray;
 
-public class IDLArrayBodyID extends NativeArray {
+public final class IDLArrayBodyID extends NativeArray {
 
     private BodyID BodyID_TEMP_GEN_0;
 

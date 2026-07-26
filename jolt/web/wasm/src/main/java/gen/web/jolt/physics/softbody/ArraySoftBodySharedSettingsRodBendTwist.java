@@ -8,7 +8,7 @@ package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArraySoftBodySharedSettingsRodBendTwist extends NativeObject {
+public final class ArraySoftBodySharedSettingsRodBendTwist extends NativeObject {
 
     private SoftBodySharedSettingsRodBendTwist SoftBodySharedSettingsRodBendTwist_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package gen.c.jolt.physics.collision.broadphase;
 
-public class DefaultBroadPhaseLayerFilter extends BroadPhaseLayerFilter {
+public final class DefaultBroadPhaseLayerFilter extends BroadPhaseLayerFilter {
 
     static public final DefaultBroadPhaseLayerFilter NULL = DefaultBroadPhaseLayerFilter.native_new();
 

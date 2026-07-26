@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ArraySkeletonKeyframe extends NativeObject {
+public final class ArraySkeletonKeyframe extends NativeObject {
 
     private SkeletalAnimationKeyframe SkeletalAnimationKeyframe_TEMP_GEN_0;
 

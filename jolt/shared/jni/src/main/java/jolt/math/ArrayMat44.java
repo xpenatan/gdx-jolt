@@ -8,7 +8,7 @@ package jolt.math;
 
 import com.github.xpenatan.jParser.api.NativeObject;
 
-public class ArrayMat44 extends NativeObject {
+public final class ArrayMat44 extends NativeObject {
 
     private Mat44 Mat44_TEMP_GEN_0;
 

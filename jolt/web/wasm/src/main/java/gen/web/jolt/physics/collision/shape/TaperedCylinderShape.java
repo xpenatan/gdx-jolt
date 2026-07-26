@@ -6,7 +6,7 @@
 
 package gen.web.jolt.physics.collision.shape;
 
-public class TaperedCylinderShape extends ConvexShape {
+public final class TaperedCylinderShape extends ConvexShape {
 
     static public final TaperedCylinderShape NULL = TaperedCylinderShape.native_new();
 

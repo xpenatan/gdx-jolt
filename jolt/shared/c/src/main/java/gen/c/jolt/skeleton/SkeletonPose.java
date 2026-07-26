@@ -11,7 +11,7 @@ import gen.c.jolt.math.Vec3;
 import gen.c.jolt.math.ArrayMat44;
 import gen.c.jolt.math.Mat44;
 
-public class SkeletonPose extends NativeObject {
+public final class SkeletonPose extends NativeObject {
 
     private Skeleton Skeleton_TEMP_GEN_0;
 

@@ -6,7 +6,7 @@
 
 package jolt.skeleton;
 
-public class SkeletalAnimationKeyframe extends SkeletalAnimationJointState {
+public final class SkeletalAnimationKeyframe extends SkeletalAnimationJointState {
 
     static public final SkeletalAnimationKeyframe NULL = SkeletalAnimationKeyframe.native_new();
 

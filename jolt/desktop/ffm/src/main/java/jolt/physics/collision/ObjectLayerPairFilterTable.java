@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class ObjectLayerPairFilterTable extends ObjectLayerPairFilter {
+public final class ObjectLayerPairFilterTable extends ObjectLayerPairFilter {
 
     static public final ObjectLayerPairFilterTable NULL = ObjectLayerPairFilterTable.native_new();
 

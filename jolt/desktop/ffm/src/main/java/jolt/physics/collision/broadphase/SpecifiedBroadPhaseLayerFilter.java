@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class SpecifiedBroadPhaseLayerFilter extends BroadPhaseLayerFilter {
+public final class SpecifiedBroadPhaseLayerFilter extends BroadPhaseLayerFilter {
 
     static public final SpecifiedBroadPhaseLayerFilter NULL = SpecifiedBroadPhaseLayerFilter.native_new();
 

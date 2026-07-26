@@ -15,7 +15,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class OffsetCenterOfMassShape extends DecoratedShape {
+public final class OffsetCenterOfMassShape extends DecoratedShape {
 
     static public final OffsetCenterOfMassShape NULL = OffsetCenterOfMassShape.native_new();
 

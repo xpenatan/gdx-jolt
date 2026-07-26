@@ -9,7 +9,7 @@ package jolt.physics.raddoll;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.TwoBodyConstraintSettings;
 
-public class RagdollAdditionalConstraint extends NativeObject {
+public final class RagdollAdditionalConstraint extends NativeObject {
 
     private TwoBodyConstraintSettings TwoBodyConstraintSettings_TEMP_GEN_0;
 

@@ -8,7 +8,7 @@ package gen.web.jolt.physics.collision;
 
 import gen.web.jolt.physics.softbody.CollidePointCollector;
 
-public class CollidePointAnyHitCollisionCollector extends CollidePointCollector {
+public final class CollidePointAnyHitCollisionCollector extends CollidePointCollector {
 
     private CollidePointResult CollidePointResult_TEMP_GEN_0;
 

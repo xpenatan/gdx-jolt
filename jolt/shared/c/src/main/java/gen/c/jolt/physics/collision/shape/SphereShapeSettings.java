@@ -8,7 +8,7 @@ package gen.c.jolt.physics.collision.shape;
 
 import gen.c.jolt.physics.collision.PhysicsMaterial;
 
-public class SphereShapeSettings extends ConvexShapeSettings {
+public final class SphereShapeSettings extends ConvexShapeSettings {
 
     static public final SphereShapeSettings NULL = SphereShapeSettings.native_new();
 

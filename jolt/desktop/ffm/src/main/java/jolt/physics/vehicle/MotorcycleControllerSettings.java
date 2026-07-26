@@ -14,7 +14,7 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public class MotorcycleControllerSettings extends WheeledVehicleControllerSettings {
+public final class MotorcycleControllerSettings extends WheeledVehicleControllerSettings {
 
     static public final MotorcycleControllerSettings NULL = MotorcycleControllerSettings.native_new();
 
