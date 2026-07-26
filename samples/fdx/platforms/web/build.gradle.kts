@@ -172,9 +172,19 @@ fun writeWebGpuPage(indexFile: File, loaderFile: File, outputFile: File, outputL
     outputFile.writeText(rewrittenPage)
 
     val loaderSource = loaderFile.readText()
-    val rewrittenLoader = loaderSource.replace("mainClassArgs: []", "mainClassArgs: [\"--graphics=webgpu\"]")
-    if(rewrittenLoader == loaderSource) {
+    val loaderWithGraphicsArg = loaderSource.replace(
+        "mainClassArgs: []",
+        "mainClassArgs: [\"--graphics=webgpu\"]"
+    )
+    if(loaderWithGraphicsArg == loaderSource) {
         throw GradleException("Could not configure WebGPU arguments in ${loaderFile.absolutePath}")
+    }
+    val rewrittenLoader = loaderWithGraphicsArg.replace(
+        "return entry.apply(root, config.mainClassArgs);",
+        "return entry(config.mainClassArgs);"
+    )
+    if(rewrittenLoader == loaderWithGraphicsArg) {
+        throw GradleException("Could not adapt TeaVM JavaScript arguments in ${loaderFile.absolutePath}")
     }
     outputLoaderFile.writeText(rewrittenLoader)
 }
