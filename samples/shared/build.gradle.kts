@@ -2,10 +2,12 @@ plugins {
     id("java-library")
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 dependencies {
     implementation(libs.gdxGltfCore)
 
-    if(libs.versions.useRepoLibs.get().toBooleanStrict()) {
+    if(useRepoLibs) {
         compileOnly(libs.jjoltCore)
         implementation(libs.jjoltGdxGl)
     }

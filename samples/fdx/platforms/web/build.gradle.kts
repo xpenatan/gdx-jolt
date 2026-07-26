@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.libfdx)
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.javaFfmTarget.get())
     targetCompatibility = JavaVersion.toVersion(libs.versions.javaFfmTarget.get())
@@ -11,7 +13,7 @@ java {
 dependencies {
     implementation(project(":samples:fdx:core"))
 
-    if(libs.versions.useRepoLibs.get().toBooleanStrict()) {
+    if(useRepoLibs) {
         implementation(libs.jjoltWebWasm)
         implementation(libs.jjoltJoltFdx)
     }

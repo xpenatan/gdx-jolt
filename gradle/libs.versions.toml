@@ -16,6 +16,7 @@ libgdx = "1.14.2"
 gdxTeavmVersion = "-SNAPSHOT"
 gdxImguiVersion = "1.92.4.0"
 junitVersion = "4.12"
+
 useRepoLibs = "false"
 exampleVersion = "-SNAPSHOT"
 
@@ -94,6 +95,7 @@ imguiGdxShared = { module = "com.github.xpenatan.xImGui:gdx-shared-impl", versio
 
 jjoltAndroidJni = { module = "com.github.xpenatan.jJolt:android-jni", version.ref = "exampleVersion" }
 jjoltCore = { module = "com.github.xpenatan.jJolt:core", version.ref = "exampleVersion" }
+jjoltDesktopC = { module = "com.github.xpenatan.jJolt:desktop-c", version.ref = "exampleVersion" }
 jjoltDesktopFfm = { module = "com.github.xpenatan.jJolt:desktop-ffm", version.ref = "exampleVersion" }
 jjoltDesktopJni = { module = "com.github.xpenatan.jJolt:desktop-jni", version.ref = "exampleVersion" }
 jjoltGdxGl = { module = "com.github.xpenatan.jJolt:gdx-gl", version.ref = "exampleVersion" }

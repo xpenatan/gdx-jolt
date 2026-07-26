@@ -84,18 +84,37 @@ dependencies {
 - [Mingw64](https://github.com/niXman/mingw-builds-binaries/releases) or [Visual Studio C++](https://visualstudio.microsoft.com/vs/community/) (only needed for desktop native artifacts)
 - [Emscripten](https://emscripten.org/) (only needed for WebAssembly native artifacts)
 
-To try the samples with your build, set `useRepoLibs = "false"` in `gradle/libs.versions.toml`. This will use the local jJolt source code instead of the remote repository.
+The samples use the local jJolt projects by default. To run either the libGDX or libfdx samples with published artifacts instead, enable the global switch:
+
+```bash
+# Use the snapshot version configured by exampleVersion in gradle/libs.versions.toml.
+./gradlew -PuseRepoLibs=true :samples:gdx:gl:platforms:desktop-jni:jolt_samples_run_desktop
+
+# Test a release without editing the version catalog.
+./gradlew -PuseRepoLibs=true -PexampleVersion=RELEASE_VERSION :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_gl_jni_run
+```
+
+You can also set `useRepoLibs = "true"` and change `exampleVersion` in `gradle/libs.versions.toml`. Published mode uses the Maven artifacts for Jolt core, extensions, and platform natives, so a local native rebuild is not required after `clean`.
 
 ## How To Run The Samples
 
-- Desktop OpenGL/JNI: `./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_sample_desktop_gl_jni_run`
-- Desktop WGPU/JNI: `./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_sample_desktop_wgpu_jni_run`
-- Desktop WGPU/FFM: `./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_sample_desktop_wgpu_ffm_run`
-- Desktop Vulkan/JNI: `./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_sample_desktop_vulkan_jni_run`
-- Desktop Vulkan/FFM: `./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_sample_desktop_vulkan_ffm_run`
+### libGDX
+
+- Desktop JNI: `./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_samples_run_desktop`
+- Desktop TeaVM/C: `./gradlew :samples:gdx:gl:platforms:desktop-c:jolt_gdx_desktop_c_run`
+- Web: `./gradlew :samples:gdx:gl:platforms:web:jolt_samples_run_teavm`
+- Android: `./gradlew :samples:gdx:gl:platforms:android:assembleDebug`
+
+### libfdx
+
+- Desktop OpenGL/JNI: `./gradlew :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_gl_jni_run`
+- Desktop WGPU/JNI: `./gradlew :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_wgpu_jni_run`
+- Desktop WGPU/FFM: `./gradlew :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_wgpu_ffm_run`
+- Desktop Vulkan/JNI: `./gradlew :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_vulkan_jni_run`
+- Desktop Vulkan/FFM: `./gradlew :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_vulkan_ffm_run`
 - WebGL JS/Wasm: `./gradlew :samples:fdx:platforms:web:jolt_sample_webgl_js_build :samples:fdx:platforms:web:jolt_sample_webgl_wasm_build`
 - WebGPU JS: `./gradlew :samples:fdx:platforms:web:jolt_sample_webgpu_js_build`
-- Android GLES/WGPU/Vulkan: `./gradlew :samples:gdx:gl:platforms:android:jolt_sample_android_gles_build :samples:gdx:gl:platforms:android:jolt_sample_android_wgpu_jni_build :samples:gdx:gl:platforms:android:jolt_sample_android_vulkan_build`
+- Android GLES/WGPU/Vulkan: `./gradlew :samples:fdx:platforms:android:jolt_sample_android_gles_build :samples:fdx:platforms:android:jolt_sample_android_wgpu_jni_build :samples:fdx:platforms:android:jolt_sample_android_vulkan_build`
 
 ## How To Build From Source
 

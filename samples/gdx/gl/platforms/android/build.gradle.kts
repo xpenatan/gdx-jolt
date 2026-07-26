@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.androidApplication)
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 group = "jolt.example.samples.app.android"
 
 android {
@@ -38,7 +40,7 @@ val natives: Configuration by configurations.creating
 dependencies {
     coreLibraryDesugaring(libs.androidDesugar)
 
-    if(libs.versions.useRepoLibs.get().toBooleanStrict()) {
+    if(useRepoLibs) {
         implementation(libs.jjoltAndroidJni)
     }
     else {

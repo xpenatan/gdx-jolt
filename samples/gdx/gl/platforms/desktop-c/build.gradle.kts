@@ -2,6 +2,8 @@ plugins {
     id("java")
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.javaWebTarget.get())
     targetCompatibility = JavaVersion.toVersion(libs.versions.javaWebTarget.get())
@@ -12,22 +14,30 @@ val joltRuntimeProject = ":jolt:desktop:c"
 val joltSharedCProject = ":jolt:shared:c"
 val teaVMBuilderMainClass = "jolt.example.samples.app.desktopc.JoltGdxTeaVMBuilder"
 val glfwBuildRoot = layout.buildDirectory.dir("dist/glfw")
-val joltDesktopCJar = project(joltRuntimeProject).tasks.named<Jar>("jar").flatMap { it.archiveFile }
-val teavmCNativeRuntimeClasspath = files(joltDesktopCJar)
+val joltDesktopCJar = if(useRepoLibs) {
+    null
+}
+else {
+    project(joltRuntimeProject).tasks.named<Jar>("jar").flatMap { it.archiveFile }
+}
+val joltDesktopCNativeJarClasspath = joltDesktopCJar?.let { files(it) } ?: files()
 
 val joltRuntimeClasspath by configurations.creating {
     isCanBeConsumed = false
     isCanBeResolved = true
 }
 
-val joltDesktopCNativeJarClasspath = files(joltDesktopCJar)
+val teavmCNativeRuntimeClasspath: FileCollection = if(useRepoLibs) {
+    joltRuntimeClasspath
+}
+else {
+    joltDesktopCNativeJarClasspath
+}
 
 dependencies {
     implementation(libs.gdxCore)
     implementation(project(":samples:gdx:gl:core"))
     implementation(project(":samples:shared"))
-    implementation(project(joltSharedCProject))
-    implementation(project(joltRuntimeProject))
     implementation(libs.gdxTeavmBackendGlfw)
 
     runtimeOnly(libs.jparserRuntimeDesktopCWindowsX64)
@@ -38,10 +48,18 @@ dependencies {
     joltRuntimeClasspath(libs.jparserRuntimeDesktopCLinuxX64)
     joltRuntimeClasspath(libs.jparserRuntimeDesktopCMacX64)
     joltRuntimeClasspath(libs.jparserRuntimeDesktopCMacArm64)
-    runtimeOnly(joltDesktopCNativeJarClasspath)
-    joltRuntimeClasspath(project(joltRuntimeProject))
-    joltRuntimeClasspath(joltDesktopCNativeJarClasspath)
 
+    if(useRepoLibs) {
+        implementation(libs.jjoltDesktopC)
+        joltRuntimeClasspath(libs.jjoltDesktopC)
+    }
+    else {
+        implementation(project(joltSharedCProject))
+        implementation(project(joltRuntimeProject))
+        runtimeOnly(joltDesktopCNativeJarClasspath)
+        joltRuntimeClasspath(project(joltRuntimeProject))
+        joltRuntimeClasspath(joltDesktopCNativeJarClasspath)
+    }
 }
 
 fun currentHostJoltCBuildTask(): String? {
@@ -57,11 +75,18 @@ fun currentHostJoltCBuildTask(): String? {
     }
 }
 
-val hostJoltCBuildTask = currentHostJoltCBuildTask()
-    ?: throw GradleException("TeaVM C samples are not configured for ${System.getProperty("os.name")}/${System.getProperty("os.arch")}")
+val hostJoltCBuildTask = if(useRepoLibs) {
+    null
+}
+else {
+    currentHostJoltCBuildTask()
+        ?: throw GradleException("TeaVM C samples are not configured for ${System.getProperty("os.name")}/${System.getProperty("os.arch")}")
+}
 
-project(joltRuntimeProject).tasks.named("jar") {
-    mustRunAfter(hostJoltCBuildTask)
+if(!useRepoLibs) {
+    project(joltRuntimeProject).tasks.named("jar") {
+        mustRunAfter(requireNotNull(hostJoltCBuildTask))
+    }
 }
 
 val prepareGdxTeaVMGlfwBuildRoot = tasks.register("prepareGdxTeaVMGlfwBuildRoot") {
@@ -82,7 +107,8 @@ val prepareGdxTeaVMGlfwBuildRoot = tasks.register("prepareGdxTeaVMGlfwBuildRoot"
 fun Task.configureGraphicalRuntimeInputs() {
     dependsOn("classes")
     dependsOn(prepareGdxTeaVMGlfwBuildRoot)
-    currentHostJoltCBuildTask()?.let { nativeBuildTask ->
+    if(!useRepoLibs) {
+        val nativeBuildTask = requireNotNull(hostJoltCBuildTask)
         dependsOn(nativeBuildTask)
         project(joltSharedCProject).tasks.named("processResources") {
             mustRunAfter(nativeBuildTask)
@@ -93,8 +119,8 @@ fun Task.configureGraphicalRuntimeInputs() {
         project(joltRuntimeProject).tasks.named("jar") {
             mustRunAfter(nativeBuildTask)
         }
+        dependsOn("$joltRuntimeProject:jar")
     }
-    dependsOn("$joltRuntimeProject:jar")
     inputs.files(joltRuntimeClasspath)
 }
 
@@ -136,13 +162,18 @@ tasks.register<JavaExec>("jolt_gdx_desktop_${joltRuntimeName}_run") {
 tasks.register<JavaExec>("samples_build_app_teavm_c") {
     group = "example-desktop"
     description = "Build and run the jJolt headless sample as a TeaVM C native executable"
-    dependsOn(
-        hostJoltCBuildTask,
-        ":jolt:shared:c:classes",
-        ":jolt:shared:c:processResources",
-        ":jolt:desktop:c:jar",
-        "classes"
-    )
+    if(useRepoLibs) {
+        dependsOn("classes")
+    }
+    else {
+        dependsOn(
+            requireNotNull(hostJoltCBuildTask),
+            ":jolt:shared:c:classes",
+            ":jolt:shared:c:processResources",
+            ":jolt:desktop:c:jar",
+            "classes"
+        )
+    }
     mainClass.set("BuildTeaVMC")
     classpath = sourceSets["main"].runtimeClasspath + teavmCNativeRuntimeClasspath
     doFirst {

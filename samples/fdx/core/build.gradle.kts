@@ -2,8 +2,10 @@ plugins {
     id("java-library")
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 dependencies {
-    if(libs.versions.useRepoLibs.get().toBooleanStrict()) {
+    if(useRepoLibs) {
         compileOnly(libs.jjoltCore)
         compileOnly(libs.jjoltJoltFdx)
     }

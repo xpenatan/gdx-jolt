@@ -2,11 +2,20 @@ plugins {
     id("java-library")
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 dependencies {
     implementation(libs.gdxCore)
-    compileOnly(project(":jolt:core"))
     api(libs.imguiGdxShared)
-    implementation(project(":extensions:gdx:gl"))
+
+    if(useRepoLibs) {
+        compileOnly(libs.jjoltCore)
+        implementation(libs.jjoltGdxGl)
+    }
+    else {
+        compileOnly(project(":jolt:core"))
+        implementation(project(":extensions:gdx:gl"))
+    }
 }
 
 java {

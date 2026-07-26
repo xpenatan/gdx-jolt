@@ -2,13 +2,15 @@ plugins {
     id("java")
 }
 
+val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+
 dependencies {
     implementation(project(":samples:gdx:gl:core"))
     implementation(project(":samples:shared"))
 
     implementation(variantOf(libs.gdxCore) { classifier("sources") })
 
-    if(libs.versions.useRepoLibs.get().toBooleanStrict()) {
+    if(useRepoLibs) {
         implementation(libs.jjoltWebWasm)
         implementation(libs.jjoltGdxGl)
     }

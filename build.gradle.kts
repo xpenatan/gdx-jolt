@@ -3,7 +3,19 @@ plugins {
     alias(libs.plugins.easyPublishing)
 }
 
+val samplesUseRepoLibs = providers.gradleProperty("useRepoLibs")
+    .orElse(libs.versions.useRepoLibs)
+    .map { it.toBooleanStrict() }
+    .get()
+val samplesRepoVersion = providers.gradleProperty("exampleVersion")
+    .orElse(libs.versions.exampleVersion)
+    .get()
+val jJoltGroup = libs.versions.projectGroup.get()
+
+extra["samplesUseRepoLibs"] = samplesUseRepoLibs
+
 allprojects  {
+    val isSampleProject = path.startsWith(":samples:")
 
     repositories {
         mavenLocal()
@@ -31,6 +43,9 @@ allprojects  {
             }
             else if(requested.group == "com.github.xpenatan.gdx-teavm") {
                 useVersion(libs.versions.gdxTeavmVersion.get())
+            }
+            else if(isSampleProject && samplesUseRepoLibs && requested.group == jJoltGroup) {
+                useVersion(samplesRepoVersion)
             }
         }
     }
