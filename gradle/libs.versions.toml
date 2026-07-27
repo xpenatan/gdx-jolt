@@ -9,11 +9,11 @@ javaMainTarget = "1.8"
 javaWebTarget = "17"
 javaFfmTarget = "25"
 
-jParser = "-SNAPSHOT"
+jParser = "1.2.8"
 libfdx = "-SNAPSHOT"
 libgdx = "1.14.2"
 
-gdxTeavmVersion = "-SNAPSHOT"
+gdxTeavmVersion = "1.6.1"
 gdxImguiVersion = "1.92.4.0"
 junitVersion = "4.12"
 
