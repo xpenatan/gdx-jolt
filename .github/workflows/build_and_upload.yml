@@ -439,21 +439,30 @@ jobs:
           retry_on: error
           command: ./gradlew publishSnapshot
 
+      - name: Get release commit
+        id: release_commit
+        if: ${{ inputs.isRelease }}
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       - name: Create Git tag
         uses: actions/github-script@v7
         if: ${{ inputs.isRelease }}
+        env:
+          RELEASE_SHA: ${{ steps.release_commit.outputs.sha }}
         with:
           script: |
             const versionOutputs = ${{ toJSON(steps.version.outputs) }};
 
             var version = versionOutputs.value;
+            var releaseSha = process.env.RELEASE_SHA;
 
             console.log("Version: " + version);
+            console.log("Release commit: " + releaseSha);
 
             var ref = "refs/tags/" + version
-            github.rest.git.createRef({
+            await github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: ref,
-              sha: context.sha
+              sha: releaseSha
             });
