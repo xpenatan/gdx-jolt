@@ -27,7 +27,7 @@ import io.github.libfdx.input.KeyEvent;
 import io.github.libfdx.math.Color;
 import io.github.libfdx.math.Matrix4;
 import jolt.JoltLoader;
-import jolt.fdx.FdxDebugRenderer;
+import io.github.libfdx.physics.jolt.FdxDebugRenderer;
 import jolt.physics.body.BodyManagerDrawSettings;
 
 public final class JoltSampleApplication extends ApplicationAdapter {

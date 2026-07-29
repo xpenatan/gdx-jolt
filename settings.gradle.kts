@@ -24,7 +24,6 @@ include(":jolt:android:jni")
 
 // Extensions
 include(":extensions:gdx:gl")
-include(":extensions:fdx")
 
 // Examples
 include(":samples:gdx:shared")

@@ -5,7 +5,7 @@
 [![Maven Central Version](https://img.shields.io/maven-central/v/com.github.xpenatan.jJolt/core)](https://central.sonatype.com/namespace/com.github.xpenatan.jJolt)
 [![Static Badge](https://img.shields.io/badge/snapshot---SNAPSHOT-red)](https://central.sonatype.com/service/rest/repository/browse/maven-snapshots/com/github/xpenatan/jJolt/)
 
-jJolt is a Java binding for the C++ library [Jolt Physics](https://github.com/jrouwe/JoltPhysics), utilizing JNI/FFM for desktop, JNI for Android, and Emscripten for web platforms. It provides a one-to-one correspondence with the C++ code, meaning it mirrors the exact same class and method names. Its samples and rendering integrations target libfdx.
+jJolt is a Java binding for the C++ library [Jolt Physics](https://github.com/jrouwe/JoltPhysics), utilizing JNI/FFM for desktop, JNI for Android, and Emscripten for web platforms. It provides a one-to-one correspondence with the C++ code, meaning it mirrors the exact same class and method names. Its libfdx samples consume the `jolt_ext` adapter owned and published by [libFDX](https://github.com/libfdx/libfdx).
 
 The binding leverages [jParser](https://github.com/xpenatan/jParser), a custom C/C++ build tool and WebIDL Java code generator, which automatically generates 99% of all classes. Only a small number of essential classes are coded manually, making updates to new Jolt Physics versions quick and efficient.
 
@@ -38,6 +38,7 @@ repositories {
 
 // Core module
 implementation("com.github.xpenatan.jJolt:core:-SNAPSHOT")
+implementation("io.github.libfdx:jolt_ext:-SNAPSHOT")
 implementation("io.github.libfdx:application:-SNAPSHOT")
 implementation("io.github.libfdx:g3d:-SNAPSHOT")
 
@@ -94,7 +95,7 @@ The samples use the local jJolt projects by default. To run either the libGDX or
 ./gradlew -PuseRepoLibs=true -PexampleVersion=RELEASE_VERSION :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_gl_jni_run
 ```
 
-You can also set `useRepoLibs = "true"` and change `exampleVersion` in `gradle/libs.versions.toml`. Published mode uses the Maven artifacts for Jolt core, extensions, and platform natives, so a local native rebuild is not required after `clean`.
+You can also set `useRepoLibs = "true"` and change `exampleVersion` in `gradle/libs.versions.toml`. Published mode uses Maven artifacts for Jolt core and platform natives. The libfdx samples always consume the separately published `io.github.libfdx:jolt_ext` snapshot.
 
 ## How To Run The Samples
 

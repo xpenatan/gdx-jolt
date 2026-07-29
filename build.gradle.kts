@@ -61,8 +61,7 @@ easyPublishing {
         ":jolt:desktop:c",
         ":jolt:web:wasm",
         ":jolt:android:jni",
-        ":extensions:gdx:gl",
-        ":extensions:fdx"
+        ":extensions:gdx:gl"
     )
 
     groupId.set(libs.versions.projectGroup)

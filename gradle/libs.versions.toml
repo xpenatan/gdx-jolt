@@ -99,7 +99,7 @@ jjoltDesktopC = { module = "com.github.xpenatan.jJolt:desktop-c", version.ref = 
 jjoltDesktopFfm = { module = "com.github.xpenatan.jJolt:desktop-ffm", version.ref = "exampleVersion" }
 jjoltDesktopJni = { module = "com.github.xpenatan.jJolt:desktop-jni", version.ref = "exampleVersion" }
 jjoltGdxGl = { module = "com.github.xpenatan.jJolt:gdx-gl", version.ref = "exampleVersion" }
-jjoltJoltFdx = { module = "com.github.xpenatan.jJolt:jolt-fdx", version.ref = "exampleVersion" }
+fdxJoltExt = { module = "io.github.libfdx:jolt_ext", version.ref = "libfdx" }
 jjoltWebWasm = { module = "com.github.xpenatan.jJolt:web-wasm", version.ref = "exampleVersion" }
 
 androidDesugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "androidDesugarVersion" }

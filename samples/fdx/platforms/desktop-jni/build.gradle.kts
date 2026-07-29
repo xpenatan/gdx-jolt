@@ -61,13 +61,12 @@ dependencies {
         joltJniRuntimeClasspath(libs.jjoltDesktopJni)
         joltFfmRuntimeClasspath(libs.jjoltDesktopFfm)
         joltFfmRuntimeClasspath(variantOf(libs.jjoltDesktopFfm) { classifier("desktop") })
-        implementation(libs.jjoltJoltFdx)
     }
     else {
         joltJniRuntimeClasspath(project(":jolt:desktop:jni"))
         joltFfmRuntimeClasspath(project(":jolt:desktop:ffm"))
-        implementation(project(":extensions:fdx"))
     }
+    implementation(libs.fdxJoltExt)
 
     glRuntimeClasspath(libs.fdxGlDesktop)
     vulkanRuntimeClasspath(libs.fdxVulkanDesktop)

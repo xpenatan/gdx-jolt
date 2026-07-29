@@ -7,12 +7,11 @@ val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
 dependencies {
     if(useRepoLibs) {
         compileOnly(libs.jjoltCore)
-        compileOnly(libs.jjoltJoltFdx)
     }
     else {
         compileOnly(project(":jolt:core"))
-        compileOnly(project(":extensions:fdx"))
     }
+    compileOnly(libs.fdxJoltExt)
 
     api(libs.fdxApplication)
     api(libs.fdxDisplay)

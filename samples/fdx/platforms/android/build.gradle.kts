@@ -45,12 +45,11 @@ dependencies {
 
     if(useRepoLibs) {
         implementation(libs.jjoltAndroidJni)
-        implementation(libs.jjoltJoltFdx)
     }
     else {
         implementation(project(":jolt:android:jni"))
-        implementation(project(":extensions:fdx"))
     }
+    implementation(libs.fdxJoltExt)
 
     implementation(project(":samples:fdx:core"))
     implementation(libs.fdxBackendAndroid)

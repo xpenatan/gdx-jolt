@@ -15,12 +15,11 @@ dependencies {
 
     if(useRepoLibs) {
         implementation(libs.jjoltWebWasm)
-        implementation(libs.jjoltJoltFdx)
     }
     else {
         implementation(project(":jolt:web:wasm"))
-        implementation(project(":extensions:fdx"))
     }
+    implementation(libs.fdxJoltExt)
 
     implementation(libs.fdxBackendWeb)
     implementation(libs.fdxGlWeb)
