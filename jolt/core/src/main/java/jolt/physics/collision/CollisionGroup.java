@@ -32,6 +32,14 @@ public final class CollisionGroup extends NativeObject {
         return new CollisionGroup((byte) 0, (char) 0);
     }
 
+    public boolean Equals(CollisionGroup inRHS) {
+        return false;
+    }
+
+    public boolean NotEquals(CollisionGroup inRHS) {
+        return false;
+    }
+
     public void SetGroupFilter(GroupFilter inFilter) {
     }
 

@@ -186,9 +186,9 @@ final public class JNI_BodyInterface {
 
     public static native long internal_native_GetTransformedShape_addr(long this_addr, long inBodyID_addr);
 
-    public static native int internal_native_GetUserData(long this_addr, long inBodyID_addr);
+    public static native long internal_native_GetUserData(long this_addr, long inBodyID_addr);
 
-    public static native void internal_native_SetUserData(long this_addr, long inBodyID_addr, int inUserData);
+    public static native void internal_native_SetUserData(long this_addr, long inBodyID_addr, long inUserData);
 
     public static native long internal_native_GetMaterial_addr(long this_addr, long inBodyID_addr, long inSubShapeID_addr);
 

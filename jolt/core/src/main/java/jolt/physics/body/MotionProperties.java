@@ -176,6 +176,12 @@ public class MotionProperties extends NativeObject {
         return null;
     }
 
+    public void ApplyLinearVelocityStep(Vec3 inLinearVelocity) {
+    }
+
+    public void ApplyAngularVelocityStep(Vec3 inAngularVelocity) {
+    }
+
     public void SetNumVelocityStepsOverride(int inN) {
     }
 

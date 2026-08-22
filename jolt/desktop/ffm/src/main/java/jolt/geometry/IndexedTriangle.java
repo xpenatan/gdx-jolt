@@ -6,7 +6,6 @@
 
 package jolt.geometry;
 
-import com.github.xpenatan.jParser.api.NativeObject;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
 import java.lang.foreign.Linker;
@@ -15,11 +14,14 @@ import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
 import java.lang.invoke.MethodHandle;
 
-public final class IndexedTriangle extends NativeObject {
+public final class IndexedTriangle extends IndexedTriangleNoMaterial {
+
+    private IndexedTriangle IndexedTriangle_TEMP_GEN_0;
 
     static public final IndexedTriangle NULL = IndexedTriangle.native_new();
 
     public IndexedTriangle() {
+        super((byte) 1, (char) 1);
         long addr = internal_native_create_addr();
         internal_reset(addr, true);
     }
@@ -33,6 +35,7 @@ public final class IndexedTriangle extends NativeObject {
     }
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex, int inUserData) {
+        super((byte) 1, (char) 1);
         long addr = internal_native_create_int_int_int_int_int_addr(inI1, inI2, inI3, inMaterialIndex, inUserData);
         internal_reset(addr, true);
     }
@@ -46,6 +49,7 @@ public final class IndexedTriangle extends NativeObject {
     }
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex) {
+        super((byte) 1, (char) 1);
         long addr = internal_native_create_int_int_int_int_addr(inI1, inI2, inI3, inMaterialIndex);
         internal_reset(addr, true);
     }
@@ -63,6 +67,7 @@ public final class IndexedTriangle extends NativeObject {
      */
     @Deprecated()
     protected IndexedTriangle(byte b, char c) {
+        super((byte) 1, (char) 1);
     }
 
     /**
@@ -84,25 +89,43 @@ public final class IndexedTriangle extends NativeObject {
         }
     }
 
-    public int get_mIdx(int index) {
-        return internal_native_get_mIdx(native_address, index);
+    public boolean EqualsIndexedTriangle(IndexedTriangle inRHS) {
+        return internal_native_EqualsIndexedTriangle(native_address, inRHS.native_address);
     }
 
-    public static int internal_native_get_mIdx(long this_addr, int index) {
+    public static boolean internal_native_EqualsIndexedTriangle(long this_addr, long inRHS_addr) {
         try {
-            return (int) FFMHandles.internal_native_get_mIdx__JI.invokeExact(this_addr, index);
+            return (boolean) FFMHandles.internal_native_EqualsIndexedTriangle__JJ.invokeExact(this_addr, inRHS_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void set_mIdx(int index, int mIdx) {
-        internal_native_set_mIdx(native_address, index, mIdx);
+    public IndexedTriangle GetLowestIndexFirst() {
+        long addr = internal_native_GetLowestIndexFirst_addr(native_address);
+        if (addr == 0)
+            return IndexedTriangle.NULL;
+        if (IndexedTriangle_TEMP_GEN_0 == null)
+            IndexedTriangle_TEMP_GEN_0 = IndexedTriangle.native_new();
+        IndexedTriangle_TEMP_GEN_0.internal_reset(addr, false);
+        return IndexedTriangle_TEMP_GEN_0;
     }
 
-    public static void internal_native_set_mIdx(long this_addr, int index, int mIdx) {
+    public static long internal_native_GetLowestIndexFirst_addr(long this_addr) {
         try {
-            FFMHandles.internal_native_set_mIdx__JII.invokeExact(this_addr, index, mIdx);
+            return (long) FFMHandles.internal_native_GetLowestIndexFirst_addr__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public long GetHash() {
+        return internal_native_GetHash(native_address);
+    }
+
+    public static long internal_native_GetHash(long this_addr) {
+        try {
+            return (long) FFMHandles.internal_native_GetHash__J.invokeExact(this_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -166,9 +189,11 @@ public final class IndexedTriangle extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_get_mIdx__JI = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_get_midx", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        static final java.lang.invoke.MethodHandle internal_native_EqualsIndexedTriangle__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_equalsindexedtriangle", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_set_mIdx__JII = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_set_midx", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        static final java.lang.invoke.MethodHandle internal_native_GetLowestIndexFirst_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_getlowestindexfirst_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_GetHash__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_gethash", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_get_mMaterialIndex__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_indexedtriangle_get_mmaterialindex", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
 

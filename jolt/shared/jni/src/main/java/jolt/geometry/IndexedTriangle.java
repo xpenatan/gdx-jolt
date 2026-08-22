@@ -6,13 +6,14 @@
 
 package jolt.geometry;
 
-import com.github.xpenatan.jParser.api.NativeObject;
+public final class IndexedTriangle extends IndexedTriangleNoMaterial {
 
-public final class IndexedTriangle extends NativeObject {
+    private IndexedTriangle IndexedTriangle_TEMP_GEN_0;
 
     static public final IndexedTriangle NULL = IndexedTriangle.native_new();
 
     public IndexedTriangle() {
+        super((byte) 1, (char) 1);
         long addr = internal_native_create_addr();
         internal_reset(addr, true);
     }
@@ -22,6 +23,7 @@ public final class IndexedTriangle extends NativeObject {
     }
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex, int inUserData) {
+        super((byte) 1, (char) 1);
         long addr = internal_native_create_int_int_int_int_int_addr(inI1, inI2, inI3, inMaterialIndex, inUserData);
         internal_reset(addr, true);
     }
@@ -31,6 +33,7 @@ public final class IndexedTriangle extends NativeObject {
     }
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex) {
+        super((byte) 1, (char) 1);
         long addr = internal_native_create_int_int_int_int_addr(inI1, inI2, inI3, inMaterialIndex);
         internal_reset(addr, true);
     }
@@ -44,6 +47,7 @@ public final class IndexedTriangle extends NativeObject {
      */
     @Deprecated()
     protected IndexedTriangle(byte b, char c) {
+        super((byte) 1, (char) 1);
     }
 
     /**
@@ -61,20 +65,34 @@ public final class IndexedTriangle extends NativeObject {
         jolt.geometry.natives.JNI_IndexedTriangle.internal_native_deleteNative(this_addr);
     }
 
-    public int get_mIdx(int index) {
-        return internal_native_get_mIdx(native_address, index);
+    public boolean EqualsIndexedTriangle(IndexedTriangle inRHS) {
+        return internal_native_EqualsIndexedTriangle(native_address, inRHS.native_address);
     }
 
-    public static int internal_native_get_mIdx(long this_addr, int index) {
-        return jolt.geometry.natives.JNI_IndexedTriangle.internal_native_get_mIdx(this_addr, index);
+    public static boolean internal_native_EqualsIndexedTriangle(long this_addr, long inRHS_addr) {
+        return jolt.geometry.natives.JNI_IndexedTriangle.internal_native_EqualsIndexedTriangle(this_addr, inRHS_addr);
     }
 
-    public void set_mIdx(int index, int mIdx) {
-        internal_native_set_mIdx(native_address, index, mIdx);
+    public IndexedTriangle GetLowestIndexFirst() {
+        long addr = internal_native_GetLowestIndexFirst_addr(native_address);
+        if (addr == 0)
+            return IndexedTriangle.NULL;
+        if (IndexedTriangle_TEMP_GEN_0 == null)
+            IndexedTriangle_TEMP_GEN_0 = IndexedTriangle.native_new();
+        IndexedTriangle_TEMP_GEN_0.internal_reset(addr, false);
+        return IndexedTriangle_TEMP_GEN_0;
     }
 
-    public static void internal_native_set_mIdx(long this_addr, int index, int mIdx) {
-        jolt.geometry.natives.JNI_IndexedTriangle.internal_native_set_mIdx(this_addr, index, mIdx);
+    public static long internal_native_GetLowestIndexFirst_addr(long this_addr) {
+        return jolt.geometry.natives.JNI_IndexedTriangle.internal_native_GetLowestIndexFirst_addr(this_addr);
+    }
+
+    public long GetHash() {
+        return internal_native_GetHash(native_address);
+    }
+
+    public static long internal_native_GetHash(long this_addr) {
+        return jolt.geometry.natives.JNI_IndexedTriangle.internal_native_GetHash(this_addr);
     }
 
     public int get_mMaterialIndex() {

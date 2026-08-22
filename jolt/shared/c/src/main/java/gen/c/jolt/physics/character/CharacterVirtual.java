@@ -60,6 +60,15 @@ public final class CharacterVirtual extends CharacterBase {
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtual_create_charactervirtualsettings_vec3_quat_physicssystem_addr")
     public static native long internal_native_create_CharacterVirtualSettings_Vec3_Quat_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, long inSystem_addr);
 
+    public CharacterVirtual(CharacterVirtualSettings inSettings, Vec3 inPosition, Quat inRotation, long inUserData, PhysicsSystem inSystem) {
+        super((byte) 1, (char) 1);
+        long addr = internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(inSettings.native_address, inPosition.native_address, inRotation.native_address, inUserData, inSystem.native_address);
+        internal_reset(addr, true);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtual_create_charactervirtualsettings_vec3_quat_long_physicssystem_addr")
+    public static native long internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, long inUserData, long inSystem_addr);
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -325,19 +334,19 @@ public final class CharacterVirtual extends CharacterBase {
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtual_setshapeoffset")
     public static native void internal_native_SetShapeOffset(long this_addr, long inShapeOffset_addr);
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtual_getuserdata")
-    public static native int internal_native_GetUserData(long this_addr);
+    public static native long internal_native_GetUserData(long this_addr);
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtual_setuserdata")
-    public static native void internal_native_SetUserData(long this_addr, int inUserData);
+    public static native void internal_native_SetUserData(long this_addr, long inUserData);
 
     public BodyID GetInnerBodyID() {
         long addr = internal_native_GetInnerBodyID_addr(native_address);

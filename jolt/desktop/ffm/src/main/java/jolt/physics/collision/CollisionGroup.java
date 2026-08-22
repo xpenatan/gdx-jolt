@@ -73,6 +73,30 @@ public final class CollisionGroup extends NativeObject {
         }
     }
 
+    public boolean Equals(CollisionGroup inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_Equals(long this_addr, long inRHS_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_Equals__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public boolean NotEquals(CollisionGroup inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_NotEquals(long this_addr, long inRHS_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_NotEquals__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public void SetGroupFilter(GroupFilter inFilter) {
         internal_native_SetGroupFilter(native_address, inFilter.native_address);
     }
@@ -158,6 +182,10 @@ public final class CollisionGroup extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_create_GroupFilter_int_int_addr__JII = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_collision_collisiongroup_create_groupfilter_int_int_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_collision_collisiongroup_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_Equals__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_collision_collisiongroup_equals", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_NotEquals__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_collision_collisiongroup_notequals", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_SetGroupFilter__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_collision_collisiongroup_setgroupfilter", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

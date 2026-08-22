@@ -49,6 +49,13 @@ public final class SpringSettings extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_constraints_springsettings_hasstiffness")
     public static native boolean internal_native_HasStiffness(long this_addr);
 
+    public boolean HasStiffnessOrDamping() {
+        return internal_native_HasStiffnessOrDamping(native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_constraints_springsettings_hasstiffnessordamping")
+    public static native boolean internal_native_HasStiffnessOrDamping(long this_addr);
+
     public ESpringMode get_mMode() {
         int value = internal_native_get_mMode(native_address);
         ESpringMode[] values = ESpringMode.values();

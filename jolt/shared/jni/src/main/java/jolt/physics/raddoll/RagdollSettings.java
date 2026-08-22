@@ -65,7 +65,7 @@ public final class RagdollSettings extends NativeObject {
         return jolt.physics.raddoll.natives.JNI_RagdollSettings.internal_native_Stabilize(this_addr);
     }
 
-    public Ragdoll CreateRagdoll(int inCollisionGroup, int inUserData, PhysicsSystem inSystem) {
+    public Ragdoll CreateRagdoll(int inCollisionGroup, long inUserData, PhysicsSystem inSystem) {
         long addr = internal_native_CreateRagdoll_addr(native_address, inCollisionGroup, inUserData, inSystem.native_address);
         if (addr == 0)
             return Ragdoll.NULL;
@@ -75,7 +75,7 @@ public final class RagdollSettings extends NativeObject {
         return Ragdoll_TEMP_GEN_0;
     }
 
-    public static long internal_native_CreateRagdoll_addr(long this_addr, int inCollisionGroup, int inUserData, long inSystem_addr) {
+    public static long internal_native_CreateRagdoll_addr(long this_addr, int inCollisionGroup, long inUserData, long inSystem_addr) {
         return jolt.physics.raddoll.natives.JNI_RagdollSettings.internal_native_CreateRagdoll_addr(this_addr, inCollisionGroup, inUserData, inSystem_addr);
     }
 

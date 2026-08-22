@@ -79,6 +79,20 @@ public class BodyCreationSettings extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyCreationSettings);jolt.destroy(jsObj);")
     public static native void internal_native_deleteNative(int this_addr);
 
+    public boolean Equals(BodyCreationSettings inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyCreationSettings);var returnedJSObj = jsObj.Equals(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_Equals(int this_addr, int inRHS_addr);
+
+    public boolean NotEquals(BodyCreationSettings inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyCreationSettings);var returnedJSObj = jsObj.NotEquals(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_NotEquals(int this_addr, int inRHS_addr);
+
     public ShapeSettings GetShapeSettings() {
         int addr = internal_native_GetShapeSettings_addr(native_address);
         if (addr == 0)
@@ -232,19 +246,19 @@ public class BodyCreationSettings extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "mAngularVelocity_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyCreationSettings);jsObj.set_mAngularVelocity(mAngularVelocity_addr);")
     public static native void internal_native_set_mAngularVelocity(int this_addr, int mAngularVelocity_addr);
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyCreationSettings);return jsObj.get_mUserData();")
-    public static native int internal_native_get_mUserData(int this_addr);
+    public static native long internal_native_get_mUserData(int this_addr);
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "mUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyCreationSettings);jsObj.set_mUserData(mUserData);")
-    public static native void internal_native_set_mUserData(int this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(int this_addr, long mUserData);
 
     public int get_mObjectLayer() {
         return internal_native_get_mObjectLayer(native_address);

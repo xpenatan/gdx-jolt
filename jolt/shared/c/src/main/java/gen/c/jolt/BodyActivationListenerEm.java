@@ -31,21 +31,21 @@ public class BodyActivationListenerEm extends BodyActivationListener {
 
     private static abstract class TEAVMC_OnBodyActivated_Function extends org.teavm.interop.Function {
 
-        public abstract void call(int callbackId, long inBodyID_addr, int inBodyUserData);
+        public abstract void call(int callbackId, long inBodyID_addr, long inBodyUserData);
     }
 
     @org.teavm.interop.Export(name = "teavmc_BodyActivationListenerEm_OnBodyActivated")
-    private static void teavmc_BodyActivationListenerEm_OnBodyActivated(int callbackId, long inBodyID_addr, int inBodyUserData) {
+    private static void teavmc_BodyActivationListenerEm_OnBodyActivated(int callbackId, long inBodyID_addr, long inBodyUserData) {
         TEAVMC_CALLBACKS.get(callbackId).internal_OnBodyActivated(inBodyID_addr, inBodyUserData);
     }
 
     private static abstract class TEAVMC_OnBodyDeactivated_Function extends org.teavm.interop.Function {
 
-        public abstract void call(int callbackId, long inBodyID_addr, int inBodyUserData);
+        public abstract void call(int callbackId, long inBodyID_addr, long inBodyUserData);
     }
 
     @org.teavm.interop.Export(name = "teavmc_BodyActivationListenerEm_OnBodyDeactivated")
-    private static void teavmc_BodyActivationListenerEm_OnBodyDeactivated(int callbackId, long inBodyID_addr, int inBodyUserData) {
+    private static void teavmc_BodyActivationListenerEm_OnBodyDeactivated(int callbackId, long inBodyID_addr, long inBodyUserData) {
         TEAVMC_CALLBACKS.get(callbackId).internal_OnBodyDeactivated(inBodyID_addr, inBodyUserData);
     }
 
@@ -88,20 +88,20 @@ public class BodyActivationListenerEm extends BodyActivationListener {
         setupCallback(native_address, callbackId, org.teavm.interop.Function.get(TEAVMC_OnBodyActivated_Function.class, BodyActivationListenerEm.class, "teavmc_BodyActivationListenerEm_OnBodyActivated"), org.teavm.interop.Function.get(TEAVMC_OnBodyDeactivated_Function.class, BodyActivationListenerEm.class, "teavmc_BodyActivationListenerEm_OnBodyDeactivated"));
     }
 
-    protected void OnBodyActivated(BodyID inBodyID, int inBodyUserData) {
+    protected void OnBodyActivated(BodyID inBodyID, long inBodyUserData) {
     }
 
-    private void internal_OnBodyActivated(long inBodyID_addr, int inBodyUserData) {
+    private void internal_OnBodyActivated(long inBodyID_addr, long inBodyUserData) {
         if (BodyID_TEMP_STATIC_GEN_0 == null)
             BodyID_TEMP_STATIC_GEN_0 = BodyID.native_new();
         BodyID_TEMP_STATIC_GEN_0.internal_reset(inBodyID_addr, false);
         OnBodyActivated(BodyID_TEMP_STATIC_GEN_0, inBodyUserData);
     }
 
-    protected void OnBodyDeactivated(BodyID inBodyID, int inBodyUserData) {
+    protected void OnBodyDeactivated(BodyID inBodyID, long inBodyUserData) {
     }
 
-    private void internal_OnBodyDeactivated(long inBodyID_addr, int inBodyUserData) {
+    private void internal_OnBodyDeactivated(long inBodyID_addr, long inBodyUserData) {
         if (BodyID_TEMP_STATIC_GEN_1 == null)
             BodyID_TEMP_STATIC_GEN_1 = BodyID.native_new();
         BodyID_TEMP_STATIC_GEN_1.internal_reset(inBodyID_addr, false);

@@ -58,40 +58,54 @@ public final class Vector2 extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_math_vector2_setzero")
     public static native void internal_native_SetZero(long this_addr);
 
-    public void IsZero() {
-        internal_native_IsZero(native_address);
+    public boolean IsZero() {
+        return internal_native_IsZero(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_math_vector2_iszero")
-    public static native void internal_native_IsZero(long this_addr);
+    public static native boolean internal_native_IsZero(long this_addr);
 
-    public void IsClose(Vector2 inV, float inMaxDistSq) {
-        internal_native_IsClose(native_address, inV.native_address, inMaxDistSq);
+    public boolean IsNearZero(float inMaxDistSq) {
+        return internal_native_IsNearZero(native_address, inMaxDistSq);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_math_vector2_isnearzero_l_f")
+    public static native boolean internal_native_IsNearZero(long this_addr, float inMaxDistSq);
+
+    public boolean IsNearZero() {
+        return internal_native_IsNearZero(native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_math_vector2_isnearzero_l")
+    public static native boolean internal_native_IsNearZero(long this_addr);
+
+    public boolean IsClose(Vector2 inV, float inMaxDistSq) {
+        return internal_native_IsClose(native_address, inV.native_address, inMaxDistSq);
     }
 
     @org.teavm.interop.Import(name = "jolt_math_vector2_isclose_l_l_f")
-    public static native void internal_native_IsClose(long this_addr, long inV_addr, float inMaxDistSq);
+    public static native boolean internal_native_IsClose(long this_addr, long inV_addr, float inMaxDistSq);
 
-    public void IsClose(Vector2 inV) {
-        internal_native_IsClose(native_address, inV.native_address);
+    public boolean IsClose(Vector2 inV) {
+        return internal_native_IsClose(native_address, inV.native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_math_vector2_isclose_l_l")
-    public static native void internal_native_IsClose(long this_addr, long inV_addr);
+    public static native boolean internal_native_IsClose(long this_addr, long inV_addr);
 
-    public void IsNormalized(float inTolerance) {
-        internal_native_IsNormalized(native_address, inTolerance);
+    public boolean IsNormalized(float inTolerance) {
+        return internal_native_IsNormalized(native_address, inTolerance);
     }
 
     @org.teavm.interop.Import(name = "jolt_math_vector2_isnormalized_l_f")
-    public static native void internal_native_IsNormalized(long this_addr, float inTolerance);
+    public static native boolean internal_native_IsNormalized(long this_addr, float inTolerance);
 
-    public void IsNormalized() {
-        internal_native_IsNormalized(native_address);
+    public boolean IsNormalized() {
+        return internal_native_IsNormalized(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_math_vector2_isnormalized_l")
-    public static native void internal_native_IsNormalized(long this_addr);
+    public static native boolean internal_native_IsNormalized(long this_addr);
 
     public Vector2 Normalized() {
         long addr = internal_native_Normalized_addr(native_address);

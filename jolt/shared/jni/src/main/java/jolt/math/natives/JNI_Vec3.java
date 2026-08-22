@@ -38,6 +38,8 @@ final public class JNI_Vec3 {
 
     public static native long internal_native_sFusedMultiplyAdd_addr(long inMul1_addr, long inMul2_addr, long inAdd_addr);
 
+    public static native long internal_native_sDifferenceOfProducts_addr(long inA_addr, long inB_addr, long inC_addr, long inD_addr);
+
     public static native long internal_native_sOr_addr(long inV1_addr, long inV2_addr);
 
     public static native long internal_native_sXor_addr(long inV1_addr, long inV2_addr);
@@ -100,6 +102,8 @@ final public class JNI_Vec3 {
 
     public static native long internal_native_Cross_addr(long this_addr, long inRHS_addr);
 
+    public static native long internal_native_CrossPrecise_addr(long this_addr, long inRHS_addr);
+
     public static native float internal_native_Dot(long this_addr, long inRHS_addr);
 
     public static native long internal_native_DotV_addr(long this_addr, long inRHS_addr);
@@ -137,6 +141,8 @@ final public class JNI_Vec3 {
     public static native float internal_native_ReduceMin(long this_addr);
 
     public static native float internal_native_ReduceMax(long this_addr);
+
+    public static native float internal_native_ReduceSum(long this_addr);
 
     public static native long internal_native_Sqrt_addr(long this_addr);
 

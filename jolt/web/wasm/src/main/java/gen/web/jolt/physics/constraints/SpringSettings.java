@@ -49,6 +49,13 @@ public final class SpringSettings extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SpringSettings);var returnedJSObj = jsObj.HasStiffness();return returnedJSObj;")
     public static native boolean internal_native_HasStiffness(int this_addr);
 
+    public boolean HasStiffnessOrDamping() {
+        return internal_native_HasStiffnessOrDamping(native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SpringSettings);var returnedJSObj = jsObj.HasStiffnessOrDamping();return returnedJSObj;")
+    public static native boolean internal_native_HasStiffnessOrDamping(int this_addr);
+
     public ESpringMode get_mMode() {
         int value = internal_native_get_mMode(native_address);
         ESpringMode[] values = ESpringMode.values();

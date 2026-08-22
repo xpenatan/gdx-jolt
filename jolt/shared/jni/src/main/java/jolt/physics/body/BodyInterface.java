@@ -930,19 +930,19 @@ public final class BodyInterface extends NativeObject {
         return jolt.physics.body.natives.JNI_BodyInterface.internal_native_GetTransformedShape_addr(this_addr, inBodyID_addr);
     }
 
-    public int GetUserData(BodyID inBodyID) {
+    public long GetUserData(BodyID inBodyID) {
         return internal_native_GetUserData(native_address, inBodyID.native_address);
     }
 
-    public static int internal_native_GetUserData(long this_addr, long inBodyID_addr) {
+    public static long internal_native_GetUserData(long this_addr, long inBodyID_addr) {
         return jolt.physics.body.natives.JNI_BodyInterface.internal_native_GetUserData(this_addr, inBodyID_addr);
     }
 
-    public void SetUserData(BodyID inBodyID, int inUserData) {
+    public void SetUserData(BodyID inBodyID, long inUserData) {
         internal_native_SetUserData(native_address, inBodyID.native_address, inUserData);
     }
 
-    public static void internal_native_SetUserData(long this_addr, long inBodyID_addr, int inUserData) {
+    public static void internal_native_SetUserData(long this_addr, long inBodyID_addr, long inUserData) {
         jolt.physics.body.natives.JNI_BodyInterface.internal_native_SetUserData(this_addr, inBodyID_addr, inUserData);
     }
 

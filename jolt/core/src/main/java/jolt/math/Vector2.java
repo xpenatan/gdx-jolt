@@ -32,19 +32,32 @@ public final class Vector2 extends NativeObject {
     public void SetZero() {
     }
 
-    public void IsZero() {
+    public boolean IsZero() {
+        return false;
     }
 
-    public void IsClose(Vector2 inV, float inMaxDistSq) {
+    public boolean IsNearZero(float inMaxDistSq) {
+        return false;
     }
 
-    public void IsClose(Vector2 inV) {
+    public boolean IsNearZero() {
+        return false;
     }
 
-    public void IsNormalized(float inTolerance) {
+    public boolean IsClose(Vector2 inV, float inMaxDistSq) {
+        return false;
     }
 
-    public void IsNormalized() {
+    public boolean IsClose(Vector2 inV) {
+        return false;
+    }
+
+    public boolean IsNormalized(float inTolerance) {
+        return false;
+    }
+
+    public boolean IsNormalized() {
+        return false;
     }
 
     public Vector2 Normalized() {

@@ -80,61 +80,85 @@ public final class Vector2 extends NativeObject {
         }
     }
 
-    public void IsZero() {
-        internal_native_IsZero(native_address);
+    public boolean IsZero() {
+        return internal_native_IsZero(native_address);
     }
 
-    public static void internal_native_IsZero(long this_addr) {
+    public static boolean internal_native_IsZero(long this_addr) {
         try {
-            FFMHandles.internal_native_IsZero__J.invokeExact(this_addr);
+            return (boolean) FFMHandles.internal_native_IsZero__J.invokeExact(this_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void IsClose(Vector2 inV, float inMaxDistSq) {
-        internal_native_IsClose(native_address, inV.native_address, inMaxDistSq);
+    public boolean IsNearZero(float inMaxDistSq) {
+        return internal_native_IsNearZero(native_address, inMaxDistSq);
     }
 
-    public static void internal_native_IsClose(long this_addr, long inV_addr, float inMaxDistSq) {
+    public static boolean internal_native_IsNearZero(long this_addr, float inMaxDistSq) {
         try {
-            FFMHandles.internal_native_IsClose__JJF.invokeExact(this_addr, inV_addr, inMaxDistSq);
+            return (boolean) FFMHandles.internal_native_IsNearZero__JF.invokeExact(this_addr, inMaxDistSq);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void IsClose(Vector2 inV) {
-        internal_native_IsClose(native_address, inV.native_address);
+    public boolean IsNearZero() {
+        return internal_native_IsNearZero(native_address);
     }
 
-    public static void internal_native_IsClose(long this_addr, long inV_addr) {
+    public static boolean internal_native_IsNearZero(long this_addr) {
         try {
-            FFMHandles.internal_native_IsClose__JJ.invokeExact(this_addr, inV_addr);
+            return (boolean) FFMHandles.internal_native_IsNearZero__J.invokeExact(this_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void IsNormalized(float inTolerance) {
-        internal_native_IsNormalized(native_address, inTolerance);
+    public boolean IsClose(Vector2 inV, float inMaxDistSq) {
+        return internal_native_IsClose(native_address, inV.native_address, inMaxDistSq);
     }
 
-    public static void internal_native_IsNormalized(long this_addr, float inTolerance) {
+    public static boolean internal_native_IsClose(long this_addr, long inV_addr, float inMaxDistSq) {
         try {
-            FFMHandles.internal_native_IsNormalized__JF.invokeExact(this_addr, inTolerance);
+            return (boolean) FFMHandles.internal_native_IsClose__JJF.invokeExact(this_addr, inV_addr, inMaxDistSq);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void IsNormalized() {
-        internal_native_IsNormalized(native_address);
+    public boolean IsClose(Vector2 inV) {
+        return internal_native_IsClose(native_address, inV.native_address);
     }
 
-    public static void internal_native_IsNormalized(long this_addr) {
+    public static boolean internal_native_IsClose(long this_addr, long inV_addr) {
         try {
-            FFMHandles.internal_native_IsNormalized__J.invokeExact(this_addr);
+            return (boolean) FFMHandles.internal_native_IsClose__JJ.invokeExact(this_addr, inV_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public boolean IsNormalized(float inTolerance) {
+        return internal_native_IsNormalized(native_address, inTolerance);
+    }
+
+    public static boolean internal_native_IsNormalized(long this_addr, float inTolerance) {
+        try {
+            return (boolean) FFMHandles.internal_native_IsNormalized__JF.invokeExact(this_addr, inTolerance);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public boolean IsNormalized() {
+        return internal_native_IsNormalized(native_address);
+    }
+
+    public static boolean internal_native_IsNormalized(long this_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_IsNormalized__J.invokeExact(this_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -314,15 +338,19 @@ public final class Vector2 extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_SetZero__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_setzero", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_IsZero__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_iszero", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_IsZero__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_iszero", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_IsClose__JJF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isclose_l_l_f", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
+        static final java.lang.invoke.MethodHandle internal_native_IsNearZero__JF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isnearzero_l_f", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
 
-        static final java.lang.invoke.MethodHandle internal_native_IsClose__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isclose_l_l", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_IsNearZero__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isnearzero_l", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_IsNormalized__JF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isnormalized_l_f", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
+        static final java.lang.invoke.MethodHandle internal_native_IsClose__JJF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isclose_l_l_f", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
 
-        static final java.lang.invoke.MethodHandle internal_native_IsNormalized__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isnormalized_l", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_IsClose__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isclose_l_l", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_IsNormalized__JF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isnormalized_l_f", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
+
+        static final java.lang.invoke.MethodHandle internal_native_IsNormalized__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_isnormalized_l", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_Normalized_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vector2_normalized_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

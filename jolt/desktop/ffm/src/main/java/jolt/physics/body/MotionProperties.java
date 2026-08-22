@@ -652,6 +652,30 @@ public class MotionProperties extends NativeObject {
         }
     }
 
+    public void ApplyLinearVelocityStep(Vec3 inLinearVelocity) {
+        internal_native_ApplyLinearVelocityStep(native_address, inLinearVelocity.native_address);
+    }
+
+    public static void internal_native_ApplyLinearVelocityStep(long this_addr, long inLinearVelocity_addr) {
+        try {
+            FFMHandles.internal_native_ApplyLinearVelocityStep__JJ.invokeExact(this_addr, inLinearVelocity_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public void ApplyAngularVelocityStep(Vec3 inAngularVelocity) {
+        internal_native_ApplyAngularVelocityStep(native_address, inAngularVelocity.native_address);
+    }
+
+    public static void internal_native_ApplyAngularVelocityStep(long this_addr, long inAngularVelocity_addr) {
+        try {
+            FFMHandles.internal_native_ApplyAngularVelocityStep__JJ.invokeExact(this_addr, inAngularVelocity_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public void SetNumVelocityStepsOverride(int inN) {
         internal_native_SetNumVelocityStepsOverride(native_address, inN);
     }
@@ -785,6 +809,10 @@ public class MotionProperties extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_LockTranslation_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_motionproperties_locktranslation_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_LockAngular_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_motionproperties_lockangular_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_ApplyLinearVelocityStep__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_motionproperties_applylinearvelocitystep", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_ApplyAngularVelocityStep__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_motionproperties_applyangularvelocitystep", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_SetNumVelocityStepsOverride__JI = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_motionproperties_setnumvelocitystepsoverride", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
 

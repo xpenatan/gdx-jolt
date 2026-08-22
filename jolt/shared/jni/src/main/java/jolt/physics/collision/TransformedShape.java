@@ -252,6 +252,14 @@ public final class TransformedShape extends NativeObject {
         return jolt.physics.collision.natives.JNI_TransformedShape.internal_native_GetMaterial_addr(this_addr, inSubShapeID_addr);
     }
 
+    public long GetSubShapeUserData(SubShapeID inSubShapeID) {
+        return internal_native_GetSubShapeUserData(native_address, inSubShapeID.native_address);
+    }
+
+    public static long internal_native_GetSubShapeUserData(long this_addr, long inSubShapeID_addr) {
+        return jolt.physics.collision.natives.JNI_TransformedShape.internal_native_GetSubShapeUserData(this_addr, inSubShapeID_addr);
+    }
+
     public Vec3 get_mShapePositionCOM() {
         long addr = internal_native_get_mShapePositionCOM_addr(native_address);
         if (addr == 0)

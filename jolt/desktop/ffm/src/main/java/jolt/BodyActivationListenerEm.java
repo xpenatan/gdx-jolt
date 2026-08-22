@@ -26,13 +26,13 @@ public class BodyActivationListenerEm extends BodyActivationListener {
 
     private static final java.lang.foreign.Linker callbackLinker = java.lang.foreign.Linker.nativeLinker();
 
-    private static final java.lang.invoke.MethodType callbackMethodType_OnBodyActivated = java.lang.invoke.MethodType.methodType(void.class, long.class, int.class);
+    private static final java.lang.invoke.MethodType callbackMethodType_OnBodyActivated = java.lang.invoke.MethodType.methodType(void.class, long.class, long.class);
 
-    private static final java.lang.foreign.FunctionDescriptor callbackDescriptor_OnBodyActivated = java.lang.foreign.FunctionDescriptor.ofVoid(java.lang.foreign.ValueLayout.JAVA_LONG, java.lang.foreign.ValueLayout.JAVA_INT);
+    private static final java.lang.foreign.FunctionDescriptor callbackDescriptor_OnBodyActivated = java.lang.foreign.FunctionDescriptor.ofVoid(java.lang.foreign.ValueLayout.JAVA_LONG, java.lang.foreign.ValueLayout.JAVA_LONG);
 
-    private static final java.lang.invoke.MethodType callbackMethodType_OnBodyDeactivated = java.lang.invoke.MethodType.methodType(void.class, long.class, int.class);
+    private static final java.lang.invoke.MethodType callbackMethodType_OnBodyDeactivated = java.lang.invoke.MethodType.methodType(void.class, long.class, long.class);
 
-    private static final java.lang.foreign.FunctionDescriptor callbackDescriptor_OnBodyDeactivated = java.lang.foreign.FunctionDescriptor.ofVoid(java.lang.foreign.ValueLayout.JAVA_LONG, java.lang.foreign.ValueLayout.JAVA_INT);
+    private static final java.lang.foreign.FunctionDescriptor callbackDescriptor_OnBodyDeactivated = java.lang.foreign.FunctionDescriptor.ofVoid(java.lang.foreign.ValueLayout.JAVA_LONG, java.lang.foreign.ValueLayout.JAVA_LONG);
 
     static public final BodyActivationListenerEm NULL = BodyActivationListenerEm.native_new();
 
@@ -82,20 +82,20 @@ public class BodyActivationListenerEm extends BodyActivationListener {
         }
     }
 
-    protected void OnBodyActivated(BodyID inBodyID, int inBodyUserData) {
+    protected void OnBodyActivated(BodyID inBodyID, long inBodyUserData) {
     }
 
-    private void internal_OnBodyActivated(long inBodyID_addr, int inBodyUserData) {
+    private void internal_OnBodyActivated(long inBodyID_addr, long inBodyUserData) {
         if (BodyID_TEMP_STATIC_GEN_0 == null)
             BodyID_TEMP_STATIC_GEN_0 = BodyID.native_new();
         BodyID_TEMP_STATIC_GEN_0.internal_reset(inBodyID_addr, false);
         OnBodyActivated(BodyID_TEMP_STATIC_GEN_0, inBodyUserData);
     }
 
-    protected void OnBodyDeactivated(BodyID inBodyID, int inBodyUserData) {
+    protected void OnBodyDeactivated(BodyID inBodyID, long inBodyUserData) {
     }
 
-    private void internal_OnBodyDeactivated(long inBodyID_addr, int inBodyUserData) {
+    private void internal_OnBodyDeactivated(long inBodyID_addr, long inBodyUserData) {
         if (BodyID_TEMP_STATIC_GEN_1 == null)
             BodyID_TEMP_STATIC_GEN_1 = BodyID.native_new();
         BodyID_TEMP_STATIC_GEN_1.internal_reset(inBodyID_addr, false);

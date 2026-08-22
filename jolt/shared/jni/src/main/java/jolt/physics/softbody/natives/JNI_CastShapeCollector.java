@@ -18,6 +18,8 @@ final public class JNI_CastShapeCollector {
 
     public static native long internal_native_GetContext_addr(long this_addr);
 
+    public static native void internal_native_SetUserData(long this_addr, long inUserData);
+
     public static native void internal_native_UpdateEarlyOutFraction(long this_addr, float inFraction);
 
     public static native void internal_native_ResetEarlyOutFraction(long this_addr, float inFraction);

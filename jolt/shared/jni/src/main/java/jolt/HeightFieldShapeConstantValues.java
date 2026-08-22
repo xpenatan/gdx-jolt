@@ -41,4 +41,12 @@ public final class HeightFieldShapeConstantValues extends NativeObject {
     public static float internal_native_get_cNoCollisionValue() {
         return jolt.natives.JNI_HeightFieldShapeConstantValues.internal_native_get_cNoCollisionValue();
     }
+
+    public static int get_cMaxBitsPerSample() {
+        return internal_native_get_cMaxBitsPerSample();
+    }
+
+    public static int internal_native_get_cMaxBitsPerSample() {
+        return jolt.natives.JNI_HeightFieldShapeConstantValues.internal_native_get_cMaxBitsPerSample();
+    }
 }

@@ -50,6 +50,8 @@ public final class PhysicsSystem extends NativeObject {
 
     private BodyLockInterfaceLocking BodyLockInterfaceLocking_TEMP_GEN_0;
 
+    private BroadPhaseLayerInterface BroadPhaseLayerInterface_TEMP_GEN_0;
+
     private BroadPhaseQuery BroadPhaseQuery_TEMP_GEN_0;
 
     private NarrowPhaseQuery NarrowPhaseQuery_TEMP_GEN_0;
@@ -305,6 +307,19 @@ public final class PhysicsSystem extends NativeObject {
 
     @org.teavm.interop.Import(name = "jolt_physics_physicssystem_getbodylockinterface_addr")
     public static native long internal_native_GetBodyLockInterface_addr(long this_addr);
+
+    public BroadPhaseLayerInterface GetBroadPhaseLayerInterface() {
+        long addr = internal_native_GetBroadPhaseLayerInterface_addr(native_address);
+        if (addr == 0)
+            return BroadPhaseLayerInterface.NULL;
+        if (BroadPhaseLayerInterface_TEMP_GEN_0 == null)
+            BroadPhaseLayerInterface_TEMP_GEN_0 = BroadPhaseLayerInterface.native_new();
+        BroadPhaseLayerInterface_TEMP_GEN_0.internal_reset(addr, false);
+        return BroadPhaseLayerInterface_TEMP_GEN_0;
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_physicssystem_getbroadphaselayerinterface_addr")
+    public static native long internal_native_GetBroadPhaseLayerInterface_addr(long this_addr);
 
     public BroadPhaseQuery GetBroadPhaseQuery() {
         long addr = internal_native_GetBroadPhaseQuery_addr(native_address);

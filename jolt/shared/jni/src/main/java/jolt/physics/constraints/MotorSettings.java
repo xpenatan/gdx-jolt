@@ -7,6 +7,7 @@
 package jolt.physics.constraints;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.enums.ESpringMode;
 
 public final class MotorSettings extends NativeObject {
 
@@ -23,6 +24,15 @@ public final class MotorSettings extends NativeObject {
         return jolt.physics.constraints.natives.JNI_MotorSettings.internal_native_create_addr();
     }
 
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping) {
+        long addr = internal_native_create_ESpringMode_float_float_addr(inMode.getValue(), inFrequency, inDamping);
+        internal_reset(addr, true);
+    }
+
+    public static long internal_native_create_ESpringMode_float_float_addr(int inMode, float inFrequency, float inDamping) {
+        return jolt.physics.constraints.natives.JNI_MotorSettings.internal_native_create_ESpringMode_float_float_addr(inMode, inFrequency, inDamping);
+    }
+
     public MotorSettings(float inFrequency, float inDamping) {
         long addr = internal_native_create_float_float_addr(inFrequency, inDamping);
         internal_reset(addr, true);
@@ -30,6 +40,15 @@ public final class MotorSettings extends NativeObject {
 
     public static long internal_native_create_float_float_addr(float inFrequency, float inDamping) {
         return jolt.physics.constraints.natives.JNI_MotorSettings.internal_native_create_float_float_addr(inFrequency, inDamping);
+    }
+
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
+        long addr = internal_native_create_ESpringMode_float_float_float_float_addr(inMode.getValue(), inFrequency, inDamping, inForceLimit, inTorqueLimit);
+        internal_reset(addr, true);
+    }
+
+    public static long internal_native_create_ESpringMode_float_float_float_float_addr(int inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
+        return jolt.physics.constraints.natives.JNI_MotorSettings.internal_native_create_ESpringMode_float_float_float_float_addr(inMode, inFrequency, inDamping, inForceLimit, inTorqueLimit);
     }
 
     public MotorSettings(float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {

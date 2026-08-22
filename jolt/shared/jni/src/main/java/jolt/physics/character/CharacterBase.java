@@ -248,6 +248,14 @@ public class CharacterBase extends NativeObject {
         return jolt.physics.character.natives.JNI_CharacterBase.internal_native_GetGroundBodyID_addr(this_addr);
     }
 
+    public long GetGroundUserData() {
+        return internal_native_GetGroundUserData(native_address);
+    }
+
+    public static long internal_native_GetGroundUserData(long this_addr) {
+        return jolt.physics.character.natives.JNI_CharacterBase.internal_native_GetGroundUserData(this_addr);
+    }
+
     public void SaveState(StateRecorder inStream) {
         internal_native_SaveState(native_address, inStream.native_address);
     }

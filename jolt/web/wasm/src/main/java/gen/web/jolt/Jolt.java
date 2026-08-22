@@ -7,6 +7,7 @@
 package gen.web.jolt;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
+import gen.web.jolt.enums.EMotorState;
 import gen.web.jolt.physics.PhysicsSystem;
 import gen.web.jolt.physics.character.CharacterVirtual;
 import gen.web.jolt.physics.character.CharacterContactListener;
@@ -50,6 +51,27 @@ public final class Jolt extends NativeObject {
 
     @org.teavm.jso.JSBody(script = "jolt.Jolt.prototype.RegisterTypes();")
     public static native void internal_native_RegisterTypes();
+
+    public static void RegisterHair() {
+        internal_native_RegisterHair();
+    }
+
+    @org.teavm.jso.JSBody(script = "jolt.Jolt.prototype.RegisterHair();")
+    public static native void internal_native_RegisterHair();
+
+    public static boolean IsVelocityMotor(EMotorState inMotorState) {
+        return internal_native_IsVelocityMotor(inMotorState.getValue());
+    }
+
+    @org.teavm.jso.JSBody(params = {"inMotorState"}, script = "var returnedJSObj = jolt.Jolt.prototype.IsVelocityMotor(inMotorState);return returnedJSObj;")
+    public static native boolean internal_native_IsVelocityMotor(int inMotorState);
+
+    public static boolean IsPositionMotor(EMotorState inMotorState) {
+        return internal_native_IsPositionMotor(inMotorState.getValue());
+    }
+
+    @org.teavm.jso.JSBody(params = {"inMotorState"}, script = "var returnedJSObj = jolt.Jolt.prototype.IsPositionMotor(inMotorState);return returnedJSObj;")
+    public static native boolean internal_native_IsPositionMotor(int inMotorState);
 
     @Deprecated
     public static void UnregisterTypes() {

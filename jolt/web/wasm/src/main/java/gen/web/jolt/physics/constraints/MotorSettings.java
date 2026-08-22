@@ -7,6 +7,7 @@
 package gen.web.jolt.physics.constraints;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
+import gen.web.jolt.enums.ESpringMode;
 
 public final class MotorSettings extends NativeObject {
 
@@ -22,6 +23,14 @@ public final class MotorSettings extends NativeObject {
     @org.teavm.jso.JSBody(script = "var jsObj = new jolt.MotorSettings();return jolt.getPointer(jsObj);")
     public static native int internal_native_create_addr();
 
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping) {
+        int addr = internal_native_create_ESpringMode_float_float_addr(inMode.getValue(), inFrequency, inDamping);
+        internal_reset(addr, true);
+    }
+
+    @org.teavm.jso.JSBody(params = {"inMode", "inFrequency", "inDamping"}, script = "var jsObj = new jolt.MotorSettings(inMode, inFrequency, inDamping);return jolt.getPointer(jsObj);")
+    public static native int internal_native_create_ESpringMode_float_float_addr(int inMode, float inFrequency, float inDamping);
+
     public MotorSettings(float inFrequency, float inDamping) {
         int addr = internal_native_create_float_float_addr(inFrequency, inDamping);
         internal_reset(addr, true);
@@ -29,6 +38,14 @@ public final class MotorSettings extends NativeObject {
 
     @org.teavm.jso.JSBody(params = {"inFrequency", "inDamping"}, script = "var jsObj = new jolt.MotorSettings(inFrequency, inDamping);return jolt.getPointer(jsObj);")
     public static native int internal_native_create_float_float_addr(float inFrequency, float inDamping);
+
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
+        int addr = internal_native_create_ESpringMode_float_float_float_float_addr(inMode.getValue(), inFrequency, inDamping, inForceLimit, inTorqueLimit);
+        internal_reset(addr, true);
+    }
+
+    @org.teavm.jso.JSBody(params = {"inMode", "inFrequency", "inDamping", "inForceLimit", "inTorqueLimit"}, script = "var jsObj = new jolt.MotorSettings(inMode, inFrequency, inDamping, inForceLimit, inTorqueLimit);return jolt.getPointer(jsObj);")
+    public static native int internal_native_create_ESpringMode_float_float_float_float_addr(int inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit);
 
     public MotorSettings(float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
         int addr = internal_native_create_float_float_float_float_addr(inFrequency, inDamping, inForceLimit, inTorqueLimit);

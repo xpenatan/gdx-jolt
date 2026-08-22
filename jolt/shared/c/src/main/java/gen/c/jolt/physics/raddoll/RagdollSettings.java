@@ -62,7 +62,7 @@ public final class RagdollSettings extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_raddoll_ragdollsettings_stabilize")
     public static native boolean internal_native_Stabilize(long this_addr);
 
-    public Ragdoll CreateRagdoll(int inCollisionGroup, int inUserData, PhysicsSystem inSystem) {
+    public Ragdoll CreateRagdoll(int inCollisionGroup, long inUserData, PhysicsSystem inSystem) {
         long addr = internal_native_CreateRagdoll_addr(native_address, inCollisionGroup, inUserData, inSystem.native_address);
         if (addr == 0)
             return Ragdoll.NULL;
@@ -73,7 +73,7 @@ public final class RagdollSettings extends NativeObject {
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_raddoll_ragdollsettings_createragdoll_addr")
-    public static native long internal_native_CreateRagdoll_addr(long this_addr, int inCollisionGroup, int inUserData, long inSystem_addr);
+    public static native long internal_native_CreateRagdoll_addr(long this_addr, int inCollisionGroup, long inUserData, long inSystem_addr);
 
     public Skeleton GetSkeleton() {
         long addr = internal_native_GetSkeleton_addr(native_address);

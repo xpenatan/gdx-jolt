@@ -14,6 +14,10 @@ final public class JNI_MassProperties {
 
     public static native void internal_native_deleteNative(long this_addr);
 
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
     public static native void internal_native_SetMassAndInertiaOfSolidBox(long this_addr, long inBoxSize_addr, float inDensity);
 
     public static native void internal_native_ScaleToMass(long this_addr, float inMass);

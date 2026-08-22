@@ -90,19 +90,19 @@ public final class SoftBodyCreationSettings extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "mRotation_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyCreationSettings);jsObj.set_mRotation(mRotation_addr);")
     public static native void internal_native_set_mRotation(int this_addr, int mRotation_addr);
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyCreationSettings);return jsObj.get_mUserData();")
-    public static native int internal_native_get_mUserData(int this_addr);
+    public static native long internal_native_get_mUserData(int this_addr);
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "mUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyCreationSettings);jsObj.set_mUserData(mUserData);")
-    public static native void internal_native_set_mUserData(int this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(int this_addr, long mUserData);
 
     public int get_mObjectLayer() {
         return internal_native_get_mObjectLayer(native_address);

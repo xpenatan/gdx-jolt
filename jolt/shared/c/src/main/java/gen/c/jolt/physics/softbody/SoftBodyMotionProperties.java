@@ -275,4 +275,11 @@ public final class SoftBodyMotionProperties extends MotionProperties {
 
     @org.teavm.interop.Import(name = "jolt_physics_softbody_softbodymotionproperties_skinvertices")
     public static native void internal_native_SkinVertices(long this_addr, long inRootTransform_addr, long inJointMatrices_addr, int inNumJoints, boolean inHardSkinAll, long ioTempAllocator_addr);
+
+    public void RequestContactCallback() {
+        internal_native_RequestContactCallback(native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_softbody_softbodymotionproperties_requestcontactcallback")
+    public static native void internal_native_RequestContactCallback(long this_addr);
 }

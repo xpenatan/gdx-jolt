@@ -668,19 +668,19 @@ public final class Body extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_body_body_getworldspacesurfacenormal_addr")
     public static native long internal_native_GetWorldSpaceSurfaceNormal_addr(long this_addr, long inSubShapeID_addr, long inPosition_addr);
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_body_body_getuserdata")
-    public static native int internal_native_GetUserData(long this_addr);
+    public static native long internal_native_GetUserData(long this_addr);
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_body_body_setuserdata")
-    public static native void internal_native_SetUserData(long this_addr, int inUserData);
+    public static native void internal_native_SetUserData(long this_addr, long inUserData);
 
     public void SetCollisionGroup(CollisionGroup inGroup) {
         internal_native_SetCollisionGroup(native_address, inGroup.native_address);

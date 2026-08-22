@@ -16,15 +16,19 @@ final public class JNI_Vector2 {
 
     public static native void internal_native_SetZero(long this_addr);
 
-    public static native void internal_native_IsZero(long this_addr);
+    public static native boolean internal_native_IsZero(long this_addr);
 
-    public static native void internal_native_IsClose(long this_addr, long inV_addr, float inMaxDistSq);
+    public static native boolean internal_native_IsNearZero(long this_addr, float inMaxDistSq);
 
-    public static native void internal_native_IsClose(long this_addr, long inV_addr);
+    public static native boolean internal_native_IsNearZero(long this_addr);
 
-    public static native void internal_native_IsNormalized(long this_addr, float inTolerance);
+    public static native boolean internal_native_IsClose(long this_addr, long inV_addr, float inMaxDistSq);
 
-    public static native void internal_native_IsNormalized(long this_addr);
+    public static native boolean internal_native_IsClose(long this_addr, long inV_addr);
+
+    public static native boolean internal_native_IsNormalized(long this_addr, float inTolerance);
+
+    public static native boolean internal_native_IsNormalized(long this_addr);
 
     public static native long internal_native_Normalized_addr(long this_addr);
 

@@ -6,19 +6,20 @@
 
 package jolt.geometry;
 
-import com.github.xpenatan.jParser.api.NativeObject;
-
-public final class IndexedTriangle extends NativeObject {
+public final class IndexedTriangle extends IndexedTriangleNoMaterial {
 
     static public final IndexedTriangle NULL = IndexedTriangle.native_new();
 
     public IndexedTriangle() {
+        super((byte) 1, (char) 1);
     }
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex, int inUserData) {
+        super((byte) 1, (char) 1);
     }
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex) {
+        super((byte) 1, (char) 1);
     }
 
     /**
@@ -26,6 +27,7 @@ public final class IndexedTriangle extends NativeObject {
      */
     @Deprecated()
     protected IndexedTriangle(byte b, char c) {
+        super((byte) 1, (char) 1);
     }
 
     /**
@@ -35,11 +37,16 @@ public final class IndexedTriangle extends NativeObject {
         return new IndexedTriangle((byte) 0, (char) 0);
     }
 
-    public int get_mIdx(int index) {
-        return 0;
+    public boolean EqualsIndexedTriangle(IndexedTriangle inRHS) {
+        return false;
     }
 
-    public void set_mIdx(int index, int mIdx) {
+    public IndexedTriangle GetLowestIndexFirst() {
+        return null;
+    }
+
+    public long GetHash() {
+        return 0;
     }
 
     public int get_mMaterialIndex() {

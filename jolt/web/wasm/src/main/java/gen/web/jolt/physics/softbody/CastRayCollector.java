@@ -69,6 +69,13 @@ public class CastRayCollector extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CastRayCollector);var returnedJSObj = jsObj.GetContext();if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_GetContext_addr(int this_addr);
 
+    public void SetUserData(long inUserData) {
+        internal_native_SetUserData(native_address, inUserData);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CastRayCollector);jsObj.SetUserData(inUserData);")
+    public static native void internal_native_SetUserData(int this_addr, long inUserData);
+
     public void UpdateEarlyOutFraction(float inFraction) {
         internal_native_UpdateEarlyOutFraction(native_address, inFraction);
     }

@@ -1289,25 +1289,25 @@ public final class BodyInterface extends NativeObject {
         }
     }
 
-    public int GetUserData(BodyID inBodyID) {
+    public long GetUserData(BodyID inBodyID) {
         return internal_native_GetUserData(native_address, inBodyID.native_address);
     }
 
-    public static int internal_native_GetUserData(long this_addr, long inBodyID_addr) {
+    public static long internal_native_GetUserData(long this_addr, long inBodyID_addr) {
         try {
-            return (int) FFMHandles.internal_native_GetUserData__JJ.invokeExact(this_addr, inBodyID_addr);
+            return (long) FFMHandles.internal_native_GetUserData__JJ.invokeExact(this_addr, inBodyID_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void SetUserData(BodyID inBodyID, int inUserData) {
+    public void SetUserData(BodyID inBodyID, long inUserData) {
         internal_native_SetUserData(native_address, inBodyID.native_address, inUserData);
     }
 
-    public static void internal_native_SetUserData(long this_addr, long inBodyID_addr, int inUserData) {
+    public static void internal_native_SetUserData(long this_addr, long inBodyID_addr, long inUserData) {
         try {
-            FFMHandles.internal_native_SetUserData__JJI.invokeExact(this_addr, inBodyID_addr, inUserData);
+            FFMHandles.internal_native_SetUserData__JJJ.invokeExact(this_addr, inBodyID_addr, inUserData);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -1521,9 +1521,9 @@ public final class BodyInterface extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_GetTransformedShape_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_bodyinterface_gettransformedshape_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_GetUserData__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_bodyinterface_getuserdata", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_GetUserData__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_bodyinterface_getuserdata", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_SetUserData__JJI = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_bodyinterface_setuserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        static final java.lang.invoke.MethodHandle internal_native_SetUserData__JJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_bodyinterface_setuserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetMaterial_addr__JJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_bodyinterface_getmaterial_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

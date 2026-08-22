@@ -50,6 +50,9 @@ val hostJniBuildTask = when {
 tasks.test {
     dependsOn(hostJniBuildTask, tasks.jar)
     classpath = files(tasks.jar) + classpath
+    val jparserTestTmp = layout.buildDirectory.dir("jparser-test-tmp").get().asFile
+    doFirst { jparserTestTmp.mkdirs() }
+    systemProperty("java.io.tmpdir", jparserTestTmp.absolutePath)
 }
 
 java {

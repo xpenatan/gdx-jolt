@@ -54,6 +54,22 @@ public final class CollisionGroup extends NativeObject {
         jolt.physics.collision.natives.JNI_CollisionGroup.internal_native_deleteNative(this_addr);
     }
 
+    public boolean Equals(CollisionGroup inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_Equals(long this_addr, long inRHS_addr) {
+        return jolt.physics.collision.natives.JNI_CollisionGroup.internal_native_Equals(this_addr, inRHS_addr);
+    }
+
+    public boolean NotEquals(CollisionGroup inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_NotEquals(long this_addr, long inRHS_addr) {
+        return jolt.physics.collision.natives.JNI_CollisionGroup.internal_native_NotEquals(this_addr, inRHS_addr);
+    }
+
     public void SetGroupFilter(GroupFilter inFilter) {
         internal_native_SetGroupFilter(native_address, inFilter.native_address);
     }

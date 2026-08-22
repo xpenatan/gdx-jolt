@@ -327,6 +327,18 @@ public class CharacterBase extends NativeObject {
         }
     }
 
+    public long GetGroundUserData() {
+        return internal_native_GetGroundUserData(native_address);
+    }
+
+    public static long internal_native_GetGroundUserData(long this_addr) {
+        try {
+            return (long) FFMHandles.internal_native_GetGroundUserData__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public void SaveState(StateRecorder inStream) {
         internal_native_SaveState(native_address, inStream.native_address);
     }
@@ -388,6 +400,8 @@ public class CharacterBase extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_GetGroundMaterial_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_characterbase_getgroundmaterial_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetGroundBodyID_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_characterbase_getgroundbodyid_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_GetGroundUserData__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_characterbase_getgrounduserdata", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_SaveState__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_characterbase_savestate", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

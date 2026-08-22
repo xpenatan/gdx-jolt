@@ -116,6 +116,13 @@ public class CastRayCollector extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_softbody_castraycollector_getcontext_addr")
     public static native long internal_native_GetContext_addr(long this_addr);
 
+    public void SetUserData(long inUserData) {
+        internal_native_SetUserData(native_address, inUserData);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_softbody_castraycollector_setuserdata")
+    public static native void internal_native_SetUserData(long this_addr, long inUserData);
+
     public void UpdateEarlyOutFraction(float inFraction) {
         internal_native_UpdateEarlyOutFraction(native_address, inFraction);
     }

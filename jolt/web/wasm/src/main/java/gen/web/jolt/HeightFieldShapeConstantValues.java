@@ -39,4 +39,11 @@ public final class HeightFieldShapeConstantValues extends NativeObject {
 
     @org.teavm.jso.JSBody(script = "return jolt.HeightFieldShapeConstantValues.prototype.get_cNoCollisionValue()")
     public static native float internal_native_get_cNoCollisionValue();
+
+    public static int get_cMaxBitsPerSample() {
+        return internal_native_get_cMaxBitsPerSample();
+    }
+
+    @org.teavm.jso.JSBody(script = "return jolt.HeightFieldShapeConstantValues.prototype.get_cMaxBitsPerSample()")
+    public static native int internal_native_get_cMaxBitsPerSample();
 }

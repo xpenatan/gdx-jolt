@@ -7,6 +7,7 @@
 package jolt;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.enums.EMotorState;
 import jolt.physics.PhysicsSystem;
 import jolt.physics.character.CharacterVirtual;
 import jolt.physics.character.CharacterContactListener;
@@ -63,6 +64,42 @@ public final class Jolt extends NativeObject {
     public static void internal_native_RegisterTypes() {
         try {
             FFMHandles.internal_native_RegisterTypes__.invokeExact();
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public static void RegisterHair() {
+        internal_native_RegisterHair();
+    }
+
+    public static void internal_native_RegisterHair() {
+        try {
+            FFMHandles.internal_native_RegisterHair__.invokeExact();
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public static boolean IsVelocityMotor(EMotorState inMotorState) {
+        return internal_native_IsVelocityMotor(inMotorState.getValue());
+    }
+
+    public static boolean internal_native_IsVelocityMotor(int inMotorState) {
+        try {
+            return (boolean) FFMHandles.internal_native_IsVelocityMotor__I.invokeExact(inMotorState);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public static boolean IsPositionMotor(EMotorState inMotorState) {
+        return internal_native_IsPositionMotor(inMotorState.getValue());
+    }
+
+    public static boolean internal_native_IsPositionMotor(int inMotorState) {
+        try {
+            return (boolean) FFMHandles.internal_native_IsPositionMotor__I.invokeExact(inMotorState);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -134,6 +171,12 @@ public final class Jolt extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_Init__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_jolt_init", FunctionDescriptor.ofVoid());
 
         static final java.lang.invoke.MethodHandle internal_native_RegisterTypes__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_jolt_registertypes", FunctionDescriptor.ofVoid());
+
+        static final java.lang.invoke.MethodHandle internal_native_RegisterHair__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_jolt_registerhair", FunctionDescriptor.ofVoid());
+
+        static final java.lang.invoke.MethodHandle internal_native_IsVelocityMotor__I = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_jolt_isvelocitymotor", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
+
+        static final java.lang.invoke.MethodHandle internal_native_IsPositionMotor__I = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_jolt_ispositionmotor", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_INT));
 
         static final java.lang.invoke.MethodHandle internal_native_UnregisterTypes__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_jolt_unregistertypes", FunctionDescriptor.ofVoid());
 

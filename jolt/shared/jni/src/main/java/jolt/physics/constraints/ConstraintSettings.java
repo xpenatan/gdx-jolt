@@ -137,4 +137,20 @@ public class ConstraintSettings extends NativeObject {
     public static void internal_native_set_mDrawConstraintSize(long this_addr, float mDrawConstraintSize) {
         jolt.physics.constraints.natives.JNI_ConstraintSettings.internal_native_set_mDrawConstraintSize(this_addr, mDrawConstraintSize);
     }
+
+    public long get_mUserData() {
+        return internal_native_get_mUserData(native_address);
+    }
+
+    public static long internal_native_get_mUserData(long this_addr) {
+        return jolt.physics.constraints.natives.JNI_ConstraintSettings.internal_native_get_mUserData(this_addr);
+    }
+
+    public void set_mUserData(long mUserData) {
+        internal_native_set_mUserData(native_address, mUserData);
+    }
+
+    public static void internal_native_set_mUserData(long this_addr, long mUserData) {
+        jolt.physics.constraints.natives.JNI_ConstraintSettings.internal_native_set_mUserData(this_addr, mUserData);
+    }
 }

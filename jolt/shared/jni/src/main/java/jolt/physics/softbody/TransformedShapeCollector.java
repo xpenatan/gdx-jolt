@@ -69,6 +69,14 @@ public class TransformedShapeCollector extends NativeObject {
         return jolt.physics.softbody.natives.JNI_TransformedShapeCollector.internal_native_GetContext_addr(this_addr);
     }
 
+    public void SetUserData(long inUserData) {
+        internal_native_SetUserData(native_address, inUserData);
+    }
+
+    public static void internal_native_SetUserData(long this_addr, long inUserData) {
+        jolt.physics.softbody.natives.JNI_TransformedShapeCollector.internal_native_SetUserData(this_addr, inUserData);
+    }
+
     public void UpdateEarlyOutFraction(float inFraction) {
         internal_native_UpdateEarlyOutFraction(native_address, inFraction);
     }

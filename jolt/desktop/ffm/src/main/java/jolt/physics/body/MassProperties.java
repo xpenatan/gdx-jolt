@@ -64,6 +64,30 @@ public final class MassProperties extends NativeObject {
         }
     }
 
+    public boolean Equals(MassProperties inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_Equals(long this_addr, long inRHS_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_Equals__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public boolean NotEquals(MassProperties inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_NotEquals(long this_addr, long inRHS_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_NotEquals__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public void SetMassAndInertiaOfSolidBox(Vec3 inBoxSize, float inDensity) {
         internal_native_SetMassAndInertiaOfSolidBox(native_address, inBoxSize.native_address, inDensity);
     }
@@ -201,6 +225,10 @@ public final class MassProperties extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_create_addr__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_massproperties_create_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_massproperties_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_Equals__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_massproperties_equals", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_NotEquals__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_massproperties_notequals", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_SetMassAndInertiaOfSolidBox__JJF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_body_massproperties_setmassandinertiaofsolidbox", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
 

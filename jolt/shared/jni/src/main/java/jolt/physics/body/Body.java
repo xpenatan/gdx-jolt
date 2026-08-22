@@ -733,19 +733,19 @@ public final class Body extends NativeObject {
         return jolt.physics.body.natives.JNI_Body.internal_native_GetWorldSpaceSurfaceNormal_addr(this_addr, inSubShapeID_addr, inPosition_addr);
     }
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
-    public static int internal_native_GetUserData(long this_addr) {
+    public static long internal_native_GetUserData(long this_addr) {
         return jolt.physics.body.natives.JNI_Body.internal_native_GetUserData(this_addr);
     }
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
-    public static void internal_native_SetUserData(long this_addr, int inUserData) {
+    public static void internal_native_SetUserData(long this_addr, long inUserData) {
         jolt.physics.body.natives.JNI_Body.internal_native_SetUserData(this_addr, inUserData);
     }
 

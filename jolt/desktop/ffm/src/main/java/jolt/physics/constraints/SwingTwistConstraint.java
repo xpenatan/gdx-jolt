@@ -378,6 +378,18 @@ public final class SwingTwistConstraint extends TwoBodyConstraint {
         }
     }
 
+    public void SetTargetAngularVelocityBS(Vec3 inAngularVelocity) {
+        internal_native_SetTargetAngularVelocityBS(native_address, inAngularVelocity.native_address);
+    }
+
+    public static void internal_native_SetTargetAngularVelocityBS(long this_addr, long inAngularVelocity_addr) {
+        try {
+            FFMHandles.internal_native_SetTargetAngularVelocityBS__JJ.invokeExact(this_addr, inAngularVelocity_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public void SetTargetOrientationCS(Quat inOrientation) {
         internal_native_SetTargetOrientationCS(native_address, inOrientation.native_address);
     }
@@ -555,6 +567,8 @@ public final class SwingTwistConstraint extends TwoBodyConstraint {
         static final java.lang.invoke.MethodHandle internal_native_SetTargetAngularVelocityCS__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_swingtwistconstraint_settargetangularvelocitycs", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetTargetAngularVelocityCS_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_swingtwistconstraint_gettargetangularvelocitycs_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_SetTargetAngularVelocityBS__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_swingtwistconstraint_settargetangularvelocitybs", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_SetTargetOrientationCS__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_swingtwistconstraint_settargetorientationcs", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

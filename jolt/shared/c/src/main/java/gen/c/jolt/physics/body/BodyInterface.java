@@ -842,19 +842,19 @@ public final class BodyInterface extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_body_bodyinterface_gettransformedshape_addr")
     public static native long internal_native_GetTransformedShape_addr(long this_addr, long inBodyID_addr);
 
-    public int GetUserData(BodyID inBodyID) {
+    public long GetUserData(BodyID inBodyID) {
         return internal_native_GetUserData(native_address, inBodyID.native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_body_bodyinterface_getuserdata")
-    public static native int internal_native_GetUserData(long this_addr, long inBodyID_addr);
+    public static native long internal_native_GetUserData(long this_addr, long inBodyID_addr);
 
-    public void SetUserData(BodyID inBodyID, int inUserData) {
+    public void SetUserData(BodyID inBodyID, long inUserData) {
         internal_native_SetUserData(native_address, inBodyID.native_address, inUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_body_bodyinterface_setuserdata")
-    public static native void internal_native_SetUserData(long this_addr, long inBodyID_addr, int inUserData);
+    public static native void internal_native_SetUserData(long this_addr, long inBodyID_addr, long inUserData);
 
     public PhysicsMaterial GetMaterial(BodyID inBodyID, SubShapeID inSubShapeID) {
         long addr = internal_native_GetMaterial_addr(native_address, inBodyID.native_address, inSubShapeID.native_address);

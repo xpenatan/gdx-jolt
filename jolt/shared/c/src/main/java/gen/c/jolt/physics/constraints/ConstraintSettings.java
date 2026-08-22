@@ -123,4 +123,18 @@ public class ConstraintSettings extends NativeObject {
 
     @org.teavm.interop.Import(name = "jolt_physics_constraints_constraintsettings_set_mdrawconstraintsize")
     public static native void internal_native_set_mDrawConstraintSize(long this_addr, float mDrawConstraintSize);
+
+    public long get_mUserData() {
+        return internal_native_get_mUserData(native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_constraints_constraintsettings_get_muserdata")
+    public static native long internal_native_get_mUserData(long this_addr);
+
+    public void set_mUserData(long mUserData) {
+        internal_native_set_mUserData(native_address, mUserData);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_constraints_constraintsettings_set_muserdata")
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 }

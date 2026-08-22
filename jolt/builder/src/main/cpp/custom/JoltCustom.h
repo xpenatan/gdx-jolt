@@ -15,6 +15,9 @@
 #ifndef JPH_OBJECT_LAYER_BITS
 #define JPH_OBJECT_LAYER_BITS 32
 #endif
+#ifndef JPH_USE_CPU_COMPUTE
+#define JPH_USE_CPU_COMPUTE
+#endif
 
 #include "Jolt/Jolt.h"
 #include "Jolt/RegisterTypes.h"
@@ -87,6 +90,12 @@
 #include "Jolt/Skeleton/SkeletalAnimation.h"
 #include "Jolt/Skeleton/SkeletonPose.h"
 #include "Jolt/Skeleton/Skeleton.h"
+#include "Jolt/Compute/ComputeSystem.h"
+#include "Jolt/Compute/CPU/ComputeSystemCPU.h"
+#include "Jolt/Physics/Hair/Hair.h"
+#include "Jolt/Physics/Hair/HairShaders.h"
+#include "Jolt/Physics/Hair/RegisterHair.h"
+#include "Jolt/Shaders/HairWrapper.h"
 
 #include "RuntimeHelper.h"
 #include <cstdarg>
@@ -188,6 +197,30 @@ using CastShapeAnyHitCollisionCollector = AnyHitCollisionCollector<CastShapeColl
 using ArrayWheelSettings = Array<Ref<WheelSettings>>;
 using ArrayVehicleAntiRollBar = Array<VehicleAntiRollBar>;
 using ArrayVehicleDifferentialSettings = Array<VehicleDifferentialSettings>;
+using ComputeBuffer_EType = ComputeBuffer::EType;
+using ComputeBuffer_EMode = ComputeBuffer::EMode;
+using ComputeQueue_EBarrier = ComputeQueue::EBarrier;
+using HairSettingsSkinWeight = HairSettings::SkinWeight;
+using HairSettingsSkinPoint = HairSettings::SkinPoint;
+using HairSettingsSVertexInfluence = HairSettings::SVertexInfluence;
+using HairSettingsRVertex = HairSettings::RVertex;
+using HairSettingsSVertex = HairSettings::SVertex;
+using HairSettingsRStrand = HairSettings::RStrand;
+using HairSettingsSStrand = HairSettings::SStrand;
+using HairSettingsGradient = HairSettings::Gradient;
+using HairSettingsGradientSampler = HairSettings::GradientSampler;
+using HairSettingsMaterial = HairSettings::Material;
+using HairSettingsGridSampler = HairSettings::GridSampler;
+using HairDrawSettings = Hair::DrawSettings;
+using Hair_ERenderStrandColor = Hair::ERenderStrandColor;
+using ArrayHairSettingsSkinWeight = Array<HairSettingsSkinWeight>;
+using ArrayHairSettingsSkinPoint = Array<HairSettingsSkinPoint>;
+using ArrayHairSettingsRVertex = Array<HairSettingsRVertex>;
+using ArrayHairSettingsSVertex = Array<HairSettingsSVertex>;
+using ArrayHairSettingsRStrand = Array<HairSettingsRStrand>;
+using ArrayHairSettingsSStrand = Array<HairSettingsSStrand>;
+using ArrayHairSettingsMaterial = Array<HairSettingsMaterial>;
+using ArrayIndexedTriangleNoMaterial = Array<IndexedTriangleNoMaterial>;
 
 /// Borrowed view over TrackedVehicleController's fixed VehicleTracks C array.
 /// This class intentionally has no state: Jolt::GetTrackedVehicleTracks casts
@@ -215,6 +248,24 @@ using BodyInterface_AddState = void;
 using CharacterVirtualContact = CharacterContact;
 using ArrayCharacterVirtualContact = Array<CharacterVirtualContact>;
 using RefTargetShapeSettings = RefTarget<ShapeSettings>;
+
+// Aliases for the nested compute and hair enum values.
+constexpr ComputeBuffer_EType ComputeBuffer_EType_UploadBuffer = ComputeBuffer_EType::UploadBuffer;
+constexpr ComputeBuffer_EType ComputeBuffer_EType_ReadbackBuffer = ComputeBuffer_EType::ReadbackBuffer;
+constexpr ComputeBuffer_EType ComputeBuffer_EType_ConstantBuffer = ComputeBuffer_EType::ConstantBuffer;
+constexpr ComputeBuffer_EType ComputeBuffer_EType_Buffer = ComputeBuffer_EType::Buffer;
+constexpr ComputeBuffer_EType ComputeBuffer_EType_RWBuffer = ComputeBuffer_EType::RWBuffer;
+constexpr ComputeBuffer_EMode ComputeBuffer_EMode_Read = ComputeBuffer_EMode::Read;
+constexpr ComputeBuffer_EMode ComputeBuffer_EMode_Write = ComputeBuffer_EMode::Write;
+constexpr ComputeQueue_EBarrier ComputeQueue_EBarrier_Yes = ComputeQueue_EBarrier::Yes;
+constexpr ComputeQueue_EBarrier ComputeQueue_EBarrier_No = ComputeQueue_EBarrier::No;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_PerRenderStrand = Hair_ERenderStrandColor::PerRenderStrand;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_PerSimulatedStrand = Hair_ERenderStrandColor::PerSimulatedStrand;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_GravityFactor = Hair_ERenderStrandColor::GravityFactor;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_WorldTransformInfluence = Hair_ERenderStrandColor::WorldTransformInfluence;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_GridVelocityFactor = Hair_ERenderStrandColor::GridVelocityFactor;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_GlobalPose = Hair_ERenderStrandColor::GlobalPose;
+constexpr Hair_ERenderStrandColor Hair_ERenderStrandColor_SkinGlobalPose = Hair_ERenderStrandColor::SkinGlobalPose;
 
 // Alias for EBodyType values to avoid clashes
 constexpr EBodyType EBodyType_RigidBody = EBodyType::RigidBody;
@@ -423,6 +474,210 @@ static bool AssertFailedImpl(const char* inExpression, const char* inMessage, co
 
 namespace XJPH { class CharacterContactListener; }
 
+/// Callback adapter for ComputeSystem::mShaderLoader.
+class ComputeShaderLoader
+{
+public:
+    virtual ~ComputeShaderLoader() = default;
+    virtual bool Load(const NativeString *inName, ArrayUint8 &outData, NativeString &outError) = 0;
+};
+
+/// Mutable view over a contiguous array of Float3 values owned by Jolt.
+/// Instances are borrowed and must never be retained after the native call returns.
+class Float3Span
+{
+public:
+    Float3 &at(uint inIndex) { return reinterpret_cast<Float3 *>(this)[inIndex]; }
+    const Float3 &at(uint inIndex) const { return reinterpret_cast<const Float3 *>(this)[inIndex]; }
+};
+
+/// Mutable view over a contiguous array of Float4 values owned by Jolt.
+class Float4Span
+{
+public:
+    Float4 &at(uint inIndex) { return reinterpret_cast<Float4 *>(this)[inIndex]; }
+    const Float4 &at(uint inIndex) const { return reinterpret_cast<const Float4 *>(this)[inIndex]; }
+};
+
+/// Callback adapter for Hair::RenderPositionsToFloat3.
+class HairRenderPositionsToFloat3
+{
+public:
+    virtual ~HairRenderPositionsToFloat3() = default;
+    virtual void Convert(ComputeBuffer *inBuffer, Float3Span *outPositions, uint inCount) = 0;
+};
+
+/// Callback adapter used to expose HairSettings::GridSampler's templated Sample methods.
+class HairGridSampleCallback
+{
+public:
+    virtual ~HairGridSampleCallback() = default;
+    virtual void Sample(uint inIndex, float inFraction) = 0;
+};
+
+/// Cross-platform bridge for compute methods whose C++ string and function types
+/// cannot be represented directly in WebIDL. All factories deliberately use the
+/// CPU implementation so the same surface is available on every target.
+class JoltCompute
+{
+public:
+    static ComputeSystemResult CreateComputeSystemCPU()
+    {
+        return JPH::CreateComputeSystemCPU();
+    }
+
+    static ComputeShaderResult CreateComputeShader(ComputeSystem *inSystem, const NativeString &inName,
+        uint inGroupSizeX, uint inGroupSizeY = 1, uint inGroupSizeZ = 1)
+    {
+        if (inSystem == nullptr)
+        {
+            ComputeShaderResult result;
+            result.SetError("Compute system is null");
+            return result;
+        }
+        return inSystem->CreateComputeShader(inName.c_str(), inGroupSizeX, inGroupSizeY, inGroupSizeZ);
+    }
+
+    static void SetShaderLoader(ComputeSystem *inSystem, ComputeShaderLoader *inLoader)
+    {
+        if (inSystem == nullptr)
+            return;
+
+        if (inLoader == nullptr)
+        {
+            inSystem->mShaderLoader = [](const char *, Array<uint8> &, String &outError)
+            {
+                outError = "Not implemented";
+                return false;
+            };
+            return;
+        }
+
+        inSystem->mShaderLoader = [inLoader](const char *inName, Array<uint8> &outData, String &outError)
+        {
+            NativeString name(inName != nullptr? inName : "");
+            return inLoader->Load(&name, outData, outError);
+        };
+    }
+
+    static void SetConstantBuffer(ComputeQueue *inQueue, const NativeString &inName, const ComputeBuffer *inBuffer)
+    {
+        if (inQueue != nullptr)
+            inQueue->SetConstantBuffer(inName.c_str(), inBuffer);
+    }
+
+    static void SetBuffer(ComputeQueue *inQueue, const NativeString &inName, const ComputeBuffer *inBuffer)
+    {
+        if (inQueue != nullptr)
+            inQueue->SetBuffer(inName.c_str(), inBuffer);
+    }
+
+    static void SetRWBuffer(ComputeQueue *inQueue, const NativeString &inName, ComputeBuffer *inBuffer,
+        ComputeQueue::EBarrier inBarrier = ComputeQueue::EBarrier::Yes)
+    {
+        if (inQueue != nullptr)
+            inQueue->SetRWBuffer(inName.c_str(), inBuffer, inBarrier);
+    }
+
+    static ComputeBufferResult CreateByteBuffer(ComputeSystem *inSystem, ComputeBuffer::EType inType,
+        const ArrayUint8 &inData)
+    {
+        if (inSystem == nullptr)
+        {
+            ComputeBufferResult result;
+            result.SetError("Compute system is null");
+            return result;
+        }
+        return inSystem->CreateComputeBuffer(inType, uint64(inData.size()), 1, inData.empty()? nullptr : inData.data());
+    }
+
+    static bool WriteBytes(ComputeBuffer *inBuffer, uint64 inByteOffset, const ArrayUint8 &inData)
+    {
+        if (inBuffer == nullptr)
+            return false;
+        const uint64 byte_size = inBuffer->GetSize() * uint64(inBuffer->GetStride());
+        if (inByteOffset > byte_size || uint64(inData.size()) > byte_size - inByteOffset)
+            return false;
+        uint8 *data = static_cast<uint8 *>(inBuffer->Map(ComputeBuffer::EMode::Write));
+        if (!inData.empty())
+            memcpy(data + inByteOffset, inData.data(), inData.size());
+        inBuffer->Unmap();
+        return true;
+    }
+
+    static bool ReadBytes(ComputeBuffer *inBuffer, uint64 inByteOffset, uint64 inByteCount, ArrayUint8 &outData)
+    {
+        if (inBuffer == nullptr)
+            return false;
+        const uint64 byte_size = inBuffer->GetSize() * uint64(inBuffer->GetStride());
+        if (inByteOffset > byte_size || inByteCount > byte_size - inByteOffset || inByteCount > uint64(SIZE_MAX))
+            return false;
+        const uint8 *data = static_cast<const uint8 *>(inBuffer->Map(ComputeBuffer::EMode::Read));
+        outData.resize(size_t(inByteCount));
+        if (inByteCount > 0)
+            memcpy(outData.data(), data + inByteOffset, size_t(inByteCount));
+        inBuffer->Unmap();
+        return true;
+    }
+};
+
+/// Cross-platform adapters for public Hair APIs that use references, templates,
+/// callbacks or strided pointers that WebIDL cannot express directly.
+class JoltHair
+{
+public:
+    static void RegisterShaders(ComputeSystem *inSystem)
+    {
+        if (inSystem != nullptr)
+            JPH::HairRegisterShaders(static_cast<ComputeSystemCPU *>(inSystem));
+    }
+
+    static float InitSettings(HairSettings &inSettings)
+    {
+        float max_dist_sq_hair_to_scalp = 0.0f;
+        inSettings.Init(max_dist_sq_hair_to_scalp);
+        return max_dist_sq_hair_to_scalp;
+    }
+
+    static void OverrideRenderPositions(Hair *inHair, HairRenderPositionsToFloat3 *inConverter)
+    {
+        if (inHair == nullptr || inConverter == nullptr)
+            return;
+        inHair->OverrideRenderPositionsCB([inConverter](ComputeBuffer *inBuffer, Float3 *outPositions, uint inCount)
+        {
+            inConverter->Convert(inBuffer, reinterpret_cast<Float3Span *>(outPositions), inCount);
+        });
+    }
+
+    static void SampleGrid(HairSettingsGridSampler &inSampler, const UVec4 &inIndex, const Vec3 &inFraction,
+        HairGridSampleCallback *inCallback)
+    {
+        if (inCallback != nullptr)
+            inSampler.Sample(inIndex, inFraction, [inCallback](uint inSampleIndex, float inSampleFraction)
+            {
+                inCallback->Sample(inSampleIndex, inSampleFraction);
+            });
+    }
+
+    static void SampleGridAtPosition(HairSettingsGridSampler &inSampler, const Vec3 &inPosition,
+        HairGridSampleCallback *inCallback)
+    {
+        if (inCallback != nullptr)
+            inSampler.Sample(inPosition, [inCallback](uint inSampleIndex, float inSampleFraction)
+            {
+                inCallback->Sample(inSampleIndex, inSampleFraction);
+            });
+    }
+
+    static Float3 GetScalpVertex(const Hair &inHair, uint inIndex) { return inHair.GetScalpVertices()[inIndex]; }
+    static Float3 GetPosition(const Hair &inHair, uint inIndex) { return inHair.GetPositions()[inIndex]; }
+    static Quat GetRotation(const Hair &inHair, uint inIndex) { return inHair.GetRotations()[inIndex]; }
+    static Float3 GetVelocity(const Hair &inHair, uint inIndex) { return inHair.GetVelocities()[inIndex]; }
+    static Float3 GetAngularVelocity(const Hair &inHair, uint inIndex) { return inHair.GetAngularVelocities()[inIndex]; }
+    static Float4 GetGridVelocityAndDensity(const Hair &inHair, uint inIndex) { return inHair.GetGridVelocityAndDensity()[inIndex]; }
+    static Float3 GetRenderPosition(const Hair &inHair, uint inIndex) { return inHair.GetRenderPositions()[inIndex]; }
+};
+
 // Custom class for setting up Jolt
 class Jolt
 {
@@ -434,6 +689,19 @@ public:
 
     static void RegisterTypes() {
         JPH::RegisterTypes();
+        JPH::RegisterHair();
+    }
+
+    static void RegisterHair() {
+        JPH::RegisterHair();
+    }
+
+    static bool IsVelocityMotor(EMotorState inMotorState) {
+        return JPH::IsVelocityMotor(inMotorState);
+    }
+
+    static bool IsPositionMotor(EMotorState inMotorState) {
+        return JPH::IsPositionMotor(inMotorState);
     }
 
     static void UnregisterTypes() {
@@ -523,6 +791,7 @@ public:
 
         Factory::sInstance = new Factory();
         JPH::RegisterTypes();
+        JPH::RegisterHair();
 
         mTempAllocator = new TempAllocatorImpl(inSettings.mTempAllocatorSize);
         int available_workers = int(thread::hardware_concurrency());
@@ -981,22 +1250,12 @@ private:
     Array<const PhysicsMaterial *>	mMaterials;
 };
 
-/// Narrows native 64-bit body user data to the common 32-bit Java/WebAssembly surface.
+/// Cross-platform activation listener adapter that preserves all 64 user-data bits.
 class BodyActivationListenerEm : public BodyActivationListener
 {
 public:
-    virtual void OnBodyActivated(const BodyID &inBodyID, uint32 inBodyUserData) = 0;
-    virtual void OnBodyDeactivated(const BodyID &inBodyID, uint32 inBodyUserData) = 0;
-
-    virtual void OnBodyActivated(const BodyID &inBodyID, uint64 inBodyUserData) override
-    {
-        OnBodyActivated(inBodyID, uint32(inBodyUserData));
-    }
-
-    virtual void OnBodyDeactivated(const BodyID &inBodyID, uint64 inBodyUserData) override
-    {
-        OnBodyDeactivated(inBodyID, uint32(inBodyUserData));
-    }
+    virtual void OnBodyActivated(const BodyID &inBodyID, uint64 inBodyUserData) override = 0;
+    virtual void OnBodyDeactivated(const BodyID &inBodyID, uint64 inBodyUserData) override = 0;
 };
 
 /// A wrapper around ContactListener that is compatible with JavaScript
@@ -1358,6 +1617,9 @@ class HeightFieldShapeConstantValues
 public:
     /// Value used to create gaps in the height field
     static constexpr float cNoCollisionValue = HeightFieldShapeConstants::cNoCollisionValue;
+
+    /// Maximum value for HeightFieldShapeSettings::mBitsPerSample
+    static constexpr uint32 cMaxBitsPerSample = HeightFieldShapeConstants::cMaxBitsPerSample;
 };
 
 // DEBUG RENDERER

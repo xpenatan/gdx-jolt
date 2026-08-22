@@ -52,6 +52,14 @@ public final class SpringSettings extends NativeObject {
         return jolt.physics.constraints.natives.JNI_SpringSettings.internal_native_HasStiffness(this_addr);
     }
 
+    public boolean HasStiffnessOrDamping() {
+        return internal_native_HasStiffnessOrDamping(native_address);
+    }
+
+    public static boolean internal_native_HasStiffnessOrDamping(long this_addr) {
+        return jolt.physics.constraints.natives.JNI_SpringSettings.internal_native_HasStiffnessOrDamping(this_addr);
+    }
+
     public ESpringMode get_mMode() {
         int value = internal_native_get_mMode(native_address);
         ESpringMode[] values = ESpringMode.values();

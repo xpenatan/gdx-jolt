@@ -7,6 +7,7 @@
 package gen.web.jolt.physics.character;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
+import gen.web.jolt.physics.StateRecorder;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.physics.body.BodyID;
 import gen.web.jolt.physics.collision.shape.SubShapeID;
@@ -35,6 +36,14 @@ public final class CharacterVirtualContact extends NativeObject {
 
     static public final CharacterVirtualContact NULL = CharacterVirtualContact.native_new();
 
+    public CharacterVirtualContact() {
+        int addr = internal_native_create_addr();
+        internal_reset(addr, true);
+    }
+
+    @org.teavm.jso.JSBody(script = "var jsObj = new jolt.CharacterVirtualContact();return jolt.getPointer(jsObj);")
+    public static native int internal_native_create_addr();
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -62,6 +71,41 @@ public final class CharacterVirtualContact extends NativeObject {
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);var returnedJSObj = jsObj.IsSameBody(inOther_addr);return returnedJSObj;")
     public static native boolean internal_native_IsSameBody(int this_addr, int inOther_addr);
+
+    public boolean Equals(CharacterVirtualContact inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);var returnedJSObj = jsObj.Equals(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_Equals(int this_addr, int inRHS_addr);
+
+    public boolean NotEquals(CharacterVirtualContact inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);var returnedJSObj = jsObj.NotEquals(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_NotEquals(int this_addr, int inRHS_addr);
+
+    public long GetHash() {
+        return internal_native_GetHash(native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);var returnedJSObj = jsObj.GetHash();return returnedJSObj;")
+    public static native long internal_native_GetHash(int this_addr);
+
+    public void SaveState(StateRecorder inStream) {
+        internal_native_SaveState(native_address, inStream.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inStream_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);jsObj.SaveState(inStream_addr);")
+    public static native void internal_native_SaveState(int this_addr, int inStream_addr);
+
+    public void RestoreState(StateRecorder inStream) {
+        internal_native_RestoreState(native_address, inStream.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inStream_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);jsObj.RestoreState(inStream_addr);")
+    public static native void internal_native_RestoreState(int this_addr, int inStream_addr);
 
     public Vec3 get_mPosition() {
         int addr = internal_native_get_mPosition_addr(native_address);
@@ -286,19 +330,19 @@ public final class CharacterVirtualContact extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "mCharacterB_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);jsObj.set_mCharacterB(mCharacterB_addr);")
     public static native void internal_native_set_mCharacterB(int this_addr, int mCharacterB_addr);
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);return jsObj.get_mUserData();")
-    public static native int internal_native_get_mUserData(int this_addr);
+    public static native long internal_native_get_mUserData(int this_addr);
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "mUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtualContact);jsObj.set_mUserData(mUserData);")
-    public static native void internal_native_set_mUserData(int this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(int this_addr, long mUserData);
 
     public PhysicsMaterial get_mMaterial() {
         int addr = internal_native_get_mMaterial_addr(native_address);

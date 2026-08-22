@@ -46,11 +46,11 @@ public final class SoftBodyCreationSettings extends NativeObject {
     public void set_mRotation(Quat mRotation) {
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return 0;
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
     }
 
     public int get_mObjectLayer() {

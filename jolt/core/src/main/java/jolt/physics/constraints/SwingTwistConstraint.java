@@ -109,6 +109,9 @@ public final class SwingTwistConstraint extends TwoBodyConstraint {
         return null;
     }
 
+    public void SetTargetAngularVelocityBS(Vec3 inAngularVelocity) {
+    }
+
     public void SetTargetOrientationCS(Quat inOrientation) {
     }
 

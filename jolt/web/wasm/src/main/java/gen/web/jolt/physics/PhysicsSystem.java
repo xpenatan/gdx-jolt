@@ -50,6 +50,8 @@ public final class PhysicsSystem extends NativeObject {
 
     private BodyLockInterfaceLocking BodyLockInterfaceLocking_TEMP_GEN_0;
 
+    private BroadPhaseLayerInterface BroadPhaseLayerInterface_TEMP_GEN_0;
+
     private BroadPhaseQuery BroadPhaseQuery_TEMP_GEN_0;
 
     private NarrowPhaseQuery NarrowPhaseQuery_TEMP_GEN_0;
@@ -305,6 +307,19 @@ public final class PhysicsSystem extends NativeObject {
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.PhysicsSystem);var returnedJSObj = jsObj.GetBodyLockInterface();if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_GetBodyLockInterface_addr(int this_addr);
+
+    public BroadPhaseLayerInterface GetBroadPhaseLayerInterface() {
+        int addr = internal_native_GetBroadPhaseLayerInterface_addr(native_address);
+        if (addr == 0)
+            return BroadPhaseLayerInterface.NULL;
+        if (BroadPhaseLayerInterface_TEMP_GEN_0 == null)
+            BroadPhaseLayerInterface_TEMP_GEN_0 = BroadPhaseLayerInterface.native_new();
+        BroadPhaseLayerInterface_TEMP_GEN_0.internal_reset(addr, false);
+        return BroadPhaseLayerInterface_TEMP_GEN_0;
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.PhysicsSystem);var returnedJSObj = jsObj.GetBroadPhaseLayerInterface();if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
+    public static native int internal_native_GetBroadPhaseLayerInterface_addr(int this_addr);
 
     public BroadPhaseQuery GetBroadPhaseQuery() {
         int addr = internal_native_GetBroadPhaseQuery_addr(native_address);

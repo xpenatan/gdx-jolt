@@ -435,6 +435,20 @@ public class MotionProperties extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_body_motionproperties_lockangular_addr")
     public static native long internal_native_LockAngular_addr(long this_addr, long inV_addr);
 
+    public void ApplyLinearVelocityStep(Vec3 inLinearVelocity) {
+        internal_native_ApplyLinearVelocityStep(native_address, inLinearVelocity.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_body_motionproperties_applylinearvelocitystep")
+    public static native void internal_native_ApplyLinearVelocityStep(long this_addr, long inLinearVelocity_addr);
+
+    public void ApplyAngularVelocityStep(Vec3 inAngularVelocity) {
+        internal_native_ApplyAngularVelocityStep(native_address, inAngularVelocity.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_body_motionproperties_applyangularvelocitystep")
+    public static native void internal_native_ApplyAngularVelocityStep(long this_addr, long inAngularVelocity_addr);
+
     public void SetNumVelocityStepsOverride(int inN) {
         internal_native_SetNumVelocityStepsOverride(native_address, inN);
     }

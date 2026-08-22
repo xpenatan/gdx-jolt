@@ -62,7 +62,7 @@ public final class RagdollSettings extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.RagdollSettings);var returnedJSObj = jsObj.Stabilize();return returnedJSObj;")
     public static native boolean internal_native_Stabilize(int this_addr);
 
-    public Ragdoll CreateRagdoll(int inCollisionGroup, int inUserData, PhysicsSystem inSystem) {
+    public Ragdoll CreateRagdoll(int inCollisionGroup, long inUserData, PhysicsSystem inSystem) {
         int addr = internal_native_CreateRagdoll_addr(native_address, inCollisionGroup, inUserData, inSystem.native_address);
         if (addr == 0)
             return Ragdoll.NULL;
@@ -73,7 +73,7 @@ public final class RagdollSettings extends NativeObject {
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inCollisionGroup", "inUserData", "inSystem_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.RagdollSettings);var returnedJSObj = jsObj.CreateRagdoll(inCollisionGroup, inUserData, inSystem_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
-    public static native int internal_native_CreateRagdoll_addr(int this_addr, int inCollisionGroup, int inUserData, int inSystem_addr);
+    public static native int internal_native_CreateRagdoll_addr(int this_addr, int inCollisionGroup, long inUserData, int inSystem_addr);
 
     public Skeleton GetSkeleton() {
         int addr = internal_native_GetSkeleton_addr(native_address);

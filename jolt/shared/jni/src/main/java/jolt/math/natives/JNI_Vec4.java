@@ -34,6 +34,8 @@ final public class JNI_Vec4 {
 
     public static native long internal_native_sFusedMultiplyAdd_addr(long inMul1_addr, long inMul2_addr, long inAdd_addr);
 
+    public static native long internal_native_sDifferenceOfProducts_addr(long inA_addr, long inB_addr, long inC_addr, long inD_addr);
+
     public static native long internal_native_sOr_addr(long inV1_addr, long inV2_addr);
 
     public static native long internal_native_sXor_addr(long inV1_addr, long inV2_addr);
@@ -97,4 +99,6 @@ final public class JNI_Vec4 {
     public static native long internal_native_AddVec4_addr(long this_addr, long inV_addr);
 
     public static native long internal_native_SubVec4_addr(long this_addr, long inV_addr);
+
+    public static native float internal_native_ReduceSum(long this_addr);
 }

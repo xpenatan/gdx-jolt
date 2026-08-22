@@ -42,6 +42,9 @@ public class TransformedShapeCollector extends NativeObject {
         return null;
     }
 
+    public void SetUserData(long inUserData) {
+    }
+
     public void UpdateEarlyOutFraction(float inFraction) {
     }
 

@@ -201,6 +201,30 @@ public class ConstraintSettings extends NativeObject {
         }
     }
 
+    public long get_mUserData() {
+        return internal_native_get_mUserData(native_address);
+    }
+
+    public static long internal_native_get_mUserData(long this_addr) {
+        try {
+            return (long) FFMHandles.internal_native_get_mUserData__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public void set_mUserData(long mUserData) {
+        internal_native_set_mUserData(native_address, mUserData);
+    }
+
+    public static void internal_native_set_mUserData(long this_addr, long mUserData) {
+        try {
+            FFMHandles.internal_native_set_mUserData__JJ.invokeExact(this_addr, mUserData);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     private static final class FFMHandles {
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_constraintsettings_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
@@ -230,5 +254,9 @@ public class ConstraintSettings extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_get_mDrawConstraintSize__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_constraintsettings_get_mdrawconstraintsize", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_set_mDrawConstraintSize__JF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_constraintsettings_set_mdrawconstraintsize", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT));
+
+        static final java.lang.invoke.MethodHandle internal_native_get_mUserData__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_constraintsettings_get_muserdata", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_set_mUserData__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_constraintsettings_set_muserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
     }
 }

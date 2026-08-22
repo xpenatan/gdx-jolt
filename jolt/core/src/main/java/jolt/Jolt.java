@@ -7,6 +7,7 @@
 package jolt;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.enums.EMotorState;
 import jolt.physics.PhysicsSystem;
 import jolt.physics.character.CharacterVirtual;
 import jolt.physics.character.CharacterContactListener;
@@ -37,6 +38,17 @@ public final class Jolt extends NativeObject {
 
     @Deprecated
     public static void RegisterTypes() {
+    }
+
+    public static void RegisterHair() {
+    }
+
+    public static boolean IsVelocityMotor(EMotorState inMotorState) {
+        return false;
+    }
+
+    public static boolean IsPositionMotor(EMotorState inMotorState) {
+        return false;
     }
 
     @Deprecated

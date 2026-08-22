@@ -39,4 +39,11 @@ public final class HeightFieldShapeConstantValues extends NativeObject {
 
     @org.teavm.interop.Import(name = "jolt_heightfieldshapeconstantvalues_get_cnocollisionvalue")
     public static native float internal_native_get_cNoCollisionValue();
+
+    public static int get_cMaxBitsPerSample() {
+        return internal_native_get_cMaxBitsPerSample();
+    }
+
+    @org.teavm.interop.Import(name = "jolt_heightfieldshapeconstantvalues_get_cmaxbitspersample")
+    public static native int internal_native_get_cMaxBitsPerSample();
 }

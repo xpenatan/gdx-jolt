@@ -99,6 +99,10 @@ public final class TransformedShape extends NativeObject {
         return null;
     }
 
+    public long GetSubShapeUserData(SubShapeID inSubShapeID) {
+        return 0;
+    }
+
     public Vec3 get_mShapePositionCOM() {
         return null;
     }

@@ -12,6 +12,8 @@ final public class JNI_CharacterVirtual {
 
     public static native long internal_native_create_CharacterVirtualSettings_Vec3_Quat_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, long inSystem_addr);
 
+    public static native long internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, long inUserData, long inSystem_addr);
+
     public static native void internal_native_deleteNative(long this_addr);
 
     public static native long internal_native_GetID_addr(long this_addr);
@@ -68,9 +70,9 @@ final public class JNI_CharacterVirtual {
 
     public static native void internal_native_SetShapeOffset(long this_addr, long inShapeOffset_addr);
 
-    public static native int internal_native_GetUserData(long this_addr);
+    public static native long internal_native_GetUserData(long this_addr);
 
-    public static native void internal_native_SetUserData(long this_addr, int inUserData);
+    public static native void internal_native_SetUserData(long this_addr, long inUserData);
 
     public static native long internal_native_GetInnerBodyID_addr(long this_addr);
 

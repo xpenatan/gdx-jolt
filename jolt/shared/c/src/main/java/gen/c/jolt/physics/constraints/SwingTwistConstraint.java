@@ -261,6 +261,13 @@ public final class SwingTwistConstraint extends TwoBodyConstraint {
     @org.teavm.interop.Import(name = "jolt_physics_constraints_swingtwistconstraint_gettargetangularvelocitycs_addr")
     public static native long internal_native_GetTargetAngularVelocityCS_addr(long this_addr);
 
+    public void SetTargetAngularVelocityBS(Vec3 inAngularVelocity) {
+        internal_native_SetTargetAngularVelocityBS(native_address, inAngularVelocity.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_constraints_swingtwistconstraint_settargetangularvelocitybs")
+    public static native void internal_native_SetTargetAngularVelocityBS(long this_addr, long inAngularVelocity_addr);
+
     public void SetTargetOrientationCS(Quat inOrientation) {
         internal_native_SetTargetOrientationCS(native_address, inOrientation.native_address);
     }

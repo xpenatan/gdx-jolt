@@ -14,6 +14,12 @@ final public class JNI_Jolt {
 
     public static native void internal_native_RegisterTypes();
 
+    public static native void internal_native_RegisterHair();
+
+    public static native boolean internal_native_IsVelocityMotor(int inMotorState);
+
+    public static native boolean internal_native_IsPositionMotor(int inMotorState);
+
     public static native void internal_native_UnregisterTypes();
 
     public static native void internal_native_ClearWorld(long physicsSystem_addr);

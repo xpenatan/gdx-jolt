@@ -7,6 +7,7 @@
 package jolt.physics.character;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.physics.StateRecorder;
 import jolt.math.Vec3;
 import jolt.physics.body.BodyID;
 import jolt.physics.collision.shape.SubShapeID;
@@ -16,6 +17,9 @@ import jolt.physics.collision.PhysicsMaterial;
 public final class CharacterVirtualContact extends NativeObject {
 
     static public final CharacterVirtualContact NULL = CharacterVirtualContact.native_new();
+
+    public CharacterVirtualContact() {
+    }
 
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
@@ -33,6 +37,24 @@ public final class CharacterVirtualContact extends NativeObject {
 
     public boolean IsSameBody(CharacterVirtualContact inOther) {
         return false;
+    }
+
+    public boolean Equals(CharacterVirtualContact inRHS) {
+        return false;
+    }
+
+    public boolean NotEquals(CharacterVirtualContact inRHS) {
+        return false;
+    }
+
+    public long GetHash() {
+        return 0;
+    }
+
+    public void SaveState(StateRecorder inStream) {
+    }
+
+    public void RestoreState(StateRecorder inStream) {
     }
 
     public Vec3 get_mPosition() {
@@ -119,11 +141,11 @@ public final class CharacterVirtualContact extends NativeObject {
     public void set_mCharacterB(CharacterVirtual mCharacterB) {
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return 0;
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
     }
 
     public PhysicsMaterial get_mMaterial() {

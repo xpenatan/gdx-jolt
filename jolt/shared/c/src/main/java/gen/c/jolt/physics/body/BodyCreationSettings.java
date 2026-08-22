@@ -79,6 +79,20 @@ public class BodyCreationSettings extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_body_bodycreationsettings_deletenative")
     public static native void internal_native_deleteNative(long this_addr);
 
+    public boolean Equals(BodyCreationSettings inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_body_bodycreationsettings_equals")
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public boolean NotEquals(BodyCreationSettings inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_body_bodycreationsettings_notequals")
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
     public ShapeSettings GetShapeSettings() {
         long addr = internal_native_GetShapeSettings_addr(native_address);
         if (addr == 0)
@@ -232,19 +246,19 @@ public class BodyCreationSettings extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_body_bodycreationsettings_set_mangularvelocity")
     public static native void internal_native_set_mAngularVelocity(long this_addr, long mAngularVelocity_addr);
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_body_bodycreationsettings_get_muserdata")
-    public static native int internal_native_get_mUserData(long this_addr);
+    public static native long internal_native_get_mUserData(long this_addr);
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_body_bodycreationsettings_set_muserdata")
-    public static native void internal_native_set_mUserData(long this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 
     public int get_mObjectLayer() {
         return internal_native_get_mObjectLayer(native_address);

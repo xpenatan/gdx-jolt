@@ -71,6 +71,18 @@ public final class SpringSettings extends NativeObject {
         }
     }
 
+    public boolean HasStiffnessOrDamping() {
+        return internal_native_HasStiffnessOrDamping(native_address);
+    }
+
+    public static boolean internal_native_HasStiffnessOrDamping(long this_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_HasStiffnessOrDamping__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public ESpringMode get_mMode() {
         int value = internal_native_get_mMode(native_address);
         ESpringMode[] values = ESpringMode.values();
@@ -181,6 +193,8 @@ public final class SpringSettings extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_springsettings_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_HasStiffness__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_springsettings_hasstiffness", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_HasStiffnessOrDamping__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_springsettings_hasstiffnessordamping", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_get_mMode__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_springsettings_get_mmode", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
 

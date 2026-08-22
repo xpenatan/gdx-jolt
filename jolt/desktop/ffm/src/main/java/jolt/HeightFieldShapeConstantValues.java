@@ -57,10 +57,24 @@ public final class HeightFieldShapeConstantValues extends NativeObject {
         }
     }
 
+    public static int get_cMaxBitsPerSample() {
+        return internal_native_get_cMaxBitsPerSample();
+    }
+
+    public static int internal_native_get_cMaxBitsPerSample() {
+        try {
+            return (int) FFMHandles.internal_native_get_cMaxBitsPerSample__.invokeExact();
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     private static final class FFMHandles {
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_heightfieldshapeconstantvalues_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_get_cNoCollisionValue__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_heightfieldshapeconstantvalues_get_cnocollisionvalue", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT));
+
+        static final java.lang.invoke.MethodHandle internal_native_get_cMaxBitsPerSample__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_heightfieldshapeconstantvalues_get_cmaxbitspersample", FunctionDescriptor.of(ValueLayout.JAVA_INT));
     }
 }

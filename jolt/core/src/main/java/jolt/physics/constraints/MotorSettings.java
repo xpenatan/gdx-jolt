@@ -7,6 +7,7 @@
 package jolt.physics.constraints;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.enums.ESpringMode;
 
 public final class MotorSettings extends NativeObject {
 
@@ -15,7 +16,13 @@ public final class MotorSettings extends NativeObject {
     public MotorSettings() {
     }
 
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping) {
+    }
+
     public MotorSettings(float inFrequency, float inDamping) {
+    }
+
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
     }
 
     public MotorSettings(float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {

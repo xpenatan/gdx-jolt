@@ -58,40 +58,54 @@ public final class Vector2 extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);jsObj.SetZero();")
     public static native void internal_native_SetZero(int this_addr);
 
-    public void IsZero() {
-        internal_native_IsZero(native_address);
+    public boolean IsZero() {
+        return internal_native_IsZero(native_address);
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);jsObj.IsZero();")
-    public static native void internal_native_IsZero(int this_addr);
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsZero();return returnedJSObj;")
+    public static native boolean internal_native_IsZero(int this_addr);
 
-    public void IsClose(Vector2 inV, float inMaxDistSq) {
-        internal_native_IsClose(native_address, inV.native_address, inMaxDistSq);
+    public boolean IsNearZero(float inMaxDistSq) {
+        return internal_native_IsNearZero(native_address, inMaxDistSq);
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr", "inV_addr", "inMaxDistSq"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);jsObj.IsClose(inV_addr, inMaxDistSq);")
-    public static native void internal_native_IsClose(int this_addr, int inV_addr, float inMaxDistSq);
+    @org.teavm.jso.JSBody(params = {"this_addr", "inMaxDistSq"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsNearZero(inMaxDistSq);return returnedJSObj;")
+    public static native boolean internal_native_IsNearZero(int this_addr, float inMaxDistSq);
 
-    public void IsClose(Vector2 inV) {
-        internal_native_IsClose(native_address, inV.native_address);
+    public boolean IsNearZero() {
+        return internal_native_IsNearZero(native_address);
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr", "inV_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);jsObj.IsClose(inV_addr);")
-    public static native void internal_native_IsClose(int this_addr, int inV_addr);
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsNearZero();return returnedJSObj;")
+    public static native boolean internal_native_IsNearZero(int this_addr);
 
-    public void IsNormalized(float inTolerance) {
-        internal_native_IsNormalized(native_address, inTolerance);
+    public boolean IsClose(Vector2 inV, float inMaxDistSq) {
+        return internal_native_IsClose(native_address, inV.native_address, inMaxDistSq);
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr", "inTolerance"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);jsObj.IsNormalized(inTolerance);")
-    public static native void internal_native_IsNormalized(int this_addr, float inTolerance);
+    @org.teavm.jso.JSBody(params = {"this_addr", "inV_addr", "inMaxDistSq"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsClose(inV_addr, inMaxDistSq);return returnedJSObj;")
+    public static native boolean internal_native_IsClose(int this_addr, int inV_addr, float inMaxDistSq);
 
-    public void IsNormalized() {
-        internal_native_IsNormalized(native_address);
+    public boolean IsClose(Vector2 inV) {
+        return internal_native_IsClose(native_address, inV.native_address);
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);jsObj.IsNormalized();")
-    public static native void internal_native_IsNormalized(int this_addr);
+    @org.teavm.jso.JSBody(params = {"this_addr", "inV_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsClose(inV_addr);return returnedJSObj;")
+    public static native boolean internal_native_IsClose(int this_addr, int inV_addr);
+
+    public boolean IsNormalized(float inTolerance) {
+        return internal_native_IsNormalized(native_address, inTolerance);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inTolerance"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsNormalized(inTolerance);return returnedJSObj;")
+    public static native boolean internal_native_IsNormalized(int this_addr, float inTolerance);
+
+    public boolean IsNormalized() {
+        return internal_native_IsNormalized(native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Vector2);var returnedJSObj = jsObj.IsNormalized();return returnedJSObj;")
+    public static native boolean internal_native_IsNormalized(int this_addr);
 
     public Vector2 Normalized() {
         int addr = internal_native_Normalized_addr(native_address);

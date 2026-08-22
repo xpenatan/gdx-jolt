@@ -47,6 +47,20 @@ public final class MassProperties extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_body_massproperties_deletenative")
     public static native void internal_native_deleteNative(long this_addr);
 
+    public boolean Equals(MassProperties inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_body_massproperties_equals")
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public boolean NotEquals(MassProperties inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_body_massproperties_notequals")
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
     public void SetMassAndInertiaOfSolidBox(Vec3 inBoxSize, float inDensity) {
         internal_native_SetMassAndInertiaOfSolidBox(native_address, inBoxSize.native_address, inDensity);
     }

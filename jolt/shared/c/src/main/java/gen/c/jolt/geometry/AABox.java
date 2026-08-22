@@ -9,7 +9,9 @@ package gen.c.jolt.geometry;
 import com.github.xpenatan.jParser.api.NativeObject;
 import gen.c.jolt.math.Vec3;
 import gen.c.jolt.math.VertexList;
+import gen.c.jolt.RVec3;
 import gen.c.jolt.math.Mat44;
+import gen.c.jolt.RMat44;
 
 public final class AABox extends NativeObject {
 
@@ -30,6 +32,8 @@ public final class AABox extends NativeObject {
     private AABox AABox_TEMP_GEN_1;
 
     private AABox AABox_TEMP_GEN_2;
+
+    private AABox AABox_TEMP_GEN_3;
 
     private Vec3 Vec3_TEMP_GEN_3;
 
@@ -258,6 +262,13 @@ public final class AABox extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_geometry_aabox_containsvec3")
     public static native boolean internal_native_ContainsVec3(long this_addr, long inOther_addr);
 
+    public boolean ContainsRVec3(RVec3 inOther) {
+        return internal_native_ContainsRVec3(native_address, inOther.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_geometry_aabox_containsrvec3")
+    public static native boolean internal_native_ContainsRVec3(long this_addr, long inOther_addr);
+
     public boolean OverlapsAABox(AABox inOther) {
         return internal_native_OverlapsAABox(native_address, inOther.native_address);
     }
@@ -279,6 +290,13 @@ public final class AABox extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_geometry_aabox_translatevec3")
     public static native void internal_native_TranslateVec3(long this_addr, long inOther_addr);
 
+    public void TranslateRVec3(RVec3 inOther) {
+        internal_native_TranslateRVec3(native_address, inOther.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_geometry_aabox_translatervec3")
+    public static native void internal_native_TranslateRVec3(long this_addr, long inOther_addr);
+
     public AABox TransformedMat44(Mat44 inOther) {
         long addr = internal_native_TransformedMat44_addr(native_address, inOther.native_address);
         if (addr == 0)
@@ -292,14 +310,27 @@ public final class AABox extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_geometry_aabox_transformedmat44_addr")
     public static native long internal_native_TransformedMat44_addr(long this_addr, long inOther_addr);
 
-    public AABox Scaled(Vec3 inScale) {
-        long addr = internal_native_Scaled_addr(native_address, inScale.native_address);
+    public AABox TransformedRMat44(RMat44 inOther) {
+        long addr = internal_native_TransformedRMat44_addr(native_address, inOther.native_address);
         if (addr == 0)
             return AABox.NULL;
         if (AABox_TEMP_GEN_2 == null)
             AABox_TEMP_GEN_2 = AABox.native_new();
         AABox_TEMP_GEN_2.internal_reset(addr, false);
         return AABox_TEMP_GEN_2;
+    }
+
+    @org.teavm.interop.Import(name = "jolt_geometry_aabox_transformedrmat44_addr")
+    public static native long internal_native_TransformedRMat44_addr(long this_addr, long inOther_addr);
+
+    public AABox Scaled(Vec3 inScale) {
+        long addr = internal_native_Scaled_addr(native_address, inScale.native_address);
+        if (addr == 0)
+            return AABox.NULL;
+        if (AABox_TEMP_GEN_3 == null)
+            AABox_TEMP_GEN_3 = AABox.native_new();
+        AABox_TEMP_GEN_3.internal_reset(addr, false);
+        return AABox_TEMP_GEN_3;
     }
 
     @org.teavm.interop.Import(name = "jolt_geometry_aabox_scaled_addr")

@@ -7,6 +7,7 @@
 package jolt.physics.constraints;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.enums.ESpringMode;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
 import java.lang.foreign.Linker;
@@ -34,6 +35,19 @@ public final class MotorSettings extends NativeObject {
         }
     }
 
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping) {
+        long addr = internal_native_create_ESpringMode_float_float_addr(inMode.getValue(), inFrequency, inDamping);
+        internal_reset(addr, true);
+    }
+
+    public static long internal_native_create_ESpringMode_float_float_addr(int inMode, float inFrequency, float inDamping) {
+        try {
+            return (long) FFMHandles.internal_native_create_ESpringMode_float_float_addr__IFF.invokeExact(inMode, inFrequency, inDamping);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public MotorSettings(float inFrequency, float inDamping) {
         long addr = internal_native_create_float_float_addr(inFrequency, inDamping);
         internal_reset(addr, true);
@@ -42,6 +56,19 @@ public final class MotorSettings extends NativeObject {
     public static long internal_native_create_float_float_addr(float inFrequency, float inDamping) {
         try {
             return (long) FFMHandles.internal_native_create_float_float_addr__FF.invokeExact(inFrequency, inDamping);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public MotorSettings(ESpringMode inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
+        long addr = internal_native_create_ESpringMode_float_float_float_float_addr(inMode.getValue(), inFrequency, inDamping, inForceLimit, inTorqueLimit);
+        internal_reset(addr, true);
+    }
+
+    public static long internal_native_create_ESpringMode_float_float_float_float_addr(int inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit) {
+        try {
+            return (long) FFMHandles.internal_native_create_ESpringMode_float_float_float_float_addr__IFFFF.invokeExact(inMode, inFrequency, inDamping, inForceLimit, inTorqueLimit);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -216,7 +243,11 @@ public final class MotorSettings extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_create_addr__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_motorsettings_create_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG));
 
+        static final java.lang.invoke.MethodHandle internal_native_create_ESpringMode_float_float_addr__IFF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_motorsettings_create_espringmode_float_float_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+
         static final java.lang.invoke.MethodHandle internal_native_create_float_float_addr__FF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_motorsettings_create_float_float_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+
+        static final java.lang.invoke.MethodHandle internal_native_create_ESpringMode_float_float_float_float_addr__IFFFF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_motorsettings_create_espringmode_float_float_float_float_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
 
         static final java.lang.invoke.MethodHandle internal_native_create_float_float_float_float_addr__FFFF = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_constraints_motorsettings_create_float_float_float_float_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
 

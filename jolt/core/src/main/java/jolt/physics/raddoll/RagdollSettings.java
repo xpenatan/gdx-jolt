@@ -37,7 +37,7 @@ public final class RagdollSettings extends NativeObject {
         return false;
     }
 
-    public Ragdoll CreateRagdoll(int inCollisionGroup, int inUserData, PhysicsSystem inSystem) {
+    public Ragdoll CreateRagdoll(int inCollisionGroup, long inUserData, PhysicsSystem inSystem) {
         return null;
     }
 

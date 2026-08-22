@@ -7,6 +7,7 @@
 package jolt.physics.character;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.physics.StateRecorder;
 import jolt.math.Vec3;
 import jolt.physics.body.BodyID;
 import jolt.physics.collision.shape.SubShapeID;
@@ -42,6 +43,19 @@ public final class CharacterVirtualContact extends NativeObject {
 
     static public final CharacterVirtualContact NULL = CharacterVirtualContact.native_new();
 
+    public CharacterVirtualContact() {
+        long addr = internal_native_create_addr();
+        internal_reset(addr, true);
+    }
+
+    public static long internal_native_create_addr() {
+        try {
+            return (long) FFMHandles.internal_native_create_addr__.invokeExact();
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -75,6 +89,66 @@ public final class CharacterVirtualContact extends NativeObject {
     public static boolean internal_native_IsSameBody(long this_addr, long inOther_addr) {
         try {
             return (boolean) FFMHandles.internal_native_IsSameBody__JJ.invokeExact(this_addr, inOther_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public boolean Equals(CharacterVirtualContact inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_Equals(long this_addr, long inRHS_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_Equals__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public boolean NotEquals(CharacterVirtualContact inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_NotEquals(long this_addr, long inRHS_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_NotEquals__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public long GetHash() {
+        return internal_native_GetHash(native_address);
+    }
+
+    public static long internal_native_GetHash(long this_addr) {
+        try {
+            return (long) FFMHandles.internal_native_GetHash__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public void SaveState(StateRecorder inStream) {
+        internal_native_SaveState(native_address, inStream.native_address);
+    }
+
+    public static void internal_native_SaveState(long this_addr, long inStream_addr) {
+        try {
+            FFMHandles.internal_native_SaveState__JJ.invokeExact(this_addr, inStream_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public void RestoreState(StateRecorder inStream) {
+        internal_native_RestoreState(native_address, inStream.native_address);
+    }
+
+    public static void internal_native_RestoreState(long this_addr, long inStream_addr) {
+        try {
+            FFMHandles.internal_native_RestoreState__JJ.invokeExact(this_addr, inStream_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -423,25 +497,25 @@ public final class CharacterVirtualContact extends NativeObject {
         }
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
-    public static int internal_native_get_mUserData(long this_addr) {
+    public static long internal_native_get_mUserData(long this_addr) {
         try {
-            return (int) FFMHandles.internal_native_get_mUserData__J.invokeExact(this_addr);
+            return (long) FFMHandles.internal_native_get_mUserData__J.invokeExact(this_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
-    public static void internal_native_set_mUserData(long this_addr, int mUserData) {
+    public static void internal_native_set_mUserData(long this_addr, long mUserData) {
         try {
-            FFMHandles.internal_native_set_mUserData__JI.invokeExact(this_addr, mUserData);
+            FFMHandles.internal_native_set_mUserData__JJ.invokeExact(this_addr, mUserData);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -575,9 +649,21 @@ public final class CharacterVirtualContact extends NativeObject {
 
     private static final class FFMHandles {
 
+        static final java.lang.invoke.MethodHandle internal_native_create_addr__ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_create_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG));
+
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_IsSameBody__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_issamebody", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_Equals__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_equals", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_NotEquals__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_notequals", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_GetHash__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_gethash", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_SaveState__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_savestate", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_RestoreState__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_restorestate", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_get_mPosition_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_get_mposition_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
@@ -627,9 +713,9 @@ public final class CharacterVirtualContact extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_set_mCharacterB__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_set_mcharacterb", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_get_mUserData__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_get_muserdata", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_get_mUserData__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_get_muserdata", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_set_mUserData__JI = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_set_muserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        static final java.lang.invoke.MethodHandle internal_native_set_mUserData__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_set_muserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_get_mMaterial_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtualcontact_get_mmaterial_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

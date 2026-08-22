@@ -56,13 +56,19 @@ final public class JNI_AABox {
 
     public static native boolean internal_native_ContainsVec3(long this_addr, long inOther_addr);
 
+    public static native boolean internal_native_ContainsRVec3(long this_addr, long inOther_addr);
+
     public static native boolean internal_native_OverlapsAABox(long this_addr, long inOther_addr);
 
     public static native boolean internal_native_OverlapsPlane(long this_addr, long inOther_addr);
 
     public static native void internal_native_TranslateVec3(long this_addr, long inOther_addr);
 
+    public static native void internal_native_TranslateRVec3(long this_addr, long inOther_addr);
+
     public static native long internal_native_TransformedMat44_addr(long this_addr, long inOther_addr);
+
+    public static native long internal_native_TransformedRMat44_addr(long this_addr, long inOther_addr);
 
     public static native long internal_native_Scaled_addr(long this_addr, long inScale_addr);
 

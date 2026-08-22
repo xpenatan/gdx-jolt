@@ -299,4 +299,12 @@ public final class SoftBodyMotionProperties extends MotionProperties {
     public static void internal_native_SkinVertices(long this_addr, long inRootTransform_addr, long inJointMatrices_addr, int inNumJoints, boolean inHardSkinAll, long ioTempAllocator_addr) {
         jolt.physics.softbody.natives.JNI_SoftBodyMotionProperties.internal_native_SkinVertices(this_addr, inRootTransform_addr, inJointMatrices_addr, inNumJoints, inHardSkinAll, ioTempAllocator_addr);
     }
+
+    public void RequestContactCallback() {
+        internal_native_RequestContactCallback(native_address);
+    }
+
+    public static void internal_native_RequestContactCallback(long this_addr) {
+        jolt.physics.softbody.natives.JNI_SoftBodyMotionProperties.internal_native_RequestContactCallback(this_addr);
+    }
 }

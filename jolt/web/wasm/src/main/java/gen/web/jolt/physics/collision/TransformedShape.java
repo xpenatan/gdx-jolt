@@ -234,6 +234,13 @@ public final class TransformedShape extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "inSubShapeID_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.TransformedShape);var returnedJSObj = jsObj.GetMaterial(inSubShapeID_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_GetMaterial_addr(int this_addr, int inSubShapeID_addr);
 
+    public long GetSubShapeUserData(SubShapeID inSubShapeID) {
+        return internal_native_GetSubShapeUserData(native_address, inSubShapeID.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inSubShapeID_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.TransformedShape);var returnedJSObj = jsObj.GetSubShapeUserData(inSubShapeID_addr);return returnedJSObj;")
+    public static native long internal_native_GetSubShapeUserData(int this_addr, int inSubShapeID_addr);
+
     public Vec3 get_mShapePositionCOM() {
         int addr = internal_native_get_mShapePositionCOM_addr(native_address);
         if (addr == 0)

@@ -230,6 +230,13 @@ public class CharacterBase extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterBase);var returnedJSObj = jsObj.GetGroundBodyID();if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_GetGroundBodyID_addr(int this_addr);
 
+    public long GetGroundUserData() {
+        return internal_native_GetGroundUserData(native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterBase);var returnedJSObj = jsObj.GetGroundUserData();return returnedJSObj;")
+    public static native long internal_native_GetGroundUserData(int this_addr);
+
     public void SaveState(StateRecorder inStream) {
         internal_native_SaveState(native_address, inStream.native_address);
     }

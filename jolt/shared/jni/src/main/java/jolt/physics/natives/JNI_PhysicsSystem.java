@@ -60,6 +60,8 @@ final public class JNI_PhysicsSystem {
 
     public static native long internal_native_GetBodyLockInterface_addr(long this_addr);
 
+    public static native long internal_native_GetBroadPhaseLayerInterface_addr(long this_addr);
+
     public static native long internal_native_GetBroadPhaseQuery_addr(long this_addr);
 
     public static native long internal_native_GetNarrowPhaseQuery_addr(long this_addr);

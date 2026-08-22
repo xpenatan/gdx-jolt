@@ -7,6 +7,8 @@
 package gen.web.jolt.physics.softbody;
 
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
+import gen.web.jolt.physics.body.BodyID;
+import gen.web.jolt.geometry.Plane;
 import gen.web.jolt.math.Vec3;
 
 public final class SoftBodyVertex extends NativeObject {
@@ -39,6 +41,13 @@ public final class SoftBodyVertex extends NativeObject {
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyVertex);jolt.destroy(jsObj);")
     public static native void internal_native_deleteNative(int this_addr);
+
+    public void MarkCCDContact(BodyID inBodyID, Plane inContactPlane) {
+        internal_native_MarkCCDContact(native_address, inBodyID.native_address, inContactPlane.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inBodyID_addr", "inContactPlane_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyVertex);jsObj.MarkCCDContact(inBodyID_addr, inContactPlane_addr);")
+    public static native void internal_native_MarkCCDContact(int this_addr, int inBodyID_addr, int inContactPlane_addr);
 
     public Vec3 get_mPreviousPosition() {
         int addr = internal_native_get_mPreviousPosition_addr(native_address);

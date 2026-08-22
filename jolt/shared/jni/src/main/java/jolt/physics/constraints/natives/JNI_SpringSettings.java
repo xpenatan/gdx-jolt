@@ -16,6 +16,8 @@ final public class JNI_SpringSettings {
 
     public static native boolean internal_native_HasStiffness(long this_addr);
 
+    public static native boolean internal_native_HasStiffnessOrDamping(long this_addr);
+
     public static native int internal_native_get_mMode(long this_addr);
 
     public static native void internal_native_set_mMode(long this_addr, int mMode);

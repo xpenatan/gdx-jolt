@@ -16,7 +16,7 @@ final public class JNI_RagdollSettings {
 
     public static native boolean internal_native_Stabilize(long this_addr);
 
-    public static native long internal_native_CreateRagdoll_addr(long this_addr, int inCollisionGroup, int inUserData, long inSystem_addr);
+    public static native long internal_native_CreateRagdoll_addr(long this_addr, int inCollisionGroup, long inUserData, long inSystem_addr);
 
     public static native long internal_native_GetSkeleton_addr(long this_addr);
 

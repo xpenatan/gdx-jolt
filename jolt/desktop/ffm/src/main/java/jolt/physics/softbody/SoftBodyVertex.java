@@ -7,6 +7,8 @@
 package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.physics.body.BodyID;
+import jolt.geometry.Plane;
 import jolt.math.Vec3;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
@@ -47,6 +49,18 @@ public final class SoftBodyVertex extends NativeObject {
     public static void internal_native_deleteNative(long this_addr) {
         try {
             FFMHandles.internal_native_deleteNative__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public void MarkCCDContact(BodyID inBodyID, Plane inContactPlane) {
+        internal_native_MarkCCDContact(native_address, inBodyID.native_address, inContactPlane.native_address);
+    }
+
+    public static void internal_native_MarkCCDContact(long this_addr, long inBodyID_addr, long inContactPlane_addr) {
+        try {
+            FFMHandles.internal_native_MarkCCDContact__JJJ.invokeExact(this_addr, inBodyID_addr, inContactPlane_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -169,6 +183,8 @@ public final class SoftBodyVertex extends NativeObject {
     private static final class FFMHandles {
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodyvertex_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_MarkCCDContact__JJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodyvertex_markccdcontact", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_get_mPreviousPosition_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodyvertex_get_mpreviousposition_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

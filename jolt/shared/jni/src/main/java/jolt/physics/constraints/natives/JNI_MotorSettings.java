@@ -12,7 +12,11 @@ final public class JNI_MotorSettings {
 
     public static native long internal_native_create_addr();
 
+    public static native long internal_native_create_ESpringMode_float_float_addr(int inMode, float inFrequency, float inDamping);
+
     public static native long internal_native_create_float_float_addr(float inFrequency, float inDamping);
+
+    public static native long internal_native_create_ESpringMode_float_float_float_float_addr(int inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit);
 
     public static native long internal_native_create_float_float_float_float_addr(float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit);
 

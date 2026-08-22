@@ -344,11 +344,11 @@ public final class BodyInterface extends NativeObject {
         return null;
     }
 
-    public int GetUserData(BodyID inBodyID) {
+    public long GetUserData(BodyID inBodyID) {
         return 0;
     }
 
-    public void SetUserData(BodyID inBodyID, int inUserData) {
+    public void SetUserData(BodyID inBodyID, long inUserData) {
     }
 
     public PhysicsMaterial GetMaterial(BodyID inBodyID, SubShapeID inSubShapeID) {

@@ -66,6 +66,10 @@ public final class Vec4 extends NativeObject {
         return null;
     }
 
+    public static Vec4 sDifferenceOfProducts(Vec4 inA, Vec4 inB, Vec4 inC, Vec4 inD) {
+        return null;
+    }
+
     public static Vec4 sOr(Vec4 inV1, Vec4 inV2) {
         return null;
     }
@@ -187,5 +191,9 @@ public final class Vec4 extends NativeObject {
 
     public Vec4 SubVec4(Vec4 inV) {
         return null;
+    }
+
+    public float ReduceSum() {
+        return 0;
     }
 }

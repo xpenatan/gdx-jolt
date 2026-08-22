@@ -96,19 +96,19 @@ public final class SoftBodyCreationSettings extends NativeObject {
         jolt.physics.softbody.natives.JNI_SoftBodyCreationSettings.internal_native_set_mRotation(this_addr, mRotation_addr);
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
-    public static int internal_native_get_mUserData(long this_addr) {
+    public static long internal_native_get_mUserData(long this_addr) {
         return jolt.physics.softbody.natives.JNI_SoftBodyCreationSettings.internal_native_get_mUserData(this_addr);
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
-    public static void internal_native_set_mUserData(long this_addr, int mUserData) {
+    public static void internal_native_set_mUserData(long this_addr, long mUserData) {
         jolt.physics.softbody.natives.JNI_SoftBodyCreationSettings.internal_native_set_mUserData(this_addr, mUserData);
     }
 

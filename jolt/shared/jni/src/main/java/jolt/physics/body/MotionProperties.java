@@ -477,6 +477,22 @@ public class MotionProperties extends NativeObject {
         return jolt.physics.body.natives.JNI_MotionProperties.internal_native_LockAngular_addr(this_addr, inV_addr);
     }
 
+    public void ApplyLinearVelocityStep(Vec3 inLinearVelocity) {
+        internal_native_ApplyLinearVelocityStep(native_address, inLinearVelocity.native_address);
+    }
+
+    public static void internal_native_ApplyLinearVelocityStep(long this_addr, long inLinearVelocity_addr) {
+        jolt.physics.body.natives.JNI_MotionProperties.internal_native_ApplyLinearVelocityStep(this_addr, inLinearVelocity_addr);
+    }
+
+    public void ApplyAngularVelocityStep(Vec3 inAngularVelocity) {
+        internal_native_ApplyAngularVelocityStep(native_address, inAngularVelocity.native_address);
+    }
+
+    public static void internal_native_ApplyAngularVelocityStep(long this_addr, long inAngularVelocity_addr) {
+        jolt.physics.body.natives.JNI_MotionProperties.internal_native_ApplyAngularVelocityStep(this_addr, inAngularVelocity_addr);
+    }
+
     public void SetNumVelocityStepsOverride(int inN) {
         internal_native_SetNumVelocityStepsOverride(native_address, inN);
     }

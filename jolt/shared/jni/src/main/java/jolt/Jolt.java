@@ -7,6 +7,7 @@
 package jolt;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.enums.EMotorState;
 import jolt.physics.PhysicsSystem;
 import jolt.physics.character.CharacterVirtual;
 import jolt.physics.character.CharacterContactListener;
@@ -51,6 +52,30 @@ public final class Jolt extends NativeObject {
 
     public static void internal_native_RegisterTypes() {
         jolt.natives.JNI_Jolt.internal_native_RegisterTypes();
+    }
+
+    public static void RegisterHair() {
+        internal_native_RegisterHair();
+    }
+
+    public static void internal_native_RegisterHair() {
+        jolt.natives.JNI_Jolt.internal_native_RegisterHair();
+    }
+
+    public static boolean IsVelocityMotor(EMotorState inMotorState) {
+        return internal_native_IsVelocityMotor(inMotorState.getValue());
+    }
+
+    public static boolean internal_native_IsVelocityMotor(int inMotorState) {
+        return jolt.natives.JNI_Jolt.internal_native_IsVelocityMotor(inMotorState);
+    }
+
+    public static boolean IsPositionMotor(EMotorState inMotorState) {
+        return internal_native_IsPositionMotor(inMotorState.getValue());
+    }
+
+    public static boolean internal_native_IsPositionMotor(int inMotorState) {
+        return jolt.natives.JNI_Jolt.internal_native_IsPositionMotor(inMotorState);
     }
 
     @Deprecated

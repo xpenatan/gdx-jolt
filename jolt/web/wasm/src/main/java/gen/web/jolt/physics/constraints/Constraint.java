@@ -141,19 +141,19 @@ public class Constraint extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Constraint);var returnedJSObj = jsObj.IsActive();return returnedJSObj;")
     public static native boolean internal_native_IsActive(int this_addr);
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Constraint);var returnedJSObj = jsObj.GetUserData();return returnedJSObj;")
-    public static native int internal_native_GetUserData(int this_addr);
+    public static native long internal_native_GetUserData(int this_addr);
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.Constraint);jsObj.SetUserData(inUserData);")
-    public static native void internal_native_SetUserData(int this_addr, int inUserData);
+    public static native void internal_native_SetUserData(int this_addr, long inUserData);
 
     public void ResetWarmStart() {
         internal_native_ResetWarmStart(native_address);

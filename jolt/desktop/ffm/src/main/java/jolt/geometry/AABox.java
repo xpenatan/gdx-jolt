@@ -9,7 +9,9 @@ package jolt.geometry;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.VertexList;
+import jolt.RVec3;
 import jolt.math.Mat44;
+import jolt.RMat44;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.ValueLayout;
 import java.lang.foreign.Linker;
@@ -37,6 +39,8 @@ public final class AABox extends NativeObject {
     private AABox AABox_TEMP_GEN_1;
 
     private AABox AABox_TEMP_GEN_2;
+
+    private AABox AABox_TEMP_GEN_3;
 
     private Vec3 Vec3_TEMP_GEN_3;
 
@@ -380,6 +384,18 @@ public final class AABox extends NativeObject {
         }
     }
 
+    public boolean ContainsRVec3(RVec3 inOther) {
+        return internal_native_ContainsRVec3(native_address, inOther.native_address);
+    }
+
+    public static boolean internal_native_ContainsRVec3(long this_addr, long inOther_addr) {
+        try {
+            return (boolean) FFMHandles.internal_native_ContainsRVec3__JJ.invokeExact(this_addr, inOther_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public boolean OverlapsAABox(AABox inOther) {
         return internal_native_OverlapsAABox(native_address, inOther.native_address);
     }
@@ -416,6 +432,18 @@ public final class AABox extends NativeObject {
         }
     }
 
+    public void TranslateRVec3(RVec3 inOther) {
+        internal_native_TranslateRVec3(native_address, inOther.native_address);
+    }
+
+    public static void internal_native_TranslateRVec3(long this_addr, long inOther_addr) {
+        try {
+            FFMHandles.internal_native_TranslateRVec3__JJ.invokeExact(this_addr, inOther_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public AABox TransformedMat44(Mat44 inOther) {
         long addr = internal_native_TransformedMat44_addr(native_address, inOther.native_address);
         if (addr == 0)
@@ -434,14 +462,32 @@ public final class AABox extends NativeObject {
         }
     }
 
-    public AABox Scaled(Vec3 inScale) {
-        long addr = internal_native_Scaled_addr(native_address, inScale.native_address);
+    public AABox TransformedRMat44(RMat44 inOther) {
+        long addr = internal_native_TransformedRMat44_addr(native_address, inOther.native_address);
         if (addr == 0)
             return AABox.NULL;
         if (AABox_TEMP_GEN_2 == null)
             AABox_TEMP_GEN_2 = AABox.native_new();
         AABox_TEMP_GEN_2.internal_reset(addr, false);
         return AABox_TEMP_GEN_2;
+    }
+
+    public static long internal_native_TransformedRMat44_addr(long this_addr, long inOther_addr) {
+        try {
+            return (long) FFMHandles.internal_native_TransformedRMat44_addr__JJ.invokeExact(this_addr, inOther_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public AABox Scaled(Vec3 inScale) {
+        long addr = internal_native_Scaled_addr(native_address, inScale.native_address);
+        if (addr == 0)
+            return AABox.NULL;
+        if (AABox_TEMP_GEN_3 == null)
+            AABox_TEMP_GEN_3 = AABox.native_new();
+        AABox_TEMP_GEN_3.internal_reset(addr, false);
+        return AABox_TEMP_GEN_3;
     }
 
     public static long internal_native_Scaled_addr(long this_addr, long inScale_addr) {
@@ -590,13 +636,19 @@ public final class AABox extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_ContainsVec3__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_containsvec3", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
+        static final java.lang.invoke.MethodHandle internal_native_ContainsRVec3__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_containsrvec3", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
         static final java.lang.invoke.MethodHandle internal_native_OverlapsAABox__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_overlapsaabox", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_OverlapsPlane__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_overlapsplane", FunctionDescriptor.of(ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_TranslateVec3__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_translatevec3", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
+        static final java.lang.invoke.MethodHandle internal_native_TranslateRVec3__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_translatervec3", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
         static final java.lang.invoke.MethodHandle internal_native_TransformedMat44_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_transformedmat44_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_TransformedRMat44_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_transformedrmat44_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_Scaled_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_geometry_aabox_scaled_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

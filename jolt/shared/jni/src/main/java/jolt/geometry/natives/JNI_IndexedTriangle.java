@@ -18,9 +18,11 @@ final public class JNI_IndexedTriangle {
 
     public static native void internal_native_deleteNative(long this_addr);
 
-    public static native int internal_native_get_mIdx(long this_addr, int index);
+    public static native boolean internal_native_EqualsIndexedTriangle(long this_addr, long inRHS_addr);
 
-    public static native void internal_native_set_mIdx(long this_addr, int index, int mIdx);
+    public static native long internal_native_GetLowestIndexFirst_addr(long this_addr);
+
+    public static native long internal_native_GetHash(long this_addr);
 
     public static native int internal_native_get_mMaterialIndex(long this_addr);
 

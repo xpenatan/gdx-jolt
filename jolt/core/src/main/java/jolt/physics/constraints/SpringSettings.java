@@ -34,6 +34,10 @@ public final class SpringSettings extends NativeObject {
         return false;
     }
 
+    public boolean HasStiffnessOrDamping() {
+        return false;
+    }
+
     public ESpringMode get_mMode() {
         return null;
     }

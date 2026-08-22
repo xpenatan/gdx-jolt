@@ -45,6 +45,8 @@ public final class Vec3 extends NativeObject {
 
     static private Vec3 Vec3_TEMP_STATIC_GEN_13;
 
+    static private Vec3 Vec3_TEMP_STATIC_GEN_14;
+
     private Vec3 Vec3_TEMP_GEN_0;
 
     private Vec3 Vec3_TEMP_GEN_1;
@@ -59,9 +61,9 @@ public final class Vec3 extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_6;
 
-    private Vec4 Vec4_TEMP_GEN_0;
-
     private Vec3 Vec3_TEMP_GEN_7;
+
+    private Vec4 Vec4_TEMP_GEN_0;
 
     private Vec3 Vec3_TEMP_GEN_8;
 
@@ -73,15 +75,17 @@ public final class Vec3 extends NativeObject {
 
     private Vec3 Vec3_TEMP_GEN_12;
 
+    private Vec3 Vec3_TEMP_GEN_13;
+
     private Vec4 Vec4_TEMP_GEN_1;
 
     private Vec4 Vec4_TEMP_GEN_2;
 
     private Vec4 Vec4_TEMP_GEN_3;
 
-    private Vec3 Vec3_TEMP_GEN_13;
-
     private Vec3 Vec3_TEMP_GEN_14;
+
+    private Vec3 Vec3_TEMP_GEN_15;
 
     static public final Vec3 NULL = Vec3.native_new();
 
@@ -330,14 +334,32 @@ public final class Vec3 extends NativeObject {
         }
     }
 
-    public static Vec3 sOr(Vec3 inV1, Vec3 inV2) {
-        long addr = internal_native_sOr_addr(inV1.native_address, inV2.native_address);
+    public static Vec3 sDifferenceOfProducts(Vec3 inA, Vec3 inB, Vec3 inC, Vec3 inD) {
+        long addr = internal_native_sDifferenceOfProducts_addr(inA.native_address, inB.native_address, inC.native_address, inD.native_address);
         if (addr == 0)
             return Vec3.NULL;
         if (Vec3_TEMP_STATIC_GEN_10 == null)
             Vec3_TEMP_STATIC_GEN_10 = Vec3.native_new();
         Vec3_TEMP_STATIC_GEN_10.internal_reset(addr, false);
         return Vec3_TEMP_STATIC_GEN_10;
+    }
+
+    public static long internal_native_sDifferenceOfProducts_addr(long inA_addr, long inB_addr, long inC_addr, long inD_addr) {
+        try {
+            return (long) FFMHandles.internal_native_sDifferenceOfProducts_addr__JJJJ.invokeExact(inA_addr, inB_addr, inC_addr, inD_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
+    public static Vec3 sOr(Vec3 inV1, Vec3 inV2) {
+        long addr = internal_native_sOr_addr(inV1.native_address, inV2.native_address);
+        if (addr == 0)
+            return Vec3.NULL;
+        if (Vec3_TEMP_STATIC_GEN_11 == null)
+            Vec3_TEMP_STATIC_GEN_11 = Vec3.native_new();
+        Vec3_TEMP_STATIC_GEN_11.internal_reset(addr, false);
+        return Vec3_TEMP_STATIC_GEN_11;
     }
 
     public static long internal_native_sOr_addr(long inV1_addr, long inV2_addr) {
@@ -352,10 +374,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_sXor_addr(inV1.native_address, inV2.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_STATIC_GEN_11 == null)
-            Vec3_TEMP_STATIC_GEN_11 = Vec3.native_new();
-        Vec3_TEMP_STATIC_GEN_11.internal_reset(addr, false);
-        return Vec3_TEMP_STATIC_GEN_11;
+        if (Vec3_TEMP_STATIC_GEN_12 == null)
+            Vec3_TEMP_STATIC_GEN_12 = Vec3.native_new();
+        Vec3_TEMP_STATIC_GEN_12.internal_reset(addr, false);
+        return Vec3_TEMP_STATIC_GEN_12;
     }
 
     public static long internal_native_sXor_addr(long inV1_addr, long inV2_addr) {
@@ -370,10 +392,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_sAnd_addr(inV1.native_address, inV2.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_STATIC_GEN_12 == null)
-            Vec3_TEMP_STATIC_GEN_12 = Vec3.native_new();
-        Vec3_TEMP_STATIC_GEN_12.internal_reset(addr, false);
-        return Vec3_TEMP_STATIC_GEN_12;
+        if (Vec3_TEMP_STATIC_GEN_13 == null)
+            Vec3_TEMP_STATIC_GEN_13 = Vec3.native_new();
+        Vec3_TEMP_STATIC_GEN_13.internal_reset(addr, false);
+        return Vec3_TEMP_STATIC_GEN_13;
     }
 
     public static long internal_native_sAnd_addr(long inV1_addr, long inV2_addr) {
@@ -388,10 +410,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_sUnitSpherical_addr(inTheta, inPhi);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_STATIC_GEN_13 == null)
-            Vec3_TEMP_STATIC_GEN_13 = Vec3.native_new();
-        Vec3_TEMP_STATIC_GEN_13.internal_reset(addr, false);
-        return Vec3_TEMP_STATIC_GEN_13;
+        if (Vec3_TEMP_STATIC_GEN_14 == null)
+            Vec3_TEMP_STATIC_GEN_14 = Vec3.native_new();
+        Vec3_TEMP_STATIC_GEN_14.internal_reset(addr, false);
+        return Vec3_TEMP_STATIC_GEN_14;
     }
 
     public static long internal_native_sUnitSpherical_addr(float inTheta, float inPhi) {
@@ -762,6 +784,24 @@ public final class Vec3 extends NativeObject {
         }
     }
 
+    public Vec3 CrossPrecise(Vec3 inRHS) {
+        long addr = internal_native_CrossPrecise_addr(native_address, inRHS.native_address);
+        if (addr == 0)
+            return Vec3.NULL;
+        if (Vec3_TEMP_GEN_6 == null)
+            Vec3_TEMP_GEN_6 = Vec3.native_new();
+        Vec3_TEMP_GEN_6.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_6;
+    }
+
+    public static long internal_native_CrossPrecise_addr(long this_addr, long inRHS_addr) {
+        try {
+            return (long) FFMHandles.internal_native_CrossPrecise_addr__JJ.invokeExact(this_addr, inRHS_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public float Dot(Vec3 inRHS) {
         return internal_native_Dot(native_address, inRHS.native_address);
     }
@@ -778,10 +818,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_DotV_addr(native_address, inRHS.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_6 == null)
-            Vec3_TEMP_GEN_6 = Vec3.native_new();
-        Vec3_TEMP_GEN_6.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_6;
+        if (Vec3_TEMP_GEN_7 == null)
+            Vec3_TEMP_GEN_7 = Vec3.native_new();
+        Vec3_TEMP_GEN_7.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_7;
     }
 
     public static long internal_native_DotV_addr(long this_addr, long inRHS_addr) {
@@ -879,10 +919,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_MulVec3_addr(native_address, inV.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_7 == null)
-            Vec3_TEMP_GEN_7 = Vec3.native_new();
-        Vec3_TEMP_GEN_7.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_7;
+        if (Vec3_TEMP_GEN_8 == null)
+            Vec3_TEMP_GEN_8 = Vec3.native_new();
+        Vec3_TEMP_GEN_8.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_8;
     }
 
     public static long internal_native_MulVec3_addr(long this_addr, long inV_addr) {
@@ -897,10 +937,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_MulFloat_addr(native_address, inV);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_8 == null)
-            Vec3_TEMP_GEN_8 = Vec3.native_new();
-        Vec3_TEMP_GEN_8.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_8;
+        if (Vec3_TEMP_GEN_9 == null)
+            Vec3_TEMP_GEN_9 = Vec3.native_new();
+        Vec3_TEMP_GEN_9.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_9;
     }
 
     public static long internal_native_MulFloat_addr(long this_addr, float inV) {
@@ -915,10 +955,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_DivVec3_addr(native_address, inV.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_9 == null)
-            Vec3_TEMP_GEN_9 = Vec3.native_new();
-        Vec3_TEMP_GEN_9.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_9;
+        if (Vec3_TEMP_GEN_10 == null)
+            Vec3_TEMP_GEN_10 = Vec3.native_new();
+        Vec3_TEMP_GEN_10.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_10;
     }
 
     public static long internal_native_DivVec3_addr(long this_addr, long inV_addr) {
@@ -933,10 +973,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_DivFloat_addr(native_address, inV);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_10 == null)
-            Vec3_TEMP_GEN_10 = Vec3.native_new();
-        Vec3_TEMP_GEN_10.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_10;
+        if (Vec3_TEMP_GEN_11 == null)
+            Vec3_TEMP_GEN_11 = Vec3.native_new();
+        Vec3_TEMP_GEN_11.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_11;
     }
 
     public static long internal_native_DivFloat_addr(long this_addr, float inV) {
@@ -951,10 +991,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_AddVec3_addr(native_address, inV.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_11 == null)
-            Vec3_TEMP_GEN_11 = Vec3.native_new();
-        Vec3_TEMP_GEN_11.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_11;
+        if (Vec3_TEMP_GEN_12 == null)
+            Vec3_TEMP_GEN_12 = Vec3.native_new();
+        Vec3_TEMP_GEN_12.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_12;
     }
 
     public static long internal_native_AddVec3_addr(long this_addr, long inV_addr) {
@@ -969,10 +1009,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_SubVec3_addr(native_address, inV.native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_12 == null)
-            Vec3_TEMP_GEN_12 = Vec3.native_new();
-        Vec3_TEMP_GEN_12.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_12;
+        if (Vec3_TEMP_GEN_13 == null)
+            Vec3_TEMP_GEN_13 = Vec3.native_new();
+        Vec3_TEMP_GEN_13.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_13;
     }
 
     public static long internal_native_SubVec3_addr(long this_addr, long inV_addr) {
@@ -1061,14 +1101,26 @@ public final class Vec3 extends NativeObject {
         }
     }
 
+    public float ReduceSum() {
+        return internal_native_ReduceSum(native_address);
+    }
+
+    public static float internal_native_ReduceSum(long this_addr) {
+        try {
+            return (float) FFMHandles.internal_native_ReduceSum__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public Vec3 Sqrt() {
         long addr = internal_native_Sqrt_addr(native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_13 == null)
-            Vec3_TEMP_GEN_13 = Vec3.native_new();
-        Vec3_TEMP_GEN_13.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_13;
+        if (Vec3_TEMP_GEN_14 == null)
+            Vec3_TEMP_GEN_14 = Vec3.native_new();
+        Vec3_TEMP_GEN_14.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_14;
     }
 
     public static long internal_native_Sqrt_addr(long this_addr) {
@@ -1083,10 +1135,10 @@ public final class Vec3 extends NativeObject {
         long addr = internal_native_GetSign_addr(native_address);
         if (addr == 0)
             return Vec3.NULL;
-        if (Vec3_TEMP_GEN_14 == null)
-            Vec3_TEMP_GEN_14 = Vec3.native_new();
-        Vec3_TEMP_GEN_14.internal_reset(addr, false);
-        return Vec3_TEMP_GEN_14;
+        if (Vec3_TEMP_GEN_15 == null)
+            Vec3_TEMP_GEN_15 = Vec3.native_new();
+        Vec3_TEMP_GEN_15.internal_reset(addr, false);
+        return Vec3_TEMP_GEN_15;
     }
 
     public static long internal_native_GetSign_addr(long this_addr) {
@@ -1126,6 +1178,8 @@ public final class Vec3 extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_sClamp_addr__JJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_sclamp_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_sFusedMultiplyAdd_addr__JJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_sfusedmultiplyadd_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_sDifferenceOfProducts_addr__JJJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_sdifferenceofproducts_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_sOr_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_sor_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
@@ -1189,6 +1243,8 @@ public final class Vec3 extends NativeObject {
 
         static final java.lang.invoke.MethodHandle internal_native_Cross_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_cross_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
+        static final java.lang.invoke.MethodHandle internal_native_CrossPrecise_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_crossprecise_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
         static final java.lang.invoke.MethodHandle internal_native_Dot__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_dot", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_DotV_addr__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_dotv_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
@@ -1226,6 +1282,8 @@ public final class Vec3 extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_ReduceMin__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_reducemin", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_ReduceMax__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_reducemax", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_ReduceSum__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_reducesum", FunctionDescriptor.of(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_Sqrt_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_math_vec3_sqrt_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

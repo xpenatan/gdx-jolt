@@ -12,6 +12,8 @@ final public class JNI_SoftBodyVertex {
 
     public static native void internal_native_deleteNative(long this_addr);
 
+    public static native void internal_native_MarkCCDContact(long this_addr, long inBodyID_addr, long inContactPlane_addr);
+
     public static native long internal_native_get_mPreviousPosition_addr(long this_addr);
 
     public static native void internal_native_set_mPreviousPosition(long this_addr, long mPreviousPosition_addr);

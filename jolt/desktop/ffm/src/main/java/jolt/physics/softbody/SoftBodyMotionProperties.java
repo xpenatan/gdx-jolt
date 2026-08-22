@@ -403,6 +403,18 @@ public final class SoftBodyMotionProperties extends MotionProperties {
         }
     }
 
+    public void RequestContactCallback() {
+        internal_native_RequestContactCallback(native_address);
+    }
+
+    public static void internal_native_RequestContactCallback(long this_addr) {
+        try {
+            FFMHandles.internal_native_RequestContactCallback__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     private static final class FFMHandles {
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodymotionproperties_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
@@ -452,5 +464,7 @@ public final class SoftBodyMotionProperties extends MotionProperties {
         static final java.lang.invoke.MethodHandle internal_native_CustomUpdate__JFJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodymotionproperties_customupdate", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_SkinVertices__JJJIZJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodymotionproperties_skinvertices", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_BOOLEAN, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_RequestContactCallback__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_softbody_softbodymotionproperties_requestcontactcallback", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
     }
 }

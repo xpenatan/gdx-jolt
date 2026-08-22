@@ -9,7 +9,9 @@ package gen.web.jolt.geometry;
 import gen.web.com.github.xpenatan.jParser.api.NativeObject;
 import gen.web.jolt.math.Vec3;
 import gen.web.jolt.math.VertexList;
+import gen.web.jolt.RVec3;
 import gen.web.jolt.math.Mat44;
+import gen.web.jolt.RMat44;
 
 public final class AABox extends NativeObject {
 
@@ -30,6 +32,8 @@ public final class AABox extends NativeObject {
     private AABox AABox_TEMP_GEN_1;
 
     private AABox AABox_TEMP_GEN_2;
+
+    private AABox AABox_TEMP_GEN_3;
 
     private Vec3 Vec3_TEMP_GEN_3;
 
@@ -258,6 +262,13 @@ public final class AABox extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);var returnedJSObj = jsObj.ContainsVec3(inOther_addr);return returnedJSObj;")
     public static native boolean internal_native_ContainsVec3(int this_addr, int inOther_addr);
 
+    public boolean ContainsRVec3(RVec3 inOther) {
+        return internal_native_ContainsRVec3(native_address, inOther.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);var returnedJSObj = jsObj.ContainsRVec3(inOther_addr);return returnedJSObj;")
+    public static native boolean internal_native_ContainsRVec3(int this_addr, int inOther_addr);
+
     public boolean OverlapsAABox(AABox inOther) {
         return internal_native_OverlapsAABox(native_address, inOther.native_address);
     }
@@ -279,6 +290,13 @@ public final class AABox extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);jsObj.TranslateVec3(inOther_addr);")
     public static native void internal_native_TranslateVec3(int this_addr, int inOther_addr);
 
+    public void TranslateRVec3(RVec3 inOther) {
+        internal_native_TranslateRVec3(native_address, inOther.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);jsObj.TranslateRVec3(inOther_addr);")
+    public static native void internal_native_TranslateRVec3(int this_addr, int inOther_addr);
+
     public AABox TransformedMat44(Mat44 inOther) {
         int addr = internal_native_TransformedMat44_addr(native_address, inOther.native_address);
         if (addr == 0)
@@ -292,14 +310,27 @@ public final class AABox extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);var returnedJSObj = jsObj.TransformedMat44(inOther_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_TransformedMat44_addr(int this_addr, int inOther_addr);
 
-    public AABox Scaled(Vec3 inScale) {
-        int addr = internal_native_Scaled_addr(native_address, inScale.native_address);
+    public AABox TransformedRMat44(RMat44 inOther) {
+        int addr = internal_native_TransformedRMat44_addr(native_address, inOther.native_address);
         if (addr == 0)
             return AABox.NULL;
         if (AABox_TEMP_GEN_2 == null)
             AABox_TEMP_GEN_2 = AABox.native_new();
         AABox_TEMP_GEN_2.internal_reset(addr, false);
         return AABox_TEMP_GEN_2;
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inOther_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);var returnedJSObj = jsObj.TransformedRMat44(inOther_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
+    public static native int internal_native_TransformedRMat44_addr(int this_addr, int inOther_addr);
+
+    public AABox Scaled(Vec3 inScale) {
+        int addr = internal_native_Scaled_addr(native_address, inScale.native_address);
+        if (addr == 0)
+            return AABox.NULL;
+        if (AABox_TEMP_GEN_3 == null)
+            AABox_TEMP_GEN_3 = AABox.native_new();
+        AABox_TEMP_GEN_3.internal_reset(addr, false);
+        return AABox_TEMP_GEN_3;
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inScale_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.AABox);var returnedJSObj = jsObj.Scaled(inScale_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")

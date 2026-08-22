@@ -42,6 +42,14 @@ public class BodyCreationSettings extends NativeObject {
         return new BodyCreationSettings((byte) 0, (char) 0);
     }
 
+    public boolean Equals(BodyCreationSettings inRHS) {
+        return false;
+    }
+
+    public boolean NotEquals(BodyCreationSettings inRHS) {
+        return false;
+    }
+
     public ShapeSettings GetShapeSettings() {
         return null;
     }
@@ -96,11 +104,11 @@ public class BodyCreationSettings extends NativeObject {
     public void set_mAngularVelocity(Vec3 mAngularVelocity) {
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return 0;
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
     }
 
     public int get_mObjectLayer() {

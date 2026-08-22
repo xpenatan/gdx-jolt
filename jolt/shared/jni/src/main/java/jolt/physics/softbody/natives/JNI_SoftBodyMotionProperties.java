@@ -57,4 +57,6 @@ final public class JNI_SoftBodyMotionProperties {
     public static native void internal_native_CustomUpdate(long this_addr, float inDeltaTime, long ioSoftBody_addr, long inSystem_addr);
 
     public static native void internal_native_SkinVertices(long this_addr, long inRootTransform_addr, long inJointMatrices_addr, int inNumJoints, boolean inHardSkinAll, long ioTempAllocator_addr);
+
+    public static native void internal_native_RequestContactCallback(long this_addr);
 }

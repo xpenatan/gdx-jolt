@@ -6,6 +6,9 @@
 interface Jolt {
     static void Init();
     static void RegisterTypes();
+    static void RegisterHair();
+    static boolean IsVelocityMotor(EMotorState inMotorState);
+    static boolean IsPositionMotor(EMotorState inMotorState);
     static void UnregisterTypes();
     static void ClearWorld([Ref] PhysicsSystem physicsSystem);
     static CharacterContactListener GetCharacterContactListener(CharacterVirtual inCharacter);
@@ -103,6 +106,72 @@ interface JoltNew {
     [BindTo="New_MeshShapeSettings"] static MeshShapeSettings MeshShapeSettings__1([Ref, Const] TriangleList inTriangleList, [Ref, Const] optional PhysicsMaterialList inMaterialList); //[-NEW_OBJECT]
     [BindTo="New_MeshShapeSettings"] static MeshShapeSettings MeshShapeSettings__2([Ref, Const] VertexList inVertices, [Ref, Const] IndexedTriangleList inTriangles, [Ref, Const] PhysicsMaterialList inMaterialList); //[-NEW_OBJECT]
 
+};
+
+[NoDelete]
+interface JoltCompute { //[-SUB_PACKAGE=compute]
+    [Value] static ComputeSystemResult CreateComputeSystemCPU();
+    [Value] static ComputeShaderResult CreateComputeShader(ComputeSystem inSystem, [Const, Ref] NativeString inName, unsigned long inGroupSizeX, optional unsigned long inGroupSizeY, optional unsigned long inGroupSizeZ);
+    static void SetShaderLoader(ComputeSystem inSystem, ComputeShaderLoader inLoader);
+    static void SetConstantBuffer(ComputeQueue inQueue, [Const, Ref] NativeString inName, [Const] ComputeBuffer inBuffer);
+    static void SetBuffer(ComputeQueue inQueue, [Const, Ref] NativeString inName, [Const] ComputeBuffer inBuffer);
+    static void SetRWBuffer(ComputeQueue inQueue, [Const, Ref] NativeString inName, ComputeBuffer inBuffer, optional ComputeQueue_EBarrier inBarrier);
+    [Value] static ComputeBufferResult CreateByteBuffer(ComputeSystem inSystem, ComputeBuffer_EType inType, [Const, Ref] ArrayUint8 inData);
+    static boolean WriteBytes(ComputeBuffer inBuffer, unsigned long long inByteOffset, [Const, Ref] ArrayUint8 inData);
+    static boolean ReadBytes(ComputeBuffer inBuffer, unsigned long long inByteOffset, unsigned long long inByteCount, [Ref] ArrayUint8 outData);
+};
+
+interface ComputeShaderLoader { //[-SUB_PACKAGE=compute]
+};
+
+[JSImplementation="ComputeShaderLoader"]
+interface ComputeShaderLoaderImpl { //[-SUB_PACKAGE=compute]
+    void ComputeShaderLoaderImpl();
+    boolean Load([Const] NativeString inName, [Ref] ArrayUint8 outData, [Ref] NativeString outError);
+};
+
+[NoDelete]
+interface Float3Span { //[-SUB_PACKAGE=physics.hair]
+    [Ref] Float3 at(unsigned long inIndex);
+};
+
+[NoDelete]
+interface Float4Span { //[-SUB_PACKAGE=physics.hair]
+    [Ref] Float4 at(unsigned long inIndex);
+};
+
+interface HairRenderPositionsToFloat3 { //[-SUB_PACKAGE=physics.hair]
+};
+
+[JSImplementation="HairRenderPositionsToFloat3"]
+interface HairRenderPositionsToFloat3Impl { //[-SUB_PACKAGE=physics.hair]
+    void HairRenderPositionsToFloat3Impl();
+    void Convert(ComputeBuffer inBuffer, Float3Span outPositions, unsigned long inCount);
+};
+
+interface HairGridSampleCallback { //[-SUB_PACKAGE=physics.hair]
+};
+
+[JSImplementation="HairGridSampleCallback"]
+interface HairGridSampleCallbackImpl { //[-SUB_PACKAGE=physics.hair]
+    void HairGridSampleCallbackImpl();
+    void Sample(unsigned long inIndex, float inFraction);
+};
+
+[NoDelete]
+interface JoltHair { //[-SUB_PACKAGE=physics.hair]
+    static void RegisterShaders(ComputeSystem inSystem);
+    static float InitSettings([Ref] HairSettings inSettings);
+    static void OverrideRenderPositions(Hair inHair, HairRenderPositionsToFloat3 inConverter);
+    static void SampleGrid([Ref] HairSettingsGridSampler inSampler, [Const, Ref] UVec4 inIndex, [Const, Ref] Vec3 inFraction, HairGridSampleCallback inCallback);
+    static void SampleGridAtPosition([Ref] HairSettingsGridSampler inSampler, [Const, Ref] Vec3 inPosition, HairGridSampleCallback inCallback);
+    [Value] static Float3 GetScalpVertex([Const, Ref] Hair inHair, unsigned long inIndex);
+    [Value] static Float3 GetPosition([Const, Ref] Hair inHair, unsigned long inIndex);
+    [Value] static Quat GetRotation([Const, Ref] Hair inHair, unsigned long inIndex);
+    [Value] static Float3 GetVelocity([Const, Ref] Hair inHair, unsigned long inIndex);
+    [Value] static Float3 GetAngularVelocity([Const, Ref] Hair inHair, unsigned long inIndex);
+    [Value] static Float4 GetGridVelocityAndDensity([Const, Ref] Hair inHair, unsigned long inIndex);
+    [Value] static Float3 GetRenderPosition([Const, Ref] Hair inHair, unsigned long inIndex);
 };
 
 // Custom listener that can prevent unnecessary JNI calls
@@ -289,9 +358,10 @@ interface DebugRendererImplCustom : DebugRendererEm {
 interface Vector2 { //[-SUB_PACKAGE=math]
     void Vector2();
     void SetZero();
-    void IsZero();
-    void IsClose([Const, Ref] Vector2 inV, optional float inMaxDistSq);
-    void IsNormalized(optional float inTolerance);
+    boolean IsZero();
+    boolean IsNearZero(optional float inMaxDistSq);
+    boolean IsClose([Const, Ref] Vector2 inV, optional float inMaxDistSq);
+    boolean IsNormalized(optional float inTolerance);
     [Const, Value] Vector2 Normalized();
     [Operator="[]"] float GetComponent(unsigned long inCoordinate);
     [Operator="+=", Ref] Vector2 Add([Const, Ref] Vector2 inV);
@@ -626,6 +696,7 @@ interface PathConstraintPathJS {
 
 interface HeightFieldShapeConstantValues {
     [Const] static readonly attribute float cNoCollisionValue;
+    [Const] static readonly attribute unsigned long cMaxBitsPerSample;
 };
 
 interface ShapeGetTriangles { //[-SUB_PACKAGE=physics.collision.shape]
@@ -721,6 +792,83 @@ interface ArrayUint8 { //[-SUB_PACKAGE=math]
     void resize(unsigned long inSize);
     void clear();
     Uint8MemRef data();
+};
+
+interface ArrayHairSettingsSkinWeight { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsSkinWeight();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsSkinWeight at(long inIndex);
+    void push_back([Const, Ref] HairSettingsSkinWeight inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+};
+
+interface ArrayHairSettingsSkinPoint { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsSkinPoint();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsSkinPoint at(long inIndex);
+    void push_back([Const, Ref] HairSettingsSkinPoint inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+};
+
+interface ArrayHairSettingsRVertex { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsRVertex();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsRVertex at(long inIndex);
+    void push_back([Const, Ref] HairSettingsRVertex inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+};
+
+interface ArrayHairSettingsSVertex { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsSVertex();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsSVertex at(long inIndex);
+    void push_back([Const, Ref] HairSettingsSVertex inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+};
+
+interface ArrayHairSettingsRStrand { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsRStrand();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsRStrand at(long inIndex);
+    void push_back([Const, Ref] HairSettingsRStrand inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+};
+
+interface ArrayHairSettingsSStrand { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsSStrand();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsSStrand at(long inIndex);
+    void push_back([Const, Ref] HairSettingsSStrand inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
+};
+
+interface ArrayHairSettingsMaterial { //[-SUB_PACKAGE=physics.hair]
+    void ArrayHairSettingsMaterial();
+    boolean empty();
+    long size();
+    [Ref] HairSettingsMaterial at(long inIndex);
+    void push_back([Const, Ref] HairSettingsMaterial inValue);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
 };
 
 interface ArrayVehicleAntiRollBar { //[-SUB_PACKAGE=physics.vehicle]
@@ -1217,6 +1365,34 @@ enum MeshShapeSettings_EBuildQuality {                          //[-SUB_PACKAGE=
     "MeshShapeSettings_EBuildQuality_FavorBuildSpeed"           //[-RENAME=FavorBuildSpeed]
 };
 
+enum ComputeBuffer_EType {                                     //[-SUB_PACKAGE=compute]
+    "ComputeBuffer_EType_UploadBuffer",                         //[-RENAME=UploadBuffer]
+    "ComputeBuffer_EType_ReadbackBuffer",                       //[-RENAME=ReadbackBuffer]
+    "ComputeBuffer_EType_ConstantBuffer",                       //[-RENAME=ConstantBuffer]
+    "ComputeBuffer_EType_Buffer",                               //[-RENAME=Buffer]
+    "ComputeBuffer_EType_RWBuffer"                              //[-RENAME=RWBuffer]
+};
+
+enum ComputeBuffer_EMode {                                     //[-SUB_PACKAGE=compute]
+    "ComputeBuffer_EMode_Read",                                 //[-RENAME=Read]
+    "ComputeBuffer_EMode_Write"                                 //[-RENAME=Write]
+};
+
+enum ComputeQueue_EBarrier {                                   //[-SUB_PACKAGE=compute]
+    "ComputeQueue_EBarrier_Yes",                                //[-RENAME=Yes]
+    "ComputeQueue_EBarrier_No"                                  //[-RENAME=No]
+};
+
+enum Hair_ERenderStrandColor {                                 //[-SUB_PACKAGE=physics.hair]
+    "Hair_ERenderStrandColor_PerRenderStrand",                  //[-RENAME=PerRenderStrand]
+    "Hair_ERenderStrandColor_PerSimulatedStrand",               //[-RENAME=PerSimulatedStrand]
+    "Hair_ERenderStrandColor_GravityFactor",                    //[-RENAME=GravityFactor]
+    "Hair_ERenderStrandColor_WorldTransformInfluence",          //[-RENAME=WorldTransformInfluence]
+    "Hair_ERenderStrandColor_GridVelocityFactor",               //[-RENAME=GridVelocityFactor]
+    "Hair_ERenderStrandColor_GlobalPose",                       //[-RENAME=GlobalPose]
+    "Hair_ERenderStrandColor_SkinGlobalPose"                    //[-RENAME=SkinGlobalPose]
+};
+
 // ##################################################
 // ################## JOLT CLASSES ##################
 // ##################################################
@@ -1273,6 +1449,7 @@ interface PhysicsSystem {
     [Ref] BodyInterface GetBodyInterfaceNoLock();
     [Const, Ref] BodyLockInterfaceNoLock GetBodyLockInterfaceNoLock();
     [Const, Ref] BodyLockInterfaceLocking GetBodyLockInterface();
+    [Const, Ref] BroadPhaseLayerInterface GetBroadPhaseLayerInterface();
     [Const, Ref] BroadPhaseQuery GetBroadPhaseQuery();
     [Const, Ref] NarrowPhaseQuery GetNarrowPhaseQuery();
     [Const, Ref] NarrowPhaseQuery GetNarrowPhaseQueryNoLock();
@@ -1318,6 +1495,7 @@ interface Vec3 {
     [Value] static Vec3 sMax([Const, Ref] Vec3 inLHS, [Const, Ref] Vec3 inRHS);
     [Value] static Vec3 sClamp([Const, Ref] Vec3 inValue, [Const, Ref] Vec3 inMin, [Const, Ref] Vec3 inMax);
     [Value] static Vec3 sFusedMultiplyAdd([Const, Ref] Vec3 inMul1, [Const, Ref] Vec3 inMul2, [Const, Ref] Vec3 inAdd);
+    [Value] static Vec3 sDifferenceOfProducts([Const, Ref] Vec3 inA, [Const, Ref] Vec3 inB, [Const, Ref] Vec3 inC, [Const, Ref] Vec3 inD);
     [Value] static Vec3 sOr([Const, Ref] Vec3 inV1, [Const, Ref] Vec3 inV2);
     [Value] static Vec3 sXor([Const, Ref] Vec3 inV1, [Const, Ref] Vec3 inV2);
     [Value] static Vec3 sAnd([Const, Ref] Vec3 inV1, [Const, Ref] Vec3 inV2);
@@ -1346,6 +1524,7 @@ interface Vec3 {
     [Const, Value] Vec3 Abs();
     [Const, Value] Vec3 Reciprocal();
     [Const, Value] Vec3 Cross([Const, Ref] Vec3 inRHS);
+    [Const, Value] Vec3 CrossPrecise([Const, Ref] Vec3 inRHS);
     float Dot([Const, Ref] Vec3 inRHS);
     [Value] Vec3 DotV([Const, Ref] Vec3 inRHS);
     [Value] Vec4 DotV4([Const, Ref] Vec3 inRHS);
@@ -1365,6 +1544,7 @@ interface Vec3 {
     [Value] Vec4 SplatZ();
     float ReduceMin();
     float ReduceMax();
+    float ReduceSum();
     [Const, Value] Vec3 Sqrt();
     [Const, Value] Vec3 GetSign();
 };
@@ -1381,6 +1561,7 @@ interface Vec4 {
     [Value] static Vec4 sMax([Const, Ref] Vec4 inLHS, [Const, Ref] Vec4 inRHS);
     [Value] static Vec4 sClamp([Const, Ref] Vec4 inValue, [Const, Ref] Vec4 inMin, [Const, Ref] Vec4 inMax);
     [Value] static Vec4 sFusedMultiplyAdd([Const, Ref] Vec4 inMul1, [Const, Ref] Vec4 inMul2, [Const, Ref] Vec4 inAdd);
+    [Value] static Vec4 sDifferenceOfProducts([Const, Ref] Vec4 inA, [Const, Ref] Vec4 inB, [Const, Ref] Vec4 inC, [Const, Ref] Vec4 inD);
     [Value] static Vec4 sOr([Const, Ref] Vec4 inV1, [Const, Ref] Vec4 inV2);
     [Value] static Vec4 sXor([Const, Ref] Vec4 inV1, [Const, Ref] Vec4 inV2);
     [Value] static Vec4 sAnd([Const, Ref] Vec4 inV1, [Const, Ref] Vec4 inV2);
@@ -1410,6 +1591,7 @@ interface Vec4 {
     [Operator = "/", Value] Vec4 DivFloat(float inV);
     [Operator = "+", Value] Vec4 AddVec4([Const, Ref] Vec4 inV);
     [Operator = "-", Value] Vec4 SubVec4([Const, Ref] Vec4 inV);
+    float ReduceSum();
 };
 
 interface Quat {
@@ -1470,10 +1652,81 @@ interface Float3 {
     attribute float z;
 };
 
+interface Float4 {
+    void Float4();
+    void Float4(float inX, float inY, float inZ, float inW);
+    [Operator="[]"] float GetComponent(long inCoordinate);
+    [Operator="=="] boolean Equals([Const, Ref] Float4 inV);
+    [Operator="!="] boolean NotEquals([Const, Ref] Float4 inV);
+
+    attribute float x;
+    attribute float y;
+    attribute float z;
+    attribute float w;
+};
+
 interface Float2 {
     void Float2(float inX, float inY);
     attribute float x;
     attribute float y;
+};
+
+interface UVec4 {
+    void UVec4();
+    void UVec4(unsigned long inX, unsigned long inY, unsigned long inZ, unsigned long inW);
+    [Operator="=="] boolean Equals([Const, Ref] UVec4 inV);
+    [Operator="!="] boolean NotEquals([Const, Ref] UVec4 inV);
+    [Value] static UVec4 sZero();
+    [Value] static UVec4 sReplicate(unsigned long inV);
+    [Value] static UVec4 sLoadInt([Const] UintMemRef inV);
+    [Value] static UVec4 sLoadInt4([Const] UintMemRef inV);
+    [Value] static UVec4 sLoadInt4Aligned([Const] UintMemRef inV);
+    [Value] static UVec4 sMin([Const, Ref] UVec4 inV1, [Const, Ref] UVec4 inV2);
+    [Value] static UVec4 sMax([Const, Ref] UVec4 inV1, [Const, Ref] UVec4 inV2);
+    [Value] static UVec4 sEquals([Const, Ref] UVec4 inV1, [Const, Ref] UVec4 inV2);
+    [Value] static UVec4 sSelect([Const, Ref] UVec4 inNotSet, [Const, Ref] UVec4 inSet, [Const, Ref] UVec4 inControl);
+    [Value] static UVec4 sOr([Const, Ref] UVec4 inV1, [Const, Ref] UVec4 inV2);
+    [Value] static UVec4 sXor([Const, Ref] UVec4 inV1, [Const, Ref] UVec4 inV2);
+    [Value] static UVec4 sAnd([Const, Ref] UVec4 inV1, [Const, Ref] UVec4 inV2);
+    [Value] static UVec4 sNot([Const, Ref] UVec4 inV1);
+    [Value] static UVec4 sSort4True([Const, Ref] UVec4 inValue, [Const, Ref] UVec4 inIndex);
+    unsigned long GetX();
+    unsigned long GetY();
+    unsigned long GetZ();
+    unsigned long GetW();
+    void SetX(unsigned long inX);
+    void SetY(unsigned long inY);
+    void SetZ(unsigned long inZ);
+    void SetW(unsigned long inW);
+    [Operator="[]"] unsigned long GetComponent(unsigned long inCoordinate);
+    [Operator="*", Value] UVec4 Mul([Const, Ref] UVec4 inV);
+    [Operator="+", Value] UVec4 Add([Const, Ref] UVec4 inV);
+    [Operator="+=", Ref] UVec4 AddAssign([Const, Ref] UVec4 inV);
+    [Operator="-", Value] UVec4 Sub([Const, Ref] UVec4 inV);
+    [Operator="-=", Ref] UVec4 SubAssign([Const, Ref] UVec4 inV);
+    [Value] UVec4 SplatX();
+    [Value] UVec4 SplatY();
+    [Value] UVec4 SplatZ();
+    [Value] UVec4 SplatW();
+    [Value] Vec4 ToFloat();
+    [Value] Vec4 ReinterpretAsFloat();
+    [Value] UVec4 DotV([Const, Ref] UVec4 inV);
+    unsigned long Dot([Const, Ref] UVec4 inV);
+    void StoreInt4(UintMemRef outV);
+    void StoreInt4Aligned(UintMemRef outV);
+    boolean TestAnyTrue();
+    boolean TestAnyXYZTrue();
+    boolean TestAllTrue();
+    boolean TestAllXYZTrue();
+    long CountTrues();
+    long GetTrues();
+    [Value] UVec4 Expand4Uint16Lo();
+    [Value] UVec4 Expand4Uint16Hi();
+    [Value] UVec4 Expand4Byte0();
+    [Value] UVec4 Expand4Byte4();
+    [Value] UVec4 Expand4Byte8();
+    [Value] UVec4 Expand4Byte12();
+    [Value] UVec4 ShiftComponents4Minus(long inCount);
 };
 
 interface Mat44 {
@@ -1571,10 +1824,13 @@ interface AABox {
     float GetSurfaceArea();
     float GetVolume();
     [BindTo="Contains"] boolean ContainsVec3([Const, Ref] Vec3 inOther);
+    [BindTo="Contains"] boolean ContainsRVec3([Const, Ref] RVec3 inOther);
     [BindTo="Overlaps"] boolean OverlapsAABox([Const, Ref] AABox inOther);
     [BindTo="Overlaps"] boolean OverlapsPlane([Const, Ref] AABox inOther);
     [BindTo="Translate"] void TranslateVec3([Const, Ref] Vec3 inOther);
+    [BindTo="Translate"] void TranslateRVec3([Const, Ref] RVec3 inOther);
     [BindTo="Transformed", Value] AABox TransformedMat44([Const, Ref] Mat44 inOther);
+    [BindTo="Transformed", Value] AABox TransformedRMat44([Const, Ref] RMat44 inOther);
     [Value] AABox Scaled([Const, Ref] Vec3 inScale);
     [Value] Vec3 GetClosestPoint([Const, Ref] Vec3 inV);
     float GetSqDistanceTo([Const, Ref] Vec3 inV);
@@ -1691,6 +1947,7 @@ interface TransformedShape {
     [Value] AABox GetWorldSpaceBounds();
     [Value] Vec3 GetWorldSpaceSurfaceNormal([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] Vec3 inPosition);
     [Const] PhysicsMaterial GetMaterial([Const, Ref] SubShapeID inSubShapeID);
+    unsigned long long GetSubShapeUserData([Const, Ref] SubShapeID inSubShapeID);
 
     [Value] attribute Vec3 mShapePositionCOM;
     [Value] attribute Quat mShapeRotation;
@@ -1748,13 +2005,41 @@ interface VertexList { //[-SUB_PACKAGE=math]
     void clear();
 };
 
+interface IndexedTriangleNoMaterial { //[-SUB_PACKAGE=geometry]
+    void IndexedTriangleNoMaterial();
+    void IndexedTriangleNoMaterial(unsigned long inI1, unsigned long inI2, unsigned long inI3);
+    [Operator="=="] boolean Equals([Const, Ref] IndexedTriangleNoMaterial inRHS);
+    boolean IsEquivalent([Const, Ref] IndexedTriangleNoMaterial inRHS);
+    boolean IsOpposite([Const, Ref] IndexedTriangleNoMaterial inRHS);
+    boolean IsDegenerate([Const, Ref] VertexList inVertices);
+    void Rotate();
+    [Value] Vec3 GetCentroid([Const, Ref] VertexList inVertices);
+    unsigned long long GetHash();
+
+    attribute unsigned long[] mIdx;
+};
+
 interface IndexedTriangle {
     void IndexedTriangle();
     void IndexedTriangle(unsigned long inI1, unsigned long inI2, unsigned long inI3, unsigned long inMaterialIndex, optional unsigned long inUserData);
+    [BindTo="operator==", Operator="=="] boolean EqualsIndexedTriangle([Const, Ref] IndexedTriangle inRHS);
+    [Value] IndexedTriangle GetLowestIndexFirst();
+    unsigned long long GetHash();
 
-    attribute unsigned long[] mIdx;
     attribute unsigned long mMaterialIndex;
     attribute unsigned long mUserData;
+};
+IndexedTriangle implements IndexedTriangleNoMaterial;
+
+interface IndexedTriangleNoMaterialList { //[-SUB_PACKAGE=geometry]
+    void IndexedTriangleNoMaterialList();
+    boolean empty();
+    long size();
+    [Ref] IndexedTriangleNoMaterial at(long inIndex);
+    void push_back([Const, Ref] IndexedTriangleNoMaterial inTriangle);
+    void reserve(unsigned long inSize);
+    void resize(unsigned long inSize);
+    void clear();
 };
 
 interface IndexedTriangleList { //[-SUB_PACKAGE=geometry]
@@ -1791,7 +2076,7 @@ interface ShapeSettings { //[-SUB_PACKAGE=physics.collision.shape]
     [Value] ShapeResult Create();
     void ClearCachedResult();
 
-    attribute unsigned long mUserData;
+    attribute unsigned long long mUserData;
 };
 ShapeSettings implements RefTargetShapeSettings;
 
@@ -1806,15 +2091,15 @@ interface Shape {
     [Value] AABox GetLocalBounds();
     [Value] AABox GetWorldSpaceBounds([Const, Ref] Mat44 inCenterOfMassTransform, [Const, Ref] Vec3 inScale);
     [Value] Vec3 GetCenterOfMass();
-    unsigned long GetUserData();
-    void SetUserData(unsigned long inUserData);
+    unsigned long long GetUserData();
+    void SetUserData(unsigned long long inUserData);
     unsigned long GetSubShapeIDBitsRecursive();
     float GetInnerRadius();
     [Value] MassProperties GetMassProperties();
     [Const] Shape GetLeafShape([Const, Ref] SubShapeID inSubShapeID, [Ref] SubShapeID outRemainder);
     [Const] PhysicsMaterial GetMaterial([Const, Ref] SubShapeID inSubShapeID);
     [Value] Vec3 GetSurfaceNormal([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] Vec3 inLocalSurfacePosition);
-    unsigned long GetSubShapeUserData([Const, Ref] SubShapeID inSubShapeID);
+    unsigned long long GetSubShapeUserData([Const, Ref] SubShapeID inSubShapeID);
     [Value] TransformedShape GetSubShapeTransformedShape([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] Vec3 inPositionCOM, [Const, Ref] Quat inRotation, [Const, Ref] Vec3 inScale, [Ref] SubShapeID outRemainder);
     float GetVolume();
     boolean IsValidScale([Const, Ref] Vec3 inScale);
@@ -2151,6 +2436,7 @@ interface ConstraintSettings { //[-SUB_PACKAGE=physics.constraints]
     attribute long mNumVelocityStepsOverride;
     attribute long mNumPositionStepsOverride;
     attribute float mDrawConstraintSize;
+    attribute unsigned long long mUserData;
 };
 
 [NoDelete]
@@ -2169,8 +2455,8 @@ interface Constraint {
     void SetEnabled(boolean inEnabled);
     boolean GetEnabled();
     boolean IsActive();
-    unsigned long GetUserData();
-    void SetUserData(unsigned long inUserData);
+    unsigned long long GetUserData();
+    void SetUserData(unsigned long long inUserData);
     void ResetWarmStart();
     void SaveState([Ref] StateRecorder inStream);
     void RestoreState([Ref] StateRecorder inStream);
@@ -2211,6 +2497,7 @@ FixedConstraintSettings implements TwoBodyConstraintSettings;
 interface SpringSettings {
     void SpringSettings();
     boolean HasStiffness();
+    boolean HasStiffnessOrDamping();
 
     attribute ESpringMode mMode;
     attribute float mFrequency;
@@ -2221,7 +2508,9 @@ interface SpringSettings {
 // Motor settings
 interface MotorSettings {
     void MotorSettings();
+    void MotorSettings(ESpringMode inMode, float inFrequency, float inDamping);
     void MotorSettings(float inFrequency, float inDamping);
+    void MotorSettings(ESpringMode inMode, float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit);
     void MotorSettings(float inFrequency, float inDamping, float inForceLimit, float inTorqueLimit);
 
     [Value] attribute SpringSettings mSpringSettings;
@@ -2437,6 +2726,7 @@ interface SwingTwistConstraint {
     EMotorState GetTwistMotorState();
     void SetTargetAngularVelocityCS([Const, Ref] Vec3 inAngularVelocity);
     [Value] Vec3 GetTargetAngularVelocityCS();
+    void SetTargetAngularVelocityBS([Const, Ref] Vec3 inAngularVelocity);
     void SetTargetOrientationCS([Const, Ref] Quat inOrientation);
     [Value] Quat GetTargetOrientationCS();
     void SetTargetOrientationBS([Const, Ref] Quat inOrientation);
@@ -2667,6 +2957,8 @@ interface MotionProperties {
     void ResetMotion();
     [Const, Value] Vec3 LockTranslation([Const, Ref] Vec3 inV);
     [Const, Value] Vec3 LockAngular([Const, Ref] Vec3 inV);
+    void ApplyLinearVelocityStep([Const, Ref] Vec3 inLinearVelocity);
+    void ApplyAngularVelocityStep([Const, Ref] Vec3 inAngularVelocity);
     void SetNumVelocityStepsOverride(unsigned long inN);
     unsigned long GetNumVelocityStepsOverride();
     void SetNumPositionStepsOverride(unsigned long inN);
@@ -2696,6 +2988,8 @@ GroupFilterTable implements GroupFilter;
 interface CollisionGroup {
     void CollisionGroup();
     void CollisionGroup(GroupFilter inFilter, unsigned long inGroupID, unsigned long inSubGroupID);
+    [BindTo="operator==", Operator="=="] boolean Equals([Const, Ref] CollisionGroup inRHS);
+    [BindTo="operator!=", Operator="!="] boolean NotEquals([Const, Ref] CollisionGroup inRHS);
     void SetGroupFilter(GroupFilter inFilter);
     [Const] GroupFilter GetGroupFilter();
     void SetGroupID(unsigned long inGroupID);
@@ -2771,8 +3065,8 @@ interface Body {
     void ApplySoftBodyCreationSettings([Const, Ref] SoftBodyCreationSettings inSoftBodyCreationSettings, [Const, Ref] BroadPhaseLayerInterface inBPLInterface);
     MotionProperties GetMotionProperties();
     [Const, Value] Vec3 GetWorldSpaceSurfaceNormal([Const, Ref] SubShapeID inSubShapeID, [Const, Ref] Vec3 inPosition);
-    unsigned long GetUserData();
-    void SetUserData(unsigned long inUserData);
+    unsigned long long GetUserData();
+    void SetUserData(unsigned long long inUserData);
     void SetCollisionGroup([Const, Ref] CollisionGroup inGroup);
     void SaveState([Ref] StateRecorder inStream);
     void RestoreState([Ref] StateRecorder inStream);
@@ -2866,8 +3160,8 @@ interface BodyInterface {
     void AddImpulse([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inImpulse, [Const, Ref] Vec3 inPosition);
     void AddAngularImpulse([Const, Ref] BodyID inBodyID, [Const, Ref] Vec3 inAngularImpulse);
     [Value] TransformedShape GetTransformedShape([Const, Ref] BodyID inBodyID);
-    unsigned long GetUserData([Const, Ref] BodyID inBodyID);
-    void SetUserData([Const, Ref] BodyID inBodyID, unsigned long inUserData);
+    unsigned long long GetUserData([Const, Ref] BodyID inBodyID);
+    void SetUserData([Const, Ref] BodyID inBodyID, unsigned long long inUserData);
     [Const] PhysicsMaterial GetMaterial([Const, Ref] BodyID inBodyID, [Const, Ref] SubShapeID inSubShapeID);
     void InvalidateContactCache([Const, Ref] BodyID inBodyID);
 };
@@ -3134,6 +3428,7 @@ interface CastRayCollector { //[-SUB_PACKAGE=physics.softbody]
     [BindTo="Reset"] void ResetNative();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
+    void SetUserData(unsigned long long inUserData);
     void UpdateEarlyOutFraction(float inFraction);
     void ResetEarlyOutFraction(optional float inFraction);
     void ForceEarlyOut();
@@ -3161,6 +3456,7 @@ interface CollidePointCollector { //[-SUB_PACKAGE=physics.softbody]
     [BindTo="Reset"] void ResetNative();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
+    void SetUserData(unsigned long long inUserData);
     void UpdateEarlyOutFraction(float inFraction);
     void ResetEarlyOutFraction(optional float inFraction);
     void ForceEarlyOut();
@@ -3198,6 +3494,7 @@ interface CollideShapeCollector { //[-SUB_PACKAGE=physics.softbody]
     [BindTo="Reset"] void ResetNative();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
+    void SetUserData(unsigned long long inUserData);
     void UpdateEarlyOutFraction(float inFraction);
     void ResetEarlyOutFraction(optional float inFraction);
     void ForceEarlyOut();
@@ -3237,6 +3534,7 @@ interface CastShapeCollector { //[-SUB_PACKAGE=physics.softbody]
     [BindTo="Reset"] void ResetNative();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
+    void SetUserData(unsigned long long inUserData);
     void UpdateEarlyOutFraction(float inFraction);
     void ResetEarlyOutFraction(optional float inFraction);
     void ForceEarlyOut();
@@ -3256,6 +3554,7 @@ interface TransformedShapeCollector { //[-SUB_PACKAGE=physics.softbody]
     [BindTo="Reset"] void ResetNative();
     void SetContext([Const] TransformedShape inContext);
     [Const] TransformedShape GetContext();
+    void SetUserData(unsigned long long inUserData);
     void UpdateEarlyOutFraction(float inFraction);
     void ResetEarlyOutFraction(optional float inFraction);
     void ForceEarlyOut();
@@ -3308,8 +3607,8 @@ BodyActivationListenerEm implements BodyActivationListener;
 [JSImplementation="BodyActivationListenerEm"]
 interface BodyActivationListenerJS {
     void BodyActivationListenerJS();
-    void OnBodyActivated([Const, Ref] BodyID inBodyID, unsigned long inBodyUserData);
-    void OnBodyDeactivated([Const, Ref] BodyID inBodyID, unsigned long inBodyUserData);
+    void OnBodyActivated([Const, Ref] BodyID inBodyID, unsigned long long inBodyUserData);
+    void OnBodyDeactivated([Const, Ref] BodyID inBodyID, unsigned long long inBodyUserData);
 };
 
 interface BodyIDVector { //[-SUB_PACKAGE=physics.body]
@@ -3325,6 +3624,8 @@ interface BodyIDVector { //[-SUB_PACKAGE=physics.body]
 
 interface MassProperties {
     void MassProperties();
+    [BindTo="operator==", Operator="=="] boolean Equals([Const, Ref] MassProperties inRHS);
+    [BindTo="operator!=", Operator="!="] boolean NotEquals([Const, Ref] MassProperties inRHS);
     void SetMassAndInertiaOfSolidBox([Const, Ref] Vec3 inBoxSize, float inDensity);
     void ScaleToMass(float inMass);
     [Value] static Vec3 sGetEquivalentSolidBoxSize(float inMass, [Const, Ref] Vec3 inInertiaDiagonal);
@@ -3339,6 +3640,8 @@ interface MassProperties {
 interface BodyCreationSettings {
     void BodyCreationSettings();
     void BodyCreationSettings([Const] Shape inShape, [Ref] Vec3 inPosition, [Ref] Quat inRotation, EMotionType inMotionType, unsigned long inObjectLayer);
+    [BindTo="operator==", Operator="=="] boolean Equals([Const, Ref] BodyCreationSettings inRHS);
+    [BindTo="operator!=", Operator="!="] boolean NotEquals([Const, Ref] BodyCreationSettings inRHS);
     [Const] ShapeSettings GetShapeSettings();
     void SetShapeSettings([Const] ShapeSettings inShape);
     [Value] ShapeResult ConvertShapeSettings();
@@ -3351,7 +3654,7 @@ interface BodyCreationSettings {
     [Value] attribute Quat mRotation;
     [Value] attribute Vec3 mLinearVelocity;
     [Value] attribute Vec3 mAngularVelocity;
-    attribute unsigned long mUserData;
+    attribute unsigned long long mUserData;
     attribute unsigned long mObjectLayer;
     [Value] attribute CollisionGroup mCollisionGroup;
     attribute EMotionType mMotionType;
@@ -3412,7 +3715,7 @@ interface SoftBodyCreationSettings { //[-SUB_PACKAGE=physics.softbody]
 
     [Value] attribute Vec3 mPosition;
     [Value] attribute Quat mRotation;
-    attribute unsigned long mUserData;
+    attribute unsigned long long mUserData;
     attribute unsigned long mObjectLayer;
     [Value] attribute CollisionGroup mCollisionGroup;
     attribute unsigned long mNumIterations;
@@ -3430,6 +3733,7 @@ interface SoftBodyCreationSettings { //[-SUB_PACKAGE=physics.softbody]
 };
 
 interface SoftBodyVertex {
+    void MarkCCDContact([Const, Ref] BodyID inBodyID, [Const, Ref] Plane inContactPlane);
     [Value] attribute Vec3 mPreviousPosition;
     [Value] attribute Vec3 mPosition;
     [Value] attribute Vec3 mVelocity;
@@ -3460,6 +3764,7 @@ interface SoftBodyMotionProperties {
     [Const, Ref] AABox GetLocalBounds();
     void CustomUpdate(float inDeltaTime, [Ref] Body ioSoftBody, [Ref] PhysicsSystem inSystem);
     void SkinVertices([Const, Ref] Mat44 inRootTransform, Mat44MemRef inJointMatrices, unsigned long inNumJoints, boolean inHardSkinAll, [Ref] TempAllocator ioTempAllocator);
+    void RequestContactCallback();
 };
 SoftBodyMotionProperties implements MotionProperties;
 
@@ -3544,7 +3849,13 @@ interface ExtendedUpdateSettings { //[-SUB_PACKAGE=physics.character]
 };
 
 interface CharacterVirtualContact { //[-SUB_PACKAGE=physics.character]
+    void CharacterVirtualContact();
     [Const] boolean IsSameBody([Const, Ref] CharacterVirtualContact inOther);
+    [BindTo="operator==", Operator="=="] boolean Equals([Const, Ref] CharacterVirtualContact inRHS);
+    [BindTo="operator!=", Operator="!="] boolean NotEquals([Const, Ref] CharacterVirtualContact inRHS);
+    unsigned long long GetHash();
+    void SaveState([Ref] StateRecorder inStream);
+    void RestoreState([Ref] StateRecorder inStream);
 
     [Value] attribute Vec3 mPosition;
     [Value] attribute Vec3 mLinearVelocity;
@@ -3558,7 +3869,7 @@ interface CharacterVirtualContact { //[-SUB_PACKAGE=physics.character]
     attribute EMotionType mMotionTypeB;
     attribute boolean mIsSensorB;
     [Const] attribute CharacterVirtual mCharacterB;
-    attribute unsigned long mUserData;
+    attribute unsigned long long mUserData;
     [Const] attribute PhysicsMaterial mMaterial;
     attribute boolean mHadCollision;
     attribute boolean mWasDiscarded;
@@ -3586,12 +3897,14 @@ interface CharacterBase {
     [Value] Vec3 GetGroundVelocity();
     [Const] PhysicsMaterial GetGroundMaterial();
     [Value] BodyID GetGroundBodyID();
+    unsigned long long GetGroundUserData();
     void SaveState([Ref] StateRecorder inStream);
     void RestoreState([Ref] StateRecorder inStream);
 };
 
 interface CharacterVirtual {
     void CharacterVirtual([Const] CharacterVirtualSettings inSettings, [Ref] Vec3 inPosition, [Ref] Quat inRotation, PhysicsSystem inSystem);
+    void CharacterVirtual([Const] CharacterVirtualSettings inSettings, [Ref] Vec3 inPosition, [Ref] Quat inRotation, unsigned long long inUserData, PhysicsSystem inSystem);
     [Const, Ref] CharacterID GetID();
     void SetListener(CharacterContactListener inListener);
     void SetCharacterVsCharacterCollision(CharacterVsCharacterCollision inCharacterVsCharacterCollision);
@@ -3619,8 +3932,8 @@ interface CharacterVirtual {
     boolean GetMaxHitsExceeded();
     [Value] Vec3 GetShapeOffset();
     void SetShapeOffset([Const, Ref] Vec3 inShapeOffset);
-    unsigned long GetUserData();
-    void SetUserData(unsigned long inUserData);
+    unsigned long long GetUserData();
+    void SetUserData(unsigned long long inUserData);
     [Value] BodyID GetInnerBodyID();
     void StartTrackingContactChanges();
     void FinishTrackingContactChanges();
@@ -3653,7 +3966,7 @@ interface CharacterSettings {
 CharacterSettings implements CharacterBaseSettings;
 
 interface Character {
-    void Character([Const] CharacterSettings inSettings, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, unsigned long inUserData, PhysicsSystem inSystem);
+    void Character([Const] CharacterSettings inSettings, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, unsigned long long inUserData, PhysicsSystem inSystem);
     void AddToPhysicsSystem(optional EActivation inActivationMode, optional boolean inLockBodies);
     void RemoveFromPhysicsSystem(optional boolean inLockBodies);
     void Activate(optional boolean inLockBodies);
@@ -4158,7 +4471,7 @@ interface SkeletonPose {
 interface RagdollSettings { //[-SUB_PACKAGE=physics.raddoll]
     void RagdollSettings();
     boolean Stabilize();
-    Ragdoll CreateRagdoll(long inCollisionGroup, unsigned long inUserData, PhysicsSystem inSystem);
+    Ragdoll CreateRagdoll(long inCollisionGroup, unsigned long long inUserData, PhysicsSystem inSystem);
     Skeleton GetSkeleton();
     void DisableParentChildCollisions([Const] optional Mat44MemRef inJointMatrices, optional float inMinSeparationDistance);
     void CalculateConstraintPriorities(optional long inBasePriority);
@@ -4254,6 +4567,317 @@ interface ObjectLayerPairFilterMask {
     static unsigned long sGetMask(unsigned long inObjectLayer);
 };
 ObjectLayerPairFilterMask implements ObjectLayerPairFilter;
+
+// COMPUTE
+
+interface ComputeSystemResult { //[-SUB_PACKAGE=compute]
+    boolean IsValid();
+    boolean HasError();
+    [Const, Ref] NativeString GetError();
+    ComputeSystem Get();
+    void Clear();
+};
+
+interface ComputeShaderResult { //[-SUB_PACKAGE=compute]
+    boolean IsValid();
+    boolean HasError();
+    [Const, Ref] NativeString GetError();
+    ComputeShader Get();
+    void Clear();
+};
+
+interface ComputeBufferResult { //[-SUB_PACKAGE=compute]
+    boolean IsValid();
+    boolean HasError();
+    [Const, Ref] NativeString GetError();
+    ComputeBuffer Get();
+    void Clear();
+};
+
+interface ComputeQueueResult { //[-SUB_PACKAGE=compute]
+    boolean IsValid();
+    boolean HasError();
+    [Const, Ref] NativeString GetError();
+    ComputeQueue Get();
+    void Clear();
+};
+
+[NoDelete]
+interface ComputeSystem { //[-SUB_PACKAGE=compute]
+    unsigned long GetRefCount();
+    void AddRef();
+    void Release();
+    [BindTo="CreateComputeBuffer", Value] ComputeBufferResult CreateComputeBuffer__0(ComputeBuffer_EType inType, unsigned long long inSize, unsigned long inStride);
+    [BindTo="CreateComputeBuffer", Value] ComputeBufferResult CreateComputeBuffer__1(ComputeBuffer_EType inType, unsigned long long inSize, unsigned long inStride, [Const] any inData);
+    [Value] ComputeQueueResult CreateComputeQueue();
+};
+
+[NoDelete]
+interface ComputeShader { //[-SUB_PACKAGE=compute]
+    unsigned long GetRefCount();
+    void AddRef();
+    void Release();
+    unsigned long GetGroupSizeX();
+    unsigned long GetGroupSizeY();
+    unsigned long GetGroupSizeZ();
+};
+
+[NoDelete]
+interface ComputeBuffer { //[-SUB_PACKAGE=compute]
+    unsigned long GetRefCount();
+    void AddRef();
+    void Release();
+    ComputeBuffer_EType GetType();
+    unsigned long long GetSize();
+    unsigned long GetStride();
+    any Map(ComputeBuffer_EMode inMode);
+    void Unmap();
+    [Value] ComputeBufferResult CreateReadBackBuffer();
+};
+
+[NoDelete]
+interface ComputeQueue { //[-SUB_PACKAGE=compute]
+    unsigned long GetRefCount();
+    void AddRef();
+    void Release();
+    void SetShader([Const] ComputeShader inShader);
+    void Dispatch(unsigned long inThreadGroupsX, optional unsigned long inThreadGroupsY, optional unsigned long inThreadGroupsZ);
+    void ScheduleReadback(ComputeBuffer inDst, [Const] ComputeBuffer inSrc);
+    void Execute();
+    void Wait();
+    void ExecuteAndWait();
+};
+
+// HAIR
+
+interface HairSettingsSkinWeight { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsSkinWeight();
+    attribute unsigned long mJointIdx;
+    attribute float mWeight;
+};
+
+interface HairSettingsSkinPoint { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsSkinPoint();
+    attribute unsigned long mTriangleIndex;
+    attribute float mU;
+    attribute float mV;
+    attribute unsigned long mToBishop;
+};
+
+interface HairSettingsSVertexInfluence { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsSVertexInfluence();
+    attribute unsigned long mVertexIndex;
+    [Value] attribute Float3 mRelativePosition;
+    attribute float mWeight;
+};
+
+interface HairSettingsRVertex { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsRVertex();
+    [Value] attribute Float3 mPosition;
+    [Value] attribute HairSettingsSVertexInfluence[] mInfluences;
+};
+
+interface HairSettingsSVertex { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsSVertex();
+    void HairSettingsSVertex([Const, Ref] Float3 inPosition, optional float inInvMass);
+    [Value] attribute Float3 mPosition;
+    attribute float mInvMass;
+    attribute float mLength;
+    attribute float mStrandFraction;
+    [Value] attribute Float4 mBishop;
+    [Value] attribute Float4 mOmega0;
+};
+
+interface HairSettingsRStrand { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsRStrand();
+    void HairSettingsRStrand(unsigned long inStartVtx, unsigned long inEndVtx);
+    unsigned long VertexCount();
+    float MeasureLength([Const, Ref] ArrayHairSettingsSVertex inVertices);
+    attribute unsigned long mStartVtx;
+    attribute unsigned long mEndVtx;
+};
+
+interface HairSettingsSStrand { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsSStrand();
+    void HairSettingsSStrand(unsigned long inStartVtx, unsigned long inEndVtx, unsigned long inMaterialIndex);
+    attribute unsigned long mMaterialIndex;
+};
+HairSettingsSStrand implements HairSettingsRStrand;
+
+interface HairSettingsGradient { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsGradient();
+    void HairSettingsGradient(float inMin, float inMax, optional float inMinFraction, optional float inMaxFraction);
+    [Value] HairSettingsGradient MakeStepDependent(float inTimeRatio);
+    void SaveBinaryState([Ref] StateRecorder inStream);
+    void RestoreBinaryState([Ref] StateRecorder inStream);
+    attribute float mMin;
+    attribute float mMax;
+    attribute float mMinFraction;
+    attribute float mMaxFraction;
+};
+
+interface HairSettingsGradientSampler { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsGradientSampler();
+    void HairSettingsGradientSampler([Const, Ref] HairSettingsGradient inGradient);
+    [BindTo="Sample"] float SampleFraction(float inFraction);
+    [BindTo="Sample"] float SampleStrand([Const, Ref] HairSettingsSStrand inStrand, unsigned long inVertex);
+    [Value] Float4 ToFloat4();
+};
+
+interface HairSettingsMaterial { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsMaterial();
+    boolean NeedsGrid();
+    boolean GlobalPoseOnly();
+    float GetBendCompliance(float inStrandFraction);
+    attribute boolean mEnableCollision;
+    attribute boolean mEnableLRA;
+    attribute float mLinearDamping;
+    attribute float mAngularDamping;
+    attribute float mMaxLinearVelocity;
+    attribute float mMaxAngularVelocity;
+    [Value] attribute HairSettingsGradient mGravityFactor;
+    attribute float mFriction;
+    attribute float mBendCompliance;
+    [Value] attribute Float4 mBendComplianceMultiplier;
+    attribute float mStretchCompliance;
+    attribute float mInertiaMultiplier;
+    [Value] attribute HairSettingsGradient mHairRadius;
+    [Value] attribute HairSettingsGradient mWorldTransformInfluence;
+    [Value] attribute HairSettingsGradient mGridVelocityFactor;
+    attribute float mGridDensityForceFactor;
+    [Value] attribute HairSettingsGradient mGlobalPose;
+    [Value] attribute HairSettingsGradient mSkinGlobalPose;
+    attribute float mSimulationStrandsFraction;
+    attribute float mGravityPreloadFactor;
+};
+
+interface HairSettingsGridSampler { //[-SUB_PACKAGE=physics.hair]
+    void HairSettingsGridSampler([Const] HairSettings inSettings);
+    void PositionToIndexAndFraction([Const, Ref] Vec3 inPosition, [Ref] UVec4 outIndex, [Ref] Vec3 outFraction);
+    [Value] attribute UVec4 mGridSizeMin2;
+    [Value] attribute Vec3 mGridSizeMin1;
+    [Value] attribute UVec4 mGridStride;
+    [Value] attribute Vec3 mOffset;
+    [Value] attribute Vec3 mScale;
+};
+
+interface HairSettings { //[-SUB_PACKAGE=physics.hair]
+    void HairSettings();
+    unsigned long GetRefCount();
+    void AddRef();
+    void Release();
+    static readonly attribute unsigned long cNoInfluence;
+    static readonly attribute unsigned long cDefaultIterationsPerSecond;
+    void InitRenderAndSimulationStrands([Const, Ref] ArrayHairSettingsSVertex inVertices, [Const, Ref] ArrayHairSettingsSStrand inStrands);
+    static void sResample([Ref] ArrayHairSettingsSVertex ioVertices, [Ref] ArrayHairSettingsSStrand ioStrands, unsigned long inNumVerticesPerStrand);
+    void InitCompute(ComputeSystem inComputeSystem);
+    float GetNeutralDensity(unsigned long inX, unsigned long inY, unsigned long inZ);
+    unsigned long GetNumVerticesPadded();
+    void PrepareForScalpSkinning([Const, Ref] Mat44 inJointToHair, Mat44MemRef inJointMatrices, Mat44MemRef outJointMatrices);
+    void SkinScalpVertices([Const, Ref] Mat44 inJointToHair, Mat44MemRef inJointMatrices, [Ref] ArrayVec3 outVertices);
+    void SaveBinaryState([Ref] StateRecorder inStream);
+    void RestoreBinaryState([Ref] StateRecorder inStream);
+    [Value] attribute ArrayHairSettingsSVertex mSimVertices;
+    [Value] attribute ArrayHairSettingsSStrand mSimStrands;
+    [Value] attribute ArrayHairSettingsRVertex mRenderVertices;
+    [Value] attribute ArrayHairSettingsRStrand mRenderStrands;
+    [Value] attribute VertexList mScalpVertices;
+    [Value] attribute IndexedTriangleNoMaterialList mScalpTriangles;
+    [Value] attribute ArrayMat44 mScalpInverseBindPose;
+    [Value] attribute ArrayHairSettingsSkinWeight mScalpSkinWeights;
+    attribute unsigned long mScalpNumSkinWeightsPerVertex;
+    attribute unsigned long mNumIterationsPerSecond;
+    attribute float mMaxDeltaTime;
+    [Value] attribute UVec4 mGridSize;
+    [Value] attribute Vec3 mSimulationBoundsPadding;
+    [Value] attribute Vec3 mInitialGravity;
+    [Value] attribute ArrayHairSettingsMaterial mMaterials;
+    [Value] attribute ArrayHairSettingsSkinPoint mSkinPoints;
+    [Value] attribute AABox mSimulationBounds;
+    [Value] attribute ArrayFloat mNeutralDensity;
+    attribute float mDensityScale;
+    attribute unsigned long mMaxVerticesPerStrand;
+    attribute ComputeBuffer mScalpVerticesCB;
+    attribute ComputeBuffer mScalpTrianglesCB;
+    attribute ComputeBuffer mScalpSkinWeightsCB;
+    attribute ComputeBuffer mSkinPointsCB;
+    attribute ComputeBuffer mVerticesFixedCB;
+    attribute ComputeBuffer mVerticesPositionCB;
+    attribute ComputeBuffer mVerticesBishopCB;
+    attribute ComputeBuffer mVerticesOmega0CB;
+    attribute ComputeBuffer mVerticesLengthCB;
+    attribute ComputeBuffer mVerticesStrandFractionCB;
+    attribute ComputeBuffer mStrandVertexCountsCB;
+    attribute ComputeBuffer mStrandMaterialIndexCB;
+    attribute ComputeBuffer mNeutralDensityCB;
+    attribute ComputeBuffer mSVertexInfluencesCB;
+};
+
+interface HairDrawSettings { //[-SUB_PACKAGE=physics.hair]
+    void HairDrawSettings();
+    attribute unsigned long mSimulationStrandBegin;
+    attribute unsigned long mSimulationStrandEnd;
+    attribute boolean mDrawRods;
+    attribute boolean mDrawUnloadedRods;
+    attribute boolean mDrawVertexVelocity;
+    attribute boolean mDrawAngularVelocity;
+    attribute boolean mDrawOrientations;
+    attribute boolean mDrawNeutralDensity;
+    attribute boolean mDrawGridDensity;
+    attribute boolean mDrawGridVelocity;
+    attribute boolean mDrawSkinPoints;
+    attribute boolean mDrawRenderStrands;
+    attribute boolean mDrawInitialGravity;
+    attribute Hair_ERenderStrandColor mRenderStrandColor;
+};
+
+interface Hair { //[-SUB_PACKAGE=physics.hair]
+    void Hair([Const] HairSettings inSettings, [Const, Ref] RVec3 inPosition, [Const, Ref] Quat inRotation, unsigned long inLayer);
+    void Init(ComputeSystem inComputeSystem);
+    void SetPosition([Const, Ref] RVec3 inPosition);
+    void SetRotation([Const, Ref] Quat inRotation);
+    [Value] RMat44 GetWorldTransform();
+    [Const] HairSettings GetHairSettings();
+    void OnTeleported();
+    void SetScalpVerticesCB(ComputeBuffer inBuffer);
+    void SetScalpTrianglesCB(ComputeBuffer inBuffer);
+    void SetScalpToHead([Const, Ref] Mat44 inMat);
+    void SetRenderPositionsCB(ComputeBuffer inBuffer);
+    void Update(float inDeltaTime, [Const, Ref] Mat44 inJointToHair, Mat44MemRef inJointMatrices, [Const, Ref] PhysicsSystem inSystem, [Const, Ref] HairShaders inShaders, ComputeSystem inComputeSystem, ComputeQueue inComputeQueue);
+    ComputeBuffer GetScalpVerticesCB();
+    ComputeBuffer GetScalpTrianglesCB();
+    ComputeBuffer GetPositionsCB();
+    ComputeBuffer GetVelocitiesCB();
+    ComputeBuffer GetVelocityAndDensityCB();
+    ComputeBuffer GetRenderPositionsCB();
+    void ReadBackGPUState(ComputeQueue inComputeQueue);
+    void LockReadBackBuffers();
+    void UnlockReadBackBuffers();
+    void Draw([Const, Ref] HairDrawSettings inSettings, DebugRenderer inRenderer);
+};
+
+interface HairShaders { //[-SUB_PACKAGE=physics.hair]
+    void HairShaders();
+    unsigned long GetRefCount();
+    void AddRef();
+    void Release();
+    void Init(ComputeSystem inComputeSystem);
+    attribute ComputeShader mTeleportCS;
+    attribute ComputeShader mApplyDeltaTransformCS;
+    attribute ComputeShader mSkinVerticesCS;
+    attribute ComputeShader mSkinRootsCS;
+    attribute ComputeShader mApplyGlobalPoseCS;
+    attribute ComputeShader mCalculateCollisionPlanesCS;
+    attribute ComputeShader mGridClearCS;
+    attribute ComputeShader mGridAccumulateCS;
+    attribute ComputeShader mGridNormalizeCS;
+    attribute ComputeShader mIntegrateCS;
+    attribute ComputeShader mUpdateRootsCS;
+    attribute ComputeShader mUpdateStrandsCS;
+    attribute ComputeShader mUpdateVelocityCS;
+    attribute ComputeShader mUpdateVelocityIntegrateCS;
+    attribute ComputeShader mCalculateRenderPositionsCS;
+};
 
 interface AssertFailedHandler {
 };

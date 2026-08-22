@@ -63,11 +63,12 @@ public final class TeaVMCSampleMain {
             BodyInterface bodyInterface = physicsSystem.GetBodyInterface();
             BodyID floor = createBox(bodyInterface, 0.0f, -0.5f, 10.0f, 0.5f,
                     EMotionType.Static, 0, 0);
+            long expectedUserData = 0xfedcba9876543210L;
             BodyID falling = createBox(bodyInterface, 0.0f, 5.0f, 0.5f, 0.5f,
-                    EMotionType.Dynamic, 0, (int)0xFEDCBA98L);
+                    EMotionType.Dynamic, 0, expectedUserData);
             try {
-                if(Integer.toUnsignedLong(bodyInterface.GetUserData(falling)) != 0xFEDCBA98L) {
-                    throw new AssertionError("32-bit user data did not preserve its unsigned bit pattern");
+                if(bodyInterface.GetUserData(falling) != expectedUserData) {
+                    throw new AssertionError("64-bit user data did not preserve its unsigned bit pattern");
                 }
 
                 float savedY = bodyInterface.GetPosition(falling).GetY();
@@ -162,7 +163,7 @@ public final class TeaVMCSampleMain {
     }
 
     private static BodyID createBox(BodyInterface bodyInterface, float x, float y, float halfX, float halfY,
-            EMotionType motionType, int layer, int userData) {
+            EMotionType motionType, int layer, long userData) {
         Vec3 halfExtent = new Vec3(halfX, halfY, halfX);
         Vec3 position = new Vec3(x, y, 0.0f);
         BoxShape shape = new BoxShape(halfExtent, 0.0f);

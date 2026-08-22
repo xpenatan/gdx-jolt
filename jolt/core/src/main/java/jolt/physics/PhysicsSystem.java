@@ -132,6 +132,10 @@ public final class PhysicsSystem extends NativeObject {
         return null;
     }
 
+    public BroadPhaseLayerInterface GetBroadPhaseLayerInterface() {
+        return null;
+    }
+
     public BroadPhaseQuery GetBroadPhaseQuery() {
         return null;
     }

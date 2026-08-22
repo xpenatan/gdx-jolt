@@ -70,4 +70,11 @@ public class ConstraintSettings extends NativeObject {
 
     public void set_mDrawConstraintSize(float mDrawConstraintSize) {
     }
+
+    public long get_mUserData() {
+        return 0;
+    }
+
+    public void set_mUserData(long mUserData) {
+    }
 }

@@ -31,6 +31,14 @@ public final class MassProperties extends NativeObject {
         return new MassProperties((byte) 0, (char) 0);
     }
 
+    public boolean Equals(MassProperties inRHS) {
+        return false;
+    }
+
+    public boolean NotEquals(MassProperties inRHS) {
+        return false;
+    }
+
     public void SetMassAndInertiaOfSolidBox(Vec3 inBoxSize, float inDensity) {
     }
 

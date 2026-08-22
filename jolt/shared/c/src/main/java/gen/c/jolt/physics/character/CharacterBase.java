@@ -230,6 +230,13 @@ public class CharacterBase extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_character_characterbase_getgroundbodyid_addr")
     public static native long internal_native_GetGroundBodyID_addr(long this_addr);
 
+    public long GetGroundUserData() {
+        return internal_native_GetGroundUserData(native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_characterbase_getgrounduserdata")
+    public static native long internal_native_GetGroundUserData(long this_addr);
+
     public void SaveState(StateRecorder inStream) {
         internal_native_SaveState(native_address, inStream.native_address);
     }

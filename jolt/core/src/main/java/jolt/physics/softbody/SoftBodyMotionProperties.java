@@ -119,4 +119,7 @@ public final class SoftBodyMotionProperties extends MotionProperties {
 
     public void SkinVertices(Mat44 inRootTransform, Mat44MemRef inJointMatrices, int inNumJoints, boolean inHardSkinAll, TempAllocator ioTempAllocator) {
     }
+
+    public void RequestContactCallback() {
+    }
 }

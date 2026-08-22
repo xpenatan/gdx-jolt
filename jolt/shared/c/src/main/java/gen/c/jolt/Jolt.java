@@ -7,6 +7,7 @@
 package gen.c.jolt;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import gen.c.jolt.enums.EMotorState;
 import gen.c.jolt.physics.PhysicsSystem;
 import gen.c.jolt.physics.character.CharacterVirtual;
 import gen.c.jolt.physics.character.CharacterContactListener;
@@ -50,6 +51,27 @@ public final class Jolt extends NativeObject {
 
     @org.teavm.interop.Import(name = "jolt_jolt_registertypes")
     public static native void internal_native_RegisterTypes();
+
+    public static void RegisterHair() {
+        internal_native_RegisterHair();
+    }
+
+    @org.teavm.interop.Import(name = "jolt_jolt_registerhair")
+    public static native void internal_native_RegisterHair();
+
+    public static boolean IsVelocityMotor(EMotorState inMotorState) {
+        return internal_native_IsVelocityMotor(inMotorState.getValue());
+    }
+
+    @org.teavm.interop.Import(name = "jolt_jolt_isvelocitymotor")
+    public static native boolean internal_native_IsVelocityMotor(int inMotorState);
+
+    public static boolean IsPositionMotor(EMotorState inMotorState) {
+        return internal_native_IsPositionMotor(inMotorState.getValue());
+    }
+
+    @org.teavm.interop.Import(name = "jolt_jolt_ispositionmotor")
+    public static native boolean internal_native_IsPositionMotor(int inMotorState);
 
     @Deprecated
     public static void UnregisterTypes() {

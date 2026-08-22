@@ -29,4 +29,8 @@ public final class HeightFieldShapeConstantValues extends NativeObject {
     public static float get_cNoCollisionValue() {
         return 0;
     }
+
+    public static int get_cMaxBitsPerSample() {
+        return 0;
+    }
 }

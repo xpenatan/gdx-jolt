@@ -16,6 +16,10 @@ final public class JNI_CollisionGroup {
 
     public static native void internal_native_deleteNative(long this_addr);
 
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
     public static native void internal_native_SetGroupFilter(long this_addr, long inFilter_addr);
 
     public static native long internal_native_GetGroupFilter_addr(long this_addr);

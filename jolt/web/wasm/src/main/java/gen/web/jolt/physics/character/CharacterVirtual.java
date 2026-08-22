@@ -60,6 +60,15 @@ public final class CharacterVirtual extends CharacterBase {
     @org.teavm.jso.JSBody(params = {"inSettings_addr", "inPosition_addr", "inRotation_addr", "inSystem_addr"}, script = "var jsObj = new jolt.CharacterVirtual(inSettings_addr, inPosition_addr, inRotation_addr, inSystem_addr);return jolt.getPointer(jsObj);")
     public static native int internal_native_create_CharacterVirtualSettings_Vec3_Quat_PhysicsSystem_addr(int inSettings_addr, int inPosition_addr, int inRotation_addr, int inSystem_addr);
 
+    public CharacterVirtual(CharacterVirtualSettings inSettings, Vec3 inPosition, Quat inRotation, long inUserData, PhysicsSystem inSystem) {
+        super((byte) 1, (char) 1);
+        int addr = internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(inSettings.native_address, inPosition.native_address, inRotation.native_address, inUserData, inSystem.native_address);
+        internal_reset(addr, true);
+    }
+
+    @org.teavm.jso.JSBody(params = {"inSettings_addr", "inPosition_addr", "inRotation_addr", "inUserData", "inSystem_addr"}, script = "var jsObj = new jolt.CharacterVirtual(inSettings_addr, inPosition_addr, inRotation_addr, inUserData, inSystem_addr);return jolt.getPointer(jsObj);")
+    public static native int internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(int inSettings_addr, int inPosition_addr, int inRotation_addr, long inUserData, int inSystem_addr);
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -325,19 +334,19 @@ public final class CharacterVirtual extends CharacterBase {
     @org.teavm.jso.JSBody(params = {"this_addr", "inShapeOffset_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtual);jsObj.SetShapeOffset(inShapeOffset_addr);")
     public static native void internal_native_SetShapeOffset(int this_addr, int inShapeOffset_addr);
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtual);var returnedJSObj = jsObj.GetUserData();return returnedJSObj;")
-    public static native int internal_native_GetUserData(int this_addr);
+    public static native long internal_native_GetUserData(int this_addr);
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.CharacterVirtual);jsObj.SetUserData(inUserData);")
-    public static native void internal_native_SetUserData(int this_addr, int inUserData);
+    public static native void internal_native_SetUserData(int this_addr, long inUserData);
 
     public BodyID GetInnerBodyID() {
         int addr = internal_native_GetInnerBodyID_addr(native_address);

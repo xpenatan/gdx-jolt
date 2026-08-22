@@ -141,19 +141,19 @@ public class Constraint extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_constraints_constraint_isactive")
     public static native boolean internal_native_IsActive(long this_addr);
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_constraints_constraint_getuserdata")
-    public static native int internal_native_GetUserData(long this_addr);
+    public static native long internal_native_GetUserData(long this_addr);
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_constraints_constraint_setuserdata")
-    public static native void internal_native_SetUserData(long this_addr, int inUserData);
+    public static native void internal_native_SetUserData(long this_addr, long inUserData);
 
     public void ResetWarmStart() {
         internal_native_ResetWarmStart(native_address);

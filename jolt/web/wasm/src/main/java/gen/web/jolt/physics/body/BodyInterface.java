@@ -842,19 +842,19 @@ public final class BodyInterface extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "inBodyID_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyInterface);var returnedJSObj = jsObj.GetTransformedShape(inBodyID_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_GetTransformedShape_addr(int this_addr, int inBodyID_addr);
 
-    public int GetUserData(BodyID inBodyID) {
+    public long GetUserData(BodyID inBodyID) {
         return internal_native_GetUserData(native_address, inBodyID.native_address);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inBodyID_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyInterface);var returnedJSObj = jsObj.GetUserData(inBodyID_addr);return returnedJSObj;")
-    public static native int internal_native_GetUserData(int this_addr, int inBodyID_addr);
+    public static native long internal_native_GetUserData(int this_addr, int inBodyID_addr);
 
-    public void SetUserData(BodyID inBodyID, int inUserData) {
+    public void SetUserData(BodyID inBodyID, long inUserData) {
         internal_native_SetUserData(native_address, inBodyID.native_address, inUserData);
     }
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inBodyID_addr", "inUserData"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.BodyInterface);jsObj.SetUserData(inBodyID_addr, inUserData);")
-    public static native void internal_native_SetUserData(int this_addr, int inBodyID_addr, int inUserData);
+    public static native void internal_native_SetUserData(int this_addr, int inBodyID_addr, long inUserData);
 
     public PhysicsMaterial GetMaterial(BodyID inBodyID, SubShapeID inSubShapeID) {
         int addr = internal_native_GetMaterial_addr(native_address, inBodyID.native_address, inSubShapeID.native_address);

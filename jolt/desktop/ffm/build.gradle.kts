@@ -116,6 +116,9 @@ tasks.test {
     dependsOn(hostFfmBuildTask, tasks.jar)
     classpath = files(tasks.jar) + classpath
     jvmArgs("--enable-native-access=ALL-UNNAMED")
+    val jparserTestTmp = layout.buildDirectory.dir("jparser-test-tmp").get().asFile
+    doFirst { jparserTestTmp.mkdirs() }
+    systemProperty("java.io.tmpdir", jparserTestTmp.absolutePath)
 }
 
 val nativeRuntime by configurations.creating {

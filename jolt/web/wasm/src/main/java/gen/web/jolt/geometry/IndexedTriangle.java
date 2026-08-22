@@ -6,13 +6,14 @@
 
 package gen.web.jolt.geometry;
 
-import gen.web.com.github.xpenatan.jParser.api.NativeObject;
+public final class IndexedTriangle extends IndexedTriangleNoMaterial {
 
-public final class IndexedTriangle extends NativeObject {
+    private IndexedTriangle IndexedTriangle_TEMP_GEN_0;
 
     static public final IndexedTriangle NULL = IndexedTriangle.native_new();
 
     public IndexedTriangle() {
+        super((byte) 1, (char) 1);
         int addr = internal_native_create_addr();
         internal_reset(addr, true);
     }
@@ -21,6 +22,7 @@ public final class IndexedTriangle extends NativeObject {
     public static native int internal_native_create_addr();
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex, int inUserData) {
+        super((byte) 1, (char) 1);
         int addr = internal_native_create_int_int_int_int_int_addr(inI1, inI2, inI3, inMaterialIndex, inUserData);
         internal_reset(addr, true);
     }
@@ -29,6 +31,7 @@ public final class IndexedTriangle extends NativeObject {
     public static native int internal_native_create_int_int_int_int_int_addr(int inI1, int inI2, int inI3, int inMaterialIndex, int inUserData);
 
     public IndexedTriangle(int inI1, int inI2, int inI3, int inMaterialIndex) {
+        super((byte) 1, (char) 1);
         int addr = internal_native_create_int_int_int_int_addr(inI1, inI2, inI3, inMaterialIndex);
         internal_reset(addr, true);
     }
@@ -41,6 +44,7 @@ public final class IndexedTriangle extends NativeObject {
      */
     @Deprecated()
     protected IndexedTriangle(byte b, char c) {
+        super((byte) 1, (char) 1);
     }
 
     /**
@@ -57,19 +61,32 @@ public final class IndexedTriangle extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.IndexedTriangle);jolt.destroy(jsObj);")
     public static native void internal_native_deleteNative(int this_addr);
 
-    public int get_mIdx(int index) {
-        return internal_native_get_mIdx(native_address, index);
+    public boolean EqualsIndexedTriangle(IndexedTriangle inRHS) {
+        return internal_native_EqualsIndexedTriangle(native_address, inRHS.native_address);
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr", "index"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.IndexedTriangle);return jsObj.get_mIdx(index);")
-    public static native int internal_native_get_mIdx(int this_addr, int index);
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.IndexedTriangle);var returnedJSObj = jsObj.EqualsIndexedTriangle(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_EqualsIndexedTriangle(int this_addr, int inRHS_addr);
 
-    public void set_mIdx(int index, int mIdx) {
-        internal_native_set_mIdx(native_address, index, mIdx);
+    public IndexedTriangle GetLowestIndexFirst() {
+        int addr = internal_native_GetLowestIndexFirst_addr(native_address);
+        if (addr == 0)
+            return IndexedTriangle.NULL;
+        if (IndexedTriangle_TEMP_GEN_0 == null)
+            IndexedTriangle_TEMP_GEN_0 = IndexedTriangle.native_new();
+        IndexedTriangle_TEMP_GEN_0.internal_reset(addr, false);
+        return IndexedTriangle_TEMP_GEN_0;
     }
 
-    @org.teavm.jso.JSBody(params = {"this_addr", "index", "mIdx"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.IndexedTriangle);jsObj.set_mIdx(index, mIdx);")
-    public static native void internal_native_set_mIdx(int this_addr, int index, int mIdx);
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.IndexedTriangle);var returnedJSObj = jsObj.GetLowestIndexFirst();if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
+    public static native int internal_native_GetLowestIndexFirst_addr(int this_addr);
+
+    public long GetHash() {
+        return internal_native_GetHash(native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.IndexedTriangle);var returnedJSObj = jsObj.GetHash();return returnedJSObj;")
+    public static native long internal_native_GetHash(int this_addr);
 
     public int get_mMaterialIndex() {
         return internal_native_get_mMaterialIndex(native_address);

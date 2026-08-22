@@ -234,6 +234,13 @@ public final class TransformedShape extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_collision_transformedshape_getmaterial_addr")
     public static native long internal_native_GetMaterial_addr(long this_addr, long inSubShapeID_addr);
 
+    public long GetSubShapeUserData(SubShapeID inSubShapeID) {
+        return internal_native_GetSubShapeUserData(native_address, inSubShapeID.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_collision_transformedshape_getsubshapeuserdata")
+    public static native long internal_native_GetSubShapeUserData(long this_addr, long inSubShapeID_addr);
+
     public Vec3 get_mShapePositionCOM() {
         long addr = internal_native_get_mShapePositionCOM_addr(native_address);
         if (addr == 0)

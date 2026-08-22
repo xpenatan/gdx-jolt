@@ -13,4 +13,6 @@ final public class JNI_HeightFieldShapeConstantValues {
     public static native void internal_native_deleteNative(long this_addr);
 
     public static native float internal_native_get_cNoCollisionValue();
+
+    public static native int internal_native_get_cMaxBitsPerSample();
 }

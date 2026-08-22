@@ -44,10 +44,10 @@ public class ShapeSettings extends RefTargetShapeSettings {
     public void ClearCachedResult() {
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return 0;
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
     }
 }

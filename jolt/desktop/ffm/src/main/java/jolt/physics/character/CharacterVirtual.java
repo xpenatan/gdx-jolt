@@ -72,6 +72,20 @@ public final class CharacterVirtual extends CharacterBase {
         }
     }
 
+    public CharacterVirtual(CharacterVirtualSettings inSettings, Vec3 inPosition, Quat inRotation, long inUserData, PhysicsSystem inSystem) {
+        super((byte) 1, (char) 1);
+        long addr = internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(inSettings.native_address, inPosition.native_address, inRotation.native_address, inUserData, inSystem.native_address);
+        internal_reset(addr, true);
+    }
+
+    public static long internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, long inUserData, long inSystem_addr) {
+        try {
+            return (long) FFMHandles.internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr__JJJJJ.invokeExact(inSettings_addr, inPosition_addr, inRotation_addr, inUserData, inSystem_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -477,25 +491,25 @@ public final class CharacterVirtual extends CharacterBase {
         }
     }
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
-    public static int internal_native_GetUserData(long this_addr) {
+    public static long internal_native_GetUserData(long this_addr) {
         try {
-            return (int) FFMHandles.internal_native_GetUserData__J.invokeExact(this_addr);
+            return (long) FFMHandles.internal_native_GetUserData__J.invokeExact(this_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
     }
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
-    public static void internal_native_SetUserData(long this_addr, int inUserData) {
+    public static void internal_native_SetUserData(long this_addr, long inUserData) {
         try {
-            FFMHandles.internal_native_SetUserData__JI.invokeExact(this_addr, inUserData);
+            FFMHandles.internal_native_SetUserData__JJ.invokeExact(this_addr, inUserData);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -745,6 +759,8 @@ public final class CharacterVirtual extends CharacterBase {
 
         static final java.lang.invoke.MethodHandle internal_native_create_CharacterVirtualSettings_Vec3_Quat_PhysicsSystem_addr__JJJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_create_charactervirtualsettings_vec3_quat_physicssystem_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
+        static final java.lang.invoke.MethodHandle internal_native_create_CharacterVirtualSettings_Vec3_Quat_long_PhysicsSystem_addr__JJJJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_create_charactervirtualsettings_vec3_quat_long_physicssystem_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetID_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_getid_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
@@ -801,9 +817,9 @@ public final class CharacterVirtual extends CharacterBase {
 
         static final java.lang.invoke.MethodHandle internal_native_SetShapeOffset__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_setshapeoffset", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_GetUserData__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_getuserdata", FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_GetUserData__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_getuserdata", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
-        static final java.lang.invoke.MethodHandle internal_native_SetUserData__JI = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_setuserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        static final java.lang.invoke.MethodHandle internal_native_SetUserData__JJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_setuserdata", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetInnerBodyID_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_charactervirtual_getinnerbodyid_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 

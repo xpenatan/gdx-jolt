@@ -37,4 +37,8 @@ final public class JNI_ConstraintSettings {
     public static native float internal_native_get_mDrawConstraintSize(long this_addr);
 
     public static native void internal_native_set_mDrawConstraintSize(long this_addr, float mDrawConstraintSize);
+
+    public static native long internal_native_get_mUserData(long this_addr);
+
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 }

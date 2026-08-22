@@ -261,6 +261,13 @@ public final class SwingTwistConstraint extends TwoBodyConstraint {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SwingTwistConstraint);var returnedJSObj = jsObj.GetTargetAngularVelocityCS();if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_GetTargetAngularVelocityCS_addr(int this_addr);
 
+    public void SetTargetAngularVelocityBS(Vec3 inAngularVelocity) {
+        internal_native_SetTargetAngularVelocityBS(native_address, inAngularVelocity.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inAngularVelocity_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SwingTwistConstraint);jsObj.SetTargetAngularVelocityBS(inAngularVelocity_addr);")
+    public static native void internal_native_SetTargetAngularVelocityBS(int this_addr, int inAngularVelocity_addr);
+
     public void SetTargetOrientationCS(Quat inOrientation) {
         internal_native_SetTargetOrientationCS(native_address, inOrientation.native_address);
     }

@@ -435,6 +435,20 @@ public class MotionProperties extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr", "inV_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.MotionProperties);var returnedJSObj = jsObj.LockAngular(inV_addr);if(!returnedJSObj.hasOwnProperty('ptr')) return 0; return jolt.getPointer(returnedJSObj);")
     public static native int internal_native_LockAngular_addr(int this_addr, int inV_addr);
 
+    public void ApplyLinearVelocityStep(Vec3 inLinearVelocity) {
+        internal_native_ApplyLinearVelocityStep(native_address, inLinearVelocity.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inLinearVelocity_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.MotionProperties);jsObj.ApplyLinearVelocityStep(inLinearVelocity_addr);")
+    public static native void internal_native_ApplyLinearVelocityStep(int this_addr, int inLinearVelocity_addr);
+
+    public void ApplyAngularVelocityStep(Vec3 inAngularVelocity) {
+        internal_native_ApplyAngularVelocityStep(native_address, inAngularVelocity.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inAngularVelocity_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.MotionProperties);jsObj.ApplyAngularVelocityStep(inAngularVelocity_addr);")
+    public static native void internal_native_ApplyAngularVelocityStep(int this_addr, int inAngularVelocity_addr);
+
     public void SetNumVelocityStepsOverride(int inN) {
         internal_native_SetNumVelocityStepsOverride(native_address, inN);
     }

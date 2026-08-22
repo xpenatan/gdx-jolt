@@ -16,6 +16,10 @@ final public class JNI_BodyCreationSettings {
 
     public static native void internal_native_deleteNative(long this_addr);
 
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
     public static native long internal_native_GetShapeSettings_addr(long this_addr);
 
     public static native void internal_native_SetShapeSettings(long this_addr, long inShape_addr);
@@ -46,9 +50,9 @@ final public class JNI_BodyCreationSettings {
 
     public static native void internal_native_set_mAngularVelocity(long this_addr, long mAngularVelocity_addr);
 
-    public static native int internal_native_get_mUserData(long this_addr);
+    public static native long internal_native_get_mUserData(long this_addr);
 
-    public static native void internal_native_set_mUserData(long this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 
     public static native int internal_native_get_mObjectLayer(long this_addr);
 

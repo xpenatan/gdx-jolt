@@ -7,6 +7,7 @@
 package gen.c.jolt.physics.character;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import gen.c.jolt.physics.StateRecorder;
 import gen.c.jolt.math.Vec3;
 import gen.c.jolt.physics.body.BodyID;
 import gen.c.jolt.physics.collision.shape.SubShapeID;
@@ -35,6 +36,14 @@ public final class CharacterVirtualContact extends NativeObject {
 
     static public final CharacterVirtualContact NULL = CharacterVirtualContact.native_new();
 
+    public CharacterVirtualContact() {
+        long addr = internal_native_create_addr();
+        internal_reset(addr, true);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_create_addr")
+    public static native long internal_native_create_addr();
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -62,6 +71,41 @@ public final class CharacterVirtualContact extends NativeObject {
 
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_issamebody")
     public static native boolean internal_native_IsSameBody(long this_addr, long inOther_addr);
+
+    public boolean Equals(CharacterVirtualContact inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_equals")
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public boolean NotEquals(CharacterVirtualContact inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_notequals")
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
+    public long GetHash() {
+        return internal_native_GetHash(native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_gethash")
+    public static native long internal_native_GetHash(long this_addr);
+
+    public void SaveState(StateRecorder inStream) {
+        internal_native_SaveState(native_address, inStream.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_savestate")
+    public static native void internal_native_SaveState(long this_addr, long inStream_addr);
+
+    public void RestoreState(StateRecorder inStream) {
+        internal_native_RestoreState(native_address, inStream.native_address);
+    }
+
+    @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_restorestate")
+    public static native void internal_native_RestoreState(long this_addr, long inStream_addr);
 
     public Vec3 get_mPosition() {
         long addr = internal_native_get_mPosition_addr(native_address);
@@ -286,19 +330,19 @@ public final class CharacterVirtualContact extends NativeObject {
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_set_mcharacterb")
     public static native void internal_native_set_mCharacterB(long this_addr, long mCharacterB_addr);
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_get_muserdata")
-    public static native int internal_native_get_mUserData(long this_addr);
+    public static native long internal_native_get_mUserData(long this_addr);
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_character_charactervirtualcontact_set_muserdata")
-    public static native void internal_native_set_mUserData(long this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 
     public PhysicsMaterial get_mMaterial() {
         long addr = internal_native_get_mMaterial_addr(native_address);

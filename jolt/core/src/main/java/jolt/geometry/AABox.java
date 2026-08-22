@@ -9,7 +9,9 @@ package jolt.geometry;
 import com.github.xpenatan.jParser.api.NativeObject;
 import jolt.math.Vec3;
 import jolt.math.VertexList;
+import jolt.RVec3;
 import jolt.math.Mat44;
+import jolt.RMat44;
 
 public final class AABox extends NativeObject {
 
@@ -108,6 +110,10 @@ public final class AABox extends NativeObject {
         return false;
     }
 
+    public boolean ContainsRVec3(RVec3 inOther) {
+        return false;
+    }
+
     public boolean OverlapsAABox(AABox inOther) {
         return false;
     }
@@ -119,7 +125,14 @@ public final class AABox extends NativeObject {
     public void TranslateVec3(Vec3 inOther) {
     }
 
+    public void TranslateRVec3(RVec3 inOther) {
+    }
+
     public AABox TransformedMat44(Mat44 inOther) {
+        return null;
+    }
+
+    public AABox TransformedRMat44(RMat44 inOther) {
         return null;
     }
 

@@ -70,17 +70,17 @@ public class ShapeSettings extends RefTargetShapeSettings {
     @org.teavm.interop.Import(name = "jolt_physics_collision_shape_shapesettings_clearcachedresult")
     public static native void internal_native_ClearCachedResult(long this_addr);
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_collision_shape_shapesettings_get_muserdata")
-    public static native int internal_native_get_mUserData(long this_addr);
+    public static native long internal_native_get_mUserData(long this_addr);
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
     @org.teavm.interop.Import(name = "jolt_physics_collision_shape_shapesettings_set_muserdata")
-    public static native void internal_native_set_mUserData(long this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 }

@@ -75,6 +75,10 @@ public final class Vec3 extends NativeObject {
         return null;
     }
 
+    public static Vec3 sDifferenceOfProducts(Vec3 inA, Vec3 inB, Vec3 inC, Vec3 inD) {
+        return null;
+    }
+
     public static Vec3 sOr(Vec3 inV1, Vec3 inV2) {
         return null;
     }
@@ -194,6 +198,10 @@ public final class Vec3 extends NativeObject {
         return null;
     }
 
+    public Vec3 CrossPrecise(Vec3 inRHS) {
+        return null;
+    }
+
     public float Dot(Vec3 inRHS) {
         return 0;
     }
@@ -267,6 +275,10 @@ public final class Vec3 extends NativeObject {
     }
 
     public float ReduceMax() {
+        return 0;
+    }
+
+    public float ReduceSum() {
         return 0;
     }
 

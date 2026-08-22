@@ -54,6 +54,8 @@ final public class JNI_SwingTwistConstraint {
 
     public static native long internal_native_GetTargetAngularVelocityCS_addr(long this_addr);
 
+    public static native void internal_native_SetTargetAngularVelocityBS(long this_addr, long inAngularVelocity_addr);
+
     public static native void internal_native_SetTargetOrientationCS(long this_addr, long inOrientation_addr);
 
     public static native long internal_native_GetTargetOrientationCS_addr(long this_addr);

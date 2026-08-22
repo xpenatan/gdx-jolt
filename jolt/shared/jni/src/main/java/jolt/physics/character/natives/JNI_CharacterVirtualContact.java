@@ -10,9 +10,21 @@ import jolt.physics.character.*;
 
 final public class JNI_CharacterVirtualContact {
 
+    public static native long internal_native_create_addr();
+
     public static native void internal_native_deleteNative(long this_addr);
 
     public static native boolean internal_native_IsSameBody(long this_addr, long inOther_addr);
+
+    public static native boolean internal_native_Equals(long this_addr, long inRHS_addr);
+
+    public static native boolean internal_native_NotEquals(long this_addr, long inRHS_addr);
+
+    public static native long internal_native_GetHash(long this_addr);
+
+    public static native void internal_native_SaveState(long this_addr, long inStream_addr);
+
+    public static native void internal_native_RestoreState(long this_addr, long inStream_addr);
 
     public static native long internal_native_get_mPosition_addr(long this_addr);
 
@@ -62,9 +74,9 @@ final public class JNI_CharacterVirtualContact {
 
     public static native void internal_native_set_mCharacterB(long this_addr, long mCharacterB_addr);
 
-    public static native int internal_native_get_mUserData(long this_addr);
+    public static native long internal_native_get_mUserData(long this_addr);
 
-    public static native void internal_native_set_mUserData(long this_addr, int mUserData);
+    public static native void internal_native_set_mUserData(long this_addr, long mUserData);
 
     public static native long internal_native_get_mMaterial_addr(long this_addr);
 

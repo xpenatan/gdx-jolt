@@ -7,6 +7,8 @@
 package jolt.physics.softbody;
 
 import com.github.xpenatan.jParser.api.NativeObject;
+import jolt.physics.body.BodyID;
+import jolt.geometry.Plane;
 import jolt.math.Vec3;
 
 public final class SoftBodyVertex extends NativeObject {
@@ -25,6 +27,9 @@ public final class SoftBodyVertex extends NativeObject {
      */
     public static SoftBodyVertex native_new() {
         return new SoftBodyVertex((byte) 0, (char) 0);
+    }
+
+    public void MarkCCDContact(BodyID inBodyID, Plane inContactPlane) {
     }
 
     public Vec3 get_mPreviousPosition() {

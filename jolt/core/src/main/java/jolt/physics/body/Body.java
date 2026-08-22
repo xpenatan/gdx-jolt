@@ -274,11 +274,11 @@ public final class Body extends NativeObject {
         return null;
     }
 
-    public int GetUserData() {
+    public long GetUserData() {
         return 0;
     }
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
     }
 
     public void SetCollisionGroup(CollisionGroup inGroup) {

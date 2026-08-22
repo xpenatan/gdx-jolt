@@ -29,6 +29,10 @@ public final class CharacterVirtual extends CharacterBase {
         super((byte) 1, (char) 1);
     }
 
+    public CharacterVirtual(CharacterVirtualSettings inSettings, Vec3 inPosition, Quat inRotation, long inUserData, PhysicsSystem inSystem) {
+        super((byte) 1, (char) 1);
+    }
+
     /**
      * Dummy constructor, used internally to creates objects without C++ pointer
      */
@@ -141,11 +145,11 @@ public final class CharacterVirtual extends CharacterBase {
     public void SetShapeOffset(Vec3 inShapeOffset) {
     }
 
-    public int GetUserData() {
+    public long GetUserData() {
         return 0;
     }
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
     }
 
     public BodyID GetInnerBodyID() {

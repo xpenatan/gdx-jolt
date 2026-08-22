@@ -82,6 +82,22 @@ public class BodyCreationSettings extends NativeObject {
         jolt.physics.body.natives.JNI_BodyCreationSettings.internal_native_deleteNative(this_addr);
     }
 
+    public boolean Equals(BodyCreationSettings inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_Equals(long this_addr, long inRHS_addr) {
+        return jolt.physics.body.natives.JNI_BodyCreationSettings.internal_native_Equals(this_addr, inRHS_addr);
+    }
+
+    public boolean NotEquals(BodyCreationSettings inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    public static boolean internal_native_NotEquals(long this_addr, long inRHS_addr) {
+        return jolt.physics.body.natives.JNI_BodyCreationSettings.internal_native_NotEquals(this_addr, inRHS_addr);
+    }
+
     public ShapeSettings GetShapeSettings() {
         long addr = internal_native_GetShapeSettings_addr(native_address);
         if (addr == 0)
@@ -250,19 +266,19 @@ public class BodyCreationSettings extends NativeObject {
         jolt.physics.body.natives.JNI_BodyCreationSettings.internal_native_set_mAngularVelocity(this_addr, mAngularVelocity_addr);
     }
 
-    public int get_mUserData() {
+    public long get_mUserData() {
         return internal_native_get_mUserData(native_address);
     }
 
-    public static int internal_native_get_mUserData(long this_addr) {
+    public static long internal_native_get_mUserData(long this_addr) {
         return jolt.physics.body.natives.JNI_BodyCreationSettings.internal_native_get_mUserData(this_addr);
     }
 
-    public void set_mUserData(int mUserData) {
+    public void set_mUserData(long mUserData) {
         internal_native_set_mUserData(native_address, mUserData);
     }
 
-    public static void internal_native_set_mUserData(long this_addr, int mUserData) {
+    public static void internal_native_set_mUserData(long this_addr, long mUserData) {
         jolt.physics.body.natives.JNI_BodyCreationSettings.internal_native_set_mUserData(this_addr, mUserData);
     }
 

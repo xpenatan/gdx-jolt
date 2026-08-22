@@ -100,6 +100,10 @@ public class CharacterBase extends NativeObject {
         return null;
     }
 
+    public long GetGroundUserData() {
+        return 0;
+    }
+
     public void SaveState(StateRecorder inStream) {
     }
 

@@ -60,8 +60,13 @@ fun portableJoltSourcesFromCmake(cmakeFile: File): List<String> {
         RegexOption.DOT_MATCHES_ALL
     ).find(cmake)?.groupValues?.get(1)
         ?: throw GradleException("Could not find ENABLE_OBJECT_STREAM sources in $cmakeFile")
+    val cpuComputeBlock = Regex(
+        """if \(JPH_USE_CPU_COMPUTE\)(.*?)endif\(\)""",
+        RegexOption.DOT_MATCHES_ALL
+    ).find(cmake)?.groupValues?.get(1)
+        ?: throw GradleException("Could not find JPH_USE_CPU_COMPUTE sources in $cmakeFile")
 
-    return sourcesIn(baseBlock) + sourcesIn(objectStreamBlock)
+    return sourcesIn(baseBlock) + sourcesIn(objectStreamBlock) + sourcesIn(cpuComputeBlock)
 }
 
 val joltSourceFiles = providers.provider {
@@ -138,6 +143,7 @@ jParser {
         compileFlag("-DJPH_ENABLE_ASSERTS")
         compileFlag("-DJPH_CROSS_PLATFORM_DETERMINISTIC")
         compileFlag("-DJPH_OBJECT_LAYER_BITS=32")
+        compileFlag("-DJPH_USE_CPU_COMPUTE")
 
         desktopTargets.forEach { targetName ->
             target(targetName) {
@@ -365,6 +371,54 @@ tasks.withType(JParserBuildTask::class.java).configureEach {
                         val body = method.body.orElse(null) ?: return@forEach
                         if(body.statements.none { it.toString().contains("internal_releaseTransferredFilters") }) {
                             body.addStatement(StaticJavaParser.parseStatement("internal_releaseTransferredFilters();"))
+                            changed = true
+                        }
+                    }
+                }
+
+                if(declaration != null && declaration.nameAsString == "ComputeSystem") {
+                    if(declaration.fields.none { it.variables.any { variable -> variable.nameAsString == "internalShaderLoader" } }) {
+                        declaration.addMember(StaticJavaParser.parseBodyDeclaration("private ComputeShaderLoader internalShaderLoader;"))
+                        declaration.addMember(StaticJavaParser.parseBodyDeclaration("""
+                            void internal_retainShaderLoader(ComputeShaderLoader value) {
+                                internalShaderLoader = value;
+                            }
+                        """.trimIndent()))
+                        changed = true
+                    }
+                }
+
+                if(declaration != null && declaration.nameAsString == "JoltCompute") {
+                    declaration.getMethodsByName("SetShaderLoader").forEach { method ->
+                        val body = method.body.orElse(null) ?: return@forEach
+                        if(body.statements.none { it.toString().contains("internal_retainShaderLoader") }) {
+                            val systemParameter = method.parameters[0].nameAsString
+                            val loaderParameter = method.parameters[1].nameAsString
+                            body.addStatement(0, StaticJavaParser.parseStatement("$systemParameter.internal_retainShaderLoader($loaderParameter);"))
+                            changed = true
+                        }
+                    }
+                }
+
+                if(declaration != null && declaration.nameAsString == "Hair") {
+                    if(declaration.fields.none { it.variables.any { variable -> variable.nameAsString == "internalRenderPositionsConverter" } }) {
+                        declaration.addMember(StaticJavaParser.parseBodyDeclaration("private HairRenderPositionsToFloat3 internalRenderPositionsConverter;"))
+                        declaration.addMember(StaticJavaParser.parseBodyDeclaration("""
+                            void internal_retainRenderPositionsConverter(HairRenderPositionsToFloat3 value) {
+                                internalRenderPositionsConverter = value;
+                            }
+                        """.trimIndent()))
+                        changed = true
+                    }
+                }
+
+                if(declaration != null && declaration.nameAsString == "JoltHair") {
+                    declaration.getMethodsByName("OverrideRenderPositions").forEach { method ->
+                        val body = method.body.orElse(null) ?: return@forEach
+                        if(body.statements.none { it.toString().contains("internal_retainRenderPositionsConverter") }) {
+                            val hairParameter = method.parameters[0].nameAsString
+                            val converterParameter = method.parameters[1].nameAsString
+                            body.addStatement(0, StaticJavaParser.parseStatement("$hairParameter.internal_retainRenderPositionsConverter($converterParameter);"))
                             changed = true
                         }
                     }

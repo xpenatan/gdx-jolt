@@ -275,4 +275,11 @@ public final class SoftBodyMotionProperties extends MotionProperties {
 
     @org.teavm.jso.JSBody(params = {"this_addr", "inRootTransform_addr", "inJointMatrices_addr", "inNumJoints", "inHardSkinAll", "ioTempAllocator_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyMotionProperties);jsObj.SkinVertices(inRootTransform_addr, inJointMatrices_addr, inNumJoints, inHardSkinAll, ioTempAllocator_addr);")
     public static native void internal_native_SkinVertices(int this_addr, int inRootTransform_addr, int inJointMatrices_addr, int inNumJoints, boolean inHardSkinAll, int ioTempAllocator_addr);
+
+    public void RequestContactCallback() {
+        internal_native_RequestContactCallback(native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.SoftBodyMotionProperties);jsObj.RequestContactCallback();")
+    public static native void internal_native_RequestContactCallback(int this_addr);
 }

@@ -47,6 +47,20 @@ public final class MassProperties extends NativeObject {
     @org.teavm.jso.JSBody(params = {"this_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.MassProperties);jolt.destroy(jsObj);")
     public static native void internal_native_deleteNative(int this_addr);
 
+    public boolean Equals(MassProperties inRHS) {
+        return internal_native_Equals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.MassProperties);var returnedJSObj = jsObj.Equals(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_Equals(int this_addr, int inRHS_addr);
+
+    public boolean NotEquals(MassProperties inRHS) {
+        return internal_native_NotEquals(native_address, inRHS.native_address);
+    }
+
+    @org.teavm.jso.JSBody(params = {"this_addr", "inRHS_addr"}, script = "var jsObj = jolt.wrapPointer(this_addr, jolt.MassProperties);var returnedJSObj = jsObj.NotEquals(inRHS_addr);return returnedJSObj;")
+    public static native boolean internal_native_NotEquals(int this_addr, int inRHS_addr);
+
     public void SetMassAndInertiaOfSolidBox(Vec3 inBoxSize, float inDensity) {
         internal_native_SetMassAndInertiaOfSolidBox(native_address, inBoxSize.native_address, inDensity);
     }

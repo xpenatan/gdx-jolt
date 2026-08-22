@@ -46,6 +46,8 @@ final public class JNI_CharacterBase {
 
     public static native long internal_native_GetGroundBodyID_addr(long this_addr);
 
+    public static native long internal_native_GetGroundUserData(long this_addr);
+
     public static native void internal_native_SaveState(long this_addr, long inStream_addr);
 
     public static native void internal_native_RestoreState(long this_addr, long inStream_addr);

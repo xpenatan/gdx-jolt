@@ -155,19 +155,19 @@ public class Constraint extends NativeObject {
         return jolt.physics.constraints.natives.JNI_Constraint.internal_native_IsActive(this_addr);
     }
 
-    public int GetUserData() {
+    public long GetUserData() {
         return internal_native_GetUserData(native_address);
     }
 
-    public static int internal_native_GetUserData(long this_addr) {
+    public static long internal_native_GetUserData(long this_addr) {
         return jolt.physics.constraints.natives.JNI_Constraint.internal_native_GetUserData(this_addr);
     }
 
-    public void SetUserData(int inUserData) {
+    public void SetUserData(long inUserData) {
         internal_native_SetUserData(native_address, inUserData);
     }
 
-    public static void internal_native_SetUserData(long this_addr, int inUserData) {
+    public static void internal_native_SetUserData(long this_addr, long inUserData) {
         jolt.physics.constraints.natives.JNI_Constraint.internal_native_SetUserData(this_addr, inUserData);
     }
 

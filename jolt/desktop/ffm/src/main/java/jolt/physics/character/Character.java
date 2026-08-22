@@ -55,15 +55,15 @@ public final class Character extends CharacterBase {
 
     static public final Character NULL = Character.native_new();
 
-    public Character(CharacterSettings inSettings, RVec3 inPosition, Quat inRotation, int inUserData, PhysicsSystem inSystem) {
+    public Character(CharacterSettings inSettings, RVec3 inPosition, Quat inRotation, long inUserData, PhysicsSystem inSystem) {
         super((byte) 1, (char) 1);
-        long addr = internal_native_create_CharacterSettings_RVec3_Quat_int_PhysicsSystem_addr(inSettings.native_address, inPosition.native_address, inRotation.native_address, inUserData, inSystem.native_address);
+        long addr = internal_native_create_CharacterSettings_RVec3_Quat_long_PhysicsSystem_addr(inSettings.native_address, inPosition.native_address, inRotation.native_address, inUserData, inSystem.native_address);
         internal_reset(addr, true);
     }
 
-    public static long internal_native_create_CharacterSettings_RVec3_Quat_int_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, int inUserData, long inSystem_addr) {
+    public static long internal_native_create_CharacterSettings_RVec3_Quat_long_PhysicsSystem_addr(long inSettings_addr, long inPosition_addr, long inRotation_addr, long inUserData, long inSystem_addr) {
         try {
-            return (long) FFMHandles.internal_native_create_CharacterSettings_RVec3_Quat_int_PhysicsSystem_addr__JJJIJ.invokeExact(inSettings_addr, inPosition_addr, inRotation_addr, inUserData, inSystem_addr);
+            return (long) FFMHandles.internal_native_create_CharacterSettings_RVec3_Quat_long_PhysicsSystem_addr__JJJJJ.invokeExact(inSettings_addr, inPosition_addr, inRotation_addr, inUserData, inSystem_addr);
         } catch (Throwable e) {
             throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
         }
@@ -740,7 +740,7 @@ public final class Character extends CharacterBase {
 
     private static final class FFMHandles {
 
-        static final java.lang.invoke.MethodHandle internal_native_create_CharacterSettings_RVec3_Quat_int_PhysicsSystem_addr__JJJIJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_character_create_charactersettings_rvec3_quat_int_physicssystem_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        static final java.lang.invoke.MethodHandle internal_native_create_CharacterSettings_RVec3_Quat_long_PhysicsSystem_addr__JJJJJ = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_character_create_charactersettings_rvec3_quat_long_physicssystem_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_deleteNative__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_character_character_deletenative", FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
 

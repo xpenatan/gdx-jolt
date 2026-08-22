@@ -57,6 +57,8 @@ public final class PhysicsSystem extends NativeObject {
 
     private BodyLockInterfaceLocking BodyLockInterfaceLocking_TEMP_GEN_0;
 
+    private BroadPhaseLayerInterface BroadPhaseLayerInterface_TEMP_GEN_0;
+
     private BroadPhaseQuery BroadPhaseQuery_TEMP_GEN_0;
 
     private NarrowPhaseQuery NarrowPhaseQuery_TEMP_GEN_0;
@@ -438,6 +440,24 @@ public final class PhysicsSystem extends NativeObject {
         }
     }
 
+    public BroadPhaseLayerInterface GetBroadPhaseLayerInterface() {
+        long addr = internal_native_GetBroadPhaseLayerInterface_addr(native_address);
+        if (addr == 0)
+            return BroadPhaseLayerInterface.NULL;
+        if (BroadPhaseLayerInterface_TEMP_GEN_0 == null)
+            BroadPhaseLayerInterface_TEMP_GEN_0 = BroadPhaseLayerInterface.native_new();
+        BroadPhaseLayerInterface_TEMP_GEN_0.internal_reset(addr, false);
+        return BroadPhaseLayerInterface_TEMP_GEN_0;
+    }
+
+    public static long internal_native_GetBroadPhaseLayerInterface_addr(long this_addr) {
+        try {
+            return (long) FFMHandles.internal_native_GetBroadPhaseLayerInterface_addr__J.invokeExact(this_addr);
+        } catch (Throwable e) {
+            throw com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.rethrow(e);
+        }
+    }
+
     public BroadPhaseQuery GetBroadPhaseQuery() {
         long addr = internal_native_GetBroadPhaseQuery_addr(native_address);
         if (addr == 0)
@@ -723,6 +743,8 @@ public final class PhysicsSystem extends NativeObject {
         static final java.lang.invoke.MethodHandle internal_native_GetBodyLockInterfaceNoLock_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_physicssystem_getbodylockinterfacenolock_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetBodyLockInterface_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_physicssystem_getbodylockinterface_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+
+        static final java.lang.invoke.MethodHandle internal_native_GetBroadPhaseLayerInterface_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_physicssystem_getbroadphaselayerinterface_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
         static final java.lang.invoke.MethodHandle internal_native_GetBroadPhaseQuery_addr__J = com.github.xpenatan.jparser.runtime.helper.FFMDowncallHelper.downcallDefault("jolt_physics_physicssystem_getbroadphasequery_addr", FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
 
