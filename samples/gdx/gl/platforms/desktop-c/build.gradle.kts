@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.javaWebTarget.get())
@@ -14,7 +14,7 @@ val joltRuntimeProject = ":jolt:desktop:c"
 val joltSharedCProject = ":jolt:shared:c"
 val teaVMBuilderMainClass = "jolt.example.samples.app.desktopc.JoltGdxTeaVMBuilder"
 val glfwBuildRoot = layout.buildDirectory.dir("dist/glfw")
-val joltDesktopCJar = if(useRepoLibs) {
+val joltDesktopCJar = if(examplesUseMavenArtifacts) {
     null
 }
 else {
@@ -27,7 +27,7 @@ val joltRuntimeClasspath by configurations.creating {
     isCanBeResolved = true
 }
 
-val teavmCNativeRuntimeClasspath: FileCollection = if(useRepoLibs) {
+val teavmCNativeRuntimeClasspath: FileCollection = if(examplesUseMavenArtifacts) {
     joltRuntimeClasspath
 }
 else {
@@ -49,7 +49,7 @@ dependencies {
     joltRuntimeClasspath(libs.jparserRuntimeDesktopCMacX64)
     joltRuntimeClasspath(libs.jparserRuntimeDesktopCMacArm64)
 
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         implementation(libs.jjoltDesktopC)
         joltRuntimeClasspath(libs.jjoltDesktopC)
     }
@@ -75,7 +75,7 @@ fun currentHostJoltCBuildTask(): String? {
     }
 }
 
-val hostJoltCBuildTask = if(useRepoLibs) {
+val hostJoltCBuildTask = if(examplesUseMavenArtifacts) {
     null
 }
 else {
@@ -83,7 +83,7 @@ else {
         ?: throw GradleException("TeaVM C samples are not configured for ${System.getProperty("os.name")}/${System.getProperty("os.arch")}")
 }
 
-if(!useRepoLibs) {
+if(!examplesUseMavenArtifacts) {
     project(joltRuntimeProject).tasks.named("jar") {
         mustRunAfter(requireNotNull(hostJoltCBuildTask))
     }
@@ -107,7 +107,7 @@ val prepareGdxTeaVMGlfwBuildRoot = tasks.register("prepareGdxTeaVMGlfwBuildRoot"
 fun Task.configureGraphicalRuntimeInputs() {
     dependsOn("classes")
     dependsOn(prepareGdxTeaVMGlfwBuildRoot)
-    if(!useRepoLibs) {
+    if(!examplesUseMavenArtifacts) {
         val nativeBuildTask = requireNotNull(hostJoltCBuildTask)
         dependsOn(nativeBuildTask)
         project(joltSharedCProject).tasks.named("processResources") {
@@ -162,7 +162,7 @@ tasks.register<JavaExec>("jolt_gdx_desktop_${joltRuntimeName}_run") {
 tasks.register<JavaExec>("samples_build_app_teavm_c") {
     group = "example-desktop"
     description = "Build and run the jJolt headless sample as a TeaVM C native executable"
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         dependsOn("classes")
     }
     else {

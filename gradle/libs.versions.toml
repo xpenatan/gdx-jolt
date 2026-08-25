@@ -17,7 +17,7 @@ gdxTeavmVersion = "1.6.1"
 gdxImguiVersion = "1.92.4.0"
 junitVersion = "4.12"
 
-useRepoLibs = "false"
+examplesUseMavenArtifacts = "true"
 exampleVersion = "-SNAPSHOT"
 
 easyPublishingVersion = "0.1.2"

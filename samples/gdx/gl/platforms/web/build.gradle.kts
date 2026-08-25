@@ -2,7 +2,7 @@ plugins {
     id("java")
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 
 dependencies {
     implementation(project(":samples:gdx:gl:core"))
@@ -10,7 +10,7 @@ dependencies {
 
     implementation(variantOf(libs.gdxCore) { classifier("sources") })
 
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         implementation(libs.jjoltWebWasm)
         implementation(libs.jjoltGdxGl)
     }

@@ -2,10 +2,10 @@ plugins {
     id("java-library")
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 
 dependencies {
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         compileOnly(libs.jjoltCore)
     }
     else {

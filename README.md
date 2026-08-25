@@ -85,17 +85,22 @@ dependencies {
 - [Mingw64](https://github.com/niXman/mingw-builds-binaries/releases) or [Visual Studio C++](https://visualstudio.microsoft.com/vs/community/) (only needed for desktop native artifacts)
 - [Emscripten](https://emscripten.org/) (only needed for WebAssembly native artifacts)
 
-The samples use the local jJolt projects by default. To run either the libGDX or libfdx samples with published artifacts instead, enable the global switch:
+The samples use the local jJolt projects by default. To run either the libGDX or libfdx samples with published artifacts instead, add the override to the root `local.properties` file:
 
-```bash
-# Use the snapshot version configured by exampleVersion in gradle/libs.versions.toml.
-./gradlew -PuseRepoLibs=true :samples:gdx:gl:platforms:desktop-jni:jolt_samples_run_desktop
-
-# Test a release without editing the version catalog.
-./gradlew -PuseRepoLibs=true -PexampleVersion=RELEASE_VERSION :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_gl_jni_run
+```properties
+examplesUseMavenArtifacts=true
 ```
 
-You can also set `useRepoLibs = "true"` and change `exampleVersion` in `gradle/libs.versions.toml`. Published mode uses Maven artifacts for Jolt core and platform natives. The libfdx samples always consume the separately published `io.github.libfdx:jolt_ext` snapshot.
+Then run the desired sample. It uses the version configured by `exampleVersion` in `gradle/libs.versions.toml`:
+
+```bash
+./gradlew :samples:gdx:gl:platforms:desktop-jni:jolt_samples_run_desktop
+
+# Test a release without editing the version catalog.
+./gradlew -PexampleVersion=RELEASE_VERSION :samples:fdx:platforms:desktop-jni:jolt_sample_desktop_gl_jni_run
+```
+
+When `local.properties` contains `examplesUseMavenArtifacts`, that value takes precedence. If the property or file is absent, the value from `gradle/libs.versions.toml` is used. Published mode uses Maven artifacts for Jolt core and platform natives. The libfdx samples always consume the separately published `io.github.libfdx:jolt_ext` snapshot.
 
 ## How To Run The Samples
 

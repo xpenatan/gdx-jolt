@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.libfdx)
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 
 java {
     sourceCompatibility = JavaVersion.toVersion(libs.versions.javaFfmTarget.get())
@@ -13,7 +13,7 @@ java {
 dependencies {
     implementation(project(":samples:fdx:core"))
 
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         implementation(libs.jjoltWebWasm)
     }
     else {

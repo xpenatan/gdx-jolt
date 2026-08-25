@@ -4,13 +4,13 @@ plugins {
     id("java")
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 
 dependencies {
     implementation(project(":samples:gdx:gl:core"))
     implementation(project(":samples:shared"))
 
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         implementation(libs.jjoltDesktopJni)
         implementation(libs.jjoltGdxGl)
     }

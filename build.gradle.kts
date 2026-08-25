@@ -1,18 +1,20 @@
+import java.util.Properties
+
 plugins {
     id("java")
     alias(libs.plugins.easyPublishing)
 }
 
-val samplesUseRepoLibs = providers.gradleProperty("useRepoLibs")
-    .orElse(libs.versions.useRepoLibs)
-    .map { it.toBooleanStrict() }
-    .get()
+val examplesUseMavenArtifacts = Properties()
+    .apply { rootProject.file("local.properties").takeIf { it.isFile }?.inputStream()?.use(::load) }
+    .getProperty("examplesUseMavenArtifacts", libs.versions.examplesUseMavenArtifacts.get())
+    .toBooleanStrict()
 val samplesRepoVersion = providers.gradleProperty("exampleVersion")
     .orElse(libs.versions.exampleVersion)
     .get()
 val jJoltGroup = libs.versions.projectGroup.get()
 
-extra["samplesUseRepoLibs"] = samplesUseRepoLibs
+extra["examplesUseMavenArtifacts"] = examplesUseMavenArtifacts
 
 allprojects  {
     val isSampleProject = path.startsWith(":samples:")
@@ -44,7 +46,7 @@ allprojects  {
             else if(requested.group == "com.github.xpenatan.gdx-teavm") {
                 useVersion(libs.versions.gdxTeavmVersion.get())
             }
-            else if(isSampleProject && samplesUseRepoLibs && requested.group == jJoltGroup) {
+            else if(isSampleProject && examplesUseMavenArtifacts && requested.group == jJoltGroup) {
                 useVersion(samplesRepoVersion)
             }
         }

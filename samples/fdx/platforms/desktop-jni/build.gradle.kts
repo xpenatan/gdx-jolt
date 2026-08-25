@@ -5,7 +5,7 @@ plugins {
     id("java")
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 val javaFfmTarget = libs.versions.javaFfmTarget.get()
 
 java {
@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.fdxBackendDesktop)
     implementation(libs.fdxWgpuCore)
 
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         joltJniRuntimeClasspath(libs.jjoltDesktopJni)
         joltFfmRuntimeClasspath(libs.jjoltDesktopFfm)
         joltFfmRuntimeClasspath(variantOf(libs.jjoltDesktopFfm) { classifier("desktop") })

@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.androidApplication)
 }
 
-val useRepoLibs = rootProject.extra["samplesUseRepoLibs"] as Boolean
+val examplesUseMavenArtifacts = rootProject.extra["examplesUseMavenArtifacts"] as Boolean
 
 group = "jolt.example.samples.app.android"
 
@@ -43,7 +43,7 @@ android {
 dependencies {
     coreLibraryDesugaring(libs.androidDesugar)
 
-    if(useRepoLibs) {
+    if(examplesUseMavenArtifacts) {
         implementation(libs.jjoltAndroidJni)
     }
     else {
